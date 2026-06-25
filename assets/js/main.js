@@ -7,7 +7,37 @@ document.addEventListener('DOMContentLoaded', () => {
   initVideoModal();
   initFilters();
   initFAQ();
+  initScrollReveal();
 });
+
+// ==========================================
+// SCROLL REVEAL (Intersection Observer)
+// ==========================================
+function initScrollReveal() {
+  const revealElements = document.querySelectorAll('.reveal, .reveal-scale');
+  
+  if (!revealElements.length) return;
+
+  // Fallback if IntersectionObserver is not supported
+  if (!('IntersectionObserver' in window)) {
+    revealElements.forEach(el => el.classList.add('visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.05,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  revealElements.forEach(el => observer.observe(el));
+}
 
 // ==========================================
 // MOBILE DRAWER MENU
@@ -20,14 +50,14 @@ function initMobileMenu() {
 
   if (menuBtn && mobileDrawer) {
     menuBtn.addEventListener('click', () => {
-      mobileDrawer.classList.add('active');
+      mobileDrawer.classList.add('open');
       document.body.style.overflow = 'hidden';
     });
   }
 
   const closeMenu = () => {
     if (mobileDrawer) {
-      mobileDrawer.classList.remove('active');
+      mobileDrawer.classList.remove('open');
       document.body.style.overflow = '';
     }
   };
@@ -45,9 +75,9 @@ function initVideoModal() {
   
   if (closeBtn && modal) {
     closeBtn.addEventListener('click', () => {
-      modal.classList.remove('active');
+      modal.classList.remove('open');
       document.body.style.overflow = '';
-      // Reset video placeholder state if needed
+      // Reset play button icon
       const playBtn = modal.querySelector('.play-btn-large');
       if (playBtn) playBtn.innerHTML = '<svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>';
     });
@@ -55,7 +85,7 @@ function initVideoModal() {
     // Close on click outside modal panel
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
-        modal.classList.remove('active');
+        modal.classList.remove('open');
         document.body.style.overflow = '';
       }
     });
@@ -70,7 +100,7 @@ window.openVideoModal = function(title, duration) {
   if (modal && videoTitle && videoDuration) {
     videoTitle.textContent = title;
     videoDuration.textContent = duration;
-    modal.classList.add('active');
+    modal.classList.add('open');
     document.body.style.overflow = 'hidden';
   } else {
     console.error("Modal elements not found!");
@@ -94,13 +124,9 @@ function initFilters() {
 
       gridItems.forEach(item => {
         const itemCategory = item.getAttribute('data-category');
-        const matchesEquipment = pill.getAttribute('data-equipment') ? item.getAttribute('data-equipment') === pill.getAttribute('data-equipment') : true;
-        const matchesLevel = pill.getAttribute('data-level') ? item.getAttribute('data-level') === pill.getAttribute('data-level') : true;
-
         if (filterVal === 'all' || itemCategory === filterVal) {
           item.style.display = '';
-          // Retain animation entry
-          item.classList.add('reveal');
+          item.classList.add('visible'); // Make sure it's visible when filtered
         } else {
           item.style.display = 'none';
         }
@@ -152,7 +178,7 @@ window.showToast = function(message) {
 
   // Remove toast after duration
   setTimeout(() => {
-    toast.classList.remove('active');
+    toast.classList.add('hide');
     setTimeout(() => toast.remove(), 300);
   }, 4000);
 };
