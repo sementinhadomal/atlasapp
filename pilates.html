@@ -381,34 +381,6 @@
       ringContent.style.display = '';
       barContent.style.display = 'none';
     });
-
-    // Rep counter
-    let reps = 0; let sets = 1;
-    function countRep() {
-      reps++;
-      document.getElementById('repCount').textContent = reps;
-    }
-    function nextSet() {
-      sets++;
-      reps = 0;
-      document.getElementById('setCount').textContent = sets;
-      document.getElementById('repCount').textContent = reps;
-      showToast('Set ' + (sets-1) + ' complete! Rest 30 seconds.');
-    }
-    function finishExercise() {
-      document.getElementById('videoModal').classList.remove('open');
-      reps = 0; sets = 1;
-      showToast('✅ Exercise complete! Great work!');
-    }
-
-    function openExerciseModal(name, type) {
-      document.getElementById('videoTitle').textContent = name;
-      document.getElementById('videoDuration').textContent = 'Equipment: Pilates ' + (type === 'bar' ? 'Bar' : 'Ring');
-      document.getElementById('repCount').textContent = '0';
-      document.getElementById('setCount').textContent = '1';
-      reps = 0; sets = 1;
-      document.getElementById('videoModal').classList.add('open');
-    }
   </script>
 </body>
 </html>

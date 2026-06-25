@@ -102,10 +102,11 @@
       </div>
 
       <!-- Exercise Library Grid -->
+      <!-- Exercise Library Grid -->
       <div style="display: grid; grid-template-columns: repeat(4,1fr); gap: var(--space-lg);" id="libraryGrid">
 
         <!-- Exercise items -->
-        <div class="exercise-item" data-equipment="none" data-level="beginner" data-duration="short" data-name="child's pose">
+        <div class="exercise-item" data-equipment="none" data-level="beginner" data-duration="short" data-name="child's pose" onclick="openVideoModal('Child\'s Pose (Balasana)')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
             <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Child's Pose" style="width:100%;height:100%;object-fit:cover;" /></div>
             <div style="padding: var(--space-md);">
@@ -121,7 +122,7 @@
           </div>
         </div>
 
-        <div class="exercise-item" data-equipment="ring" data-level="beginner" data-duration="short" data-name="inner thigh squeeze">
+        <div class="exercise-item" data-equipment="ring" data-level="beginner" data-duration="short" data-name="inner thigh squeeze" onclick="openExerciseModal('Inner Thigh Squeeze')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
             <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Inner Thigh Squeeze" style="width:100%;height:100%;object-fit:cover;" /></div>
             <div style="padding: var(--space-md);">
@@ -137,7 +138,7 @@
           </div>
         </div>
 
-        <div class="exercise-item" data-equipment="bar" data-level="intermediate" data-duration="short" data-name="squat press">
+        <div class="exercise-item" data-equipment="bar" data-level="intermediate" data-duration="short" data-name="squat press" onclick="openExerciseModal('Squat & Press')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
             <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre.png" alt="Squat & Press" style="width:100%;height:100%;object-fit:cover;" /></div>
             <div style="padding: var(--space-md);">
@@ -153,7 +154,7 @@
           </div>
         </div>
 
-        <div class="exercise-item" data-equipment="none" data-level="intermediate" data-duration="medium" data-name="power vinyasa">
+        <div class="exercise-item" data-equipment="none" data-level="intermediate" data-duration="medium" data-name="power vinyasa" onclick="openVideoModal('Power Vinyasa Flow')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
             <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Power Vinyasa" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
@@ -172,7 +173,7 @@
           </div>
         </div>
 
-        <div class="exercise-item" data-equipment="bar" data-level="intermediate" data-duration="short" data-name="romanian deadlift">
+        <div class="exercise-item" data-equipment="bar" data-level="intermediate" data-duration="short" data-name="romanian deadlift" onclick="openExerciseModal('Overhead Lunge')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
             <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre.png" alt="Romanian Deadlift" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
@@ -191,7 +192,7 @@
           </div>
         </div>
 
-        <div class="exercise-item" data-equipment="none" data-level="beginner" data-duration="short" data-name="morning stretch">
+        <div class="exercise-item" data-equipment="none" data-level="beginner" data-duration="short" data-name="morning stretch" onclick="openVideoModal('Sunrise Morning Flow')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
             <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Morning Stretch" style="width:100%;height:100%;object-fit:cover;" /></div>
             <div style="padding: var(--space-md);">
@@ -207,7 +208,7 @@
           </div>
         </div>
 
-        <div class="exercise-item" data-equipment="ring" data-level="intermediate" data-duration="short" data-name="chest squeeze">
+        <div class="exercise-item" data-equipment="ring" data-level="intermediate" data-duration="short" data-name="chest squeeze" onclick="openExerciseModal('Inner Thigh Squeeze')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
             <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Chest Squeeze" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
@@ -226,7 +227,7 @@
           </div>
         </div>
 
-        <div class="exercise-item" data-equipment="none" data-level="advanced" data-duration="long" data-name="arm balances">
+        <div class="exercise-item" data-equipment="none" data-level="advanced" data-duration="long" data-name="arm balances" onclick="openVideoModal('Sunrise Morning Flow')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
             <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Arm Balances" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
@@ -249,10 +250,29 @@
 
       <!-- Load More -->
       <div class="text-center" style="margin-top: var(--space-3xl);">
-        <button onclick="showToast('🔐 More exercises available with Premium membership')" class="btn btn--outline">Load More Exercises</button>
+        <button onclick="showToast('🔐 Mais exercícios disponíveis com plano Premium')" class="btn btn--outline">Carregar Mais</button>
       </div>
     </div>
   </section>
+
+  <!-- VIDEO MODAL -->
+  <div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Video player">
+    <div class="video-modal__inner">
+      <button class="video-modal__close" id="videoModalClose" onclick="closeWorkoutPlayer()">✕</button>
+      <div class="video-placeholder">
+        <div class="play-btn-large">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </div>
+        <div id="videoTitle" style="font-family: var(--font-heading); font-size: 1.25rem; color: rgba(255,255,255,0.9);">Carregando...</div>
+        <div id="videoDuration" style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">0 min</div>
+        <div style="display: flex; gap: 1rem; align-items: center; margin-top: 1.5rem;">
+          <button style="padding: 0.625rem 1.5rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; color: rgba(255,255,255,0.7); font-size: 0.75rem; cursor: pointer; background: transparent; letter-spacing: 0.1em; text-transform: uppercase;">Voltar</button>
+          <button style="padding: 0.875rem 2rem; background: var(--color-accent-gold); border-radius: 999px; color: #fff; font-size: 0.75rem; cursor: pointer; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500;" onclick="showToast('✅ Treino concluído!')">Iniciar</button>
+          <button style="padding: 0.625rem 1.5rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; color: rgba(255,255,255,0.7); font-size: 0.75rem; cursor: pointer; background: transparent; letter-spacing: 0.1em; text-transform: uppercase;">Avançar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <footer class="footer">

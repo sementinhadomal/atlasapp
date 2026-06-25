@@ -2,7 +2,7 @@
  * Atlas Pilates — Main Application Logic
  * Premium interactive exercise player with aesthetic minimalist body silhouettes,
  * real-time biofeedback tension gauges, joint angle trackers, breathing visualizers,
- * and high-end interactive training indicators.
+ * and high-end interactive training indicators. Instructions in Portuguese.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -21,31 +21,31 @@ const workoutData = {
     type: "yoga",
     duration: "30 min",
     exercises: [
-      { name: "Child's Pose (Balasana)", duration: 30, instructions: "Relax your hips onto your heels. Extend your arms forward, rest your forehead on the mat. Breathe deeply.", animation: "childs-pose", target: "Spine & Hips" },
-      { name: "Cat-Cow Stretch (Marjaryasana)", duration: 40, instructions: "Inhale: arch your back, drop belly, look up. Exhale: round your spine, tuck chin to chest.", animation: "cat-cow", target: "Spine Mobility" },
-      { name: "Downward Facing Dog (Adho Mukha Svanasana)", duration: 45, instructions: "Lift your hips up and back. Press your palms into the mat, align your spine, pedal your feet.", animation: "down-dog", target: "Hamstrings & Shoulders" },
-      { name: "Sun Salutation A (Surya Namaskar)", duration: 60, instructions: "Inhale arms up. Exhale fold forward. Inhale halfway lift. Exhale chaturanga. Inhale upward dog. Exhale downward dog.", animation: "vinyasa", target: "Full Body Flow" },
-      { name: "Warrior I (Virabhadrasana I)", duration: 40, instructions: "Step right foot forward. Bend front knee. Inhale arms overhead. Keep hips squared.", animation: "warrior-1", target: "Quads & Shoulders" }
+      { name: "Postura da Criança (Balasana)", duration: 30, instructions: "1. Ajoelhe-se e sente-se nos calcanhares. <br>2. Incline o tronco para a frente e apoie a testa no chão. <br>3. Alongue os braços para a frente e respire profundamente.", animation: "childs-pose", target: "Coluna e Quadris" },
+      { name: "Alongamento Gato-Vaca (Marjaryasana)", duration: 40, instructions: "1. Fique em quatro apoios (mãos e joelhos). <br>2. Ao inspirar, curve a coluna para baixo e olhe para cima (Vaca). <br>3. Ao expirar, curve a coluna para cima empurrando o chão (Gato).", animation: "cat-cow", target: "Mobilidade da Coluna" },
+      { name: "Cachorro Olhando para Baixo", duration: 45, instructions: "1. Suba os quadris e estique as pernas formando um V invertido. <br>2. Empurre os calcanhares em direção ao chão. <br>3. Mantenha os braços esticados e a cabeça relaxada.", animation: "down-dog", target: "Posterior e Ombros" },
+      { name: "Saudação ao Sol (Surya Namaskar)", duration: 60, instructions: "1. Inspire elevando os braços. <br>2. Expire dobrando o quadril à frente. <br>3. Desça em chaturanga. <br>4. Inspire no cachorro olhando para cima, expire para baixo.", animation: "vinyasa", target: "Fluxo Corpo Inteiro" },
+      { name: "Guerreiro I (Virabhadrasana I)", duration: 40, instructions: "1. Dê um passo largo para trás com o pé esquerdo. <br>2. Flexione o joelho direito a 90 graus. <br>3. Eleve os braços em direção ao teto e alinhe o quadril à frente.", animation: "warrior-1", target: "Pernas e Ombros" }
     ]
   },
   "Deep Restore & Relax": {
     type: "yoga",
     duration: "45 min",
     exercises: [
-      { name: "Deep Belly Breathing", duration: 30, instructions: "Sit comfortably. Place one hand on belly. Inhale deeply, expand belly. Exhale slowly.", animation: "breath", target: "Nervous System" },
-      { name: "Sphinx Pose", duration: 40, instructions: "Lie on belly, forearms on mat. Gently lift chest. Keep shoulders away from ears.", animation: "sphinx", target: "Lower Back" },
-      { name: "Supported Bridge Pose", duration: 50, instructions: "Lie on back, bend knees. Lift hips, keep neck relaxed. Focus on deep breaths.", animation: "bridge", target: "Glutes & Lower Back" },
-      { name: "Supine Twist", duration: 45, instructions: "Bring knees to chest. Drop knees to right side, look left. Relax your shoulders.", animation: "twist", target: "Spine Rotation" }
+      { name: "Respiração Abdominal Profunda", duration: 30, instructions: "1. Sente-se confortavelmente. <br>2. Coloque uma mão no abdômen. <br>3. Inspire expandindo a barriga. <br>4. Expire lentamente esvaziando os pulmões.", animation: "breath", target: "Sistema Nervoso" },
+      { name: "Postura da Esfinge", duration: 40, instructions: "1. Deite-se de barriga para baixo com os antebraços no chão. <br>2. Eleve o peito mantendo os ombros relaxados e longe das orelhas. <br>3. Olhe para a frente.", animation: "sphinx", target: "Lombar" },
+      { name: "Ponte Suportada", duration: 50, instructions: "1. Deite-se de costas com os joelhos dobrados. <br>2. Eleve os quadris contraindo os glúteos. <br>3. Mantenha o pescoço relaxado no chão e respire.", animation: "bridge", target: "Glúteos e Lombar" },
+      { name: "Torção de Coluna Deitada", duration: 45, instructions: "1. Traga os joelhos ao peito. <br>2. Deixe os joelhos caírem para o lado direito. <br>3. Vire a cabeça para o lado esquerdo e sinta o alongamento.", animation: "twist", target: "Rotação de Coluna" }
     ]
   },
   "Post-Workout Recovery": {
     type: "yoga",
     duration: "25 min",
     exercises: [
-      { name: "Neck & Shoulder Release", duration: 30, instructions: "Gently roll neck. Drop right ear to right shoulder, then switch. Feel shoulders drop.", animation: "neck", target: "Cervical Spine" },
-      { name: "Hamstring Fold", duration: 40, instructions: "Extend one leg. Hinge from hips, reach forward gently. Keep spine long.", animation: "hamstring", target: "Posterior Chain" },
-      { name: "Pigeon Pose", duration: 50, instructions: "Bring right knee forward. Extend left leg back. Sink hips down toward the mat.", animation: "pigeon", target: "Hip Flexors" },
-      { name: "Corpse Pose (Savasana)", duration: 60, instructions: "Lie flat. Let feet fall open, hands face up. Absorb the benefits of your practice.", animation: "savasana", target: "Total Restoration" }
+      { name: "Liberação de Ombros e Pescoço", duration: 30, instructions: "1. Gire o pescoço suavemente em círculos. <br>2. Incline a orelha direita em direção ao ombro correspondente. <br>3. Alterne os lados para soltar a tensão.", animation: "neck", target: "Coluna Cervical" },
+      { name: "Alongamento Sentado", duration: 40, instructions: "1. Estique uma das pernas à frente. <br>2. Incline o tronco a partir dos quadris mantendo as costas retas. <br>3. Alcance o pé ou canela.", animation: "hamstring", target: "Cadeia Posterior" },
+      { name: "Postura do Pombo", duration: 50, instructions: "1. Traga o joelho direito para a frente no chão. <br>2. Estique a perna esquerda totalmente para trás. <br>3. Desça o quadril em direção ao mat.", animation: "pigeon", target: "Flexores de Quadril" },
+      { name: "Relaxamento Final (Savasana)", duration: 60, instructions: "1. Deite-se totalmente plano de costas. <br>2. Deixe os pés caírem para os lados e palmas das mãos para cima. <br>3. Respire e absorva o treino.", animation: "savasana", target: "Restauração Total" }
     ]
   },
   "Squat & Press": {
@@ -54,7 +54,7 @@ const workoutData = {
     sets: 3,
     reps: 15,
     exercises: [
-      { name: "Barre Squat & Press", duration: 35, instructions: "Hold the Pilates Bar at chest level. Squat down keeping knees behind toes. Stand up and press the bar overhead using the resistance bands.", animation: "squat-press", target: "Glutes & Shoulders" }
+      { name: "Agachamento com Desenvolvimento", duration: 35, instructions: "1. Fique de pé sobre os elásticos da barra de Pilates. <br>2. Posicione a barra na altura dos ombros. <br>3. Agache flexionando os joelhos e jogando o quadril para trás. <br>4. Fique de pé e empurre a barra acima da cabeça.", animation: "squat-press", target: "Glúteos e Ombros" }
     ]
   },
   "Overhead Lunge": {
@@ -63,7 +63,7 @@ const workoutData = {
     sets: 3,
     reps: 10,
     exercises: [
-      { name: "Overhead Walking Lunge", duration: 35, instructions: "Press the Pilates Bar overhead. Step forward into a deep lunge. Keep core tight, posture long, and arms locked out.", animation: "overhead-lunge", target: "Quads & Core Stability" }
+      { name: "Avanço com Barra Elevada", duration: 35, instructions: "1. Fique de pé segurando a barra acima da cabeça com braços esticados. <br>2. Dê um passo largo à frente. <br>3. Flexione os joelhos até o de trás quase tocar o chão. <br>4. Retorne e alterne.", animation: "overhead-lunge", target: "Quadríceps e Estabilidade" }
     ]
   },
   "Inner Thigh Squeeze": {
@@ -72,7 +72,7 @@ const workoutData = {
     sets: 3,
     reps: 20,
     exercises: [
-      { name: "Inner Thigh Ring Squeeze", duration: 30, instructions: "Place the Fusion Ring between inner thighs. Squeeze the ring slowly, hold compression for 1s, release gently.", animation: "thigh-squeeze", target: "Adductors & Inner Core" }
+      { name: "Aperto de Coxa com Anel", duration: 30, instructions: "1. Deite-se de costas ou sente-se com joelhos dobrados. <br>2. Posicione o anel de Pilates entre as coxas. <br>3. Aperte o anel devagar, segure por 1s e solte com controle.", animation: "thigh-squeeze", target: "Adutores e Core Interno" }
     ]
   },
   "Bridge & Ring Squeeze": {
@@ -81,7 +81,7 @@ const workoutData = {
     sets: 4,
     reps: 12,
     exercises: [
-      { name: "Bridge Ring Press", duration: 35, instructions: "Lie on your back with knees bent. Place the Fusion Ring between thighs. Lift your hips into a bridge while squeezing the ring.", animation: "bridge-squeeze", target: "Glutes & Hamstrings" }
+      { name: "Ponte com Compressão de Anel", duration: 35, instructions: "1. Deite-se de costas com joelhos dobrados e o anel entre as coxas. <br>2. Eleve os quadris do chão contraindo glúteos e lombar. <br>3. Squeeze o anel no topo da ponte e desça.", animation: "bridge-squeeze", target: "Glúteos e Posterior de Coxa" }
     ]
   }
 };
@@ -290,28 +290,28 @@ function finishWorkout() {
     <button class="video-modal__close" onclick="closeWorkoutPlayer()">✕</button>
     <div style="padding: 3rem 2rem; background: var(--color-near-black); text-align: center; color: #fff; min-height: 400px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
       <span style="font-size: 4rem; margin-bottom: 1.5rem; animation: float 3s ease-in-out infinite;">✨</span>
-      <h2 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 0.5rem; color: var(--color-accent-gold);">Workout Complete!</h2>
+      <h2 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 0.5rem; color: var(--color-accent-gold);">Treino Concluído!</h2>
       <p style="color: rgba(255,255,255,0.6); max-width: 400px; margin-bottom: 2rem; font-size: 0.9375rem;">
-        Congratulations! You finished <strong>${currentWorkoutName}</strong>. You're building strength, balance, and control.
+        Parabéns! Você completou o treino de <strong>${currentWorkoutName}</strong>. Você está evoluindo sua força, equilíbrio e controle.
       </p>
       <div style="display: flex; gap: 2rem; margin-bottom: 2.5rem; justify-content: center;">
         <div>
           <div style="font-family: var(--font-heading); font-size: 2rem; color: #fff;">+50</div>
-          <div style="font-size: 0.625rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4);">XP Gained</div>
+          <div style="font-size: 0.625rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4);">XP Ganhos</div>
         </div>
         <div>
           <div style="font-family: var(--font-heading); font-size: 2rem; color: #fff;">${currentWorkoutData.type === 'yoga' ? '180' : '220'}</div>
-          <div style="font-size: 0.625rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4);">Cal Burned</div>
+          <div style="font-size: 0.625rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4);">Kcal Queimadas</div>
         </div>
         <div>
           <div style="font-family: var(--font-heading); font-size: 2rem; color: #fff;">🔥 13</div>
-          <div style="font-size: 0.625rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4);">Day Streak</div>
+          <div style="font-size: 0.625rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4);">Dias Seguidos</div>
         </div>
       </div>
-      <button onclick="closeWorkoutPlayer()" class="btn btn--gold btn--lg" style="padding: 0.875rem 3rem;">Done</button>
+      <button onclick="closeWorkoutPlayer()" class="btn btn--gold btn--lg" style="padding: 0.875rem 3rem;">Concluir</button>
     </div>
   `;
-  showToast("🎉 Session completed! +50 XP!");
+  showToast("🎉 Treino concluído! +50 XP!");
 }
 
 function updateTimerDisplay() {
@@ -319,7 +319,6 @@ function updateTimerDisplay() {
   const circleFill = document.getElementById('playerProgressCircleFill');
   const exercise = currentWorkoutData.exercises[currentExerciseIndex];
 
-  // Update dynamic gauge elements
   const currentTotal = exercise.duration;
   const timeProgress = (currentTotal - currentSecondsLeft) / currentTotal;
 
@@ -332,20 +331,19 @@ function updateTimerDisplay() {
     circleFill.setAttribute('stroke-dashoffset', dasharray * (1 - timeProgress));
   }
 
-  // Update Angle Gauge & Tension indicators dynamically based on time cycles
   const angleDisplay = document.getElementById('gaugeAngleDisplay');
   const tensionProgress = document.getElementById('gaugeTensionProgress');
   const breathStateText = document.getElementById('breathStateText');
 
-  const cycle = (currentSecondsLeft % 6); // 6 second breathing/rep cycle
+  const cycle = (currentSecondsLeft % 6); 
   
   if (currentWorkoutData.type === 'yoga') {
     if (breathStateText) {
       if (cycle >= 3) {
-        breathStateText.textContent = "Inhale Deeply";
+        breathStateText.textContent = "Inalar Profundo";
         breathStateText.style.color = "var(--color-accent-gold)";
       } else {
-        breathStateText.textContent = "Exhale Control";
+        breathStateText.textContent = "Exalar com Controle";
         breathStateText.style.color = "rgba(255,255,255,0.7)";
       }
     }
@@ -353,18 +351,17 @@ function updateTimerDisplay() {
 
   if (currentWorkoutData.type === 'pilates') {
     if (angleDisplay && tensionProgress) {
-      // Squatting movement loop
       let angle = 180;
       let tension = 15;
       
       if (cycle >= 3) {
-        const factor = (cycle - 3) / 3; // 0 to 1
-        angle = Math.round(180 - (90 * factor)); // 180 down to 90
-        tension = Math.round(15 + (70 * factor)); // 15% up to 85%
+        const factor = (cycle - 3) / 3; 
+        angle = Math.round(180 - (90 * factor)); 
+        tension = Math.round(15 + (70 * factor)); 
       } else {
-        const factor = cycle / 3; // 0 to 1
-        angle = Math.round(90 + (90 * factor)); // 90 up to 180
-        tension = Math.round(85 - (70 * factor)); // 85% down to 15%
+        const factor = cycle / 3; 
+        angle = Math.round(90 + (90 * factor)); 
+        tension = Math.round(85 - (70 * factor)); 
       }
 
       angleDisplay.textContent = angle + '°';
@@ -390,7 +387,7 @@ function renderPlayerUI(exercise) {
       <!-- Side Exercise List -->
       <div style="background: #1c1a18; border-right: 1px solid rgba(255,255,255,0.06); padding: var(--space-xl) var(--space-lg); display: flex; flex-direction: column; justify-content: space-between;">
         <div>
-          <div style="font-size: 0.6875rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-accent-gold); margin-bottom: 0.5rem;">Routine</div>
+          <div style="font-size: 0.6875rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-accent-gold); margin-bottom: 0.5rem;">Treino</div>
           <h3 style="font-family: var(--font-heading); font-size: 1.125rem; margin-bottom: 1.5rem; color: #fff; font-weight: 400; line-height: 1.3;">${currentWorkoutName}</h3>
           
           <div style="display: flex; flex-direction: column; gap: 0.75rem;">
@@ -410,12 +407,12 @@ function renderPlayerUI(exercise) {
         <!-- Target Zone & Device connection badges -->
         <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1rem;">
           <div style="display: flex; align-items: center; gap: 8px; font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-bottom: 6px;">
-            <span>Target:</span>
+            <span>Foco:</span>
             <strong style="color: var(--color-accent-gold); font-weight: 500;">${exercise.target}</strong>
           </div>
           <div style="display: inline-flex; align-items: center; gap: 4px; font-size: 0.625rem; color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.04); padding: 2px 6px; border-radius: 4px;">
             <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:#10b981;"></span>
-            Coach Mode Active
+            Treinador Virtual Ativo
           </div>
         </div>
       </div>
@@ -438,22 +435,22 @@ function renderPlayerUI(exercise) {
             ${isYoga ? `
               <!-- Yoga: Breathing Rhythm Gauge -->
               <div>
-                <div style="font-size: 0.6875rem; color: rgba(255,255,255,0.5); margin-bottom: 4px;">Pace Guide</div>
-                <div id="breathStateText" style="font-family: var(--font-heading); font-size: 0.9375rem; font-weight: 400; color: var(--color-accent-gold);">Inhale</div>
+                <div style="font-size: 0.6875rem; color: rgba(255,255,255,0.5); margin-bottom: 4px;">Guia de Ritmo</div>
+                <div id="breathStateText" style="font-family: var(--font-heading); font-size: 0.9375rem; font-weight: 400; color: var(--color-accent-gold);">Inalar</div>
               </div>
               <div>
-                <div style="font-size: 0.6875rem; color: rgba(255,255,255,0.5); margin-bottom: 4px;">Heart Rate</div>
+                <div style="font-size: 0.6875rem; color: rgba(255,255,255,0.5); margin-bottom: 4px;">Batimentos</div>
                 <div style="font-family: var(--font-heading); font-size: 1.125rem; font-weight: 400; color: #fff;">108 <span style="font-size: 0.6875rem; color: rgba(255,255,255,0.4);">BPM</span></div>
               </div>
             ` : `
               <!-- Pilates: Tension & Joint Angle Gauges -->
               <div>
-                <div style="font-size: 0.6875rem; color: rgba(255,255,255,0.5); margin-bottom: 4px;">Joint Angle</div>
+                <div style="font-size: 0.6875rem; color: rgba(255,255,255,0.5); margin-bottom: 4px;">Ângulo da Articulação</div>
                 <div id="gaugeAngleDisplay" style="font-family: var(--font-heading); font-size: 1.125rem; font-weight: 400; color: #fff;">180°</div>
               </div>
               <div>
                 <div style="display: flex; justify-content: space-between; font-size: 0.6875rem; color: rgba(255,255,255,0.5); margin-bottom: 4px;">
-                  <span>Tension</span>
+                  <span>Tensão</span>
                   <span id="tensionValueText" style="color: var(--color-accent-gold);">15%</span>
                 </div>
                 <div style="width: 100%; height: 4px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden;">
@@ -470,7 +467,7 @@ function renderPlayerUI(exercise) {
           <h2 style="font-family: var(--font-heading); font-size: 1.35rem; margin-bottom: 0.5rem; color: #fff; font-weight: 400;">
             ${exercise.name}
           </h2>
-          <p style="color: rgba(255,255,255,0.65); max-width: 480px; margin: 0 auto; line-height: 1.6; font-size: 0.85rem; min-height: 50px;">
+          <p style="color: rgba(255,255,255,0.75); max-width: 480px; margin: 0 auto; line-height: 1.6; font-size: 0.875rem; min-height: 60px;">
             ${exercise.instructions}
           </p>
         </div>
@@ -479,7 +476,7 @@ function renderPlayerUI(exercise) {
         <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.25rem;">
           
           <button onclick="navigateWorkout(-1)" style="background: none; border: none; color: rgba(255,255,255,0.5); cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em;" ${currentExerciseIndex === 0 ? 'disabled style="opacity: 0.2; cursor: default;"' : ''}>
-            ⏮ Prev
+            ⏮ Voltar
           </button>
 
           <div style="display: flex; align-items: center; gap: 1.5rem;">
@@ -504,7 +501,7 @@ function renderPlayerUI(exercise) {
           </div>
 
           <button onclick="navigateWorkout(1)" style="background: none; border: none; color: rgba(255,255,255,0.5); cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em;">
-            ${currentExerciseIndex === currentWorkoutData.exercises.length - 1 ? 'Finish ✓' : 'Next ⏭'}
+            ${currentExerciseIndex === currentWorkoutData.exercises.length - 1 ? 'Concluir ✓' : 'Avançar ⏭'}
           </button>
         </div>
 
@@ -559,7 +556,6 @@ function renderSVGAnimation(type) {
           <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.5"/>
         </filter>
         <style>
-          /* CSS Keyframes for Person Joints */
           @keyframes breathing-body {
             0%, 100% { transform: scale(1) translateY(0); }
             50% { transform: scale(1.03) translateY(-1px); }
@@ -569,8 +565,8 @@ function renderSVGAnimation(type) {
             50% { transform: translate(4px, 2px); }
           }
           @keyframes cat-cow-morph {
-            0%, 100% { d: path("M20,62 Q35,52 50,62 T80,62"); } /* cat arch */
-            50% { d: path("M20,62 Q35,74 50,62 T80,62"); } /* cow dip */
+            0%, 100% { d: path("M20,62 Q35,52 50,62 T80,62"); } 
+            50% { d: path("M20,62 Q35,74 50,62 T80,62"); } 
           }
           @keyframes cat-cow-head {
             0%, 100% { transform: translate(0, 3px); }
@@ -617,7 +613,6 @@ function renderSVGAnimation(type) {
             50% { transform: translateY(-18px); }
           }
 
-          /* Elegant Body Silhouettes */
           .silhouette-part {
             fill: #f5f2eb;
             filter: url(#shadow-filter);
@@ -655,53 +650,33 @@ function renderSVGAnimation(type) {
         </marker>
       </defs>
 
-      <!-- Ambient Glow background -->
       <circle cx="50" cy="50" r="45" fill="url(#glow)" />
-
-      <!-- Ground/Mat Line -->
       <line x1="5" y1="85" x2="95" y2="85" stroke="rgba(255,255,255,0.06)" stroke-width="2.5" />
 
       ${type === 'breath' || type === 'savasana' ? `
-        <!-- Sitting Silhouette Meditating -->
         <g style="transform-origin: 50px 65px; animation: breathing-body 4s ease-in-out infinite;">
-          <!-- Elegant Head & Neck -->
           <circle class="silhouette-part" cx="50" cy="32" r="6" />
-          <!-- Torso -->
           <path class="silhouette-part" d="M47,38 Q50,38 53,38 Q54,58 52,65 Q48,58 46,38" />
-          <!-- Folded Legs base -->
           <path class="silhouette-part" d="M30,76 C30,68 38,62 50,62 C62,62 70,68 70,76 C70,82 60,82 50,82 C40,82 30,82 30,76 Z" />
-          <!-- Hands on knees -->
           <path class="silhouette-part" d="M36,64 Q42,54 48,46 M64,64 Q58,54 52,46" stroke="#eae5d9" stroke-width="2.5" stroke-linecap="round" fill="none" />
-          <!-- Glowing core -->
           <circle class="body-joint-glow" cx="50" cy="54" r="3" />
         </g>
       ` : ''}
 
       ${type === 'childs-pose' ? `
-        <!-- Kneeling forward stretch Silhouette -->
         <g style="transform-origin: 20px 82px; animation: stretch-child 4s ease-in-out infinite;">
           <circle class="silhouette-part" cx="24" cy="74" r="5" />
-          <!-- Torso and hips folded back -->
           <path class="silhouette-part" d="M22,76 C35,68 45,70 58,80 C60,82 55,83 45,83 C35,83 22,81 22,76 Z" />
-          <!-- Arms extending forward -->
           <path class="silhouette-part" d="M25,75 Q50,78 78,82 L78,84 L25,79 Z" />
-          <!-- Folded lower legs -->
           <path class="silhouette-part" d="M20,83 C20,78 28,78 35,83 Z" />
         </g>
       ` : ''}
 
       ${type === 'cat-cow' ? `
-        <!-- Quadruped Spine Flexing Silhouette -->
         <g>
-          <!-- Back hip support & legs -->
           <path class="silhouette-part" d="M70,60 C70,72 75,76 80,85 L74,85 C68,76 66,72 66,60 Z" />
-          <!-- Front arm support -->
           <path class="silhouette-part" d="M28,60 L28,85 L24,85 L24,60 Z" />
-          
-          <!-- Spine dynamically morphing (flexible body path) -->
           <path class="silhouette-part" id="cowSpineBody" d="M28,60 C40,50 60,50 72,60 C70,64 45,64 28,60 Z" />
-          
-          <!-- Head alignment -->
           <g style="transform-origin: 28px 60px; animation: cat-cow-head 5s ease-in-out infinite;">
             <circle class="silhouette-part" cx="20" cy="54" r="5" />
             <path class="silhouette-part" d="M20,55 L28,60 L28,63 L20,57 Z" />
@@ -716,45 +691,32 @@ function renderSVGAnimation(type) {
       ` : ''}
 
       ${type === 'down-dog' ? `
-        <!-- V-Shape Silhouette -->
         <g style="transform-origin: 50px 50px; animation: downdog-pulse 4s ease-in-out infinite;">
           <circle class="silhouette-part" cx="35" cy="71" r="5" />
-          <!-- Front Torso and Arms -->
           <path class="silhouette-part" d="M24,85 L48,46 L52,46 L28,85 Z" />
-          <!-- Back Thigh and Calves -->
           <path class="silhouette-part" d="M72,85 L48,46 L52,46 L76,85 Z" />
           <circle class="body-joint-glow" cx="48" cy="46" r="3.5" />
         </g>
       ` : ''}
 
       ${type === 'warrior-1' ? `
-        <!-- Warrior 1 Lunge Silhouette -->
         <g style="transform-origin: 50px 85px; animation: warrior-lunge 4s ease-in-out infinite;">
           <circle class="silhouette-part" cx="48" cy="26" r="5" />
-          <!-- Torso -->
           <path class="silhouette-part" d="M45,31 L51,31 L51,56 L45,56 Z" />
-          <!-- Raised Arms -->
           <path class="silhouette-part" d="M46,31 L46,12 L50,12 L50,31 Z" />
-          <!-- Bent front leg (left) -->
           <path class="silhouette-part" d="M46,56 C40,58 30,60 30,70 L30,85 L34,85 L34,70 C34,64 42,62 48,56 Z" />
-          <!-- Stretched back leg (right) -->
           <path class="silhouette-part" d="M48,56 C58,62 70,68 78,85 L74,85 C66,70 56,64 48,56 Z" />
           <circle class="body-joint-glow" cx="32" cy="70" r="3.5" />
         </g>
       ` : ''}
 
       ${type === 'squat-press' ? `
-        <!-- Premium Squat Silhouette with tension bands and bar -->
         <g style="transform-origin: 50px 85px; animation: squatting 4s ease-in-out infinite;">
-          <!-- Head -->
           <circle class="silhouette-part" cx="50" cy="30" r="5" />
-          <!-- Torso -->
           <path class="silhouette-part" d="M46,35 L54,35 L52,58 L48,58 Z" />
           
-          <!-- Hips to Knees (Thighs) -->
           <g style="transform-origin: 50px 58px; animation: thigh-rotation 4s ease-in-out infinite;">
             <path class="silhouette-part" d="M47,56 L33,70 L37,73 L51,59 Z" />
-            <!-- Knees to Feet (Calves) -->
             <g style="transform-origin: 36px 70px; animation: calf-rotation 4s ease-in-out infinite;">
               <path class="silhouette-part" d="M33,69 L33,85 L37,85 L37,69 Z" />
             </g>
@@ -767,20 +729,15 @@ function renderSVGAnimation(type) {
             </g>
           </g>
 
-          <!-- Arms raising bar overhead (Press) -->
           <g style="transform-origin: 50px 38px; animation: arm-overhead-press 4s ease-in-out infinite;">
             <path class="silhouette-part" d="M46,38 L30,34 L30,18 L34,18 L34,34 L50,38 Z" />
             <path class="silhouette-part" d="M54,38 L70,34 L70,18 L66,18 L66,34 L50,38 Z" />
             
-            <!-- Pilates Bar -->
             <line class="pilates-metal-bar" x1="20" y1="18" x2="80" y2="18" />
-            
-            <!-- Dynamic stretching elastic resistance cords connected to feet -->
             <path class="elastic-tension-band" d="M22,18 C22,50 35,80 35,85" />
             <path class="elastic-tension-band" d="M78,18 C78,50 65,80 65,85" />
           </g>
 
-          <!-- Tension Arrows -->
           <path class="indicator-arrow" d="M20,28 L20,12" />
           <path class="indicator-arrow" d="M80,28 L80,12" />
           
@@ -789,24 +746,19 @@ function renderSVGAnimation(type) {
       ` : ''}
 
       ${type === 'overhead-lunge' ? `
-        <!-- Walking Lunge holding Bar overhead -->
         <g style="transform-origin: 50px 85px; animation: walk-lunge 4s ease-in-out infinite;">
           <circle class="silhouette-part" cx="42" cy="30" r="5" />
           <path class="silhouette-part" d="M39,35 L45,35 L45,58 L39,58 Z" />
           
-          <!-- Front leg bent deep -->
           <path class="silhouette-part" d="M42,58 L20,62 L24,65 L44,60 Z" />
           <path class="silhouette-part" d="M20,62 L28,85 L32,85 L24,62 Z" />
           
-          <!-- Back leg stretched behind -->
           <path class="silhouette-part" d="M42,58 L62,72 L66,74 L44,60 Z" />
           <path class="silhouette-part" d="M62,72 L72,85 L76,85 L66,72 Z" />
           
-          <!-- Arms straight holding bar -->
           <path class="silhouette-part" d="M39,35 L39,16 L43,16 L43,35 Z" />
           <line class="pilates-metal-bar" x1="28" y1="16" x2="56" y2="16" />
           
-          <!-- Cords stretching back to front foot -->
           <line class="elastic-tension-band" x1="28" y1="16" x2="28" y2="85" />
           <line class="elastic-tension-band" x1="56" y1="16" x2="28" y2="85" />
           
@@ -815,25 +767,20 @@ function renderSVGAnimation(type) {
       ` : ''}
 
       ${type === 'thigh-squeeze' ? `
-        <!-- Thigh squeeze with squishing Fusion Ring -->
         <g style="transform-origin: 50px 50px;">
           <circle class="silhouette-part" cx="50" cy="32" r="5.5" />
-          <!-- Torso -->
           <path class="silhouette-part" d="M46,38 L54,38 L52,58 L48,58 Z" />
           
           <g style="animation: legs-squeeze 3s ease-in-out infinite; transform-origin: 50px 58px;">
-            <!-- Outer hips to knees and feet -->
-            <path class="silhouette-part" d="M48,58 L30,70 L34,73 L50,60 Z" />
+            <path class="silhouette-part" d="M47,56 L33,70 L34,73 L50,60 Z" />
             <path class="silhouette-part" d="M52,58 L68,70 L64,73 L50,60 Z" />
             <path class="silhouette-part" d="M30,70 L38,85 L42,85 L34,70 Z" />
             <path class="silhouette-part" d="M68,70 L60,85 L56,85 L64,70 Z" />
             
-            <!-- Dynamic squashing Fusion Ring -->
             <ellipse class="pilates-foam-ring" cx="50" cy="70" rx="14" ry="14" style="transform-origin: 50px 70px; animation: squish-ring 3s ease-in-out infinite;" />
             <rect fill="#fff" x="33" y="66" width="3" height="8" rx="1.5" />
             <rect fill="#fff" x="64" y="66" width="3" height="8" rx="1.5" />
             
-            <!-- Compression indicators -->
             <path class="indicator-arrow" d="M28,70 L38,70" />
             <path class="indicator-arrow" d="M72,70 L62,70" />
           </g>
@@ -841,14 +788,10 @@ function renderSVGAnimation(type) {
       ` : ''}
 
       ${type === 'bridge-squeeze' ? `
-        <!-- Bridge Lift Silhouette -->
         <g style="transform-origin: 22px 80px; animation: bridge-lift 4s ease-in-out infinite;">
           <circle class="silhouette-part" cx="22" cy="80" r="5" />
-          <!-- Bridge arched torso/pelvis -->
           <path class="silhouette-part" d="M22,80 C36,65 54,65 66,74 L68,78 C54,71 36,71 22,82 Z" />
-          <!-- Calf to ground -->
           <path class="silhouette-part" d="M66,74 L80,85 L76,85 L62,74 Z" />
-          
           <circle class="body-joint-glow" cx="54" cy="70" r="3.5" />
         </g>
       ` : ''}
