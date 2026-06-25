@@ -1,6 +1,7 @@
 /**
  * Atlas Pilates — Main Application Logic
- * Premium interactive exercise player, timers, beeps, and mobile menu features.
+ * Premium interactive exercise player with lifelike skeletal human animations,
+ * joint highlighting, elastic cords for the Pilates Bar, and squashing Pilates Rings.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -169,15 +170,15 @@ function playPremiumChime(type) {
       osc.stop(ctx.currentTime + 0.06);
     } else if (type === 'complete') {
       osc.type = 'triangle';
-      osc.frequency.setValueAtTime(523.25, ctx.currentTime); // C5
-      osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.15); // E5
+      osc.frequency.setValueAtTime(523.25, ctx.currentTime); 
+      osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.15); 
       gain.gain.setValueAtTime(0.15, ctx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.6);
       osc.start();
       osc.stop(ctx.currentTime + 0.7);
     }
   } catch (e) {
-    console.log("Audio not supported or blocked by user gesture settings.");
+    console.log("Audio settings blocked.");
   }
 }
 
@@ -336,7 +337,7 @@ function renderPlayerUI(exercise) {
   inner.innerHTML = `
     <button class="video-modal__close" id="videoModalClose" onclick="closeWorkoutPlayer()">✕</button>
     
-    <div style="display: grid; grid-template-columns: 280px 1fr; background: #161412; min-height: 520px; color: #fff; font-family: system-ui, sans-serif;">
+    <div style="display: grid; grid-template-columns: 280px 1fr; background: #161412; min-height: 540px; color: #fff; font-family: system-ui, sans-serif;">
       
       <!-- Side Exercise List -->
       <div style="background: #1e1b19; border-right: 1px solid rgba(255,255,255,0.06); padding: var(--space-xl) var(--space-lg); display: flex; flex-direction: column; justify-content: space-between;">
@@ -367,16 +368,16 @@ function renderPlayerUI(exercise) {
       <div style="padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden;">
         
         <!-- Premium Pulsing Human Joint Animation -->
-        <div style="display: flex; justify-content: center; align-items: center; height: 220px; position: relative; background: rgba(0,0,0,0.15); border-radius: var(--radius-xl); border: 1px solid rgba(255,255,255,0.04);">
+        <div style="display: flex; justify-content: center; align-items: center; height: 240px; position: relative; background: #0f0d0c; border-radius: var(--radius-xl); border: 1px solid rgba(255,255,255,0.04); box-shadow: inset 0 8px 32px rgba(0,0,0,0.4);">
           ${renderSVGAnimation(exercise.animation)}
         </div>
 
         <!-- Exercise Details -->
         <div style="text-align: center; margin-top: 1rem; z-index: 10;">
-          <h2 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.5rem; color: #fff; font-weight: 400;">
+          <h2 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 0.5rem; color: #fff; font-weight: 400;">
             ${exercise.name}
           </h2>
-          <p style="color: rgba(255,255,255,0.7); max-width: 480px; margin: 0 auto; line-height: 1.6; font-size: 0.875rem; min-height: 50px;">
+          <p style="color: rgba(255,255,255,0.65); max-width: 480px; margin: 0 auto; line-height: 1.6; font-size: 0.85rem; min-height: 50px;">
             ${exercise.instructions}
           </p>
         </div>
@@ -391,13 +392,13 @@ function renderPlayerUI(exercise) {
           <div style="display: flex; align-items: center; gap: 1.5rem;">
             
             <!-- Circular Progress SVG -->
-            <div style="position: relative; width: 70px; height: 70px;">
-              <svg width="70" height="70" viewBox="0 0 100 100">
+            <div style="position: relative; width: 64px; height: 64px;">
+              <svg width="64" height="64" viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r="45" stroke="rgba(255,255,255,0.06)" stroke-width="4" fill="none" />
                 <circle id="playerProgressCircleFill" cx="50" cy="50" r="45" stroke="var(--color-accent-gold)" stroke-width="4" fill="none" 
                   stroke-dasharray="283" stroke-dashoffset="0" stroke-linecap="round" style="transition: stroke-dashoffset 1s linear; transform: rotate(-90deg); transform-origin: 50px 50px;" />
               </svg>
-              <div id="playerCountdownText" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 1.125rem; font-weight: 400; color: #fff;">
+              <div id="playerCountdownText" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 1.1rem; font-weight: 400; color: #fff;">
                 ${currentSecondsLeft}s
               </div>
             </div>
@@ -458,58 +459,104 @@ function renderSVGAnimation(type) {
     <svg width="220" height="220" viewBox="0 0 100 100" style="overflow: visible;">
       <defs>
         <radialGradient id="glow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="var(--color-accent-gold)" stop-opacity="0.12" />
+          <stop offset="0%" stop-color="var(--color-accent-gold)" stop-opacity="0.18" />
           <stop offset="100%" stop-color="var(--color-accent-gold)" stop-opacity="0" />
         </radialGradient>
+        <filter id="shadow-filter" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.5"/>
+        </filter>
         <style>
           /* CSS Keyframes for Person Joints */
-          @keyframes breathing-chest {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.08); }
+          @keyframes breathing-body {
+            0%, 100% { transform: scale(1) translateY(0); }
+            50% { transform: scale(1.03) translateY(-1px); }
           }
-          @keyframes childs-pose-stretch {
+          @keyframes stretch-child {
             0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(3px, 1px); }
+            50% { transform: translate(4px, 2px); }
           }
-          @keyframes cat-cow-spine {
-            0%, 100% { d: path("M20,60 Q35,50 50,60 T80,60"); } /* cat arch */
-            50% { d: path("M20,60 Q35,72 50,60 T80,60"); } /* cow dip */
+          @keyframes cat-cow-morph {
+            0%, 100% { d: path("M20,62 Q35,52 50,62 T80,62"); } /* cat arch */
+            50% { d: path("M20,62 Q35,74 50,62 T80,62"); } /* cow dip */
+          }
+          @keyframes cat-cow-head {
+            0%, 100% { transform: translate(0, 3px); }
+            50% { transform: translate(0, -3px); }
           }
           @keyframes downdog-pulse {
             0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(-3px, -3px); }
+            50% { transform: translate(-2px, -3px); }
           }
           @keyframes warrior-lunge {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(3px); }
+            50% { transform: translateY(2px); }
           }
           @keyframes squatting {
-            0%, 100% { transform: translateY(0px) scaleY(1); }
-            50% { transform: translateY(22px) scaleY(0.72); }
-          }
-          @keyframes arm-overhead {
-            0%, 100% { transform: rotate(0deg); }
-            50% { transform: rotate(-130deg); }
-          }
-          @keyframes lunge-depth {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(15px); }
+            50% { transform: translateY(20px); }
           }
-          @keyframes legs-squeeze {
-            0%, 100% { transform: scaleX(1); }
-            50% { transform: scaleX(0.5); }
+          @keyframes thigh-rotation {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(24deg); }
+          }
+          @keyframes calf-rotation {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(-45deg); }
+          }
+          @keyframes arm-overhead-press {
+            0%, 100% { transform: rotate(0deg) translateY(0); }
+            50% { transform: rotate(-120deg) translateY(-8px); }
+          }
+          @keyframes walk-lunge {
+            0%, 100% { transform: translateY(0px) translateX(0); }
+            50% { transform: translateY(14px) translateX(-4px); }
+          }
+          @keyframes joint-glow {
+            0%, 100% { r: 2px; opacity: 0.6; }
+            50% { r: 3.5px; opacity: 1; }
+          }
+          @keyframes squish-ring {
+            0%, 100% { transform: scaleX(1) scaleY(1); }
+            50% { transform: scaleX(0.55) scaleY(0.9); }
           }
           @keyframes bridge-lift {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-16px); }
+            50% { transform: translateY(-18px); }
           }
 
-          /* Joint Classes */
-          .person-body { stroke: #fff; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; fill: none; }
-          .person-head { fill: #fff; }
-          .gold-accent { stroke: var(--color-accent-gold); stroke-width: 1.5; fill: none; }
-          .equipment-bar { stroke: var(--color-accent-gold); stroke-width: 3.5; stroke-linecap: round; }
-          .equipment-ring { stroke: var(--color-accent-gold); stroke-width: 2.5; fill: none; }
+          /* Body Styles - Thick Curved Capsules */
+          .limb {
+            stroke: #eae5d9;
+            stroke-width: 4.5;
+            stroke-linecap: round;
+            fill: none;
+            filter: url(#shadow-filter);
+          }
+          .torso {
+            stroke: #eae5d9;
+            stroke-width: 7;
+            stroke-linecap: round;
+            fill: none;
+          }
+          .head {
+            fill: #eae5d9;
+            stroke: none;
+          }
+          .joint-dot {
+            fill: var(--color-accent-gold);
+            animation: joint-glow 2s infinite ease-in-out;
+          }
+          .elastic-cord {
+            stroke: rgba(201, 169, 110, 0.4);
+            stroke-width: 1.5;
+            stroke-dasharray: 2 2;
+            fill: none;
+          }
+          .bar {
+            stroke: var(--color-accent-gold);
+            stroke-width: 3.5;
+            stroke-linecap: round;
+          }
         </style>
       </defs>
 
@@ -517,144 +564,186 @@ function renderSVGAnimation(type) {
       <circle cx="50" cy="50" r="45" fill="url(#glow)" />
 
       <!-- Floor / Ground Line -->
-      <line x1="5" y1="85" x2="95" y2="85" stroke="rgba(255,255,255,0.08)" stroke-width="2" />
+      <line x1="5" y1="85" x2="95" y2="85" stroke="rgba(255,255,255,0.06)" stroke-width="2.5" />
 
       ${type === 'breath' || type === 'savasana' ? `
-        <!-- Sitting / Lying Breath simulator -->
-        <g style="transform-origin: 50px 65px; animation: breathing-chest 4s ease-in-out infinite;">
-          <!-- Cross-legged Pose -->
-          <circle class="person-head" cx="50" cy="35" r="5" />
-          <path class="person-body" d="M50,40 L50,65 M50,65 L35,80 L65,80 Z" />
-          <path class="person-body" d="M50,48 L35,55 M50,48 L65,55" />
-          <circle cx="50" cy="50" r="16" stroke="var(--color-accent-gold)" stroke-width="1.5" stroke-dasharray="4 4" fill="none">
-            <animate attributeName="r" values="8;20;8" dur="4s" repeatCount="indefinite" />
-            <animate attributeName="opacity" values="0.8;0.1;0.8" dur="4s" repeatCount="indefinite" />
-          </circle>
+        <!-- Sitting Meditative Breathe -->
+        <g style="transform-origin: 50px 65px; animation: breathing-body 4s ease-in-out infinite;">
+          <circle class="head" cx="50" cy="35" r="5.5" />
+          <line class="torso" x1="50" y1="40" x2="50" y2="60" />
+          <!-- Crossed thighs -->
+          <path class="limb" d="M48,60 C38,62 30,70 30,78 Q50,82 70,78 C70,70 62,62 52,60" stroke-width="5" />
+          <path class="limb" d="M50,44 L38,55 L50,62 M50,44 L62,55 L50,62" />
+          
+          <!-- Core activation glow -->
+          <circle class="joint-dot" cx="50" cy="52" r="3" />
         </g>
       ` : ''}
 
       ${type === 'childs-pose' ? `
-        <!-- Kneeling Forward Fold Person -->
-        <g style="transform-origin: 20px 80px; animation: childs-pose-stretch 4s ease-in-out infinite;">
-          <circle class="person-head" cx="22" cy="74" r="4.5" />
-          <!-- Arms stretched flat -->
-          <path class="person-body" d="M40,82 L75,82" />
+        <!-- Stretch Yoga Childs Pose -->
+        <g style="transform-origin: 20px 80px; animation: stretch-child 4s ease-in-out infinite;">
+          <circle class="head" cx="24" cy="74" r="5" />
           <!-- Torso flat down -->
-          <path class="person-body" d="M22,74 Q40,68 55,80" />
+          <path class="torso" d="M24,74 C36,70 48,74 60,82" />
           <!-- Folded legs -->
-          <path class="person-body" d="M20,82 L38,82 L30,76 L20,82" />
+          <path class="limb" d="M22,82 L38,82 L32,76 L22,82" />
+          <!-- Stretched Arms -->
+          <path class="limb" d="M28,74 L60,80 L76,82" />
         </g>
       ` : ''}
 
       ${type === 'cat-cow' ? `
-        <!-- On all fours, spinal morphing -->
+        <!-- All fours flexible spine -->
         <g>
-          <circle class="person-head" cx="20" cy="46" r="4.5" />
-          <!-- Back / Spine arching (using animated path d attribute) -->
-          <path class="person-body" id="spinePath" d="M20,50 Q45,35 70,50" />
+          <!-- Front arm support -->
+          <line class="limb" x1="28" y1="60" x2="28" y2="85" />
+          <!-- Back legs support -->
+          <path class="limb" d="M72,60 L72,75 L82,85" />
+          
+          <!-- Spine morphing -->
+          <path class="torso" id="cowSpine" d="M28,60 Q50,50 72,60" />
+          
+          <g style="transform-origin: 28px 60px; animation: cat-cow-head 5s ease-in-out infinite;">
+            <circle class="head" cx="20" cy="54" r="5" />
+            <line class="limb" x1="20" y1="54" x2="28" y2="60" />
+          </g>
           <script>
-            // Ensure runtime morphing for cow/cat
-            const spine = document.getElementById('spinePath');
-            if(spine) {
-              spine.style.animation = "cat-cow-spine 5s ease-in-out infinite";
-            }
+            const spine = document.getElementById('cowSpine');
+            if (spine) spine.style.animation = "cat-cow-morph 5s ease-in-out infinite";
           </script>
-          <!-- Front hands and back knees -->
-          <path class="person-body" d="M25,50 L25,85 M70,50 L70,85" />
-          <path class="person-body" d="M70,85 L85,85" />
         </g>
       ` : ''}
 
       ${type === 'down-dog' ? `
-        <!-- Inverted V-Shape Dog Pose -->
+        <!-- V-Shape Inverted Down Dog -->
         <g style="transform-origin: 50px 50px; animation: downdog-pulse 4s ease-in-out infinite;">
-          <circle class="person-head" cx="36" cy="74" r="4.5" />
-          <!-- Hands to Hip -->
-          <path class="person-body" d="M30,82 L50,45" />
-          <!-- Feet to Hip -->
-          <path class="person-body" d="M70,82 L50,45" />
-          <!-- Spine / Head alignment -->
-          <path class="person-body" d="M36,74 L50,45" />
+          <circle class="head" cx="35" cy="72" r="5" />
+          <!-- Arms to Hips -->
+          <line class="limb" x1="26" y1="85" x2="48" y2="46" />
+          <!-- Legs to Hips -->
+          <path class="limb" d="M74" />
+          <line class="limb" x1="72" y1="85" x2="48" y2="46" />
+          <!-- Spine torso -->
+          <line class="torso" x1="38" y1="68" x2="48" y2="46" />
+          <!-- Highlighted stretching joints -->
+          <circle class="joint-dot" cx="48" cy="46" r="3" />
         </g>
       ` : ''}
 
       ${type === 'warrior-1' ? `
-        <!-- Warrior standing stretch lunge -->
+        <!-- Warrior 1 Lunge -->
         <g style="transform-origin: 50px 85px; animation: warrior-lunge 4s ease-in-out infinite;">
-          <circle class="person-head" cx="50" cy="28" r="4.5" />
-          <!-- Arms pointing straight overhead -->
-          <path class="person-body" d="M50,33 L50,15" />
-          <!-- Upright Spine -->
-          <path class="person-body" d="M50,33 L50,55" />
-          <!-- Bent front leg (left) -->
-          <path class="person-body" d="M50,55 L32,62 L32,85" />
-          <!-- Stretched back leg (right) -->
-          <path class="person-body" d="M50,55 L72,70 L80,85" />
+          <circle class="head" cx="48" cy="26" r="5" />
+          <line class="torso" x1="48" y1="31" x2="48" y2="56" />
+          <!-- Raised Arms -->
+          <path class="limb" d="M48,34 L48,12" />
+          <!-- Bent front thigh (left) -->
+          <path class="limb" d="M48,56 L30,62 L30,85" />
+          <!-- Stretched back thigh (right) -->
+          <path class="limb" d="M48,56 L70,70 L78,85" />
+          <!-- Knee active joint glow -->
+          <circle class="joint-dot" cx="30" cy="62" r="3.5" />
         </g>
       ` : ''}
 
       ${type === 'squat-press' ? `
-        <!-- Squat and press simulator -->
+        <!-- Realistic squat with elastic cords & bar -->
         <g style="transform-origin: 50px 85px; animation: squatting 4s ease-in-out infinite;">
-          <circle class="person-head" cx="50" cy="28" r="4.5" />
-          <!-- Body Spine -->
-          <path class="person-body" d="M50,33 L50,58" />
-          <!-- Legs (Knees bend outward) -->
-          <path class="person-body" d="M50,58 L36,70 L25,85 M50,58 L64,70 L75,85" />
+          <circle class="head" cx="50" cy="30" r="5" />
+          <line class="torso" x1="50" y1="35" x2="50" y2="58" />
           
-          <!-- Arms moving overhead (Press) -->
-          <g style="transform-origin: 50px 36px; animation: arm-overhead 4s ease-in-out infinite;">
-            <path class="person-body" d="M50,36 L32,32 L32,18 M50,36 L68,32 L68,18" />
-            <!-- Pilates Bar -->
-            <line class="equipment-bar" x1="24" y1="18" x2="76" y2="18" />
+          <!-- Hips to Knees (Thighs) -->
+          <g style="transform-origin: 50px 58px; animation: thigh-rotation 4s ease-in-out infinite;">
+            <line class="limb" x1="50" y1="58" x2="36" y2="70" />
+            <!-- Knees to Feet (Calves) -->
+            <g style="transform-origin: 36px 70px; animation: calf-rotation 4s ease-in-out infinite;">
+              <line class="limb" x1="36" y1="70" x2="36" y2="85" />
+            </g>
           </g>
+
+          <g style="transform-origin: 50px 58px; animation: thigh-rotation 4s ease-in-out infinite; transform: scaleX(-1);">
+            <line class="limb" x1="50" y1="58" x2="36" y2="70" />
+            <g style="transform-origin: 36px 70px; animation: calf-rotation 4s ease-in-out infinite;">
+              <line class="limb" x1="36" y1="70" x2="36" y2="85" />
+            </g>
+          </g>
+
+          <!-- Arms raising bar overhead -->
+          <g style="transform-origin: 50px 38px; animation: arm-overhead-press 4s ease-in-out infinite;">
+            <path class="limb" d="M50,38 L32,34 L32,18" />
+            <path class="limb" d="M50,38 L68,34 L68,18" />
+            
+            <!-- Pilates Bar -->
+            <line class="bar" x1="22" y1="18" x2="78" y2="18" />
+            
+            <!-- Elastic Resistance Cords connected to feet -->
+            <path class="elastic-cord" d="M22,18 C22,50 36,80 36,85" />
+            <path class="elastic-cord" d="M78,18 C78,50 64,80 64,85" />
+          </g>
+
+          <!-- Core activation joint -->
+          <circle class="joint-dot" cx="50" cy="48" r="3.5" />
         </g>
       ` : ''}
 
       ${type === 'overhead-lunge' ? `
-        <!-- Walking Lunge Simulator -->
-        <g style="transform-origin: 50px 85px; animation: lunge-depth 4s ease-in-out infinite;">
-          <circle class="person-head" cx="45" cy="30" r="4.5" />
-          <!-- Spine -->
-          <path class="person-body" d="M45,35 L45,60" />
+        <!-- Walking Lunge holding Bar overhead -->
+        <g style="transform-origin: 50px 85px; animation: walk-lunge 4s ease-in-out infinite;">
+          <circle class="head" cx="42" cy="30" r="5" />
+          <line class="torso" x1="42" y1="35" x2="42" y2="58" />
+          
           <!-- Front leg bent deep -->
-          <path class="person-body" d="M45,60 L24,64 L30,85" />
-          <!-- Back leg stretched back, knee near floor -->
-          <path class="person-body" d="M45,60 L65,72 L75,85" />
-          <!-- Arms straight up holding Bar -->
-          <path class="person-body" d="M45,35 L45,15" />
-          <line class="equipment-bar" x1="30" y1="15" x2="60" y2="15" />
+          <path class="limb" d="M42,58 L20,62 L28,85" />
+          <!-- Back leg stretched behind -->
+          <path class="limb" d="M42,58 L62,72 L72,85" />
+          
+          <!-- Arms straight holding bar -->
+          <path class="limb" d="M42,35 L42,16 M42,35 L42,16" stroke-width="5" />
+          <line class="bar" x1="28" y1="16" x2="56" y2="16" />
+          
+          <!-- Cords stretching back to front foot -->
+          <line class="elastic-cord" x1="28" y1="16" x2="28" y2="85" />
+          <line class="elastic-cord" x1="56" y1="16" x2="28" y2="85" />
+          
+          <circle class="joint-dot" cx="20" cy="62" r="3.5" />
         </g>
       ` : ''}
 
       ${type === 'thigh-squeeze' ? `
-        <!-- Sitting Thigh Squeeze with Ring -->
+        <!-- Supine View Thigh squeeze with squishing Ring -->
         <g style="transform-origin: 50px 50px;">
-          <!-- Front view legs squeezing -->
-          <circle class="person-head" cx="50" cy="30" r="4.5" />
-          <path class="person-body" d="M50,35 L50,55" />
-          <g style="animation: legs-squeeze 3s ease-in-out infinite; transform-origin: 50px 55px;">
-            <!-- Outer hips to knees and feet -->
-            <path class="person-body" d="M50,55 L32,68 L40,85 M50,55 L68,68 L60,85" />
-            <!-- Fusion Ring between knees -->
-            <circle class="equipment-ring" cx="50" cy="68" r="10" />
-            <rect fill="#fff" x="38" y="65" width="2" height="6" />
-            <rect fill="#fff" x="60" y="65" width="2" height="6" />
+          <circle class="head" cx="50" cy="32" r="5.5" />
+          <line class="torso" x1="50" y1="38" x2="50" y2="58" />
+          
+          <g style="animation: legs-squeeze 3s ease-in-out infinite; transform-origin: 50px 58px;">
+            <!-- Legs pressing inward -->
+            <path class="limb" d="M50,58 L32,70 L40,85" />
+            <path class="limb" d="M50,58 L68,70 L60,85" />
+            
+            <!-- Dynamic squashing Fusion Ring -->
+            <ellipse class="equipment-ring" cx="50" cy="70" rx="14" ry="14" style="transform-origin: 50px 70px; animation: squish-ring 3s ease-in-out infinite;" />
+            <rect fill="#fff" x="34" y="66" width="3" height="8" rx="1.5" />
+            <rect fill="#fff" x="63" y="66" width="3" height="8" rx="1.5" />
           </g>
+          <!-- Adductor activation indicators -->
+          <circle class="joint-dot" cx="44" cy="64" r="2.5" />
+          <circle class="joint-dot" cx="56" cy="64" r="2.5" />
         </g>
       ` : ''}
 
       ${type === 'bridge-squeeze' ? `
-        <!-- Bridge Hip Lift Simulator -->
-        <g style="transform-origin: 30px 80px; animation: bridge-lift 4s ease-in-out infinite;">
-          <!-- Shoulders/Head flat on floor -->
-          <circle class="person-head" cx="20" cy="80" r="4.5" />
-          <!-- Hips lifting up -->
-          <path class="person-body" d="M20,80 Q45,62 65,72" />
-          <!-- Bent legs to floor -->
-          <path class="person-body" d="M65,72 L80,85" />
-          <!-- Arms flat -->
-          <path class="person-body" d="M20,85 L50,85" />
+        <!-- Glute Bridge with Ring squeeze -->
+        <g style="transform-origin: 20px 80px; animation: bridge-lift 4s ease-in-out infinite;">
+          <!-- Head/Shoulders stable -->
+          <circle class="head" cx="22" cy="80" r="5" />
+          <!-- Torso lifting into bridge -->
+          <path class="torso" d="M22,80 C36,68 54,68 66,74" stroke-width="7.5" />
+          <!-- Bent leg to ground -->
+          <path class="limb" d="M66,74 L80,85" />
+          
+          <!-- Highlighted active muscles (Glutes/Core) -->
+          <circle class="joint-dot" cx="54" cy="70" r="3.5" />
         </g>
       ` : ''}
 
