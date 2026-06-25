@@ -161,7 +161,6 @@ function playPremiumChime(type) {
     gain.connect(ctx.destination);
 
     if (type === 'tick') {
-      // Soft woodblock tick
       osc.type = 'sine';
       osc.frequency.setValueAtTime(800, ctx.currentTime);
       gain.gain.setValueAtTime(0.05, ctx.currentTime);
@@ -169,7 +168,6 @@ function playPremiumChime(type) {
       osc.start();
       osc.stop(ctx.currentTime + 0.06);
     } else if (type === 'complete') {
-      // Luxury double bell chime
       osc.type = 'triangle';
       osc.frequency.setValueAtTime(523.25, ctx.currentTime); // C5
       osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.15); // E5
@@ -218,7 +216,6 @@ window.openVideoModal = function(title, duration) {
 };
 
 window.openExerciseModal = function(name, type) {
-  // Map pilates exercises to their details
   launchWorkoutPlayer(name);
 };
 
@@ -230,7 +227,6 @@ function launchWorkoutPlayer(name) {
   currentWorkoutData = workoutData[name];
 
   if (!currentWorkoutData) {
-    // Fallback if workout metadata is not in our dictionary
     currentWorkoutData = {
       type: "yoga",
       exercises: [
@@ -262,7 +258,6 @@ function startTimer() {
 
     currentSecondsLeft--;
     
-    // Play tick chime for final 3 seconds
     if (currentSecondsLeft > 0 && currentSecondsLeft <= 3) {
       playPremiumChime('tick');
     }
@@ -273,7 +268,6 @@ function startTimer() {
       clearInterval(currentPlayerInterval);
       playPremiumChime('complete');
       
-      // Advance or complete
       if (currentExerciseIndex < currentWorkoutData.exercises.length - 1) {
         currentExerciseIndex++;
         loadExercise(currentExerciseIndex);
@@ -290,7 +284,6 @@ function finishWorkout() {
 
   playPremiumChime('complete');
   
-  // Show Completion Screen
   inner.innerHTML = `
     <button class="video-modal__close" onclick="closeWorkoutPlayer()">✕</button>
     <div style="padding: 3rem 2rem; background: var(--color-near-black); text-align: center; color: #fff; min-height: 400px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
@@ -331,7 +324,7 @@ function updateTimerDisplay() {
   if (circleFill) {
     const total = exercise.duration;
     const progress = (total - currentSecondsLeft) / total;
-    const dasharray = 283; // 2 * PI * r (r=45)
+    const dasharray = 283; 
     circleFill.setAttribute('stroke-dashoffset', dasharray * (1 - progress));
   }
 }
@@ -340,7 +333,6 @@ function renderPlayerUI(exercise) {
   const inner = document.querySelector('.video-modal__inner');
   if (!inner) return;
 
-  // Render Workout Player Layout
   inner.innerHTML = `
     <button class="video-modal__close" id="videoModalClose" onclick="closeWorkoutPlayer()">✕</button>
     
@@ -374,14 +366,14 @@ function renderPlayerUI(exercise) {
       <!-- Main Animation & Timer area -->
       <div style="padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden;">
         
-        <!-- Premium Pulsing Exercise Animation -->
-        <div style="display: flex; justify-content: center; align-items: center; height: 200px; position: relative;">
+        <!-- Premium Pulsing Human Joint Animation -->
+        <div style="display: flex; justify-content: center; align-items: center; height: 220px; position: relative; background: rgba(0,0,0,0.15); border-radius: var(--radius-xl); border: 1px solid rgba(255,255,255,0.04);">
           ${renderSVGAnimation(exercise.animation)}
         </div>
 
         <!-- Exercise Details -->
         <div style="text-align: center; margin-top: 1rem; z-index: 10;">
-          <h2 style="font-family: var(--font-heading); font-size: 1.625rem; margin-bottom: 0.75rem; color: #fff; font-weight: 400;">
+          <h2 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.5rem; color: #fff; font-weight: 400;">
             ${exercise.name}
           </h2>
           <p style="color: rgba(255,255,255,0.7); max-width: 480px; margin: 0 auto; line-height: 1.6; font-size: 0.875rem; min-height: 50px;">
@@ -390,36 +382,33 @@ function renderPlayerUI(exercise) {
         </div>
 
         <!-- Timer Circle & Player Control Elements -->
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.25rem;">
           
-          <!-- Left: Prev Button -->
           <button onclick="navigateWorkout(-1)" style="background: none; border: none; color: rgba(255,255,255,0.5); cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em;" ${currentExerciseIndex === 0 ? 'disabled style="opacity: 0.2; cursor: default;"' : ''}>
             ⏮ Prev
           </button>
 
-          <!-- Middle: Pause / Time Counter Circle -->
           <div style="display: flex; align-items: center; gap: 1.5rem;">
             
             <!-- Circular Progress SVG -->
-            <div style="position: relative; width: 80px; height: 80px;">
-              <svg width="80" height="80" viewBox="0 0 100 100">
+            <div style="position: relative; width: 70px; height: 70px;">
+              <svg width="70" height="70" viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r="45" stroke="rgba(255,255,255,0.06)" stroke-width="4" fill="none" />
                 <circle id="playerProgressCircleFill" cx="50" cy="50" r="45" stroke="var(--color-accent-gold)" stroke-width="4" fill="none" 
                   stroke-dasharray="283" stroke-dashoffset="0" stroke-linecap="round" style="transition: stroke-dashoffset 1s linear; transform: rotate(-90deg); transform-origin: 50px 50px;" />
               </svg>
-              <div id="playerCountdownText" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 1.25rem; font-weight: 400; color: #fff;">
+              <div id="playerCountdownText" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 1.125rem; font-weight: 400; color: #fff;">
                 ${currentSecondsLeft}s
               </div>
             </div>
 
             <!-- Pause / Play controls -->
-            <button id="playerPausePlayBtn" onclick="togglePlayerPause()" style="width: 48px; height: 48px; border-radius: 50%; background: var(--color-accent-gold); border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #fff; box-shadow: 0 4px 12px rgba(201,169,110,0.3); transition: transform 0.2s;">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            <button id="playerPausePlayBtn" onclick="togglePlayerPause()" style="width: 44px; height: 44px; border-radius: 50%; background: var(--color-accent-gold); border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #fff; box-shadow: 0 4px 12px rgba(201,169,110,0.3); transition: transform 0.2s;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
             </button>
 
           </div>
 
-          <!-- Right: Next Button -->
           <button onclick="navigateWorkout(1)" style="background: none; border: none; color: rgba(255,255,255,0.5); cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em;">
             ${currentExerciseIndex === currentWorkoutData.exercises.length - 1 ? 'Finish ✓' : 'Next ⏭'}
           </button>
@@ -436,10 +425,10 @@ window.togglePlayerPause = function() {
   const btn = document.getElementById('playerPausePlayBtn');
   if (btn) {
     if (isPlayerPaused) {
-      btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="8 5 19 12 8 19 8 5"/></svg>';
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="8 5 19 12 8 19 8 5"/></svg>';
       btn.style.background = 'rgba(255,255,255,0.15)';
     } else {
-      btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
       btn.style.background = 'var(--color-accent-gold)';
     }
   }
@@ -462,97 +451,213 @@ window.navigateWorkout = function(direction) {
 };
 
 // ==========================================
-// PREMIUM SVG ANIMATIONS (PULSING LOOPS)
+// VIRTUAL COACH SKELETON ANIMATIONS (STICK PERSON)
 // ==========================================
 function renderSVGAnimation(type) {
-  // Premium, organic minimalist animations using SVG and CSS keyframe animations
   return `
-    <svg width="200" height="200" viewBox="0 0 100 100" style="overflow: visible;">
+    <svg width="220" height="220" viewBox="0 0 100 100" style="overflow: visible;">
       <defs>
         <radialGradient id="glow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="var(--color-accent-gold)" stop-opacity="0.25" />
+          <stop offset="0%" stop-color="var(--color-accent-gold)" stop-opacity="0.12" />
           <stop offset="100%" stop-color="var(--color-accent-gold)" stop-opacity="0" />
         </radialGradient>
         <style>
-          @keyframes pulse-ring {
-            0% { transform: scale(0.65); opacity: 0.8; }
-            50% { transform: scale(1.1); opacity: 0.2; }
-            100% { transform: scale(0.65); opacity: 0.8; }
+          /* CSS Keyframes for Person Joints */
+          @keyframes breathing-chest {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
           }
-          @keyframes breath-inhale {
-            0%, 100% { r: 15; opacity: 0.4; }
-            50% { r: 35; opacity: 0.9; }
+          @keyframes childs-pose-stretch {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(3px, 1px); }
           }
-          @keyframes move-bar {
-            0%, 100% { transform: translateY(12px); }
-            50% { transform: translateY(-12px); }
+          @keyframes cat-cow-spine {
+            0%, 100% { d: path("M20,60 Q35,50 50,60 T80,60"); } /* cat arch */
+            50% { d: path("M20,60 Q35,72 50,60 T80,60"); } /* cow dip */
           }
-          @keyframes press-ring {
+          @keyframes downdog-pulse {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-3px, -3px); }
+          }
+          @keyframes warrior-lunge {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(3px); }
+          }
+          @keyframes squatting {
+            0%, 100% { transform: translateY(0px) scaleY(1); }
+            50% { transform: translateY(22px) scaleY(0.72); }
+          }
+          @keyframes arm-overhead {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(-130deg); }
+          }
+          @keyframes lunge-depth {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(15px); }
+          }
+          @keyframes legs-squeeze {
             0%, 100% { transform: scaleX(1); }
-            50% { transform: scaleX(0.7); }
+            50% { transform: scaleX(0.5); }
           }
-          .anim-ring {
-            transform-origin: 50px 50px;
-            animation: pulse-ring 4s ease-in-out infinite;
+          @keyframes bridge-lift {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-16px); }
           }
-          .anim-breath {
-            animation: breath-inhale 5s ease-in-out infinite;
-          }
-          .anim-bar {
-            animation: move-bar 4s ease-in-out infinite;
-            transform-origin: 50px 50px;
-          }
-          .anim-press-ring {
-            animation: press-ring 3s ease-in-out infinite;
-            transform-origin: 50px 50px;
-          }
+
+          /* Joint Classes */
+          .person-body { stroke: #fff; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+          .person-head { fill: #fff; }
+          .gold-accent { stroke: var(--color-accent-gold); stroke-width: 1.5; fill: none; }
+          .equipment-bar { stroke: var(--color-accent-gold); stroke-width: 3.5; stroke-linecap: round; }
+          .equipment-ring { stroke: var(--color-accent-gold); stroke-width: 2.5; fill: none; }
         </style>
       </defs>
-      
-      <!-- Background glowing gradient -->
+
+      <!-- Ambient Glow background -->
       <circle cx="50" cy="50" r="45" fill="url(#glow)" />
-      
-      ${type === 'breath' || type === 'childs-pose' || type === 'savasana' ? `
-        <!-- Breathing Animation Loop -->
-        <circle class="anim-ring" cx="50" cy="50" r="30" fill="none" stroke="rgba(201,169,110,0.15)" stroke-width="1" />
-        <circle class="anim-ring" cx="50" cy="50" r="20" fill="none" stroke="rgba(201,169,110,0.25)" stroke-width="1" style="animation-delay: -1s;" />
-        <circle class="anim-breath" cx="50" cy="50" r="25" fill="none" stroke="var(--color-accent-gold)" stroke-width="2.5" />
-        <circle cx="50" cy="50" r="5" fill="#fff" />
-      ` : ''}
 
-      ${type === 'cat-cow' || type === 'vinyasa' || type === 'down-dog' || type === 'warrior-1' || type === 'sphinx' || type === 'pigeon' ? `
-        <!-- Flowing Wave / Spine Alignment Loop -->
-        <circle class="anim-ring" cx="50" cy="50" r="32" fill="none" stroke="rgba(201,169,110,0.15)" stroke-width="1" />
-        <path d="M15 50 Q 32.5 25, 50 50 T 85 50" fill="none" stroke="var(--color-accent-gold)" stroke-width="2" stroke-linecap="round">
-          <animate attributeName="d" 
-            values="M15 50 Q 32.5 25, 50 50 T 85 50;
-                    M15 50 Q 32.5 75, 50 50 T 85 50;
-                    M15 50 Q 32.5 25, 50 50 T 85 50" 
-            dur="6s" repeatCount="indefinite" />
-        </path>
-        <circle cx="50" cy="50" r="4" fill="#fff" />
-      ` : ''}
+      <!-- Floor / Ground Line -->
+      <line x1="5" y1="85" x2="95" y2="85" stroke="rgba(255,255,255,0.08)" stroke-width="2" />
 
-      ${type === 'squat-press' || type === 'overhead-lunge' ? `
-        <!-- Pilates Bar Movement Simulator -->
-        <line x1="20" y1="50" x2="80" y2="50" stroke="rgba(255,255,255,0.15)" stroke-width="3" stroke-linecap="round" />
-        <g class="anim-bar">
-          <!-- Squat/Press Bar representation -->
-          <line x1="15" y1="50" x2="85" y2="50" stroke="var(--color-accent-gold)" stroke-width="4.5" stroke-linecap="round" />
-          <circle cx="15" cy="50" r="3.5" fill="#fff" />
-          <circle cx="85" cy="50" r="3.5" fill="#fff" />
+      ${type === 'breath' || type === 'savasana' ? `
+        <!-- Sitting / Lying Breath simulator -->
+        <g style="transform-origin: 50px 65px; animation: breathing-chest 4s ease-in-out infinite;">
+          <!-- Cross-legged Pose -->
+          <circle class="person-head" cx="50" cy="35" r="5" />
+          <path class="person-body" d="M50,40 L50,65 M50,65 L35,80 L65,80 Z" />
+          <path class="person-body" d="M50,48 L35,55 M50,48 L65,55" />
+          <circle cx="50" cy="50" r="16" stroke="var(--color-accent-gold)" stroke-width="1.5" stroke-dasharray="4 4" fill="none">
+            <animate attributeName="r" values="8;20;8" dur="4s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0.8;0.1;0.8" dur="4s" repeatCount="indefinite" />
+          </circle>
         </g>
-        <circle cx="50" cy="50" r="2" fill="rgba(201,169,110,0.4)" />
       ` : ''}
 
-      ${type === 'thigh-squeeze' || type === 'bridge-squeeze' ? `
-        <!-- Pilates Ring Compression Simulator -->
-        <circle cx="50" cy="50" r="32" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" />
-        <circle class="anim-press-ring" cx="50" cy="50" r="26" fill="none" stroke="var(--color-accent-gold)" stroke-width="4" />
-        <!-- Handles -->
-        <rect class="anim-press-ring" x="20" y="44" width="6" height="12" rx="3" fill="#fff" />
-        <rect class="anim-press-ring" x="74" y="44" width="6" height="12" rx="3" fill="#fff" />
+      ${type === 'childs-pose' ? `
+        <!-- Kneeling Forward Fold Person -->
+        <g style="transform-origin: 20px 80px; animation: childs-pose-stretch 4s ease-in-out infinite;">
+          <circle class="person-head" cx="22" cy="74" r="4.5" />
+          <!-- Arms stretched flat -->
+          <path class="person-body" d="M40,82 L75,82" />
+          <!-- Torso flat down -->
+          <path class="person-body" d="M22,74 Q40,68 55,80" />
+          <!-- Folded legs -->
+          <path class="person-body" d="M20,82 L38,82 L30,76 L20,82" />
+        </g>
       ` : ''}
+
+      ${type === 'cat-cow' ? `
+        <!-- On all fours, spinal morphing -->
+        <g>
+          <circle class="person-head" cx="20" cy="46" r="4.5" />
+          <!-- Back / Spine arching (using animated path d attribute) -->
+          <path class="person-body" id="spinePath" d="M20,50 Q45,35 70,50" />
+          <script>
+            // Ensure runtime morphing for cow/cat
+            const spine = document.getElementById('spinePath');
+            if(spine) {
+              spine.style.animation = "cat-cow-spine 5s ease-in-out infinite";
+            }
+          </script>
+          <!-- Front hands and back knees -->
+          <path class="person-body" d="M25,50 L25,85 M70,50 L70,85" />
+          <path class="person-body" d="M70,85 L85,85" />
+        </g>
+      ` : ''}
+
+      ${type === 'down-dog' ? `
+        <!-- Inverted V-Shape Dog Pose -->
+        <g style="transform-origin: 50px 50px; animation: downdog-pulse 4s ease-in-out infinite;">
+          <circle class="person-head" cx="36" cy="74" r="4.5" />
+          <!-- Hands to Hip -->
+          <path class="person-body" d="M30,82 L50,45" />
+          <!-- Feet to Hip -->
+          <path class="person-body" d="M70,82 L50,45" />
+          <!-- Spine / Head alignment -->
+          <path class="person-body" d="M36,74 L50,45" />
+        </g>
+      ` : ''}
+
+      ${type === 'warrior-1' ? `
+        <!-- Warrior standing stretch lunge -->
+        <g style="transform-origin: 50px 85px; animation: warrior-lunge 4s ease-in-out infinite;">
+          <circle class="person-head" cx="50" cy="28" r="4.5" />
+          <!-- Arms pointing straight overhead -->
+          <path class="person-body" d="M50,33 L50,15" />
+          <!-- Upright Spine -->
+          <path class="person-body" d="M50,33 L50,55" />
+          <!-- Bent front leg (left) -->
+          <path class="person-body" d="M50,55 L32,62 L32,85" />
+          <!-- Stretched back leg (right) -->
+          <path class="person-body" d="M50,55 L72,70 L80,85" />
+        </g>
+      ` : ''}
+
+      ${type === 'squat-press' ? `
+        <!-- Squat and press simulator -->
+        <g style="transform-origin: 50px 85px; animation: squatting 4s ease-in-out infinite;">
+          <circle class="person-head" cx="50" cy="28" r="4.5" />
+          <!-- Body Spine -->
+          <path class="person-body" d="M50,33 L50,58" />
+          <!-- Legs (Knees bend outward) -->
+          <path class="person-body" d="M50,58 L36,70 L25,85 M50,58 L64,70 L75,85" />
+          
+          <!-- Arms moving overhead (Press) -->
+          <g style="transform-origin: 50px 36px; animation: arm-overhead 4s ease-in-out infinite;">
+            <path class="person-body" d="M50,36 L32,32 L32,18 M50,36 L68,32 L68,18" />
+            <!-- Pilates Bar -->
+            <line class="equipment-bar" x1="24" y1="18" x2="76" y2="18" />
+          </g>
+        </g>
+      ` : ''}
+
+      ${type === 'overhead-lunge' ? `
+        <!-- Walking Lunge Simulator -->
+        <g style="transform-origin: 50px 85px; animation: lunge-depth 4s ease-in-out infinite;">
+          <circle class="person-head" cx="45" cy="30" r="4.5" />
+          <!-- Spine -->
+          <path class="person-body" d="M45,35 L45,60" />
+          <!-- Front leg bent deep -->
+          <path class="person-body" d="M45,60 L24,64 L30,85" />
+          <!-- Back leg stretched back, knee near floor -->
+          <path class="person-body" d="M45,60 L65,72 L75,85" />
+          <!-- Arms straight up holding Bar -->
+          <path class="person-body" d="M45,35 L45,15" />
+          <line class="equipment-bar" x1="30" y1="15" x2="60" y2="15" />
+        </g>
+      ` : ''}
+
+      ${type === 'thigh-squeeze' ? `
+        <!-- Sitting Thigh Squeeze with Ring -->
+        <g style="transform-origin: 50px 50px;">
+          <!-- Front view legs squeezing -->
+          <circle class="person-head" cx="50" cy="30" r="4.5" />
+          <path class="person-body" d="M50,35 L50,55" />
+          <g style="animation: legs-squeeze 3s ease-in-out infinite; transform-origin: 50px 55px;">
+            <!-- Outer hips to knees and feet -->
+            <path class="person-body" d="M50,55 L32,68 L40,85 M50,55 L68,68 L60,85" />
+            <!-- Fusion Ring between knees -->
+            <circle class="equipment-ring" cx="50" cy="68" r="10" />
+            <rect fill="#fff" x="38" y="65" width="2" height="6" />
+            <rect fill="#fff" x="60" y="65" width="2" height="6" />
+          </g>
+        </g>
+      ` : ''}
+
+      ${type === 'bridge-squeeze' ? `
+        <!-- Bridge Hip Lift Simulator -->
+        <g style="transform-origin: 30px 80px; animation: bridge-lift 4s ease-in-out infinite;">
+          <!-- Shoulders/Head flat on floor -->
+          <circle class="person-head" cx="20" cy="80" r="4.5" />
+          <!-- Hips lifting up -->
+          <path class="person-body" d="M20,80 Q45,62 65,72" />
+          <!-- Bent legs to floor -->
+          <path class="person-body" d="M65,72 L80,85" />
+          <!-- Arms flat -->
+          <path class="person-body" d="M20,85 L50,85" />
+        </g>
+      ` : ''}
+
     </svg>
   `;
 }
