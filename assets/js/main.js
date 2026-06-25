@@ -559,63 +559,67 @@ function renderSVGAnimation(type) {
         <style>
           @keyframes breathing-body {
             0%, 100% { transform: scale(1) translateY(0); }
-            50% { transform: scale(1.03) translateY(-1px); }
+            50% { transform: scale(1.02) translateY(-1px); }
           }
           @keyframes stretch-child {
             0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(4px, 2px); }
+            50% { transform: translate(3px, 1px); }
           }
           @keyframes cat-cow-morph {
-            0%, 100% { d: path("M20,62 Q35,52 50,62 T80,62"); } 
-            50% { d: path("M20,62 Q35,74 50,62 T80,62"); } 
+            0%, 100% { d: path("M32,54 Q50,62 68,54"); } 
+            50% { d: path("M32,54 Q50,42 68,54"); } 
           }
           @keyframes cat-cow-head {
-            0%, 100% { transform: translate(0, 3px); }
-            50% { transform: translate(0, -3px); }
+            0%, 100% { transform: rotate(-10deg); }
+            50% { transform: rotate(15deg); }
           }
           @keyframes downdog-pulse {
             0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(-2px, -3px); }
+            50% { transform: translate(-1.5px, -2px); }
           }
           @keyframes warrior-lunge {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(2px); }
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(2px) translateX(-1px); }
           }
           @keyframes squatting {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(20px); }
-          }
-          @keyframes thigh-rotation {
-            0%, 100% { transform: rotate(0deg); }
-            50% { transform: rotate(24deg); }
-          }
-          @keyframes calf-rotation {
-            0%, 100% { transform: rotate(0deg); }
-            50% { transform: rotate(-45deg); }
+            50% { transform: translateY(14px); }
           }
           @keyframes arm-overhead-press {
-            0%, 100% { transform: rotate(0deg) translateY(0); }
-            50% { transform: rotate(-120deg) translateY(-8px); }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
           }
           @keyframes walk-lunge {
-            0%, 100% { transform: translateY(0px) translateX(0); }
-            50% { transform: translateY(14px) translateX(-4px); }
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(10px); }
           }
           @keyframes joint-glow {
             0%, 100% { r: 2px; opacity: 0.6; }
-            50% { r: 3.5px; opacity: 1; }
+            50% { r: 3.2px; opacity: 1; }
           }
           @keyframes squish-ring {
             0%, 100% { transform: scaleX(1) scaleY(1); }
-            50% { transform: scaleX(0.55) scaleY(0.9); }
+            50% { transform: scaleX(0.6) scaleY(0.9); }
           }
           @keyframes bridge-lift {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-18px); }
+            50% { transform: translateY(-14px); }
+          }
+          @keyframes chaturanga-pulse {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(3px); }
           }
 
-          .silhouette-part {
-            fill: #f5f2eb;
+          .silhouette-line {
+            stroke: #eae5d9;
+            stroke-width: 3.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+            filter: url(#shadow-filter);
+          }
+          .silhouette-head {
+            fill: #eae5d9;
             filter: url(#shadow-filter);
           }
           .body-joint-glow {
@@ -652,148 +656,148 @@ function renderSVGAnimation(type) {
       </defs>
 
       <circle cx="50" cy="50" r="45" fill="url(#glow)" />
-      <line x1="5" y1="85" x2="95" y2="85" stroke="rgba(255,255,255,0.06)" stroke-width="2.5" />
+      <line x1="5" y1="80" x2="95" y2="80" stroke="rgba(255,255,255,0.06)" stroke-width="2.5" />
 
       ${type === 'breath' || type === 'savasana' ? `
-        <g style="transform-origin: 50px 65px; animation: breathing-body 4s ease-in-out infinite;">
-          <circle class="silhouette-part" cx="50" cy="32" r="6" />
-          <path class="silhouette-part" d="M47,38 Q50,38 53,38 Q54,58 52,65 Q48,58 46,38" />
-          <path class="silhouette-part" d="M30,76 C30,68 38,62 50,62 C62,62 70,68 70,76 C70,82 60,82 50,82 C40,82 30,82 30,76 Z" />
-          <path class="silhouette-part" d="M36,64 Q42,54 48,46 M64,64 Q58,54 52,46" stroke="#eae5d9" stroke-width="2.5" stroke-linecap="round" fill="none" />
-          <circle class="body-joint-glow" cx="50" cy="54" r="3" />
+        <!-- Breath / Savasana: Minimalist Lying Posture -->
+        <g style="transform-origin: 50px 75px; animation: breathing-body 4s ease-in-out infinite;">
+          <circle class="silhouette-head" cx="22" cy="71" r="4.5" />
+          <line class="silhouette-line" x1="27" y1="75" x2="78" y2="75" />
+          <path class="silhouette-line" d="M28,75 L45,71 M45,71 L65,75" />
+          <circle class="body-joint-glow" cx="28" cy="75" r="2.5" />
+          <circle class="body-joint-glow" cx="45" cy="71" r="2.5" />
         </g>
       ` : ''}
 
       ${type === 'childs-pose' ? `
-        <g style="transform-origin: 20px 82px; animation: stretch-child 4s ease-in-out infinite;">
-          <circle class="silhouette-part" cx="24" cy="74" r="5" />
-          <path class="silhouette-part" d="M22,76 C35,68 45,70 58,80 C60,82 55,83 45,83 C35,83 22,81 22,76 Z" />
-          <path class="silhouette-part" d="M25,75 Q50,78 78,82 L78,84 L25,79 Z" />
-          <path class="silhouette-part" d="M20,83 C20,78 28,78 35,83 Z" />
+        <!-- Child's Pose: Realistic Knee Fold and Arm Stretch -->
+        <g style="transform-origin: 25px 80px; animation: stretch-child 4s ease-in-out infinite;">
+          <circle class="silhouette-head" cx="58" cy="74" r="4.5" />
+          <path class="silhouette-line" d="M25,80 Q38,63 48,71" />
+          <line class="silhouette-line" x1="25" y1="80" x2="35" y2="80" />
+          <line class="silhouette-line" x1="48" y1="71" x2="72" y2="80" />
+          <circle class="body-joint-glow" cx="25" cy="80" r="2" />
+          <circle class="body-joint-glow" cx="48" cy="71" r="2" />
         </g>
       ` : ''}
 
       ${type === 'cat-cow' ? `
+        <!-- Cat-Cow: Curving Spine on Hands & Knees -->
         <g>
-          <path class="silhouette-part" d="M70,60 C70,72 75,76 80,85 L74,85 C68,76 66,72 66,60 Z" />
-          <path class="silhouette-part" d="M28,60 L28,85 L24,85 L24,60 Z" />
-          <path class="silhouette-part" id="cowSpineBody" d="M28,60 C40,50 60,50 72,60 C70,64 45,64 28,60 Z" />
-          <g style="transform-origin: 28px 60px; animation: cat-cow-head 5s ease-in-out infinite;">
-            <circle class="silhouette-part" cx="20" cy="54" r="5" />
-            <path class="silhouette-part" d="M20,55 L28,60 L28,63 L20,57 Z" />
+          <line class="silhouette-line" x1="32" y1="54" x2="32" y2="80" />
+          <line class="silhouette-line" x1="68" y1="54" x2="68" y2="80" />
+          <path id="catCowSpine" class="silhouette-line" d="M32,54 Q50,62 68,54" style="animation: cat-cow-morph 5s ease-in-out infinite;" />
+          <g style="transform-origin: 32px 54px; animation: cat-cow-head 5s ease-in-out infinite;">
+            <circle class="silhouette-head" cx="23" cy="48" r="4.5" />
+            <line class="silhouette-line" x1="32" y1="54" x2="25" y2="50" />
           </g>
-          <script>
-            const body = document.getElementById('cowSpineBody');
-            if (body) {
-              body.style.animation = "cat-cow-morph 5s ease-in-out infinite";
-            }
-          </script>
+          <circle class="body-joint-glow" cx="32" cy="54" r="2.5" />
+          <circle class="body-joint-glow" cx="68" cy="54" r="2.5" />
         </g>
       ` : ''}
 
       ${type === 'down-dog' ? `
-        <g style="transform-origin: 50px 50px; animation: downdog-pulse 4s ease-in-out infinite;">
-          <circle class="silhouette-part" cx="35" cy="71" r="5" />
-          <path class="silhouette-part" d="M24,85 L48,46 L52,46 L28,85 Z" />
-          <path class="silhouette-part" d="M72,85 L48,46 L52,46 L76,85 Z" />
-          <circle class="body-joint-glow" cx="48" cy="46" r="3.5" />
+        <!-- Down-Dog: Realistic Apex Hips and Straight Limbs -->
+        <g style="transform-origin: 50px 80px; animation: downdog-pulse 4s ease-in-out infinite;">
+          <circle class="silhouette-head" cx="31" cy="62" r="4.5" />
+          <line class="silhouette-line" x1="36" y1="54" x2="50" y2="35" />
+          <line class="silhouette-line" x1="36" y1="54" x2="24" y2="80" />
+          <path class="silhouette-line" d="M50,35 L63,57 L74,80" />
+          <circle class="body-joint-glow" cx="50" cy="35" r="2.5" />
+          <circle class="body-joint-glow" cx="36" cy="54" r="2.5" />
+          <circle class="body-joint-glow" cx="63" cy="57" r="2" />
+        </g>
+      ` : ''}
+
+      ${type === 'vinyasa' ? `
+        <!-- Vinyasa / Chaturanga: Lowered Straight Body Plank -->
+        <g style="animation: chaturanga-pulse 4s ease-in-out infinite;">
+          <circle class="silhouette-head" cx="25" cy="55" r="4.5" />
+          <path class="silhouette-line" d="M35,60 L55,68 L78,80" />
+          <path class="silhouette-line" d="M35,60 L44,68 L36,80" />
+          <circle class="body-joint-glow" cx="35" cy="60" r="2" />
+          <circle class="body-joint-glow" cx="55" cy="68" r="2" />
+          <circle class="body-joint-glow" cx="44" cy="68" r="1.5" />
         </g>
       ` : ''}
 
       ${type === 'warrior-1' ? `
-        <g style="transform-origin: 50px 85px; animation: warrior-lunge 4s ease-in-out infinite;">
-          <circle class="silhouette-part" cx="48" cy="26" r="5" />
-          <path class="silhouette-part" d="M45,31 L51,31 L51,56 L45,56 Z" />
-          <path class="silhouette-part" d="M46,31 L46,12 L50,12 L50,31 Z" />
-          <path class="silhouette-part" d="M46,56 C40,58 30,60 30,70 L30,85 L34,85 L34,70 C34,64 42,62 48,56 Z" />
-          <path class="silhouette-part" d="M48,56 C58,62 70,68 78,85 L74,85 C66,70 56,64 48,56 Z" />
-          <circle class="body-joint-glow" cx="32" cy="70" r="3.5" />
+        <!-- Warrior I: High Lunge and Raised Overhead Arms -->
+        <g style="transform-origin: 45px 80px; animation: warrior-lunge 4s ease-in-out infinite;">
+          <circle class="silhouette-head" cx="45" cy="21" r="4.5" />
+          <line class="silhouette-line" x1="45" y1="28" x2="45" y2="50" />
+          <line class="silhouette-line" x1="45" y1="28" x2="45" y2="8" />
+          <path class="silhouette-line" d="M45,50 L28,55 L28,80" />
+          <line class="silhouette-line" x1="45" y1="50" x2="68" y2="80" />
+          <circle class="body-joint-glow" cx="45" cy="50" r="2.5" />
+          <circle class="body-joint-glow" cx="28" cy="55" r="2" />
+          <circle class="body-joint-glow" cx="45" cy="28" r="2" />
         </g>
       ` : ''}
 
       ${type === 'squat-press' ? `
-        <g style="transform-origin: 50px 85px; animation: squatting 4s ease-in-out infinite;">
-          <circle class="silhouette-part" cx="50" cy="30" r="5" />
-          <path class="silhouette-part" d="M46,35 L54,35 L52,58 L48,58 Z" />
+        <!-- Squat Press: Pilates Bar Squat and Overhead Extension -->
+        <g style="transform-origin: 50px 80px; animation: squatting 4s ease-in-out infinite;">
+          <circle class="silhouette-head" cx="50" cy="22" r="4.5" />
+          <line class="silhouette-line" x1="50" y1="28" x2="50" y2="50" />
+          <path class="silhouette-line" d="M50,50 L36,62 L36,80" />
+          <path class="silhouette-line" d="M50,50 L64,62 L64,80" />
           
-          <g style="transform-origin: 50px 58px; animation: thigh-rotation 4s ease-in-out infinite;">
-            <path class="silhouette-part" d="M47,56 L33,70 L37,73 L51,59 Z" />
-            <g style="transform-origin: 36px 70px; animation: calf-rotation 4s ease-in-out infinite;">
-              <path class="silhouette-part" d="M33,69 L33,85 L37,85 L37,69 Z" />
-            </g>
+          <g style="transform-origin: 50px 30px; animation: arm-overhead-press 4s ease-in-out infinite;">
+            <path class="silhouette-line" d="M50,30 L34,22 L24,12" />
+            <path class="silhouette-line" d="M50,30 L66,22 L76,12" />
+            <line class="pilates-metal-bar" x1="16" y1="12" x2="84" y2="12" />
+            <path class="elastic-tension-band" d="M16,12 C16,40 36,75 36,80" />
+            <path class="elastic-tension-band" d="M84,12 C84,40 64,75 64,80" />
           </g>
-
-          <g style="transform-origin: 50px 58px; animation: thigh-rotation 4s ease-in-out infinite; transform: scaleX(-1);">
-            <path class="silhouette-part" d="M47,56 L33,70 L37,73 L51,59 Z" />
-            <g style="transform-origin: 36px 70px; animation: calf-rotation 4s ease-in-out infinite;">
-              <path class="silhouette-part" d="M33,69 L33,85 L37,85 L37,69 Z" />
-            </g>
-          </g>
-
-          <g style="transform-origin: 50px 38px; animation: arm-overhead-press 4s ease-in-out infinite;">
-            <path class="silhouette-part" d="M46,38 L30,34 L30,18 L34,18 L34,34 L50,38 Z" />
-            <path class="silhouette-part" d="M54,38 L70,34 L70,18 L66,18 L66,34 L50,38 Z" />
-            
-            <line class="pilates-metal-bar" x1="20" y1="18" x2="80" y2="18" />
-            <path class="elastic-tension-band" d="M22,18 C22,50 35,80 35,85" />
-            <path class="elastic-tension-band" d="M78,18 C78,50 65,80 65,85" />
-          </g>
-
-          <path class="indicator-arrow" d="M20,28 L20,12" />
-          <path class="indicator-arrow" d="M80,28 L80,12" />
           
-          <circle class="body-joint-glow" cx="50" cy="48" r="3.5" />
+          <circle class="body-joint-glow" cx="50" cy="50" r="2.5" />
+          <circle class="body-joint-glow" cx="36" cy="62" r="2" />
+          <circle class="body-joint-glow" cx="64" cy="62" r="2" />
         </g>
       ` : ''}
 
       ${type === 'overhead-lunge' ? `
-        <g style="transform-origin: 50px 85px; animation: walk-lunge 4s ease-in-out infinite;">
-          <circle class="silhouette-part" cx="42" cy="30" r="5" />
-          <path class="silhouette-part" d="M39,35 L45,35 L45,58 L39,58 Z" />
-          
-          <path class="silhouette-part" d="M42,58 L20,62 L24,65 L44,60 Z" />
-          <path class="silhouette-part" d="M20,62 L28,85 L32,85 L24,62 Z" />
-          
-          <path class="silhouette-part" d="M42,58 L62,72 L66,74 L44,60 Z" />
-          <path class="silhouette-part" d="M62,72 L72,85 L76,85 L66,72 Z" />
-          
-          <path class="silhouette-part" d="M39,35 L39,16 L43,16 L43,35 Z" />
-          <line class="pilates-metal-bar" x1="28" y1="16" x2="56" y2="16" />
-          
-          <line class="elastic-tension-band" x1="28" y1="16" x2="28" y2="85" />
-          <line class="elastic-tension-band" x1="56" y1="16" x2="28" y2="85" />
-          
-          <circle class="body-joint-glow" cx="22" cy="62" r="3.5" />
+        <!-- Overhead Lunge: Lunge position with raised hands holding bar -->
+        <g style="transform-origin: 50px 80px; animation: walk-lunge 4s ease-in-out infinite;">
+          <circle class="silhouette-head" cx="50" cy="22" r="4.5" />
+          <line class="silhouette-line" x1="50" y1="28" x2="50" y2="50" />
+          <path class="silhouette-line" d="M50,50 L34,54 L34,80" />
+          <path class="silhouette-line" d="M50,50 L64,62 L64,80" />
+          <path class="silhouette-line" d="M50,30 L40,14 L30,4" />
+          <path class="silhouette-line" d="M50,30 L60,14 L70,4" />
+          <line class="pilates-metal-bar" x1="20" y1="4" x2="80" y2="4" />
+          <line class="elastic-tension-band" x1="20" y1="4" x2="64" y2="80" />
+          <line class="elastic-tension-band" x1="80" y1="4" x2="64" y2="80" />
+          <circle class="body-joint-glow" cx="50" cy="50" r="2.5" />
+          <circle class="body-joint-glow" cx="34" cy="54" r="2" />
         </g>
       ` : ''}
 
       ${type === 'thigh-squeeze' ? `
-        <g style="transform-origin: 50px 50px;">
-          <circle class="silhouette-part" cx="50" cy="32" r="5.5" />
-          <path class="silhouette-part" d="M46,38 L54,38 L52,58 L48,58 Z" />
+        <!-- Thigh Squeeze: Lying on back squeezing Pilates Ring between knees -->
+        <g>
+          <circle class="silhouette-head" cx="20" cy="76" r="4.5" />
+          <line class="silhouette-line" x1="25" y1="80" x2="55" y2="80" />
+          <path class="silhouette-line" d="M55,80 L66,55 L75,80" />
           
-          <g style="animation: legs-squeeze 3s ease-in-out infinite; transform-origin: 50px 58px;">
-            <path class="silhouette-part" d="M47,56 L33,70 L34,73 L50,60 Z" />
-            <path class="silhouette-part" d="M52,58 L68,70 L64,73 L50,60 Z" />
-            <path class="silhouette-part" d="M30,70 L38,85 L42,85 L34,70 Z" />
-            <path class="silhouette-part" d="M68,70 L60,85 L56,85 L64,70 Z" />
-            
-            <ellipse class="pilates-foam-ring" cx="50" cy="70" rx="14" ry="14" style="transform-origin: 50px 70px; animation: squish-ring 3s ease-in-out infinite;" />
-            <rect fill="#fff" x="33" y="66" width="3" height="8" rx="1.5" />
-            <rect fill="#fff" x="64" y="66" width="3" height="8" rx="1.5" />
-            
-            <path class="indicator-arrow" d="M28,70 L38,70" />
-            <path class="indicator-arrow" d="M72,70 L62,70" />
+          <g style="transform-origin: 66px 55px; animation: squish-ring 3s ease-in-out infinite;">
+            <ellipse class="pilates-foam-ring" cx="66" cy="55" rx="10" ry="10" />
+            <rect fill="#fff" x="55" y="52" width="2" height="6" rx="1" />
+            <rect fill="#fff" x="75" y="52" width="2" height="6" rx="1" />
           </g>
+          <circle class="body-joint-glow" cx="55" cy="80" r="2.5" />
+          <circle class="body-joint-glow" cx="66" cy="55" r="2" />
         </g>
       ` : ''}
 
       ${type === 'bridge-squeeze' ? `
-        <g style="transform-origin: 22px 80px; animation: bridge-lift 4s ease-in-out infinite;">
-          <circle class="silhouette-part" cx="22" cy="80" r="5" />
-          <path class="silhouette-part" d="M22,80 C36,65 54,65 66,74 L68,78 C54,71 36,71 22,82 Z" />
-          <path class="silhouette-part" d="M66,74 L80,85 L76,85 L62,74 Z" />
-          <circle class="body-joint-glow" cx="54" cy="70" r="3.5" />
+        <!-- Bridge Squeeze: Hip Raised Lying Bridge Pose -->
+        <g style="transform-origin: 32px 80px; animation: bridge-lift 4s ease-in-out infinite;">
+          <circle class="silhouette-head" cx="20" cy="76" r="4.5" />
+          <path class="silhouette-line" d="M32,80 L52,60 L68,60 L68,80" />
+          <circle class="body-joint-glow" cx="52" cy="60" r="2.5" />
+          <circle class="body-joint-glow" cx="68" cy="60" r="2" />
         </g>
       ` : ''}
 
