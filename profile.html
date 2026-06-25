@@ -47,238 +47,256 @@
     </div>
   </div>
 
-  <!-- PROFILE HEADER -->
-  <div style="padding-top: calc(var(--nav-height) + var(--space-3xl)); padding-bottom: var(--space-3xl); background: var(--bg-secondary); border-bottom: 1px solid var(--border-light);">
-    <div class="container">
-      <div style="display: flex; gap: var(--space-2xl); align-items: flex-start; flex-wrap: wrap;">
-        <!-- Avatar -->
-        <div style="position: relative; flex-shrink: 0;">
-          <div style="width: 96px; height: 96px; border-radius: 50%; background: linear-gradient(135deg, var(--color-sand), var(--color-taupe)); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; border: 3px solid var(--color-accent-gold); box-shadow: 0 0 0 4px rgba(201,169,110,0.15);">
-            👩
-          </div>
-          <div style="position: absolute; bottom: 0; right: 0; width: 28px; height: 28px; background: var(--color-accent-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; border: 2px solid var(--bg-secondary);">✏️</div>
-        </div>
+  <!-- AUTHENTICATION VIEW (PASSWORDLESS ONBOARDING) -->
+  <div id="authView" class="container animate-fade-up" style="padding-top: calc(var(--nav-height) + var(--space-4xl)); padding-bottom: var(--space-4xl); display: none;">
+    <div style="max-width: 480px; margin: 0 auto; background: var(--bg-card); padding: var(--space-3xl); border-radius: var(--radius-2xl); border: 1px solid var(--border-light); box-shadow: var(--shadow-xl); text-align: center;">
+      <div style="font-size: 3rem; margin-bottom: var(--space-md);">🧘</div>
+      <h2 style="font-family: var(--font-heading); font-size: 1.75rem; font-weight: 400; margin-bottom: var(--space-sm); color: var(--color-near-black);">Portal Atlas Pilates</h2>
+      <p style="color: var(--text-muted); font-size: 0.875rem; line-height: 1.6; margin-bottom: var(--space-2xl);" id="authSubtitle">
+        Este portal é um complemento exclusivo para seus produtos. Acesse digitando o mesmo e-mail que utilizou na compra.
+      </p>
 
-        <!-- User info -->
-        <div style="flex: 1;">
-          <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-xs);">
-            <h1 style="font-family: var(--font-heading); font-size: 1.75rem; font-weight: 400;">Sarah Mitchell</h1>
-            <div style="padding: 3px 10px; background: rgba(201,169,110,0.15); border: 1px solid rgba(201,169,110,0.3); border-radius: 999px; font-size: 0.625rem; letter-spacing: 0.1em; color: var(--color-accent-gold); text-transform: uppercase;">Free Plan</div>
-          </div>
-          <div class="label-md text-muted" style="margin-bottom: var(--space-lg);">Member since January 2026</div>
-
-          <!-- Quick stats -->
-          <div style="display: flex; gap: var(--space-2xl); flex-wrap: wrap;">
-            <div>
-              <div style="font-family: var(--font-heading); font-size: 2rem; line-height: 1; color: var(--color-near-black);">12</div>
-              <div class="label-sm text-muted" style="margin-top: 4px;">Day Streak 🔥</div>
-            </div>
-            <div>
-              <div style="font-family: var(--font-heading); font-size: 2rem; line-height: 1; color: var(--color-near-black);">28</div>
-              <div class="label-sm text-muted" style="margin-top: 4px;">Sessions Done</div>
-            </div>
-            <div>
-              <div style="font-family: var(--font-heading); font-size: 2rem; line-height: 1; color: var(--color-near-black);">14h</div>
-              <div class="label-sm text-muted" style="margin-top: 4px;">Total Time</div>
-            </div>
-            <div>
-              <div style="font-family: var(--font-heading); font-size: 2rem; line-height: 1; color: var(--color-near-black);">4</div>
-              <div class="label-sm text-muted" style="margin-top: 4px;">Programs</div>
-            </div>
-          </div>
+      <!-- Step 1: E-mail Check -->
+      <div id="authStep1" style="display: block;">
+        <div style="text-align: left; margin-bottom: var(--space-xl);">
+          <label for="authEmail" class="label-sm" style="display: block; margin-bottom: var(--space-xs); color: var(--text-secondary);">Seu E-mail de Compra</label>
+          <input type="email" id="authEmail" placeholder="exemplo@email.com" style="width: 100%; padding: 0.875rem 1.25rem; border: 1px solid var(--border-medium); border-radius: var(--radius-pill); background: var(--bg-primary); color: var(--text-primary); font-size: 0.875rem; outline: none; transition: border-color 0.2s;" />
         </div>
-
-        <!-- Upgrade CTA -->
-        <div style="flex-shrink: 0;">
-          <a href="subscription.html" class="btn btn--gold">Upgrade to Premium</a>
-        </div>
+        <button id="authBtn1" onclick="handleAuthEmailSubmit()" class="btn btn--gold" style="width: 100%; justify-content: center;">Verificar Acesso</button>
       </div>
+
+      <!-- Step 2: Personal Onboarding -->
+      <div id="authStep2" style="display: none;">
+        <div style="display: flex; flex-direction: column; gap: var(--space-md); text-align: left; margin-bottom: var(--space-xl);">
+          <div>
+            <label for="authName" class="label-sm" style="display: block; margin-bottom: var(--space-xs); color: var(--text-secondary);">Nome Completo</label>
+            <input type="text" id="authName" placeholder="Como quer ser chamado(a)?" style="width: 100%; padding: 0.875rem 1.25rem; border: 1px solid var(--border-medium); border-radius: var(--radius-pill); background: var(--bg-primary); color: var(--text-primary); font-size: 0.875rem; outline: none;" />
+          </div>
+          <div>
+            <label for="authAge" class="label-sm" style="display: block; margin-bottom: var(--space-xs); color: var(--text-secondary);">Idade</label>
+            <input type="number" id="authAge" placeholder="Sua idade" style="width: 100%; padding: 0.875rem 1.25rem; border: 1px solid var(--border-medium); border-radius: var(--radius-pill); background: var(--bg-primary); color: var(--text-primary); font-size: 0.875rem; outline: none;" />
+          </div>
+          <div>
+            <label for="authGoal" class="label-sm" style="display: block; margin-bottom: var(--space-xs); color: var(--text-secondary);">Foco de Treino</label>
+            <select id="authGoal" style="width: 100%; padding: 0.875rem 1.25rem; border: 1px solid var(--border-medium); border-radius: var(--radius-pill); background: var(--bg-primary); color: var(--text-primary); font-size: 0.875rem; outline: none;">
+              <option value="Pilates e Flexibilidade">Pilates e Flexibilidade</option>
+              <option value="Força e Tonificação">Força e Tonificação</option>
+              <option value="Yoga e Relaxamento">Yoga e Relaxamento</option>
+              <option value="Recuperação Corporal">Recuperação Corporal</option>
+            </select>
+          </div>
+          <div>
+            <label for="authLevel" class="label-sm" style="display: block; margin-bottom: var(--space-xs); color: var(--text-secondary);">Nível de Experiência</label>
+            <select id="authLevel" style="width: 100%; padding: 0.875rem 1.25rem; border: 1px solid var(--border-medium); border-radius: var(--radius-pill); background: var(--bg-primary); color: var(--text-primary); font-size: 0.875rem; outline: none;">
+              <option value="Iniciante">Iniciante</option>
+              <option value="Intermediário">Intermediário</option>
+              <option value="Avançado">Avançado</option>
+            </select>
+          </div>
+        </div>
+        <button id="authBtn2" onclick="handleAuthRegisterSubmit()" class="btn btn--primary" style="width: 100%; justify-content: center;">Começar Treinos</button>
+      </div>
+
     </div>
   </div>
 
-  <!-- PROFILE CONTENT -->
-  <section class="section--sm">
-    <div class="container">
-      <div style="display: grid; grid-template-columns: 2fr 1fr; gap: var(--space-2xl); align-items: start;">
-
-        <!-- LEFT COLUMN -->
-        <div style="display: flex; flex-direction: column; gap: var(--space-xl);">
-
-          <!-- Active Program -->
-          <div style="padding: var(--space-xl); background: var(--bg-card); border-radius: var(--radius-xl); border: 1px solid var(--border-light);">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-lg);">
-              <h2 style="font-family: var(--font-heading); font-size: 1.25rem;">Active Program</h2>
-              <a href="programs.html" style="font-size: 0.75rem; color: var(--color-accent-gold); letter-spacing: 0.06em;">View All →</a>
-            </div>
-
-            <div style="display: flex; gap: var(--space-lg); align-items: center;">
-              <div style="width: 72px; height: 72px; border-radius: var(--radius-lg); overflow: hidden; flex-shrink: 0;">
-                <img src="assets/images/yoga.png" alt="Core Reset" style="width:100%; height:100%; object-fit:cover;" />
-              </div>
-              <div style="flex: 1;">
-                <div class="label-sm text-muted" style="margin-bottom: 4px;">7-Day Program · Free</div>
-                <div style="font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: var(--space-sm);">Core Reset</div>
-                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
-                  <span style="font-size: 0.75rem; color: var(--text-muted);">Day 4 of 7</span>
-                  <span style="font-size: 0.75rem; color: var(--color-accent-gold);">57% complete</span>
-                </div>
-                <div class="progress-bar"><div class="progress-bar__fill" style="width: 57%;"></div></div>
-              </div>
-              <a href="programs.html" class="btn btn--primary btn--sm">Continue</a>
+  <!-- PROFILE VIEW CONTAINER -->
+  <div id="profileView" style="display: none;">
+    <!-- PROFILE HEADER -->
+    <div style="padding-top: calc(var(--nav-height) + var(--space-3xl)); padding-bottom: var(--space-3xl); background: var(--bg-secondary); border-bottom: 1px solid var(--border-light);">
+      <div class="container">
+        <div style="display: flex; gap: var(--space-2xl); align-items: flex-start; flex-wrap: wrap;">
+          <!-- Avatar -->
+          <div style="position: relative; flex-shrink: 0;">
+            <div style="width: 96px; height: 96px; border-radius: 50%; background: linear-gradient(135deg, var(--color-sand), var(--color-taupe)); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; border: 3px solid var(--color-accent-gold); box-shadow: 0 0 0 4px rgba(201,169,110,0.15);">
+              🧘‍♀️
             </div>
           </div>
 
-          <!-- Weekly Progress -->
-          <div style="padding: var(--space-xl); background: var(--bg-card); border-radius: var(--radius-xl); border: 1px solid var(--border-light);">
-            <h2 style="font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: var(--space-lg);">This Week</h2>
-
-            <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: var(--space-sm); margin-bottom: var(--space-xl);">
-              <!-- Week day dots -->
-              <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-xs);">
-                <div style="width:36px;height:36px;border-radius:50%;background:var(--color-near-black);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-gold)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-                <span style="font-size:0.625rem;color:var(--text-muted);">Mon</span>
-              </div>
-              <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-xs);">
-                <div style="width:36px;height:36px;border-radius:50%;background:var(--color-near-black);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-gold)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-                <span style="font-size:0.625rem;color:var(--text-muted);">Tue</span>
-              </div>
-              <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-xs);">
-                <div style="width:36px;height:36px;border-radius:50%;background:var(--color-near-black);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-gold)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-                <span style="font-size:0.625rem;color:var(--text-muted);">Wed</span>
-              </div>
-              <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-xs);">
-                <div style="width:36px;height:36px;border-radius:50%;background:rgba(201,169,110,0.15);border:2px solid var(--color-accent-gold);display:flex;align-items:center;justify-content:center;"><span style="font-size:0.75rem;color:var(--color-accent-gold);">▶</span></div>
-                <span style="font-size:0.625rem;color:var(--color-accent-gold);font-weight:500;">Thu</span>
-              </div>
-              <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-xs);">
-                <div style="width:36px;height:36px;border-radius:50%;background:var(--bg-secondary);border:1px solid var(--border-light);"></div>
-                <span style="font-size:0.625rem;color:var(--text-light);">Fri</span>
-              </div>
-              <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-xs);">
-                <div style="width:36px;height:36px;border-radius:50%;background:var(--bg-secondary);border:1px solid var(--border-light);"></div>
-                <span style="font-size:0.625rem;color:var(--text-light);">Sat</span>
-              </div>
-              <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-xs);">
-                <div style="width:36px;height:36px;border-radius:50%;background:var(--bg-secondary);border:1px solid var(--border-light);"></div>
-                <span style="font-size:0.625rem;color:var(--text-light);">Sun</span>
-              </div>
+          <!-- User info -->
+          <div style="flex: 1;">
+            <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-xs); flex-wrap: wrap;">
+              <h1 id="profileName" style="font-family: var(--font-heading); font-size: 1.75rem; font-weight: 400; margin: 0;">Sarah Mitchell</h1>
+              <div id="profilePlanBadge" style="padding: 3px 10px; background: rgba(201,169,110,0.15); border: 1px solid rgba(201,169,110,0.3); border-radius: 999px; font-size: 0.625rem; letter-spacing: 0.1em; color: var(--color-accent-gold); text-transform: uppercase;">Membro Compra</div>
             </div>
+            <div id="profileGoal" class="label-md text-muted" style="margin-bottom: var(--space-lg);">Foco: Pilates e Flexibilidade</div>
 
-            <!-- Stats mini -->
-            <div style="display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-md);">
-              <div style="text-align:center; padding: var(--space-md); background: var(--bg-secondary); border-radius: var(--radius-lg);">
-                <div style="font-family:var(--font-heading); font-size:1.5rem; color:var(--color-near-black);">3</div>
-                <div class="label-sm text-muted">Sessions</div>
-              </div>
-              <div style="text-align:center; padding: var(--space-md); background: var(--bg-secondary); border-radius: var(--radius-lg);">
-                <div style="font-family:var(--font-heading); font-size:1.5rem; color:var(--color-near-black);">1h 45m</div>
-                <div class="label-sm text-muted">Time</div>
-              </div>
-              <div style="text-align:center; padding: var(--space-md); background: var(--bg-secondary); border-radius: var(--radius-lg);">
-                <div style="font-family:var(--font-heading); font-size:1.5rem; color:var(--color-near-black);">620</div>
-                <div class="label-sm text-muted">Cal Burned</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Saved Workouts -->
-          <div id="saved" style="padding: var(--space-xl); background: var(--bg-card); border-radius: var(--radius-xl); border: 1px solid var(--border-light);">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-lg);">
-              <h2 style="font-family: var(--font-heading); font-size: 1.25rem;">Saved Workouts</h2>
-              <a href="library.html" style="font-size: 0.75rem; color: var(--color-accent-gold);">Browse Library →</a>
-            </div>
-
-            <div style="display: flex; flex-direction: column; gap: var(--space-md);">
-              <div style="display:flex; gap:var(--space-md); align-items:center; padding: var(--space-md); background:var(--bg-secondary); border-radius:var(--radius-lg);">
-                <div style="width:52px;height:52px;border-radius:var(--radius-md);overflow:hidden;flex-shrink:0;"><img src="assets/images/yoga.png" alt="" style="width:100%;height:100%;object-fit:cover;" /></div>
-                <div style="flex:1;"><div style="font-weight:400;margin-bottom:3px;">Sunrise Morning Flow</div><div class="body-sm text-muted">Yoga · 30 min · Beginner</div></div>
-                <button onclick="showToast('▶ Starting Sunrise Morning Flow...')" class="btn btn--outline btn--sm">Play</button>
-              </div>
-              <div style="display:flex; gap:var(--space-md); align-items:center; padding: var(--space-md); background:var(--bg-secondary); border-radius:var(--radius-lg);">
-                <div style="width:52px;height:52px;border-radius:var(--radius-md);overflow:hidden;flex-shrink:0;"><img src="assets/images/ring.png" alt="" style="width:100%;height:100%;object-fit:cover;" /></div>
-                <div style="flex:1;"><div style="font-weight:400;margin-bottom:3px;">Inner Thigh Squeeze</div><div class="body-sm text-muted">Ring · 10 min · Beginner</div></div>
-                <button onclick="showToast('▶ Starting Inner Thigh Squeeze...')" class="btn btn--outline btn--sm">Play</button>
-              </div>
-              <div style="display:flex; gap:var(--space-md); align-items:center; padding: var(--space-md); background:var(--bg-secondary); border-radius:var(--radius-lg);">
-                <div style="width:52px;height:52px;border-radius:var(--radius-md);overflow:hidden;flex-shrink:0;"><img src="assets/images/barre.png" alt="" style="width:100%;height:100%;object-fit:cover;" /></div>
-                <div style="flex:1;"><div style="font-weight:400;margin-bottom:3px;">Squat & Press</div><div class="body-sm text-muted">Bar · 15 min · Intermediate</div></div>
-                <button onclick="showToast('▶ Starting Squat & Press...')" class="btn btn--outline btn--sm">Play</button>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- RIGHT COLUMN -->
-        <div style="display: flex; flex-direction: column; gap: var(--space-xl);">
-
-          <!-- Today's Recommendation -->
-          <div style="padding: var(--space-xl); background: var(--color-near-black); border-radius: var(--radius-xl); color: #fff;">
-            <div class="label-sm" style="color: var(--color-accent-gold); margin-bottom: var(--space-sm);">Today's Workout</div>
-            <div style="font-family: var(--font-heading); font-size: 1.375rem; margin-bottom: var(--space-sm);">Core Reset</div>
-            <div style="font-size: 0.8125rem; color: rgba(255,255,255,0.6); margin-bottom: var(--space-lg);">Day 4: Deep Core Activation · 25 min</div>
-            <div style="border-radius: var(--radius-lg); overflow: hidden; margin-bottom: var(--space-lg); aspect-ratio: 16/9;">
-              <img src="assets/images/yoga.png" alt="Today's workout" style="width:100%;height:100%;object-fit:cover;opacity:0.7;" />
-            </div>
-            <button onclick="showToast('🎯 Starting Day 4 Core Reset!')" class="btn btn--gold" style="width:100%;">Start Today's Session</button>
-          </div>
-
-          <!-- Achievements -->
-          <div id="achievements" style="padding: var(--space-xl); background: var(--bg-card); border-radius: var(--radius-xl); border: 1px solid var(--border-light);">
-            <h2 style="font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: var(--space-lg);">Achievements</h2>
-            <div style="display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-md);">
-
-              <div class="achievement-badge">
-                <div class="achievement-icon">🔥</div>
-                <div style="font-size:0.6875rem; font-weight:500; text-align:center; line-height:1.3;">7-Day Streak</div>
-              </div>
-              <div class="achievement-badge">
-                <div class="achievement-icon">🌅</div>
-                <div style="font-size:0.6875rem; font-weight:500; text-align:center; line-height:1.3;">Early Bird</div>
-              </div>
-              <div class="achievement-badge">
-                <div class="achievement-icon">💪</div>
-                <div style="font-size:0.6875rem; font-weight:500; text-align:center; line-height:1.3;">First Pilates</div>
-              </div>
-              <div class="achievement-badge" style="opacity:0.4; border-style: dashed;">
-                <div class="achievement-icon" style="filter:grayscale(1);">⭐</div>
-                <div style="font-size:0.6875rem; font-weight:500; text-align:center; line-height:1.3; color:var(--text-light);">30-Day Hero</div>
-              </div>
-              <div class="achievement-badge" style="opacity:0.4; border-style: dashed;">
-                <div class="achievement-icon" style="filter:grayscale(1);">🧘</div>
-                <div style="font-size:0.6875rem; font-weight:500; text-align:center; line-height:1.3; color:var(--text-light);">Yoga Master</div>
-              </div>
-              <div class="achievement-badge" style="opacity:0.4; border-style: dashed;">
-                <div class="achievement-icon" style="filter:grayscale(1);">👑</div>
-                <div style="font-size:0.6875rem; font-weight:500; text-align:center; line-height:1.3; color:var(--text-light);">Premium Life</div>
-              </div>
-            </div>
-            <div style="margin-top:var(--space-md); font-size:0.75rem; color:var(--text-muted); text-align:center;">3 of 6 achieved</div>
-          </div>
-
-          <!-- Goals -->
-          <div style="padding: var(--space-xl); background: var(--bg-card); border-radius: var(--radius-xl); border: 1px solid var(--border-light);">
-            <h2 style="font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: var(--space-lg);">My Goals</h2>
-            <div style="display: flex; flex-direction: column; gap: var(--space-md);">
+            <!-- Quick stats -->
+            <div style="display: flex; gap: var(--space-2xl); flex-wrap: wrap;">
               <div>
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><span style="font-size:0.875rem;">Core Strength</span><span style="font-size:0.75rem;color:var(--color-accent-gold);">65%</span></div>
-                <div class="progress-bar"><div class="progress-bar__fill" style="width:65%;"></div></div>
+                <div style="font-family: var(--font-heading); font-size: 2rem; line-height: 1; color: var(--color-near-black);">12</div>
+                <div class="label-sm text-muted" style="margin-top: 4px;">Dias Seguidos 🔥</div>
               </div>
               <div>
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><span style="font-size:0.875rem;">Flexibility</span><span style="font-size:0.75rem;color:var(--color-accent-gold);">40%</span></div>
-                <div class="progress-bar"><div class="progress-bar__fill" style="width:40%;"></div></div>
+                <div style="font-family: var(--font-heading); font-size: 2rem; line-height: 1; color: var(--color-near-black);">28</div>
+                <div class="label-sm text-muted" style="margin-top: 4px;">Treinos Feitos</div>
               </div>
               <div>
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><span style="font-size:0.875rem;">Consistency</span><span style="font-size:0.75rem;color:var(--color-accent-gold);">80%</span></div>
-                <div class="progress-bar"><div class="progress-bar__fill" style="width:80%;"></div></div>
+                <div style="font-family: var(--font-heading); font-size: 2rem; line-height: 1; color: var(--color-near-black);">14h</div>
+                <div class="label-sm text-muted" style="margin-top: 4px;">Tempo Total</div>
+              </div>
+              <div>
+                <div style="font-family: var(--font-heading); font-size: 2rem; line-height: 1; color: var(--color-near-black);" id="profileAge">32 anos</div>
+                <div class="label-sm text-muted" style="margin-top: 4px;">Idade Cadastrada</div>
               </div>
             </div>
           </div>
 
+          <!-- Logout Button -->
+          <div style="flex-shrink: 0;">
+            <button onclick="handleLogout()" class="btn btn--outline" style="border-color: rgba(0,0,0,0.15); color: var(--color-near-black);">Sair</button>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+
+    <!-- PROFILE CONTENT -->
+    <section class="section--sm">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: var(--space-2xl); align-items: start;">
+
+          <!-- LEFT COLUMN -->
+          <div style="display: flex; flex-direction: column; gap: var(--space-xl);">
+
+            <!-- Active Program -->
+            <div style="padding: var(--space-xl); background: var(--bg-card); border-radius: var(--radius-xl); border: 1px solid var(--border-light);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-lg);">
+                <h2 style="font-family: var(--font-heading); font-size: 1.25rem;">Seu Programa Ativo</h2>
+                <a href="programs.html" style="font-size: 0.75rem; color: var(--color-accent-gold); letter-spacing: 0.06em;">Ver Todos →</a>
+              </div>
+
+              <div style="display: flex; gap: var(--space-lg); align-items: center;">
+                <div style="width: 72px; height: 72px; border-radius: var(--radius-lg); overflow: hidden; flex-shrink: 0;">
+                  <img src="assets/images/yoga.png" alt="Core Reset" style="width:100%; height:100%; object-fit:cover;" />
+                </div>
+                <div style="flex: 1;">
+                  <div class="label-sm text-muted" style="margin-bottom: 4px;">Programa de 7 Dias · Grátis</div>
+                  <div style="font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: var(--space-sm);">Core Reset</div>
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                    <span style="font-size: 0.75rem; color: var(--text-muted);">Dia 4 de 7</span>
+                    <span style="font-size: 0.75rem; color: var(--color-accent-gold);">57% completo</span>
+                  </div>
+                  <div class="progress-bar"><div class="progress-bar__fill" style="width: 57%;"></div></div>
+                </div>
+                <a href="programs.html" class="btn btn--primary btn--sm">Continuar</a>
+              </div>
+            </div>
+
+            <!-- Weekly Progress -->
+            <div style="padding: var(--space-xl); background: var(--bg-card); border-radius: var(--radius-xl); border: 1px solid var(--border-light);">
+              <h2 style="font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: var(--space-lg);">Esta Semana</h2>
+
+              <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: var(--space-sm); margin-bottom: var(--space-xl);">
+                <!-- Week day dots -->
+                <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-xs);">
+                  <div style="width:36px;height:36px;border-radius:50%;background:var(--color-near-black);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-gold)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+                  <span style="font-size:0.625rem;color:var(--text-muted);">Seg</span>
+                </div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-xs);">
+                  <div style="width:36px;height:36px;border-radius:50%;background:var(--color-near-black);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-gold)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+                  <span style="font-size:0.625rem;color:var(--text-muted);">Ter</span>
+                </div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-xs);">
+                  <div style="width:36px;height:36px;border-radius:50%;background:var(--color-near-black);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-gold)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+                  <span style="font-size:0.625rem;color:var(--text-muted);">Qua</span>
+                </div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-xs);">
+                  <div style="width:36px;height:36px;border-radius:50%;background:rgba(201,169,110,0.15);border:2px solid var(--color-accent-gold);display:flex;align-items:center;justify-content:center;"><span style="font-size:0.75rem;color:var(--color-accent-gold);">▶</span></div>
+                  <span style="font-size:0.625rem;color:var(--color-accent-gold);font-weight:500;">Qui</span>
+                </div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-xs);">
+                  <div style="width:36px;height:36px;border-radius:50%;background:var(--bg-secondary);border:1px solid var(--border-light);"></div>
+                  <span style="font-size:0.625rem;color:var(--text-light);">Sex</span>
+                </div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-xs);">
+                  <div style="width:36px;height:36px;border-radius:50%;background:var(--bg-secondary);border:1px solid var(--border-light);"></div>
+                  <span style="font-size:0.625rem;color:var(--text-light);">Sáb</span>
+                </div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-xs);">
+                  <div style="width:36px;height:36px;border-radius:50%;background:var(--bg-secondary);border:1px solid var(--border-light);"></div>
+                  <span style="font-size:0.625rem;color:var(--text-light);">Dom</span>
+                </div>
+              </div>
+
+              <!-- Stats mini -->
+              <div style="display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-md);">
+                <div style="text-align:center; padding: var(--space-md); background: var(--bg-secondary); border-radius: var(--radius-lg);">
+                  <div style="font-family:var(--font-heading); font-size:1.5rem; color:var(--color-near-black);">3</div>
+                  <div class="label-sm text-muted">Sessões</div>
+                </div>
+                <div style="text-align:center; padding: var(--space-md); background: var(--bg-secondary); border-radius: var(--radius-lg);">
+                  <div style="font-family:var(--font-heading); font-size:1.5rem; color:var(--color-near-black);">1h 45m</div>
+                  <div class="label-sm text-muted">Tempo</div>
+                </div>
+                <div style="text-align:center; padding: var(--space-md); background: var(--bg-secondary); border-radius: var(--radius-lg);">
+                  <div style="font-family:var(--font-heading); font-size:1.5rem; color:var(--color-near-black);">620</div>
+                  <div class="label-sm text-muted">Kcal</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Saved Workouts -->
+            <div id="saved" style="padding: var(--space-xl); background: var(--bg-card); border-radius: var(--radius-xl); border: 1px solid var(--border-light);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-lg);">
+                <h2 style="font-family: var(--font-heading); font-size: 1.25rem;">Exercícios Salvos</h2>
+                <a href="library.html" style="font-size: 0.75rem; color: var(--color-accent-gold);">Explorar Biblioteca →</a>
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: var(--space-md);">
+                <div style="display:flex; gap:var(--space-md); align-items:center; padding: var(--space-md); background:var(--bg-secondary); border-radius:var(--radius-lg);">
+                  <div style="width:52px;height:52px;border-radius:var(--radius-md);overflow:hidden;flex-shrink:0;"><img src="assets/images/yoga.png" alt="" style="width:100%;height:100%;object-fit:cover;" /></div>
+                  <div style="flex:1;"><div style="font-weight:400;margin-bottom:3px;">Sunrise Morning Flow</div><div class="body-sm text-muted">Yoga · 30 min · Iniciante</div></div>
+                  <button onclick="openVideoModal('Sunrise Morning Flow')" class="btn btn--outline btn--sm">Jogar</button>
+                </div>
+                <div style="display:flex; gap:var(--space-md); align-items:center; padding: var(--space-md); background:var(--bg-secondary); border-radius:var(--radius-lg);">
+                  <div style="width:52px;height:52px;border-radius:var(--radius-md);overflow:hidden;flex-shrink:0;"><img src="assets/images/ring.png" alt="" style="width:100%;height:100%;object-fit:cover;" /></div>
+                  <div style="flex:1;"><div style="font-weight:400;margin-bottom:3px;">Inner Thigh Squeeze</div><div class="body-sm text-muted">Ring · 10 min · Iniciante</div></div>
+                  <button onclick="openExerciseModal('Inner Thigh Squeeze')" class="btn btn--outline btn--sm">Jogar</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN -->
+          <div style="display: flex; flex-direction: column; gap: var(--space-xl);">
+
+            <!-- Today's Recommendation -->
+            <div style="padding: var(--space-xl); background: var(--color-near-black); border-radius: var(--radius-xl); color: #fff;">
+              <div class="label-sm" style="color: var(--color-accent-gold); margin-bottom: var(--space-sm);">Recomendação de Hoje</div>
+              <div style="font-family: var(--font-heading); font-size: 1.375rem; margin-bottom: var(--space-sm);">Core Reset</div>
+              <div style="font-size: 0.8125rem; color: rgba(255,255,255,0.6); margin-bottom: var(--space-lg);">Dia 4: Ativação Profunda · 25 min</div>
+              <div style="border-radius: var(--radius-lg); overflow: hidden; margin-bottom: var(--space-lg); aspect-ratio: 16/9;">
+                <img src="assets/images/yoga.png" alt="Today's workout" style="width:100%;height:100%;object-fit:cover;opacity:0.7;" />
+              </div>
+              <button onclick="openVideoModal('Sunrise Morning Flow')" class="btn btn--gold" style="width:100%;">Iniciar Treino de Hoje</button>
+            </div>
+
+            <!-- Achievements -->
+            <div id="achievements" style="padding: var(--space-xl); background: var(--bg-card); border-radius: var(--radius-xl); border: 1px solid var(--border-light);">
+              <h2 style="font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: var(--space-lg);">Conquistas</h2>
+              <div style="display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-md);">
+
+                <div class="achievement-badge">
+                  <div class="achievement-icon">🔥</div>
+                  <div style="font-size:0.6875rem; font-weight:500; text-align:center; line-height:1.3;">7 Dias Seguidos</div>
+                </div>
+                <div class="achievement-badge">
+                  <div class="achievement-icon">🌅</div>
+                  <div style="font-size:0.6875rem; font-weight:500; text-align:center; line-height:1.3;">Madrugador</div>
+                </div>
+                <div class="achievement-badge">
+                  <div class="achievement-icon">💪</div>
+                  <div style="font-size:0.6875rem; font-weight:500; text-align:center; line-height:1.3;">Primeiro Pilates</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 
   <!-- FOOTER -->
   <footer class="footer">

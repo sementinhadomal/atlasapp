@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFilters();
   initFAQ();
   initScrollReveal();
+  initAuth();
 });
 
 // ==========================================
@@ -871,3 +872,153 @@ window.showToast = function(message) {
     setTimeout(() => toast.remove(), 300);
   }, 4000);
 };
+
+// ==========================================
+// PASSWORDLESS AUTH & ONBOARDING SYSTEM
+// ==========================================
+function initAuth() {
+  const userJson = localStorage.getItem('atlas_user');
+  const authView = document.getElementById('authView');
+  const profileView = document.getElementById('profileView');
+
+  // Update navigation actions globally
+  const user = userJson ? JSON.parse(userJson) : null;
+  if (user) {
+    const navActions = document.querySelector('.nav__actions');
+    if (navActions) {
+      navActions.innerHTML = `
+        <a href="profile.html" class="btn btn--outline btn--sm">Olá, ${user.name}!</a>
+        <a href="subscription.html" class="btn btn--primary btn--sm">Premium</a>
+      `;
+    }
+    // Update mobile drawer Profile link
+    const drawerLinks = document.querySelectorAll('.drawer-link');
+    drawerLinks.forEach(link => {
+      if (link.getAttribute('href') === 'profile.html') {
+        link.innerHTML = `Perfil (${user.name})`;
+      }
+    });
+    // Update index page hero greeting if present
+    const heroEyebrowText = document.querySelector('.hero__eyebrow .label-md');
+    if (heroEyebrowText) {
+      heroEyebrowText.textContent = `Olá, ${user.name}! ✨`;
+    }
+  } else {
+    // Standard nav actions if logged out
+    const navActions = document.querySelector('.nav__actions');
+    if (navActions) {
+      navActions.innerHTML = `
+        <a href="profile.html" class="btn btn--outline btn--sm">Sign In</a>
+        <a href="subscription.html" class="btn btn--primary btn--sm">Start Free</a>
+      `;
+    }
+  }
+
+  // Handle profile page view switching
+  if (authView && profileView) {
+    if (user) {
+      authView.style.display = 'none';
+      profileView.style.display = 'block';
+
+      // Populate user profile info
+      const profileName = document.getElementById('profileName');
+      const profileGoal = document.getElementById('profileGoal');
+      const profileAge = document.getElementById('profileAge');
+
+      if (profileName) profileName.textContent = user.name;
+      if (profileGoal) profileGoal.textContent = `Foco: ${user.goal}`;
+      if (profileAge) profileAge.textContent = `${user.age} anos`;
+    } else {
+      profileView.style.display = 'none';
+      authView.style.display = 'block';
+      document.getElementById('authStep1').style.display = 'block';
+      document.getElementById('authStep2').style.display = 'none';
+      
+      const emailInput = document.getElementById('authEmail');
+      if (emailInput) emailInput.value = '';
+    }
+  }
+}
+
+window.handleAuthEmailSubmit = function() {
+  const emailInput = document.getElementById('authEmail');
+  if (!emailInput) return;
+
+  const email = emailInput.value.trim().toLowerCase();
+  if (!email || !email.includes('@')) {
+    window.showToast("Por favor, insira um e-mail válido.");
+    return;
+  }
+
+  const registered = JSON.parse(localStorage.getItem('atlas_registered_users') || '[]');
+  const existingUser = registered.find(u => u.email === email);
+
+  if (existingUser) {
+    // Directly log in existing user (Passwordless)
+    localStorage.setItem('atlas_user', JSON.stringify(existingUser));
+    window.showToast(`Bem-vindo(a) de volta, ${existingUser.name}!`);
+    initAuth();
+  } else {
+    // Show step 2 for onboarding new user
+    document.getElementById('authStep1').style.display = 'none';
+    document.getElementById('authStep2').style.display = 'block';
+    
+    // Add subtitle notice
+    const subtitle = document.getElementById('authSubtitle');
+    if (subtitle) {
+      subtitle.innerHTML = `E-mail verificado para o produto! <br>Por favor, complete as informações para personalizar seus treinos.`;
+    }
+    window.showToast("E-mail verificado! Complete seus dados de perfil.");
+  }
+};
+
+window.handleAuthRegisterSubmit = function() {
+  const nameInput = document.getElementById('authName');
+  const ageInput = document.getElementById('authAge');
+  const goalSelect = document.getElementById('authGoal');
+  const levelSelect = document.getElementById('authLevel');
+  const emailInput = document.getElementById('authEmail');
+
+  if (!nameInput || !ageInput || !emailInput) return;
+
+  const name = nameInput.value.trim();
+  const age = ageInput.value.trim();
+  const goal = goalSelect.value;
+  const level = levelSelect.value;
+  const email = emailInput.value.trim().toLowerCase();
+
+  if (!name || !age) {
+    window.showToast("Por favor, preencha todos os campos.");
+    return;
+  }
+
+  const newUser = {
+    email,
+    name,
+    age,
+    goal,
+    level
+  };
+
+  // Add to registered list
+  const registered = JSON.parse(localStorage.getItem('atlas_registered_users') || '[]');
+  registered.push(newUser);
+  localStorage.setItem('atlas_registered_users', JSON.stringify(registered));
+
+  // Log in
+  localStorage.setItem('atlas_user', JSON.stringify(newUser));
+  window.showToast("Registro concluído com sucesso!");
+  
+  // Clear register form
+  nameInput.value = '';
+  ageInput.value = '';
+  
+  initAuth();
+};
+
+window.handleLogout = function() {
+  localStorage.removeItem('atlas_user');
+  window.showToast("Você saiu da sua conta.");
+  initAuth();
+};
+
