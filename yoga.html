@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Atlas Pilates Yoga — Expert-guided yoga classes for flexibility, strength, relaxation, and morning flow. All levels welcome." />
+  <title>Yoga Classes — Atlas Pilates</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav nav--scrolled" id="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="assets/images/logo-mark.png" alt="Atlas Pilates" class="nav__logo-mark" />
+        <span class="nav__logo-text">Atlas Pilates</span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html" class="nav__link">Home</a></li>
+        <li><a href="yoga.html" class="nav__link active">Yoga</a></li>
+        <li><a href="pilates.html" class="nav__link">Pilates</a></li>
+        <li><a href="programs.html" class="nav__link">Programs</a></li>
+        <li><a href="library.html" class="nav__link">Library</a></li>
+      </ul>
+      <div class="nav__actions">
+        <a href="profile.html" class="btn btn--outline btn--sm">Sign In</a>
+        <a href="subscription.html" class="btn btn--primary btn--sm">Start Free</a>
+        <button class="nav__menu-btn" id="menuBtn" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE DRAWER -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer__backdrop" id="drawerBackdrop"></div>
+    <div class="mobile-drawer__panel">
+      <button class="drawer-close" id="drawerClose">✕</button>
+      <nav class="drawer-links">
+        <a href="index.html" class="drawer-link">Home</a>
+        <a href="yoga.html" class="drawer-link">Yoga</a>
+        <a href="pilates.html" class="drawer-link">Pilates</a>
+        <a href="programs.html" class="drawer-link">Programs</a>
+        <a href="library.html" class="drawer-link">Library</a>
+        <a href="profile.html" class="drawer-link">Profile</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="container">
+      <div class="section-eyebrow" style="margin-bottom: var(--space-md);">
+        <div class="section-eyebrow-line"></div>
+        <span class="label-md text-muted">Yoga Collection</span>
+      </div>
+      <h1 class="display-lg animate-fade-up" style="margin-bottom: var(--space-md);">Find your flow.</h1>
+      <p class="body-md text-muted animate-fade-up animate-delay-1" style="max-width: 520px;">
+        Expert-guided yoga classes for every level and intention. Choose your goal and let us guide you through every breath, every movement, every moment of transformation.
+      </p>
+    </div>
+  </div>
+
+  <!-- FILTER SECTION -->
+  <section class="section--sm">
+    <div class="container">
+      <div class="filters" role="group" aria-label="Filter yoga classes">
+        <button class="filter-pill active" id="filter-all" data-filter="all">All Classes</button>
+        <button class="filter-pill" data-filter="flexibility">Flexibility</button>
+        <button class="filter-pill" data-filter="relaxation">Relaxation</button>
+        <button class="filter-pill" data-filter="strength">Strength</button>
+        <button class="filter-pill" data-filter="morning">Morning Flow</button>
+        <button class="filter-pill" data-filter="recovery">Recovery</button>
+      </div>
+
+      <!-- Classes Grid -->
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-xl);" id="yogaGrid">
+
+        <!-- Class 1 - Free -->
+        <article class="card reveal" data-category="morning" aria-label="Sunrise Morning Flow class">
+          <div class="card__media">
+            <img src="assets/images/yoga.png" alt="Sunrise Morning Flow" loading="lazy" />
+            <span class="card__badge card__badge--free">Free</span>
+            <button class="card__play-overlay" onclick="openVideoModal('Sunrise Morning Flow', '30 min')" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:transparent; cursor:pointer;">
+              <div style="width:52px; height:52px; border-radius:50%; background:rgba(250,248,244,0.9); display:flex; align-items:center; justify-content:center; opacity:0; transition: opacity 0.3s;" class="play-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-near-black)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
+            </button>
+          </div>
+          <div class="card__body">
+            <div class="card__meta">
+              <div class="level-indicator">
+                <div class="level-dot filled"></div>
+                <div class="level-dot"></div>
+                <div class="level-dot"></div>
+              </div>
+              <span class="label-sm text-muted">Beginner</span>
+            </div>
+            <h2 class="card__title">Sunrise Morning Flow</h2>
+            <p class="card__desc">Energize your day with this gentle wake-up sequence. Perfect for building a consistent morning ritual.</p>
+            <div class="card__stats">
+              <div class="card__stat">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                30 min
+              </div>
+              <div class="card__stat">🔥 340 cal</div>
+              <div class="card__stat">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                2.4k
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Class 2 - Free -->
+        <article class="card reveal" data-category="relaxation" style="animation-delay:0.1s;" aria-label="Deep Restore & Relax class">
+          <div class="card__media">
+            <img src="assets/images/yoga.png" alt="Deep Restore & Relax" loading="lazy" />
+            <span class="card__badge card__badge--free">Free</span>
+            <button class="card__play-overlay" onclick="openVideoModal('Deep Restore & Relax', '45 min')" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:transparent; cursor:pointer;">
+              <div style="width:52px; height:52px; border-radius:50%; background:rgba(250,248,244,0.9); display:flex; align-items:center; justify-content:center; opacity:0; transition: opacity 0.3s;" class="play-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-near-black)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
+            </button>
+          </div>
+          <div class="card__body">
+            <div class="card__meta">
+              <div class="level-indicator">
+                <div class="level-dot filled"></div>
+                <div class="level-dot"></div>
+                <div class="level-dot"></div>
+              </div>
+              <span class="label-sm text-muted">All Levels</span>
+            </div>
+            <h2 class="card__title">Deep Restore & Relax</h2>
+            <p class="card__desc">Melt away tension with long-hold yin poses and breathing exercises for total nervous system reset.</p>
+            <div class="card__stats">
+              <div class="card__stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 45 min</div>
+              <div class="card__stat">🔥 180 cal</div>
+              <div class="card__stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg> 1.8k</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Class 3 - Premium -->
+        <article class="card reveal" data-category="strength" style="animation-delay:0.2s;" aria-label="Power Vinyasa class - Premium">
+          <div class="card__media">
+            <img src="assets/images/yoga.png" alt="Power Vinyasa" loading="lazy" style="filter: brightness(0.7);" />
+            <span class="card__badge card__badge--premium">Premium</span>
+            <div class="card__lock">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
+          </div>
+          <div class="card__body">
+            <div class="card__meta">
+              <div class="level-indicator">
+                <div class="level-dot filled"></div>
+                <div class="level-dot filled"></div>
+                <div class="level-dot"></div>
+              </div>
+              <span class="label-sm text-muted">Intermediate</span>
+            </div>
+            <h2 class="card__title">Power Vinyasa Flow</h2>
+            <p class="card__desc">Build serious strength with this dynamic flow linking breath to movement in continuous sequences.</p>
+            <div class="card__stats">
+              <div class="card__stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 55 min</div>
+              <div class="card__stat">🔥 480 cal</div>
+              <div class="card__stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg> 3.2k</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Class 4 -->
+        <article class="card reveal" data-category="flexibility" style="animation-delay:0.1s;" aria-label="Full Body Flexibility class - Premium">
+          <div class="card__media">
+            <img src="assets/images/yoga.png" alt="Full Body Flexibility" loading="lazy" style="filter: brightness(0.7);" />
+            <span class="card__badge card__badge--premium">Premium</span>
+            <div class="card__lock">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
+          </div>
+          <div class="card__body">
+            <div class="card__meta">
+              <div class="level-indicator">
+                <div class="level-dot filled"></div>
+                <div class="level-dot filled"></div>
+                <div class="level-dot"></div>
+              </div>
+              <span class="label-sm text-muted">Intermediate</span>
+            </div>
+            <h2 class="card__title">Full Body Flexibility</h2>
+            <p class="card__desc">Systematically improve range of motion in hips, shoulders, and spine through targeted yoga sequences.</p>
+            <div class="card__stats">
+              <div class="card__stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 40 min</div>
+              <div class="card__stat">🔥 220 cal</div>
+              <div class="card__stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg> 2.1k</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Class 5 -->
+        <article class="card reveal" data-category="recovery" style="animation-delay:0.2s;" aria-label="Post-Workout Recovery class">
+          <div class="card__media">
+            <img src="assets/images/yoga.png" alt="Post-Workout Recovery" loading="lazy" />
+            <span class="card__badge card__badge--free">Free</span>
+            <button onclick="openVideoModal('Post-Workout Recovery', '25 min')" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:transparent; cursor:pointer;">
+              <div style="width:52px; height:52px; border-radius:50%; background:rgba(250,248,244,0.9); display:flex; align-items:center; justify-content:center; opacity:0; transition: opacity 0.3s;" class="play-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-near-black)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
+            </button>
+          </div>
+          <div class="card__body">
+            <div class="card__meta">
+              <div class="level-indicator">
+                <div class="level-dot filled"></div>
+                <div class="level-dot"></div>
+                <div class="level-dot"></div>
+              </div>
+              <span class="label-sm text-muted">All Levels</span>
+            </div>
+            <h2 class="card__title">Post-Workout Recovery</h2>
+            <p class="card__desc">Soothe sore muscles and speed recovery with gentle yoga stretches and guided breathing.</p>
+            <div class="card__stats">
+              <div class="card__stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 25 min</div>
+              <div class="card__stat">🔥 140 cal</div>
+              <div class="card__stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg> 1.5k</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Class 6 - Premium -->
+        <article class="card reveal" data-category="strength" style="animation-delay:0.3s;" aria-label="Advanced Arm Balances class - Premium">
+          <div class="card__media">
+            <img src="assets/images/yoga.png" alt="Advanced Arm Balances" loading="lazy" style="filter: brightness(0.7);" />
+            <span class="card__badge card__badge--premium">Premium</span>
+            <div class="card__lock">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
+          </div>
+          <div class="card__body">
+            <div class="card__meta">
+              <div class="level-indicator">
+                <div class="level-dot filled"></div>
+                <div class="level-dot filled"></div>
+                <div class="level-dot filled"></div>
+              </div>
+              <span class="label-sm text-muted">Advanced</span>
+            </div>
+            <h2 class="card__title">Advanced Arm Balances</h2>
+            <p class="card__desc">Master crow, side crow, and handstand prep with detailed technique breakdowns and strength conditioning.</p>
+            <div class="card__stats">
+              <div class="card__stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 60 min</div>
+              <div class="card__stat">🔥 520 cal</div>
+              <div class="card__stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg> 890</div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="text-center" style="margin-top: var(--space-3xl);">
+        <a href="subscription.html" class="btn btn--gold">Unlock All Classes — Go Premium</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO MODAL -->
+  <div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Video player">
+    <div class="video-modal__inner">
+      <button class="video-modal__close" id="videoModalClose" aria-label="Close video">✕</button>
+      <div class="video-placeholder">
+        <div class="play-btn-large">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </div>
+        <div id="videoTitle" style="font-family: var(--font-heading); font-size: 1.25rem; color: rgba(255,255,255,0.9);">Loading...</div>
+        <div id="videoDuration" style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">0 min</div>
+        <!-- Session Controls -->
+        <div style="display: flex; gap: 1rem; align-items: center; margin-top: 1.5rem;">
+          <button style="padding: 0.625rem 1.5rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; color: rgba(255,255,255,0.7); font-size: 0.75rem; cursor: pointer; background: transparent; letter-spacing: 0.1em; text-transform: uppercase;">⏮ Previous</button>
+          <button style="padding: 0.875rem 2rem; background: var(--color-accent-gold); border-radius: 999px; color: #fff; font-size: 0.75rem; cursor: pointer; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500;" onclick="showToast('✅ Session completed! +50 points earned')">Start Session</button>
+          <button style="padding: 0.625rem 1.5rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; color: rgba(255,255,255,0.7); font-size: 0.75rem; cursor: pointer; background: transparent; letter-spacing: 0.1em; text-transform: uppercase;">Next ⏭</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__logo">Atlas Pilates</div>
+          <div class="footer__tagline">Strength. Balance. Control.</div>
+          <p class="footer__desc">Premium Yoga & Pilates programs for the modern woman.</p>
+        </div>
+        <div>
+          <div class="footer__heading">Explore</div>
+          <a href="yoga.html" class="footer__link">Yoga Classes</a>
+          <a href="pilates.html" class="footer__link">Pilates</a>
+          <a href="programs.html" class="footer__link">Programs</a>
+          <a href="library.html" class="footer__link">Exercise Library</a>
+        </div>
+        <div>
+          <div class="footer__heading">Account</div>
+          <a href="profile.html" class="footer__link">My Profile</a>
+          <a href="subscription.html" class="footer__link">Subscription</a>
+        </div>
+        <div>
+          <div class="footer__heading">Company</div>
+          <a href="#" class="footer__link">About Us</a>
+          <a href="#" class="footer__link">Contact</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <div>© 2026 Atlas Pilates. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
+    <div class="bottom-nav__inner">
+      <a href="index.html" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span class="bottom-nav__label">Home</span></a>
+      <a href="yoga.html" class="bottom-nav__item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg><span class="bottom-nav__label">Yoga</span></a>
+      <a href="pilates.html" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg><span class="bottom-nav__label">Pilates</span></a>
+      <a href="library.html" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg><span class="bottom-nav__label">Library</span></a>
+      <a href="profile.html" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="bottom-nav__label">Profile</span></a>
+    </div>
+  </nav>
+
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

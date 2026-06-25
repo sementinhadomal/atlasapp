@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Atlas Pilates Equipment Workouts — Master the Pilates Bar and Fusion Ring with expert-guided step-by-step video workouts for core, glutes, legs and posture." />
+  <title>Pilates Equipment Workouts — Atlas Pilates</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav nav--scrolled" id="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="assets/images/logo-mark.png" alt="Atlas Pilates" class="nav__logo-mark" />
+        <span class="nav__logo-text">Atlas Pilates</span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html" class="nav__link">Home</a></li>
+        <li><a href="yoga.html" class="nav__link">Yoga</a></li>
+        <li><a href="pilates.html" class="nav__link active">Pilates</a></li>
+        <li><a href="programs.html" class="nav__link">Programs</a></li>
+        <li><a href="library.html" class="nav__link">Library</a></li>
+      </ul>
+      <div class="nav__actions">
+        <a href="profile.html" class="btn btn--outline btn--sm">Sign In</a>
+        <a href="subscription.html" class="btn btn--primary btn--sm">Start Free</a>
+        <button class="nav__menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE DRAWER -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer__backdrop" id="drawerBackdrop"></div>
+    <div class="mobile-drawer__panel">
+      <button class="drawer-close" id="drawerClose">✕</button>
+      <nav class="drawer-links">
+        <a href="index.html" class="drawer-link">Home</a>
+        <a href="yoga.html" class="drawer-link">Yoga</a>
+        <a href="pilates.html" class="drawer-link">Pilates</a>
+        <a href="programs.html" class="drawer-link">Programs</a>
+        <a href="library.html" class="drawer-link">Library</a>
+        <a href="profile.html" class="drawer-link">Profile</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="container">
+      <div class="section-eyebrow" style="margin-bottom: var(--space-md);">
+        <div class="section-eyebrow-line"></div>
+        <span class="label-md text-muted">Equipment Pilates</span>
+      </div>
+      <h1 class="display-lg animate-fade-up" style="margin-bottom: var(--space-md);">Sculpt. Strengthen.<br>Control.</h1>
+      <p class="body-md text-muted animate-fade-up animate-delay-1" style="max-width: 520px;">
+        Expert-guided equipment pilates workouts focusing on the Pilates Bar and Fusion Ring. Step-by-step video demonstrations with reps, sets, and muscle group targeting.
+      </p>
+    </div>
+  </div>
+
+  <!-- EQUIPMENT TABS -->
+  <section class="section--sm">
+    <div class="container">
+
+      <!-- Tab buttons -->
+      <div style="display: flex; gap: var(--space-md); margin-bottom: var(--space-2xl); border-bottom: 1px solid var(--border-light); padding-bottom: var(--space-md);">
+        <button class="tab-btn active" data-tab="bar" id="tabBar" style="font-family: var(--font-heading); font-size: 1.5rem; background: none; cursor: pointer; color: var(--text-primary); padding-bottom: var(--space-md); border-bottom: 2px solid var(--color-near-black); margin-bottom: -1px; transition: all 0.2s;">
+          Pilates Bar
+        </button>
+        <button class="tab-btn" data-tab="ring" id="tabRing" style="font-family: var(--font-heading); font-size: 1.5rem; background: none; cursor: pointer; color: var(--text-muted); padding-bottom: var(--space-md); border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all 0.2s;">
+          Fusion Ring
+        </button>
+      </div>
+
+      <!-- PILATES BAR CONTENT -->
+      <div id="barContent">
+        <div style="display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-xl); margin-bottom: var(--space-3xl);">
+
+          <!-- Bar Exercise 1 -->
+          <article class="card reveal" aria-label="Squat & Press exercise">
+            <div class="card__media">
+              <img src="assets/images/barre.png" alt="Squat & Press" loading="lazy" />
+              <span class="card__badge card__badge--free">Free</span>
+              <button onclick="openExerciseModal('Squat & Press', 'bar')" style="position:absolute;inset:0;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+                <div class="play-icon" style="width:52px;height:52px;border-radius:50%;background:rgba(250,248,244,0.9);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-near-black)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </div>
+              </button>
+            </div>
+            <div class="card__body">
+              <div class="card__meta">
+                <div class="level-indicator"><div class="level-dot filled"></div><div class="level-dot"></div><div class="level-dot"></div></div>
+                <span class="label-sm text-muted">Beginner</span>
+              </div>
+              <h2 class="card__title">Squat & Press</h2>
+              <p class="card__desc">Full lower body activation with shoulder press. Core stability throughout movement.</p>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-sm); margin-bottom: var(--space-md);">
+                <div style="padding: var(--space-sm); background: var(--bg-secondary); border-radius: var(--radius-md); text-align: center;">
+                  <div style="font-family: var(--font-heading); font-size: 1.125rem;">3</div>
+                  <div class="label-sm text-muted">Sets</div>
+                </div>
+                <div style="padding: var(--space-sm); background: var(--bg-secondary); border-radius: var(--radius-md); text-align: center;">
+                  <div style="font-family: var(--font-heading); font-size: 1.125rem;">15</div>
+                  <div class="label-sm text-muted">Reps</div>
+                </div>
+              </div>
+              <div style="display: flex; gap: var(--space-sm); flex-wrap: wrap;">
+                <span style="padding: 3px 10px; background: rgba(201,169,110,0.12); border-radius: 999px; font-size: 0.625rem; letter-spacing: 0.08em; color: var(--color-accent-gold);">Glutes</span>
+                <span style="padding: 3px 10px; background: rgba(201,169,110,0.12); border-radius: 999px; font-size: 0.625rem; letter-spacing: 0.08em; color: var(--color-accent-gold);">Shoulders</span>
+                <span style="padding: 3px 10px; background: rgba(201,169,110,0.12); border-radius: 999px; font-size: 0.625rem; letter-spacing: 0.08em; color: var(--color-accent-gold);">Core</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Bar Exercise 2 -->
+          <article class="card reveal" style="animation-delay:0.1s;" aria-label="Romanian Deadlift exercise - Premium">
+            <div class="card__media">
+              <img src="assets/images/barre.png" alt="Romanian Deadlift" loading="lazy" style="filter: brightness(0.7);" />
+              <span class="card__badge card__badge--premium">Premium</span>
+              <div class="card__lock"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
+            </div>
+            <div class="card__body">
+              <div class="card__meta">
+                <div class="level-indicator"><div class="level-dot filled"></div><div class="level-dot filled"></div><div class="level-dot"></div></div>
+                <span class="label-sm text-muted">Intermediate</span>
+              </div>
+              <h2 class="card__title">Romanian Deadlift</h2>
+              <p class="card__desc">Target hamstrings and glutes with this fundamental bar exercise. Essential for posterior chain strength.</p>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-sm); margin-bottom: var(--space-md);">
+                <div style="padding: var(--space-sm); background: var(--bg-secondary); border-radius: var(--radius-md); text-align: center;">
+                  <div style="font-family: var(--font-heading); font-size: 1.125rem;">4</div>
+                  <div class="label-sm text-muted">Sets</div>
+                </div>
+                <div style="padding: var(--space-sm); background: var(--bg-secondary); border-radius: var(--radius-md); text-align: center;">
+                  <div style="font-family: var(--font-heading); font-size: 1.125rem;">12</div>
+                  <div class="label-sm text-muted">Reps</div>
+                </div>
+              </div>
+              <div style="display: flex; gap: var(--space-sm); flex-wrap: wrap;">
+                <span style="padding: 3px 10px; background: rgba(201,169,110,0.12); border-radius: 999px; font-size: 0.625rem; letter-spacing: 0.08em; color: var(--color-accent-gold);">Hamstrings</span>
+                <span style="padding: 3px 10px; background: rgba(201,169,110,0.12); border-radius: 999px; font-size: 0.625rem; letter-spacing: 0.08em; color: var(--color-accent-gold);">Glutes</span>
+                <span style="padding: 3px 10px; background: rgba(201,169,110,0.12); border-radius: 999px; font-size: 0.625rem; letter-spacing: 0.08em; color: var(--color-accent-gold);">Lower Back</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Bar Exercise 3 -->
+          <article class="card reveal" style="animation-delay:0.2s;" aria-label="Overhead Lunge exercise">
+            <div class="card__media">
+              <img src="assets/images/barre.png" alt="Overhead Lunge" loading="lazy" />
+              <span class="card__badge card__badge--free">Free</span>
+              <button onclick="openExerciseModal('Overhead Lunge', 'bar')" style="position:absolute;inset:0;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+                <div class="play-icon" style="width:52px;height:52px;border-radius:50%;background:rgba(250,248,244,0.9);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-near-black)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </div>
+              </button>
+            </div>
+            <div class="card__body">
+              <div class="card__meta">
+                <div class="level-indicator"><div class="level-dot filled"></div><div class="level-dot filled"></div><div class="level-dot"></div></div>
+                <span class="label-sm text-muted">Intermediate</span>
+              </div>
+              <h2 class="card__title">Overhead Walking Lunge</h2>
+              <p class="card__desc">Challenge coordination, balance, and full-body strength with this functional movement pattern.</p>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-sm); margin-bottom: var(--space-md);">
+                <div style="padding: var(--space-sm); background: var(--bg-secondary); border-radius: var(--radius-md); text-align: center;">
+                  <div style="font-family: var(--font-heading); font-size: 1.125rem;">3</div>
+                  <div class="label-sm text-muted">Sets</div>
+                </div>
+                <div style="padding: var(--space-sm); background: var(--bg-secondary); border-radius: var(--radius-md); text-align: center;">
+                  <div style="font-family: var(--font-heading); font-size: 1.125rem;">10/leg</div>
+                  <div class="label-sm text-muted">Reps</div>
+                </div>
+              </div>
+              <div style="display: flex; gap: var(--space-sm); flex-wrap: wrap;">
+                <span style="padding: 3px 10px; background: rgba(201,169,110,0.12); border-radius: 999px; font-size: 0.625rem; letter-spacing: 0.08em; color: var(--color-accent-gold);">Quads</span>
+                <span style="padding: 3px 10px; background: rgba(201,169,110,0.12); border-radius: 999px; font-size: 0.625rem; letter-spacing: 0.08em; color: var(--color-accent-gold);">Core</span>
+                <span style="padding: 3px 10px; background: rgba(201,169,110,0.12); border-radius: 999px; font-size: 0.625rem; letter-spacing: 0.08em; color: var(--color-accent-gold);">Shoulders</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- FUSION RING CONTENT -->
+      <div id="ringContent" style="display:none;">
+        <div style="display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-xl);">
+
+          <!-- Ring Exercise 1 -->
+          <article class="card reveal" aria-label="Inner Thigh Squeeze exercise">
+            <div class="card__media">
+              <img src="assets/images/ring.png" alt="Inner Thigh Squeeze" loading="lazy" />
+              <span class="card__badge card__badge--free">Free</span>
+              <button onclick="openExerciseModal('Inner Thigh Squeeze', 'ring')" style="position:absolute;inset:0;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+                <div class="play-icon" style="width:52px;height:52px;border-radius:50%;background:rgba(250,248,244,0.9);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-near-black)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </div>
+              </button>
+            </div>
+            <div class="card__body">
+              <div class="card__meta">
+                <div class="level-indicator"><div class="level-dot filled"></div><div class="level-dot"></div><div class="level-dot"></div></div>
+                <span class="label-sm text-muted">Beginner</span>
+              </div>
+              <h2 class="card__title">Inner Thigh Squeeze</h2>
+              <p class="card__desc">Tone and sculpt inner thighs with controlled ring compression. Core engagement throughout.</p>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-sm); margin-bottom: var(--space-md);">
+                <div style="padding: var(--space-sm); background: var(--bg-secondary); border-radius: var(--radius-md); text-align: center;">
+                  <div style="font-family: var(--font-heading); font-size: 1.125rem;">3</div>
+                  <div class="label-sm text-muted">Sets</div>
+                </div>
+                <div style="padding: var(--space-sm); background: var(--bg-secondary); border-radius: var(--radius-md); text-align: center;">
+                  <div style="font-family: var(--font-heading); font-size: 1.125rem;">20</div>
+                  <div class="label-sm text-muted">Reps</div>
+                </div>
+              </div>
+              <div style="display: flex; gap: var(--space-sm); flex-wrap: wrap;">
+                <span style="padding: 3px 10px; background: rgba(201,169,110,0.12); border-radius: 999px; font-size: 0.625rem; letter-spacing: 0.08em; color: var(--color-accent-gold);">Inner Thighs</span>
+                <span style="padding: 3px 10px; background: rgba(201,169,110,0.12); border-radius: 999px; font-size: 0.625rem; letter-spacing: 0.08em; color: var(--color-accent-gold);">Core</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Ring Exercise 2 -->
+          <article class="card reveal" style="animation-delay:0.1s;" aria-label="Chest Press Ring exercise - Premium">
+            <div class="card__media">
+              <img src="assets/images/ring.png" alt="Chest Press" loading="lazy" style="filter: brightness(0.7);" />
+              <span class="card__badge card__badge--premium">Premium</span>
+              <div class="card__lock"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
+            </div>
+            <div class="card__body">
+              <div class="card__meta">
+                <div class="level-indicator"><div class="level-dot filled"></div><div class="level-dot filled"></div><div class="level-dot"></div></div>
+                <span class="label-sm text-muted">Intermediate</span>
+              </div>
+              <h2 class="card__title">Standing Chest Squeeze</h2>
+              <p class="card__desc">Sculpt chest, arms and shoulders with this controlled resistance exercise using the ring.</p>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-sm); margin-bottom: var(--space-md);">
+                <div style="padding: var(--space-sm); background: var(--bg-secondary); border-radius: var(--radius-md); text-align: center;">
+                  <div style="font-family: var(--font-heading); font-size: 1.125rem;">3</div>
+                  <div class="label-sm text-muted">Sets</div>
+                </div>
+                <div style="padding: var(--space-sm); background: var(--bg-secondary); border-radius: var(--radius-md); text-align: center;">
+                  <div style="font-family: var(--font-heading); font-size: 1.125rem;">15</div>
+                  <div class="label-sm text-muted">Reps</div>
+                </div>
+              </div>
+              <div style="display: flex; gap: var(--space-sm); flex-wrap: wrap;">
+                <span style="padding: 3px 10px; background: rgba(201,169,110,0.12); border-radius: 999px; font-size: 0.625rem; letter-spacing: 0.08em; color: var(--color-accent-gold);">Chest</span>
+                <span style="padding: 3px 10px; background: rgba(201,169,110,0.12); border-radius: 999px; font-size: 0.625rem; letter-spacing: 0.08em; color: var(--color-accent-gold);">Arms</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Ring Exercise 3 -->
+          <article class="card reveal" style="animation-delay:0.2s;" aria-label="Bridge Abduction exercise">
+            <div class="card__media">
+              <img src="assets/images/ring.png" alt="Bridge Abduction" loading="lazy" />
+              <span class="card__badge card__badge--free">Free</span>
+              <button onclick="openExerciseModal('Bridge & Ring Squeeze', 'ring')" style="position:absolute;inset:0;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+                <div class="play-icon" style="width:52px;height:52px;border-radius:50%;background:rgba(250,248,244,0.9);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-near-black)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </div>
+              </button>
+            </div>
+            <div class="card__body">
+              <div class="card__meta">
+                <div class="level-indicator"><div class="level-dot filled"></div><div class="level-dot"></div><div class="level-dot"></div></div>
+                <span class="label-sm text-muted">Beginner</span>
+              </div>
+              <h2 class="card__title">Bridge & Ring Squeeze</h2>
+              <p class="card__desc">Combine glute activation with inner thigh toning for maximum lower body burn.</p>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-sm); margin-bottom: var(--space-md);">
+                <div style="padding: var(--space-sm); background: var(--bg-secondary); border-radius: var(--radius-md); text-align: center;">
+                  <div style="font-family: var(--font-heading); font-size: 1.125rem;">4</div>
+                  <div class="label-sm text-muted">Sets</div>
+                </div>
+                <div style="padding: var(--space-sm); background: var(--bg-secondary); border-radius: var(--radius-md); text-align: center;">
+                  <div style="font-family: var(--font-heading); font-size: 1.125rem;">12</div>
+                  <div class="label-sm text-muted">Reps</div>
+                </div>
+              </div>
+              <div style="display: flex; gap: var(--space-sm); flex-wrap: wrap;">
+                <span style="padding: 3px 10px; background: rgba(201,169,110,0.12); border-radius: 999px; font-size: 0.625rem; letter-spacing: 0.08em; color: var(--color-accent-gold);">Glutes</span>
+                <span style="padding: 3px 10px; background: rgba(201,169,110,0.12); border-radius: 999px; font-size: 0.625rem; letter-spacing: 0.08em; color: var(--color-accent-gold);">Adductors</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <div class="text-center" style="margin-top: var(--space-3xl);">
+        <a href="subscription.html" class="btn btn--gold">Unlock All Pilates Workouts</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO MODAL -->
+  <div class="video-modal" id="videoModal" role="dialog" aria-modal="true">
+    <div class="video-modal__inner">
+      <button class="video-modal__close" id="videoModalClose">✕</button>
+      <div class="video-placeholder">
+        <div class="play-btn-large">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </div>
+        <div id="videoTitle" style="font-family: var(--font-heading); font-size: 1.25rem; color: rgba(255,255,255,0.9);">Exercise</div>
+        <div id="videoDuration" style="font-size: 0.875rem; color: rgba(255,255,255,0.5);">Demonstration + Rep Counter</div>
+        <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; justify-content: center;">
+          <div style="text-align: center; padding: 0.75rem 1.5rem; background: rgba(255,255,255,0.05); border-radius: var(--radius-lg); border: 1px solid rgba(255,255,255,0.1);">
+            <div style="font-family: var(--font-heading); font-size: 2rem; color: #fff;" id="repCount">0</div>
+            <div style="font-size: 0.625rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5);">Reps</div>
+          </div>
+          <div style="text-align: center; padding: 0.75rem 1.5rem; background: rgba(255,255,255,0.05); border-radius: var(--radius-lg); border: 1px solid rgba(255,255,255,0.1);">
+            <div style="font-family: var(--font-heading); font-size: 2rem; color: var(--color-accent-gold);" id="setCount">1</div>
+            <div style="font-size: 0.625rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5);">Set</div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 0.75rem; margin-top: 1rem; flex-wrap: wrap; justify-content: center;">
+          <button onclick="countRep()" style="padding: 0.75rem 1.5rem; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 999px; color: #fff; font-size: 0.75rem; cursor: pointer; letter-spacing: 0.1em; text-transform: uppercase;">+ Rep</button>
+          <button onclick="nextSet()" style="padding: 0.75rem 1.75rem; background: var(--color-accent-gold); border-radius: 999px; color: #fff; font-size: 0.75rem; cursor: pointer; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500;">Next Set</button>
+          <button onclick="finishExercise()" style="padding: 0.75rem 1.5rem; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 999px; color: rgba(255,255,255,0.7); font-size: 0.75rem; cursor: pointer; letter-spacing: 0.1em; text-transform: uppercase;">Complete ✓</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div><div class="footer__logo">Atlas Pilates</div><div class="footer__tagline">Strength. Balance. Control.</div><p class="footer__desc">Premium Yoga & Pilates programs for the modern woman.</p></div>
+        <div><div class="footer__heading">Explore</div><a href="yoga.html" class="footer__link">Yoga</a><a href="pilates.html" class="footer__link">Pilates</a><a href="programs.html" class="footer__link">Programs</a><a href="library.html" class="footer__link">Library</a></div>
+        <div><div class="footer__heading">Account</div><a href="profile.html" class="footer__link">My Profile</a><a href="subscription.html" class="footer__link">Subscription</a></div>
+        <div><div class="footer__heading">Company</div><a href="#" class="footer__link">About Us</a><a href="#" class="footer__link">Contact</a></div>
+      </div>
+      <div class="footer__bottom"><div>© 2026 Atlas Pilates. All rights reserved.</div></div>
+    </div>
+  </footer>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
+    <div class="bottom-nav__inner">
+      <a href="index.html" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span class="bottom-nav__label">Home</span></a>
+      <a href="yoga.html" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg><span class="bottom-nav__label">Yoga</span></a>
+      <a href="pilates.html" class="bottom-nav__item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg><span class="bottom-nav__label">Pilates</span></a>
+      <a href="library.html" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg><span class="bottom-nav__label">Library</span></a>
+      <a href="profile.html" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="bottom-nav__label">Profile</span></a>
+    </div>
+  </nav>
+
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Tab switching
+    const tabBar = document.getElementById('tabBar');
+    const tabRing = document.getElementById('tabRing');
+    const barContent = document.getElementById('barContent');
+    const ringContent = document.getElementById('ringContent');
+
+    tabBar.addEventListener('click', () => {
+      tabBar.style.color = 'var(--text-primary)';
+      tabBar.style.borderBottomColor = 'var(--color-near-black)';
+      tabRing.style.color = 'var(--text-muted)';
+      tabRing.style.borderBottomColor = 'transparent';
+      barContent.style.display = '';
+      ringContent.style.display = 'none';
+    });
+
+    tabRing.addEventListener('click', () => {
+      tabRing.style.color = 'var(--text-primary)';
+      tabRing.style.borderBottomColor = 'var(--color-near-black)';
+      tabBar.style.color = 'var(--text-muted)';
+      tabBar.style.borderBottomColor = 'transparent';
+      ringContent.style.display = '';
+      barContent.style.display = 'none';
+    });
+
+    // Rep counter
+    let reps = 0; let sets = 1;
+    function countRep() {
+      reps++;
+      document.getElementById('repCount').textContent = reps;
+    }
+    function nextSet() {
+      sets++;
+      reps = 0;
+      document.getElementById('setCount').textContent = sets;
+      document.getElementById('repCount').textContent = reps;
+      showToast('Set ' + (sets-1) + ' complete! Rest 30 seconds.');
+    }
+    function finishExercise() {
+      document.getElementById('videoModal').classList.remove('open');
+      reps = 0; sets = 1;
+      showToast('✅ Exercise complete! Great work!');
+    }
+
+    function openExerciseModal(name, type) {
+      document.getElementById('videoTitle').textContent = name;
+      document.getElementById('videoDuration').textContent = 'Equipment: Pilates ' + (type === 'bar' ? 'Bar' : 'Ring');
+      document.getElementById('repCount').textContent = '0';
+      document.getElementById('setCount').textContent = '1';
+      reps = 0; sets = 1;
+      document.getElementById('videoModal').classList.add('open');
+    }
+  </script>
+</body>
+</html>

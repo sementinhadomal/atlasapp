@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Atlas Pilates Programs — Structured 7, 14, and 30-day fitness journeys for weight loss, core strength, flexibility, and posture improvement." />
+  <title>Workout Programs — Atlas Pilates</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav nav--scrolled" id="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="assets/images/logo-mark.png" alt="Atlas Pilates" class="nav__logo-mark" />
+        <span class="nav__logo-text">Atlas Pilates</span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html" class="nav__link">Home</a></li>
+        <li><a href="yoga.html" class="nav__link">Yoga</a></li>
+        <li><a href="pilates.html" class="nav__link">Pilates</a></li>
+        <li><a href="programs.html" class="nav__link active">Programs</a></li>
+        <li><a href="library.html" class="nav__link">Library</a></li>
+      </ul>
+      <div class="nav__actions">
+        <a href="profile.html" class="btn btn--outline btn--sm">Sign In</a>
+        <a href="subscription.html" class="btn btn--primary btn--sm">Start Free</a>
+        <button class="nav__menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE DRAWER -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer__backdrop" id="drawerBackdrop"></div>
+    <div class="mobile-drawer__panel">
+      <button class="drawer-close" id="drawerClose">✕</button>
+      <nav class="drawer-links">
+        <a href="index.html" class="drawer-link">Home</a>
+        <a href="yoga.html" class="drawer-link">Yoga</a>
+        <a href="pilates.html" class="drawer-link">Pilates</a>
+        <a href="programs.html" class="drawer-link">Programs</a>
+        <a href="library.html" class="drawer-link">Library</a>
+        <a href="profile.html" class="drawer-link">Profile</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="container">
+      <div class="section-eyebrow" style="margin-bottom: var(--space-md);">
+        <div class="section-eyebrow-line"></div>
+        <span class="label-md text-muted">Structured Programs</span>
+      </div>
+      <h1 class="display-lg animate-fade-up" style="margin-bottom: var(--space-md);">Your journey,<br>structured.</h1>
+      <p class="body-md text-muted animate-fade-up animate-delay-1" style="max-width: 540px;">
+        Every program is expertly designed to deliver real, measurable results. Choose your goal — and let us guide you there, one session at a time.
+      </p>
+    </div>
+  </div>
+
+  <!-- PROGRAMS CONTENT -->
+  <section class="section">
+    <div class="container">
+
+      <!-- Program Goals Filter -->
+      <div class="filters">
+        <button class="filter-pill active" data-filter="all">All Goals</button>
+        <button class="filter-pill" data-filter="weightloss">Weight Loss</button>
+        <button class="filter-pill" data-filter="core">Core Strength</button>
+        <button class="filter-pill" data-filter="flexibility">Flexibility</button>
+        <button class="filter-pill" data-filter="posture">Posture</button>
+      </div>
+
+      <!-- PROGRAMS GRID -->
+      <div style="display: flex; flex-direction: column; gap: var(--space-2xl);" id="programsGrid">
+
+        <!-- PROGRAM 1 — 7 Days / Free -->
+        <div class="reveal" style="border: 1px solid var(--border-light); border-radius: var(--radius-2xl); overflow: hidden; background: var(--bg-card);" data-category="core">
+          <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 0;">
+            <div style="aspect-ratio: 1; overflow: hidden; position: relative;">
+              <img src="assets/images/yoga.png" alt="Core Reset 7-Day Program" style="width:100%; height:100%; object-fit:cover;" />
+              <div style="position:absolute; inset:0; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.02));"></div>
+            </div>
+            <div style="padding: var(--space-2xl);">
+              <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-md);">
+                <span style="padding: 4px 12px; background: rgba(143,168,150,0.15); border: 1px solid rgba(143,168,150,0.3); border-radius: 999px; font-size: 0.625rem; letter-spacing: 0.1em; color: var(--color-accent-sage); text-transform: uppercase;">Free Program</span>
+                <span class="label-sm text-muted">7 Days</span>
+              </div>
+              <h2 class="heading-lg" style="margin-bottom: var(--space-md);">Core Reset</h2>
+              <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: var(--space-xl); font-size: 0.9375rem;">
+                The perfect entry point for beginners. This 7-day program builds foundational core strength and body awareness through gentle pilates and yoga. No equipment needed.
+              </p>
+
+              <!-- Daily preview -->
+              <div style="display: grid; grid-template-columns: repeat(7,1fr); gap: var(--space-xs); margin-bottom: var(--space-xl);">
+                <div style="text-align:center; padding: var(--space-sm); background: var(--color-near-black); border-radius: var(--radius-md);"><div style="font-size:0.625rem; color: rgba(255,255,255,0.5); margin-bottom:2px;">D1</div><div style="font-size:0.625rem; color: var(--color-accent-gold);">✓</div></div>
+                <div style="text-align:center; padding: var(--space-sm); background: var(--color-near-black); border-radius: var(--radius-md);"><div style="font-size:0.625rem; color: rgba(255,255,255,0.5); margin-bottom:2px;">D2</div><div style="font-size:0.625rem; color: var(--color-accent-gold);">✓</div></div>
+                <div style="text-align:center; padding: var(--space-sm); background: var(--color-near-black); border-radius: var(--radius-md);"><div style="font-size:0.625rem; color: rgba(255,255,255,0.5); margin-bottom:2px;">D3</div><div style="font-size:0.625rem; color: var(--color-accent-gold);">✓</div></div>
+                <div style="text-align:center; padding: var(--space-sm); background: rgba(201,169,110,0.15); border: 1px solid rgba(201,169,110,0.3); border-radius: var(--radius-md);"><div style="font-size:0.625rem; color: var(--color-accent-gold); margin-bottom:2px;">D4</div><div style="font-size:0.625rem; color: var(--color-accent-gold);">▶</div></div>
+                <div style="text-align:center; padding: var(--space-sm); background: var(--bg-secondary); border-radius: var(--radius-md);"><div style="font-size:0.625rem; color: var(--text-muted); margin-bottom:2px;">D5</div><div style="font-size:0.625rem; color: var(--text-light);">○</div></div>
+                <div style="text-align:center; padding: var(--space-sm); background: var(--bg-secondary); border-radius: var(--radius-md);"><div style="font-size:0.625rem; color: var(--text-muted); margin-bottom:2px;">D6</div><div style="font-size:0.625rem; color: var(--text-light);">○</div></div>
+                <div style="text-align:center; padding: var(--space-sm); background: var(--bg-secondary); border-radius: var(--radius-md);"><div style="font-size:0.625rem; color: var(--text-muted); margin-bottom:2px;">D7</div><div style="font-size:0.625rem; color: var(--text-light);">○</div></div>
+              </div>
+
+              <div style="display: flex; gap: var(--space-md); align-items: center; flex-wrap: wrap;">
+                <button onclick="startProgram('Core Reset', 7)" class="btn btn--primary">Continue — Day 4</button>
+                <div style="display: flex; gap: var(--space-lg);">
+                  <div><div class="label-sm text-muted">Daily</div><div style="font-weight:400; font-size:0.9375rem;">20–30 min</div></div>
+                  <div><div class="label-sm text-muted">Level</div><div style="font-weight:400; font-size:0.9375rem;">Beginner</div></div>
+                  <div><div class="label-sm text-muted">Equipment</div><div style="font-weight:400; font-size:0.9375rem;">None</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROGRAM 2 — 14 Days / Premium -->
+        <div class="reveal" style="border: 1px solid var(--border-light); border-radius: var(--radius-2xl); overflow: hidden; background: var(--bg-card);" data-category="weightloss flexibility">
+          <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 0;">
+            <div style="aspect-ratio: 1; overflow: hidden; position: relative;">
+              <img src="assets/images/ring.png" alt="Body Sculptor 14-Day Program" style="width:100%; height:100%; object-fit:cover; filter: brightness(0.8);" />
+              <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center;">
+                <div style="width: 56px; height: 56px; border-radius: 50%; background: rgba(26,23,20,0.7); backdrop-filter: blur(8px); display:flex; align-items:center; justify-content:center;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                </div>
+              </div>
+            </div>
+            <div style="padding: var(--space-2xl);">
+              <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-md);">
+                <span style="padding: 4px 12px; background: rgba(201,169,110,0.15); border: 1px solid rgba(201,169,110,0.3); border-radius: 999px; font-size: 0.625rem; letter-spacing: 0.1em; color: var(--color-accent-gold); text-transform: uppercase;">Premium</span>
+                <span class="label-sm text-muted">14 Days</span>
+              </div>
+              <h2 class="heading-lg" style="margin-bottom: var(--space-md);">Body Sculptor</h2>
+              <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: var(--space-xl); font-size: 0.9375rem;">
+                Targeted Pilates Ring and Bar workouts to tone arms, sculpt thighs, and define your waist. Combines strength training with flexibility work for visible results in 2 weeks.
+              </p>
+
+              <div style="display: flex; gap: var(--space-xl); margin-bottom: var(--space-xl);">
+                <div style="padding: var(--space-lg); background: var(--bg-secondary); border-radius: var(--radius-lg); flex: 1; text-align: center;">
+                  <div style="font-size: 1.5rem; margin-bottom: var(--space-sm);">⭕</div>
+                  <div class="label-sm text-muted">Ring workouts</div>
+                  <div style="font-family: var(--font-heading); font-size: 1.25rem;">8 sessions</div>
+                </div>
+                <div style="padding: var(--space-lg); background: var(--bg-secondary); border-radius: var(--radius-lg); flex: 1; text-align: center;">
+                  <div style="font-size: 1.5rem; margin-bottom: var(--space-sm);">🏋️‍♀️</div>
+                  <div class="label-sm text-muted">Bar workouts</div>
+                  <div style="font-family: var(--font-heading); font-size: 1.25rem;">6 sessions</div>
+                </div>
+              </div>
+
+              <div style="display: flex; gap: var(--space-md); align-items: center; flex-wrap: wrap;">
+                <a href="subscription.html" class="btn btn--gold">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                  Unlock with Premium
+                </a>
+                <div style="display: flex; gap: var(--space-lg);">
+                  <div><div class="label-sm text-muted">Daily</div><div style="font-weight:400; font-size:0.9375rem;">30–45 min</div></div>
+                  <div><div class="label-sm text-muted">Level</div><div style="font-weight:400; font-size:0.9375rem;">Intermediate</div></div>
+                  <div><div class="label-sm text-muted">Equipment</div><div style="font-weight:400; font-size:0.9375rem;">Ring + Bar</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROGRAM 3 — 30 Days / Premium -->
+        <div class="reveal" style="border: 1px solid var(--border-light); border-radius: var(--radius-2xl); overflow: hidden; background: var(--bg-card);" data-category="weightloss core posture flexibility">
+          <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 0;">
+            <div style="aspect-ratio: 1; overflow: hidden; position: relative;">
+              <img src="assets/images/barre.png" alt="Total Transformation 30-Day Program" style="width:100%; height:100%; object-fit:cover; filter: brightness(0.8);" />
+              <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center;">
+                <div style="width: 56px; height: 56px; border-radius: 50%; background: rgba(26,23,20,0.7); backdrop-filter: blur(8px); display:flex; align-items:center; justify-content:center;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                </div>
+              </div>
+              <!-- MOST POPULAR badge -->
+              <div style="position:absolute; top: var(--space-md); left: var(--space-md); padding: 4px 12px; background: var(--color-accent-gold); border-radius: 999px; font-size:0.625rem; letter-spacing:0.1em; text-transform:uppercase; color:#fff; font-weight:500;">Most Popular</div>
+            </div>
+            <div style="padding: var(--space-2xl);">
+              <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-md);">
+                <span style="padding: 4px 12px; background: rgba(201,169,110,0.15); border: 1px solid rgba(201,169,110,0.3); border-radius: 999px; font-size: 0.625rem; letter-spacing: 0.1em; color: var(--color-accent-gold); text-transform: uppercase;">Premium</span>
+                <span class="label-sm text-muted">30 Days</span>
+              </div>
+              <h2 class="heading-lg" style="margin-bottom: var(--space-md);">Total Transformation</h2>
+              <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: var(--space-xl); font-size: 0.9375rem;">
+                The ultimate Atlas program. A full month of progressive yoga and pilates that builds strength, improves posture, increases flexibility, and changes your body composition. The most comprehensive transformation experience we offer.
+              </p>
+
+              <div style="display: grid; grid-template-columns: repeat(4,1fr); gap: var(--space-md); margin-bottom: var(--space-xl);">
+                <div style="text-align: center; padding: var(--space-md); background: var(--bg-secondary); border-radius: var(--radius-lg);">
+                  <div style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--color-accent-gold);">30</div>
+                  <div class="label-sm text-muted">Days</div>
+                </div>
+                <div style="text-align: center; padding: var(--space-md); background: var(--bg-secondary); border-radius: var(--radius-lg);">
+                  <div style="font-family: var(--font-heading); font-size: 1.5rem;">60+</div>
+                  <div class="label-sm text-muted">Sessions</div>
+                </div>
+                <div style="text-align: center; padding: var(--space-md); background: var(--bg-secondary); border-radius: var(--radius-lg);">
+                  <div style="font-family: var(--font-heading); font-size: 1.5rem;">4</div>
+                  <div class="label-sm text-muted">Goals</div>
+                </div>
+                <div style="text-align: center; padding: var(--space-md); background: var(--bg-secondary); border-radius: var(--radius-lg);">
+                  <div style="font-family: var(--font-heading); font-size: 1.5rem;">★4.9</div>
+                  <div class="label-sm text-muted">Rating</div>
+                </div>
+              </div>
+
+              <div style="display: flex; gap: var(--space-md); align-items: center; flex-wrap: wrap;">
+                <a href="subscription.html" class="btn btn--gold">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                  Start with Premium
+                </a>
+                <div style="display: flex; gap: var(--space-lg);">
+                  <div><div class="label-sm text-muted">Daily</div><div style="font-weight:400; font-size:0.9375rem;">45–60 min</div></div>
+                  <div><div class="label-sm text-muted">Level</div><div style="font-weight:400; font-size:0.9375rem;">All Levels</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div><div class="footer__logo">Atlas Pilates</div><div class="footer__tagline">Strength. Balance. Control.</div><p class="footer__desc">Premium Yoga & Pilates programs for the modern woman.</p></div>
+        <div><div class="footer__heading">Explore</div><a href="yoga.html" class="footer__link">Yoga</a><a href="pilates.html" class="footer__link">Pilates</a><a href="programs.html" class="footer__link">Programs</a><a href="library.html" class="footer__link">Library</a></div>
+        <div><div class="footer__heading">Account</div><a href="profile.html" class="footer__link">My Profile</a><a href="subscription.html" class="footer__link">Subscription</a></div>
+        <div><div class="footer__heading">Company</div><a href="#" class="footer__link">About Us</a><a href="#" class="footer__link">Contact</a></div>
+      </div>
+      <div class="footer__bottom"><div>© 2026 Atlas Pilates. All rights reserved.</div></div>
+    </div>
+  </footer>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
+    <div class="bottom-nav__inner">
+      <a href="index.html" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span class="bottom-nav__label">Home</span></a>
+      <a href="yoga.html" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg><span class="bottom-nav__label">Yoga</span></a>
+      <a href="pilates.html" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg><span class="bottom-nav__label">Pilates</span></a>
+      <a href="library.html" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg><span class="bottom-nav__label">Library</span></a>
+      <a href="profile.html" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="bottom-nav__label">Profile</span></a>
+    </div>
+  </nav>
+
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+  <script src="assets/js/main.js"></script>
+  <script>
+    function startProgram(name, days) {
+      showToast('🎯 Continuing ' + name + ' — Day 4 of ' + days);
+    }
+  </script>
+</body>
+</html>

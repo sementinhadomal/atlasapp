@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Atlas Pilates Exercise Library — Browse and filter all yoga and pilates exercises by equipment, duration, level, and goal." />
+  <title>Exercise Library — Atlas Pilates</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav nav--scrolled" id="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="assets/images/logo-mark.png" alt="Atlas Pilates" class="nav__logo-mark" />
+        <span class="nav__logo-text">Atlas Pilates</span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html" class="nav__link">Home</a></li>
+        <li><a href="yoga.html" class="nav__link">Yoga</a></li>
+        <li><a href="pilates.html" class="nav__link">Pilates</a></li>
+        <li><a href="programs.html" class="nav__link">Programs</a></li>
+        <li><a href="library.html" class="nav__link active">Library</a></li>
+      </ul>
+      <div class="nav__actions">
+        <a href="profile.html" class="btn btn--outline btn--sm">Sign In</a>
+        <a href="subscription.html" class="btn btn--primary btn--sm">Start Free</a>
+        <button class="nav__menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE DRAWER -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer__backdrop" id="drawerBackdrop"></div>
+    <div class="mobile-drawer__panel">
+      <button class="drawer-close" id="drawerClose">✕</button>
+      <nav class="drawer-links">
+        <a href="index.html" class="drawer-link">Home</a>
+        <a href="yoga.html" class="drawer-link">Yoga</a>
+        <a href="pilates.html" class="drawer-link">Pilates</a>
+        <a href="programs.html" class="drawer-link">Programs</a>
+        <a href="library.html" class="drawer-link">Library</a>
+        <a href="profile.html" class="drawer-link">Profile</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="container">
+      <div class="section-eyebrow" style="margin-bottom: var(--space-md);">
+        <div class="section-eyebrow-line"></div>
+        <span class="label-md text-muted">Exercise Library</span>
+      </div>
+      <h1 class="display-lg animate-fade-up" style="margin-bottom: var(--space-md);">Every movement,<br>explored.</h1>
+      <p class="body-md text-muted animate-fade-up animate-delay-1" style="max-width: 520px;">
+        Browse our complete database of exercises. Filter by equipment, duration, difficulty, and goal to find exactly what you need.
+      </p>
+    </div>
+  </div>
+
+  <!-- LIBRARY CONTENT -->
+  <section class="section--sm">
+    <div class="container">
+
+      <!-- Search & Filters -->
+      <div style="display: flex; gap: var(--space-md); margin-bottom: var(--space-xl); flex-wrap: wrap; align-items: center;">
+        <div style="flex: 1; min-width: 200px; position: relative;">
+          <svg style="position:absolute; left:16px; top:50%; transform:translateY(-50%); color:var(--text-muted);" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="searchInput" placeholder="Search exercises..." style="width:100%; padding: 0.875rem 1rem 0.875rem 3rem; border: 1px solid var(--border-medium); border-radius: var(--radius-pill); background: var(--bg-card); color: var(--text-primary); font-size: 0.875rem; transition: border-color 0.2s;" />
+        </div>
+
+        <select id="filterEquipment" style="padding: 0.875rem 1.25rem; border: 1px solid var(--border-medium); border-radius: var(--radius-pill); background: var(--bg-card); color: var(--text-primary); font-size: 0.8125rem; cursor: pointer; font-family: var(--font-body);">
+          <option value="">All Equipment</option>
+          <option value="none">No Equipment</option>
+          <option value="bar">Pilates Bar</option>
+          <option value="ring">Fusion Ring</option>
+        </select>
+
+        <select id="filterLevel" style="padding: 0.875rem 1.25rem; border: 1px solid var(--border-medium); border-radius: var(--radius-pill); background: var(--bg-card); color: var(--text-primary); font-size: 0.8125rem; cursor: pointer; font-family: var(--font-body);">
+          <option value="">All Levels</option>
+          <option value="beginner">Beginner</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="advanced">Advanced</option>
+        </select>
+
+        <select id="filterDuration" style="padding: 0.875rem 1.25rem; border: 1px solid var(--border-medium); border-radius: var(--radius-pill); background: var(--bg-card); color: var(--text-primary); font-size: 0.8125rem; cursor: pointer; font-family: var(--font-body);">
+          <option value="">Any Duration</option>
+          <option value="short">Under 30 min</option>
+          <option value="medium">30–45 min</option>
+          <option value="long">45+ min</option>
+        </select>
+      </div>
+
+      <!-- Results count -->
+      <div style="margin-bottom: var(--space-xl);">
+        <span id="resultsCount" class="label-md text-muted">Showing 12 exercises</span>
+      </div>
+
+      <!-- Exercise Library Grid -->
+      <div style="display: grid; grid-template-columns: repeat(4,1fr); gap: var(--space-lg);" id="libraryGrid">
+
+        <!-- Exercise items -->
+        <div class="exercise-item" data-equipment="none" data-level="beginner" data-duration="short" data-name="child's pose">
+          <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Child's Pose" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="padding: var(--space-md);">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-sage); text-transform:uppercase;">Yoga · Relaxation</span>
+                <span style="font-size:0.625rem; padding:2px 8px; background:rgba(143,168,150,0.12); border-radius:999px; color:var(--color-accent-sage);">Free</span>
+              </div>
+              <div style="font-family:var(--font-heading); font-size:1rem; margin-bottom:4px;">Child's Pose</div>
+              <div style="display:flex; gap:var(--space-md); font-size:0.6875rem; color:var(--text-muted);">
+                <span>⏱ 5 min</span><span>🧘 Beginner</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="exercise-item" data-equipment="ring" data-level="beginner" data-duration="short" data-name="inner thigh squeeze">
+          <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Inner Thigh Squeeze" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="padding: var(--space-md);">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Ring · Toning</span>
+                <span style="font-size:0.625rem; padding:2px 8px; background:rgba(143,168,150,0.12); border-radius:999px; color:var(--color-accent-sage);">Free</span>
+              </div>
+              <div style="font-family:var(--font-heading); font-size:1rem; margin-bottom:4px;">Inner Thigh Squeeze</div>
+              <div style="display:flex; gap:var(--space-md); font-size:0.6875rem; color:var(--text-muted);">
+                <span>⏱ 10 min</span><span>🧘 Beginner</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="exercise-item" data-equipment="bar" data-level="intermediate" data-duration="short" data-name="squat press">
+          <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre.png" alt="Squat & Press" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="padding: var(--space-md);">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Bar · Strength</span>
+                <span style="font-size:0.625rem; padding:2px 8px; background:rgba(143,168,150,0.12); border-radius:999px; color:var(--color-accent-sage);">Free</span>
+              </div>
+              <div style="font-family:var(--font-heading); font-size:1rem; margin-bottom:4px;">Squat & Press</div>
+              <div style="display:flex; gap:var(--space-md); font-size:0.6875rem; color:var(--text-muted);">
+                <span>⏱ 15 min</span><span>💪 Intermediate</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="exercise-item" data-equipment="none" data-level="intermediate" data-duration="medium" data-name="power vinyasa">
+          <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Power Vinyasa" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
+            <div style="padding: var(--space-md);">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-sage); text-transform:uppercase;">Yoga · Strength</span>
+                <span style="font-size:0.625rem; padding:2px 8px; background:rgba(201,169,110,0.15); border-radius:999px; color:var(--color-accent-gold);">Premium</span>
+              </div>
+              <div style="font-family:var(--font-heading); font-size:1rem; margin-bottom:4px;">Power Vinyasa</div>
+              <div style="display:flex; gap:var(--space-md); font-size:0.6875rem; color:var(--text-muted);">
+                <span>⏱ 35 min</span><span>💪 Intermediate</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="exercise-item" data-equipment="bar" data-level="intermediate" data-duration="short" data-name="romanian deadlift">
+          <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre.png" alt="Romanian Deadlift" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
+            <div style="padding: var(--space-md);">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Bar · Glutes</span>
+                <span style="font-size:0.625rem; padding:2px 8px; background:rgba(201,169,110,0.15); border-radius:999px; color:var(--color-accent-gold);">Premium</span>
+              </div>
+              <div style="font-family:var(--font-heading); font-size:1rem; margin-bottom:4px;">Romanian Deadlift</div>
+              <div style="display:flex; gap:var(--space-md); font-size:0.6875rem; color:var(--text-muted);">
+                <span>⏱ 20 min</span><span>💪 Intermediate</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="exercise-item" data-equipment="none" data-level="beginner" data-duration="short" data-name="morning stretch">
+          <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Morning Stretch" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="padding: var(--space-md);">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-sage); text-transform:uppercase;">Yoga · Morning</span>
+                <span style="font-size:0.625rem; padding:2px 8px; background:rgba(143,168,150,0.12); border-radius:999px; color:var(--color-accent-sage);">Free</span>
+              </div>
+              <div style="font-family:var(--font-heading); font-size:1rem; margin-bottom:4px;">Full Body Morning Stretch</div>
+              <div style="display:flex; gap:var(--space-md); font-size:0.6875rem; color:var(--text-muted);">
+                <span>⏱ 15 min</span><span>🧘 Beginner</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="exercise-item" data-equipment="ring" data-level="intermediate" data-duration="short" data-name="chest squeeze">
+          <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Chest Squeeze" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
+            <div style="padding: var(--space-md);">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Ring · Arms</span>
+                <span style="font-size:0.625rem; padding:2px 8px; background:rgba(201,169,110,0.15); border-radius:999px; color:var(--color-accent-gold);">Premium</span>
+              </div>
+              <div style="font-family:var(--font-heading); font-size:1rem; margin-bottom:4px;">Standing Chest Squeeze</div>
+              <div style="display:flex; gap:var(--space-md); font-size:0.6875rem; color:var(--text-muted);">
+                <span>⏱ 12 min</span><span>💪 Intermediate</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="exercise-item" data-equipment="none" data-level="advanced" data-duration="long" data-name="arm balances">
+          <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Arm Balances" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
+            <div style="padding: var(--space-md);">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-sage); text-transform:uppercase;">Yoga · Advanced</span>
+                <span style="font-size:0.625rem; padding:2px 8px; background:rgba(201,169,110,0.15); border-radius:999px; color:var(--color-accent-gold);">Premium</span>
+              </div>
+              <div style="font-family:var(--font-heading); font-size:1rem; margin-bottom:4px;">Arm Balance Series</div>
+              <div style="display:flex; gap:var(--space-md); font-size:0.6875rem; color:var(--text-muted);">
+                <span>⏱ 60 min</span><span>🔥 Advanced</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Load More -->
+      <div class="text-center" style="margin-top: var(--space-3xl);">
+        <button onclick="showToast('🔐 More exercises available with Premium membership')" class="btn btn--outline">Load More Exercises</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div><div class="footer__logo">Atlas Pilates</div><div class="footer__tagline">Strength. Balance. Control.</div><p class="footer__desc">Premium Yoga & Pilates programs for the modern woman.</p></div>
+        <div><div class="footer__heading">Explore</div><a href="yoga.html" class="footer__link">Yoga</a><a href="pilates.html" class="footer__link">Pilates</a><a href="programs.html" class="footer__link">Programs</a><a href="library.html" class="footer__link">Library</a></div>
+        <div><div class="footer__heading">Account</div><a href="profile.html" class="footer__link">My Profile</a><a href="subscription.html" class="footer__link">Subscription</a></div>
+        <div><div class="footer__heading">Company</div><a href="#" class="footer__link">About Us</a><a href="#" class="footer__link">Contact</a></div>
+      </div>
+      <div class="footer__bottom"><div>© 2026 Atlas Pilates. All rights reserved.</div></div>
+    </div>
+  </footer>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
+    <div class="bottom-nav__inner">
+      <a href="index.html" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span class="bottom-nav__label">Home</span></a>
+      <a href="yoga.html" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/></svg><span class="bottom-nav__label">Yoga</span></a>
+      <a href="pilates.html" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg><span class="bottom-nav__label">Pilates</span></a>
+      <a href="library.html" class="bottom-nav__item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg><span class="bottom-nav__label">Library</span></a>
+      <a href="profile.html" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="bottom-nav__label">Profile</span></a>
+    </div>
+  </nav>
+
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Library filtering
+    const searchInput = document.getElementById('searchInput');
+    const filterEquipment = document.getElementById('filterEquipment');
+    const filterLevel = document.getElementById('filterLevel');
+    const filterDuration = document.getElementById('filterDuration');
+    const resultsCount = document.getElementById('resultsCount');
+
+    function filterLibrary() {
+      const query = searchInput.value.toLowerCase();
+      const equipment = filterEquipment.value;
+      const level = filterLevel.value;
+      const duration = filterDuration.value;
+      const items = document.querySelectorAll('.exercise-item');
+      let visible = 0;
+
+      items.forEach(item => {
+        const nameMatch = !query || item.dataset.name.includes(query);
+        const eqMatch = !equipment || item.dataset.equipment === equipment;
+        const lvlMatch = !level || item.dataset.level === level;
+        const durMatch = !duration || item.dataset.duration === duration;
+
+        if (nameMatch && eqMatch && lvlMatch && durMatch) {
+          item.style.display = '';
+          visible++;
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      resultsCount.textContent = `Showing ${visible} exercise${visible !== 1 ? 's' : ''}`;
+    }
+
+    searchInput.addEventListener('input', filterLibrary);
+    filterEquipment.addEventListener('change', filterLibrary);
+    filterLevel.addEventListener('change', filterLibrary);
+    filterDuration.addEventListener('change', filterLibrary);
+
+    // Style search focus
+    searchInput.addEventListener('focus', function() {
+      this.style.borderColor = 'var(--color-near-black)';
+    });
+    searchInput.addEventListener('blur', function() {
+      this.style.borderColor = 'var(--border-medium)';
+    });
+  </script>
+</body>
+</html>
