@@ -18,6 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
 // WORKOUT DATABASE (Simulated Exercises)
 // ==========================================
 const workoutData = {
+
+  // ============================
+  // YOGA SESSIONS
+  // ============================
+
   "Sunrise Morning Flow": {
     type: "yoga",
     duration: "30 min",
@@ -29,6 +34,19 @@ const workoutData = {
       { name: "Guerreiro I (Virabhadrasana I)", duration: 40, instructions: "1. Dê um passo largo para trás com o pé esquerdo. <br>2. Flexione o joelho direito a 90 graus. <br>3. Eleve os braços em direção ao teto e alinhe o quadril à frente.", animation: "warrior-1", target: "Pernas e Ombros" }
     ]
   },
+
+  "Power Vinyasa Flow": {
+    type: "yoga",
+    duration: "55 min",
+    exercises: [
+      { name: "Guerreiro II (Virabhadrasana II)", duration: 45, instructions: "1. Abra as pernas em posição ampla. <br>2. Gire o pé direito 90° e dobre o joelho direito alinhado ao tornozelo. <br>3. Estenda os braços horizontalmente na altura dos ombros. <br>4. Mantenha o olhar sobre a mão da frente.", animation: "warrior-2", target: "Pernas, Quadril e Core" },
+      { name: "Triângulo (Trikonasana)", duration: 40, instructions: "1. Afaste as pernas e estenda os braços em T. <br>2. Incline o tronco lateralmente, descendo a mão direita até a canela ou o chão. <br>3. Estenda o braço esquerdo para cima. <br>4. Olhe para a mão de cima e abra o peito.", animation: "triangle", target: "Flexores Laterais e Quadril" },
+      { name: "Cachorro Olhando para Baixo", duration: 45, instructions: "1. Suba os quadris e estique as pernas formando um V invertido. <br>2. Empurre os calcanhares em direção ao chão. <br>3. Mantenha os braços esticados e a cabeça relaxada.", animation: "down-dog", target: "Posterior e Ombros" },
+      { name: "Saudação ao Sol (Surya Namaskar)", duration: 60, instructions: "1. Inspire elevando os braços. <br>2. Expire dobrando o quadril à frente. <br>3. Desça em chaturanga. <br>4. Inspire no cachorro olhando para cima, expire para baixo.", animation: "vinyasa", target: "Fluxo Corpo Inteiro" },
+      { name: "Torção de Coluna Sentada", duration: 40, instructions: "1. Sente-se com as pernas cruzadas ou com um joelho dobrado. <br>2. Gire o tronco para o lado direito. <br>3. Coloque o cotovelo esquerdo no joelho direito para aprofundar. <br>4. Mantenha a coluna ereta e respire na torção.", animation: "seated-twist", target: "Coluna e Órgãos Abdominais" }
+    ]
+  },
+
   "Deep Restore & Relax": {
     type: "yoga",
     duration: "45 min",
@@ -39,16 +57,46 @@ const workoutData = {
       { name: "Torção de Coluna Deitada", duration: 45, instructions: "1. Traga os joelhos ao peito. <br>2. Deixe os joelhos caírem para o lado direito. <br>3. Vire a cabeça para o lado esquerdo e sinta o alongamento.", animation: "twist", target: "Rotação de Coluna" }
     ]
   },
+
+  "Equilíbrio e Força": {
+    type: "yoga",
+    duration: "40 min",
+    exercises: [
+      { name: "Postura da Árvore (Vrikshasana)", duration: 45, instructions: "1. Fique de pé sobre a perna esquerda. <br>2. Pressione a sola do pé direito contra a coxa interna esquerda (evite o joelho). <br>3. Una as palmas das mãos no peito ou eleve-as acima da cabeça. <br>4. Mantenha o olhar fixo em um ponto à frente para equilibrar.", animation: "tree-pose", target: "Equilíbrio e Tornozelos" },
+      { name: "Guerreiro I (Virabhadrasana I)", duration: 40, instructions: "1. Dê um passo largo para trás com o pé esquerdo. <br>2. Flexione o joelho direito a 90 graus. <br>3. Eleve os braços em direção ao teto e alinhe o quadril à frente.", animation: "warrior-1", target: "Pernas e Ombros" },
+      { name: "Guerreiro II (Virabhadrasana II)", duration: 45, instructions: "1. Abra as pernas em posição ampla. <br>2. Gire o pé direito 90° e dobre o joelho direito alinhado ao tornozelo. <br>3. Estenda os braços horizontalmente na altura dos ombros. <br>4. Mantenha o olhar sobre a mão da frente.", animation: "warrior-2", target: "Pernas, Quadril e Core" },
+      { name: "Triângulo (Trikonasana)", duration: 40, instructions: "1. Afaste as pernas e estenda os braços em T. <br>2. Incline o tronco lateralmente, descendo a mão direita até a canela ou o chão. <br>3. Estenda o braço esquerdo para cima.", animation: "triangle", target: "Flexores Laterais e Quadril" },
+      { name: "Cachorro Olhando para Baixo", duration: 30, instructions: "1. Suba os quadris e estique as pernas formando um V invertido. <br>2. Empurre os calcanhares em direção ao chão. <br>3. Mantenha os braços esticados e a cabeça relaxada.", animation: "down-dog", target: "Posterior e Ombros" }
+    ]
+  },
+
   "Post-Workout Recovery": {
     type: "yoga",
     duration: "25 min",
     exercises: [
       { name: "Liberação de Ombros e Pescoço", duration: 30, instructions: "1. Gire o pescoço suavemente em círculos. <br>2. Incline a orelha direita em direção ao ombro correspondente. <br>3. Alterne os lados para soltar a tensão.", animation: "neck", target: "Coluna Cervical" },
-      { name: "Alongamento Sentado", duration: 40, instructions: "1. Estique uma das pernas à frente. <br>2. Incline o tronco a partir dos quadris mantendo as costas retas. <br>3. Alcance o pé ou canela.", animation: "hamstring", target: "Cadeia Posterior" },
+      { name: "Alongamento Sentado — Isquiotibiais", duration: 40, instructions: "1. Estique uma das pernas à frente. <br>2. Incline o tronco a partir dos quadris mantendo as costas retas. <br>3. Alcance o pé ou canela.", animation: "hamstring", target: "Cadeia Posterior" },
       { name: "Postura do Pombo", duration: 50, instructions: "1. Traga o joelho direito para a frente no chão. <br>2. Estique a perna esquerda totalmente para trás. <br>3. Desça o quadril em direção ao mat.", animation: "pigeon", target: "Flexores de Quadril" },
       { name: "Relaxamento Final (Savasana)", duration: 60, instructions: "1. Deite-se totalmente plano de costas. <br>2. Deixe os pés caírem para os lados e palmas das mãos para cima. <br>3. Respire e absorva o treino.", animation: "savasana", target: "Restauração Total" }
     ]
   },
+
+  "Yin Yoga Noturno": {
+    type: "yoga",
+    duration: "50 min",
+    exercises: [
+      { name: "Respiração 4-7-8 para Relaxar", duration: 60, instructions: "1. Inspire pelo nariz contando 4 tempos. <br>2. Segure o ar por 7 tempos. <br>3. Expire completamente pela boca contando 8 tempos. <br>4. Repita 5 ciclos.", animation: "breath", target: "Sistema Nervoso Parassimpático" },
+      { name: "Postura do Pombo Reclinado", duration: 90, instructions: "1. Traga o joelho direito para a frente no chão. <br>2. Estique a perna esquerda totalmente para trás. <br>3. Incline o tronco para frente e descanse os antebraços no chão. <br>4. Fique aqui por 2-3 min por lado.", animation: "pigeon", target: "Quadril Profundo" },
+      { name: "Torção de Coluna Deitada", duration: 60, instructions: "1. Traga os joelhos ao peito. <br>2. Deixe os joelhos caírem para o lado direito. <br>3. Vire a cabeça para o lado esquerdo e sinta o alongamento.", animation: "twist", target: "Coluna e Costelas" },
+      { name: "Postura da Esfinge Longa", duration: 90, instructions: "1. Deite-se de barriga para baixo com os antebraços no chão. <br>2. Eleve o peito mantendo os ombros relaxados. <br>3. Fique aqui por 2-3 min respirando profundamente.", animation: "sphinx", target: "Lombar e Abdômen" },
+      { name: "Savasana Final", duration: 120, instructions: "1. Deite-se de costas. <br>2. Deixe os pés caírem para os lados. <br>3. Feche os olhos e abandone qualquer esforço. <br>4. Permaneça 5-10 minutos.", animation: "savasana", target: "Restauração Completa" }
+    ]
+  },
+
+  // ============================
+  // PILATES — BARRE SESSIONS
+  // ============================
+
   "Squat & Press": {
     type: "pilates",
     equipment: "Barre",
@@ -58,6 +106,7 @@ const workoutData = {
       { name: "Agachamento com Desenvolvimento", duration: 35, instructions: "1. Fique de pé sobre os elásticos da barra de Pilates. <br>2. Posicione a barra na altura dos ombros. <br>3. Agache flexionando os joelhos e jogando o quadril para trás. <br>4. Fique de pé e empurre a barra acima da cabeça.", animation: "squat-press", target: "Glúteos e Ombros" }
     ]
   },
+
   "Overhead Lunge": {
     type: "pilates",
     equipment: "Barre",
@@ -67,6 +116,24 @@ const workoutData = {
       { name: "Avanço com Barra Elevada", duration: 35, instructions: "1. Fique de pé segurando a barra acima da cabeça com braços esticados. <br>2. Dê um passo largo à frente. <br>3. Flexione os joelhos até o de trás quase tocar o chão. <br>4. Retorne e alterne.", animation: "overhead-lunge", target: "Quadríceps e Estabilidade" }
     ]
   },
+
+  "Força Total com Barra": {
+    type: "pilates",
+    equipment: "Barre",
+    sets: 3,
+    reps: 12,
+    exercises: [
+      { name: "Levantamento Terra (Romanian Deadlift)", duration: 40, instructions: "1. Fique de pé segurando a barra na frente das coxas. <br>2. Incline o tronco à frente a partir dos quadris mantendo as costas retas. <br>3. Desça a barra pelas pernas sentindo a tensão nos isquiotibiais. <br>4. Retorne à posição inicial contraindo os glúteos.", animation: "deadlift-bar", target: "Isquiotibiais e Glúteos" },
+      { name: "Remada Curvada com Barra", duration: 35, instructions: "1. Incline o tronco a 45° mantendo as costas retas. <br>2. Segure a barra com as duas mãos à frente. <br>3. Puxe os cotovelos para trás e para cima. <br>4. Aperte as escápulas no topo e desça com controle.", animation: "row-bar", target: "Costas e Bíceps" },
+      { name: "Elevação Lateral com Barra", duration: 30, instructions: "1. Fique de pé com a barra paralela ao chão na frente do corpo. <br>2. Mantenha o core contraído. <br>3. Eleve a barra lateralmente até a altura dos ombros. <br>4. Desça com controle.", animation: "side-raise-bar", target: "Deltoides Laterais" },
+      { name: "Prancha com Barra", duration: 45, instructions: "1. Apoie as mãos na barra colocada no chão. <br>2. Estique as pernas e forme uma linha reta do calcanhar à cabeça. <br>3. Contraia o abdômen e os glúteos. <br>4. Mantenha por 30-45 segundos respirando.", animation: "plank-bar", target: "Core e Estabilizadores" }
+    ]
+  },
+
+  // ============================
+  // PILATES — RING SESSIONS
+  // ============================
+
   "Inner Thigh Squeeze": {
     type: "pilates",
     equipment: "Ring",
@@ -76,6 +143,7 @@ const workoutData = {
       { name: "Aperto de Coxa com Anel", duration: 30, instructions: "1. Deite-se de costas ou sente-se com joelhos dobrados. <br>2. Posicione o anel de Pilates entre as coxas. <br>3. Aperte o anel devagar, segure por 1s e solte com controle.", animation: "thigh-squeeze", target: "Adutores e Core Interno" }
     ]
   },
+
   "Bridge & Ring Squeeze": {
     type: "pilates",
     equipment: "Ring",
@@ -83,6 +151,36 @@ const workoutData = {
     reps: 12,
     exercises: [
       { name: "Ponte com Compressão de Anel", duration: 35, instructions: "1. Deite-se de costas com joelhos dobrados e o anel entre as coxas. <br>2. Eleve os quadris do chão contraindo glúteos e lombar. <br>3. Squeeze o anel no topo da ponte e desça.", animation: "bridge-squeeze", target: "Glúteos e Posterior de Coxa" }
+    ]
+  },
+
+  "Ring Power — Full Body": {
+    type: "pilates",
+    equipment: "Ring",
+    sets: 3,
+    reps: 15,
+    exercises: [
+      { name: "Compressão de Anel no Peito", duration: 30, instructions: "1. Deite-se de costas com joelhos dobrados. <br>2. Segure o anel entre as palmas das mãos na altura do peito. <br>3. Pressione as palmas em direção ao centro do anel. <br>4. Segure 2s e solte com controle.", animation: "ring-chest-press", target: "Peitoral e Tríceps" },
+      { name: "Aperto de Coxa com Anel", duration: 30, instructions: "1. Sente-se com joelhos dobrados e pés no chão. <br>2. Posicione o anel entre as coxas. <br>3. Aperte o anel devagar, segure por 1s e solte com controle.", animation: "thigh-squeeze", target: "Adutores" },
+      { name: "Aperto Lateral com Anel", duration: 35, instructions: "1. Deite-se de lado com o corpo em linha reta. <br>2. Posicione o anel entre os tornozelos. <br>3. Levante a perna de cima comprimindo o anel. <br>4. Desça com controle e repita.", animation: "ring-side-squeeze", target: "Abdutores e Glúteo Médio" },
+      { name: "Ponte com Compressão de Anel", duration: 35, instructions: "1. Deite-se de costas com joelhos dobrados e o anel entre as coxas. <br>2. Eleve os quadris do chão contraindo glúteos e lombar. <br>3. Squeeze o anel no topo da ponte e desça.", animation: "bridge-squeeze", target: "Glúteos e Posterior de Coxa" }
+    ]
+  },
+
+  // ============================
+  // PILATES — CLASSIC MAT
+  // ============================
+
+  "Pilates Clássico no Mat": {
+    type: "pilates",
+    equipment: "Mat",
+    sets: 2,
+    reps: 10,
+    exercises: [
+      { name: "O Cem (The Hundred)", duration: 60, instructions: "1. Deite-se de costas e eleve as pernas a 45°. <br>2. Levante a cabeça e os ombros em crunch. <br>3. Estenda os braços paralelos ao chão. <br>4. Bata os braços para cima e para baixo (pompas rápidas) contando 100.", animation: "hundred", target: "Core Profundo e Resistência" },
+      { name: "Roll-Up (Enrolamento)", duration: 45, instructions: "1. Deite-se de costas com braços acima da cabeça. <br>2. Inspire e traga os braços para a frente. <br>3. Expire enrolando a coluna vértebra por vértebra até tocar os pés. <br>4. Inspire no topo, expire enrolando de volta.", animation: "roll-up", target: "Coluna e Abdômen" },
+      { name: "Círculo de Perna", duration: 40, instructions: "1. Deite-se de costas com uma perna esticada no chão. <br>2. Eleve a outra perna em direção ao teto. <br>3. Faça círculos lentos e controlados com a perna elevada. <br>4. Mantenha o quadril completamente fixo no chão.", animation: "leg-circle", target: "Quadril e Estabilidade de Core" },
+      { name: "Pont com Enrolamento", duration: 45, instructions: "1. Deite-se de costas com joelhos dobrados. <br>2. Eleve os quadris articulando a coluna vértebra por vértebra. <br>3. No topo, contraia os glúteos. <br>4. Desça enrolando de volta com controle.", animation: "bridge", target: "Coluna, Glúteos e Isquiotibiais" }
     ]
   }
 };
