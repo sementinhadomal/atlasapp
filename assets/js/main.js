@@ -93,6 +93,147 @@ const workoutData = {
     ]
   },
 
+  "Yoga Anti-Estresse": {
+    type: "yoga",
+    duration: "35 min",
+    exercises: [
+      { name: "Respiração da Caixa (Box Breathing)", duration: 45, instructions: "1. Inspire por 4 tempos. <br>2. Segure por 4 tempos. <br>3. Expire por 4 tempos. <br>4. Segure vazio por 4 tempos. Repita 8 ciclos.", animation: "breath", target: "Ansiedade e Foco Mental" },
+      { name: "Postura do Bebê Feliz (Ananda Balasana)", duration: 50, instructions: "1. Deite-se de costas e traga os joelhos ao peito. <br>2. Agarre os dedões dos pés com os dedos. <br>3. Abra os joelhos além do tronco e puxe suavemente para baixo. <br>4. Balance levemente de lado a lado.", animation: "happy-baby", target: "Quadril e Lombar" },
+      { name: "Postura Pernas na Parede (Viparita Karani)", duration: 120, instructions: "1. Sente-se de lado próximo a uma parede. <br>2. Deite-se virando as pernas para cima na parede. <br>3. Deixe os braços abertos ao lado do corpo com palmas para cima. <br>4. Permaneça 5 minutos respirando fundo.", animation: "legs-up-wall", target: "Circulação e Recuperação" },
+      { name: "Torção de Coluna Deitada", duration: 60, instructions: "1. Traga os joelhos ao peito. <br>2. Deixe-os cair para o lado direito. <br>3. Vire a cabeça para o lado oposto.", animation: "twist", target: "Coluna e Sistema Nervoso" },
+      { name: "Savasana Guiada", duration: 120, instructions: "1. Deite-se de costas. <br>2. Feche os olhos. <br>3. Relaxe cada parte do corpo da cabeça aos pés, conscientemente. <br>4. Permaneça 8-10 minutos.", animation: "savasana", target: "Restauração do Sistema Nervoso" }
+    ]
+  },
+
+  "Força & Fluidez Yoga": {
+    type: "yoga",
+    duration: "50 min",
+    exercises: [
+      { name: "Postura da Prancha (Phalakasana)", duration: 45, instructions: "1. Apoie as mãos diretamente abaixo dos ombros. <br>2. Estique as pernas formando uma linha reta. <br>3. Contraia o abdômen e os glúteos sem deixar o quadril subir ou cair.", animation: "plank-pose", target: "Core e Força Total" },
+      { name: "Chaturanga Dandasana", duration: 35, instructions: "1. Em prancha alta, dobre os cotovelos próximos ao corpo. <br>2. Desça até a linha dos ombros ficar na altura dos cotovelos. <br>3. Mantenha o corpo reto sem deixar os quadris caírem.", animation: "chaturanga", target: "Tríceps, Peito e Core" },
+      { name: "Cachorro Olhando para Cima (Urdhva Mukha Svanasana)", duration: 40, instructions: "1. Deitada de barriga para baixo, mãos sob os ombros. <br>2. Pressione o chão e eleve o peito e os quadris. <br>3. Apenas as mãos e o peito dos pés tocam o chão. <br>4. Abra o peito e olhe ligeiramente para cima.", animation: "updog", target: "Coluna e Peito" },
+      { name: "Postura do Corvo (Bakasana)", duration: 40, instructions: "1. Agache-se e coloque as mãos no chão. <br>2. Apoie os joelhos nos tríceps e transfira o peso para as mãos. <br>3. Levante os pés do chão e equilibre nos braços. <br>4. Fique 5-10 respirações.", animation: "crow-pose", target: "Braços, Core e Equilíbrio" },
+      { name: "Guerreiro III (Virabhadrasana III)", duration: 45, instructions: "1. Em pé, inclina o tronco para frente. <br>2. Eleve a perna direita atrás formando uma linha reta. <br>3. Estenda os braços à frente ou ao longo do corpo. <br>4. Mantenha o quadril nivelado.", animation: "warrior-3", target: "Equilíbrio e Força de Perna" },
+      { name: "Postura da Meia Lua (Ardha Chandrasana)", duration: 40, instructions: "1. Do Guerreiro II, estique a perna dianteira e leve a mão direita ao chão. <br>2. Eleve a perna esquerda paralela ao chão. <br>3. Abra o quadril e o peito para o lado, estendendo o braço esquerdo para cima.", animation: "half-moon", target: "Equilíbrio Total e Pernas" }
+    ]
+  },
+
+  "Yoga Detox Matinal": {
+    type: "yoga",
+    duration: "30 min",
+    exercises: [
+      { name: "Torção em Cadeira (Parivrtta Utkatasana)", duration: 40, instructions: "1. Agache como se fosse sentar em uma cadeira imaginária. <br>2. Una as mãos no peito em anjali mudra. <br>3. Gire o tronco para a direita colocando o cotovelo esquerdo na parte externa do joelho direito.", animation: "chair-twist", target: "Órgãos Digestivos e Core" },
+      { name: "Saudação ao Sol com Torção", duration: 60, instructions: "1. Execute a sequência da Saudação ao Sol. <br>2. Ao chegar em Guerreiro I, adicione uma torção de tronco. <br>3. Abra um braço para o teto enquanto o outro aponta para o chão.", animation: "vinyasa", target: "Corpo Inteiro e Digestão" },
+      { name: "Postura do Camelo (Ustrasana)", duration: 45, instructions: "1. Ajoelhe-se com os joelhos na largura do quadril. <br>2. Empurre o quadril para frente enquanto inclina o tronco para trás. <br>3. Leve as mãos aos calcanhares ou coloque-as na lombar. <br>4. Abra bem o peito.", animation: "camel-pose", target: "Extensão de Coluna e Tireóide" },
+      { name: "Postura da Cobra (Bhujangasana)", duration: 40, instructions: "1. Deite-se de bruços com as mãos sob os ombros. <br>2. Pressione o chão e eleve o peito lentamente. <br>3. Mantenha os cotovelos ligeiramente dobrados. <br>4. Olhe para frente ou levemente para cima.", animation: "cobra-pose", target: "Lombar e Abertura de Peito" },
+      { name: "Postura da Criança (Balasana)", duration: 60, instructions: "1. Sente-se nos calcanhares. <br>2. Incline o tronco à frente apoiando a testa no chão. <br>3. Braços estendidos à frente ou ao longo do corpo. <br>4. Respire fundo expandindo as costas.", animation: "childs-pose", target: "Relaxamento da Coluna" }
+    ]
+  },
+
+  "Yoga para Iniciantes": {
+    type: "yoga",
+    duration: "25 min",
+    exercises: [
+      { name: "Respiração Diafragmática", duration: 30, instructions: "1. Sente-se ou deite-se confortavelmente. <br>2. Coloque uma mão no peito e outra no abdômen. <br>3. Inspire enchendo o abdômen primeiro. <br>4. Expire vagarosamente.", animation: "breath", target: "Relaxamento e Foco" },
+      { name: "Postura da Montanha (Tadasana)", duration: 30, instructions: "1. Fique de pé com os pés juntos ou levemente afastados. <br>2. Pressione os pés no chão e eleve toda a coluna. <br>3. Relaxe os ombros para baixo e para trás. <br>4. Respire profundamente por 10 respirações.", animation: "mountain-pose", target: "Postura e Alinhamento" },
+      { name: "Postura do Gato-Vaca (Marjaryasana)", duration: 40, instructions: "1. Em quatro apoios. <br>2. Ao inspirar, deixe a barriga cair para o chão e olhe para cima (Vaca). <br>3. Ao expirar, curve a coluna para cima como um gato. <br>4. Repita 10 vezes.", animation: "cat-cow", target: "Mobilidade da Coluna" },
+      { name: "Postura da Criança", duration: 60, instructions: "1. Ajoelhe-se e afaste os joelhos. <br>2. Incline o tronco entre as coxas. <br>3. Estenda os braços à frente ou apoie ao longo do corpo. <br>4. Respire fundo pelas costas.", animation: "childs-pose", target: "Lombar e Ombros" },
+      { name: "Savasana", duration: 60, instructions: "1. Deite-se de costas. <br>2. Deixe o corpo relaxar completamente. <br>3. Feche os olhos e respire naturalmente. <br>4. Permaneça 3-5 minutos.", animation: "savasana", target: "Relaxamento Total" }
+    ]
+  },
+
+  "Yoga Força de Braços": {
+    type: "yoga",
+    duration: "40 min",
+    exercises: [
+      { name: "Prancha Lateral (Vasisthasana)", duration: 40, instructions: "1. Em prancha alta, gire para o lado transferindo o peso para a mão direita. <br>2. Empilhe os pés ou coloque o joelho de baixo no chão. <br>3. Eleve o quadril e estenda o braço esquerdo para cima.", animation: "side-plank", target: "Ombros e Core Lateral" },
+      { name: "Postura do Delfim (Ardha Pincha Mayurasana)", duration: 35, instructions: "1. Em quatro apoios, desça para os antebraços. <br>2. Eleve os quadris formando um V invertido nos antebraços. <br>3. Pressione os antebraços no chão e tente deixar os calcanhares no chão.", animation: "dolphin-pose", target: "Ombros e Isquiotibiais" },
+      { name: "Postura do Corvo (Bakasana)", duration: 40, instructions: "1. Agache e coloque as mãos no chão. <br>2. Dobre os cotovelos e apoie os joelhos neles. <br>3. Transfira o peso para as mãos e levante os pés. <br>4. Equilibre por 5 respirações.", animation: "crow-pose", target: "Braços e Core" },
+      { name: "Chaturanga Dandasana", duration: 35, instructions: "1. Em prancha alta, dobre os cotovelos próximos ao corpo. <br>2. Desça controlado até os ombros ficarem na altura dos cotovelos. <br>3. Suba de volta.", animation: "chaturanga", target: "Tríceps e Peito" },
+      { name: "Postura do Arco (Dhanurasana)", duration: 40, instructions: "1. Deite-se de bruços. <br>2. Dobre os joelhos e segure os tornozelos com as mãos. <br>3. Inspire elevando o peito e as coxas do chão ao mesmo tempo. <br>4. Mantenha o equilíbrio sobre o abdômen.", animation: "bow-pose", target: "Coluna, Peito e Isquiotibiais" }
+    ]
+  },
+
+  // ============================
+  // BODYWEIGHT — TREINO EM CASA
+  // ============================
+
+  "Full Body em Casa": {
+    type: "pilates",
+    equipment: "Mat",
+    sets: 3,
+    reps: 12,
+    exercises: [
+      { name: "Agachamento Isométrico (Wall Sit)", duration: 45, instructions: "1. Encoste-se na parede e desça até os joelhos formarem 90°. <br>2. Mantenha as costas retas e os joelhos alinhados aos pés. <br>3. Segure a posição pelo tempo indicado.", animation: "wall-sit", target: "Quadríceps e Glúteos" },
+      { name: "Superman no Mat", duration: 35, instructions: "1. Deite-se de bruços com braços estendidos à frente. <br>2. Eleve simultaneamente braços, peito e pernas do chão. <br>3. Segure 2 segundos no topo e desça com controle.", animation: "superman", target: "Lombar e Glúteos" },
+      { name: "Bird Dog", duration: 40, instructions: "1. Em quatro apoios, core contraído. <br>2. Estenda o braço direito à frente e a perna esquerda atrás ao mesmo tempo. <br>3. Mantenha a linha reta do calcanhar à mão. <br>4. Troque os lados.", animation: "bird-dog", target: "Core Estabilizador e Lombar" },
+      { name: "Dead Bug", duration: 40, instructions: "1. Deite-se de costas e eleve braços e pernas a 90°. <br>2. Expire estendendo o braço direito atrás e a perna esquerda à frente. <br>3. Retorne e alterne os lados mantendo a lombar no chão.", animation: "dead-bug", target: "Core Profundo e Anti-Rotação" },
+      { name: "Flexão de Braço Modificada", duration: 35, instructions: "1. Apoie os joelhos no chão. <br>2. Mãos um pouco mais largas que os ombros. <br>3. Desça o peito até perto do chão dobrando os cotovelos. <br>4. Suba esticando os braços.", animation: "pushup-bar", target: "Peito, Tríceps e Core" }
+    ]
+  },
+
+  "HIIT Suave em Casa": {
+    type: "pilates",
+    equipment: "Mat",
+    sets: 3,
+    reps: 15,
+    exercises: [
+      { name: "Agachamento com Salto Suave", duration: 30, instructions: "1. Agache até os joelhos formarem 90°. <br>2. Suba com impulso elevando levemente os calcanhares. <br>3. Aterrisse suavemente dobrando os joelhos. <br>4. Repita no ritmo.", animation: "squat-press", target: "Pernas, Glúteos e Cardio" },
+      { name: "Mountain Climbers", duration: 35, instructions: "1. Em prancha alta com braços esticados. <br>2. Traga o joelho direito em direção ao peito e retorne. <br>3. Alterne as pernas em ritmo constante. <br>4. Mantenha os quadris nivelados.", animation: "plank-bar", target: "Core e Cardio" },
+      { name: "Toque no Ombro em Prancha", duration: 40, instructions: "1. Em prancha alta. <br>2. Levante a mão direita e toque o ombro esquerdo. <br>3. Troque os lados. <br>4. Mantenha o quadril estável sem girar.", animation: "plank-bar", target: "Core Anti-Rotação e Braços" },
+      { name: "Ponte com Um Pé", duration: 40, instructions: "1. Deite-se com joelhos dobrados. <br>2. Estique a perna direita para cima. <br>3. Eleve o quadril usando apenas a perna esquerda como suporte. <br>4. Desça devagar e alterne.", animation: "glute-bridge-bar", target: "Glúteos e Isquiotibiais Unilateral" },
+      { name: "Hollow Body Hold", duration: 45, instructions: "1. Deite-se de costas com braços acima da cabeça. <br>2. Eleve levemente braços e pernas do chão. <br>3. Pressione a lombar contra o chão. <br>4. Mantenha a posição contraindo o abdômen.", animation: "hundred", target: "Core Profundo e Resistência" }
+    ]
+  },
+
+  // ============================
+  // PROGRAMAS MISTOS — BARRA + YOGA + MAT
+  // ============================
+
+  "Pilates Bar + Flow Matinal": {
+    type: "pilates",
+    equipment: "Barre",
+    sets: 3,
+    reps: 12,
+    exercises: [
+      { name: "Respiração Ativadora", duration: 30, instructions: "1. Em pé, segure a barra à frente. <br>2. Inspire pelo nariz expandindo as costelas. <br>3. Expire contraindo o abdômen empurrando o ar para fora. <br>4. Repita 10 vezes para ativar o core.", animation: "breath", target: "Core Profundo e Foco" },
+      { name: "Agachamento com Desenvolvimento", duration: 35, instructions: "1. Fique de pé sobre os elásticos da barra de Pilates. <br>2. Posicione a barra na altura dos ombros. <br>3. Agache e ao subir empurre a barra acima da cabeça.", animation: "squat-press", target: "Glúteos e Ombros" },
+      { name: "Guerreiro II com Barra Elevada", duration: 40, instructions: "1. Afaste as pernas em postura de Guerreiro II. <br>2. Segure a barra acima da cabeça com braços esticados. <br>3. Mantenha a barra estável enquanto dobra o joelho dianteiro. <br>4. Sinta o trabalho do core e das pernas.", animation: "warrior-2", target: "Pernas, Core e Ombros" },
+      { name: "Rosca Bíceps com Barra", duration: 35, instructions: "1. Pés nos elásticos. <br>2. Palmas para cima. <br>3. Flexione os cotovelos trazendo a barra aos ombros.", animation: "bicep-curl-bar", target: "Bíceps e Antebraços" },
+      { name: "Alongamento Final — Postura da Criança", duration: 60, instructions: "1. Larguem a barra. <br>2. Ajoelhe-se no mat. <br>3. Incline o tronco à frente estendendo os braços à frente. <br>4. Respire fundo pelas costas.", animation: "childs-pose", target: "Recuperação e Alongamento" }
+    ]
+  },
+
+  "Yoga + Pilates Bar Fusion": {
+    type: "pilates",
+    equipment: "Barre",
+    sets: 3,
+    reps: 12,
+    exercises: [
+      { name: "Saudação ao Sol com Barra", duration: 60, instructions: "1. Segure a barra acima da cabeça. <br>2. Inspire elevando a barra ainda mais. <br>3. Expire dobrando o tronco à frente com a barra à frente. <br>4. Repita 5x para aquecer.", animation: "vinyasa", target: "Aquecimento Total" },
+      { name: "Guerreiro I com Remada", duration: 40, instructions: "1. Em postura Guerreiro I segurando a barra. <br>2. Incline o tronco sobre a perna dianteira. <br>3. Puxe a barra para os quadris em remada curvada.", animation: "row-bar", target: "Costas e Pernas" },
+      { name: "Árvore com Barra de Equilíbrio", duration: 45, instructions: "1. Fique na Postura da Árvore com o pé apoiado na coxa. <br>2. Segure a barra com uma mão à frente para suporte. <br>3. Progressivamente solte a barra aumentando o desafio de equilíbrio.", animation: "tree-pose", target: "Equilíbrio e Tornozelos" },
+      { name: "Elevação de Quadril com Resistência", duration: 40, instructions: "1. Deite no mat com pés nas alças. <br>2. Barra sobre o quadril. <br>3. Eleve contra a resistência elástica.", animation: "glute-bridge-bar", target: "Glúteos e Posterior" },
+      { name: "Savasana de Integração", duration: 90, instructions: "1. Afaste a barra. <br>2. Deite-se completamente no mat. <br>3. Feche os olhos e integre todo o treino. <br>4. Permaneça 3-5 minutos.", animation: "savasana", target: "Recuperação e Integração" }
+    ]
+  },
+
+  "Corpo Completo — Barra + Core": {
+    type: "pilates",
+    equipment: "Barre",
+    sets: 3,
+    reps: 12,
+    exercises: [
+      { name: "Agachamento Sumô com Barra", duration: 40, instructions: "1. Pés afastados e apontados para fora. <br>2. Barra atrás dos ombros. <br>3. Agache descendo o quadril até os joelhos.", animation: "sumo-squat-bar", target: "Glúteos e Adutores" },
+      { name: "O Cem com Barra Aérea", duration: 50, instructions: "1. Deite-se e eleve as pernas a 45°. <br>2. Segure a barra verticalmente acima do peito com braços esticados. <br>3. Eleve a cabeça e os ombros. <br>4. Bombeie os braços 100 vezes.", animation: "hundred", target: "Core Total" },
+      { name: "Prancha com Barra", duration: 45, instructions: "1. Mãos na barra no chão. <br>2. Corpo em linha reta. <br>3. Core ativado por 30-45 segundos.", animation: "plank-bar", target: "Core e Estabilizadores" },
+      { name: "Rosca Inversa com Barra", duration: 35, instructions: "1. Pegada pronada sobre os elásticos. <br>2. Flexione os cotovelos puxando a barra ao peito.", animation: "reverse-curl-bar", target: "Antebraços e Bíceps" },
+      { name: "Roll-Up + Barra Estendida", duration: 45, instructions: "1. Deite com a barra acima da cabeça. <br>2. Expire enrolando a coluna vértebra por vértebra. <br>3. Estenda a barra para os pés no topo. <br>4. Retorne devagar.", animation: "roll-up", target: "Abdômen e Coluna" }
+    ]
+  },
+
+
+
   "Squat & Press": {
     type: "pilates",
     equipment: "Barre",
