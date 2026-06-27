@@ -93,10 +93,6 @@ const workoutData = {
     ]
   },
 
-  // ============================
-  // PILATES — BARRE SESSIONS
-  // ============================
-
   "Squat & Press": {
     type: "pilates",
     equipment: "Barre",
@@ -127,6 +123,44 @@ const workoutData = {
       { name: "Remada Curvada com Barra", duration: 35, instructions: "1. Incline o tronco a 45° mantendo as costas retas. <br>2. Segure a barra com as duas mãos à frente. <br>3. Puxe os cotovelos para trás e para cima. <br>4. Aperte as escápulas no topo e desça com controle.", animation: "row-bar", target: "Costas e Bíceps" },
       { name: "Elevação Lateral com Barra", duration: 30, instructions: "1. Fique de pé com a barra paralela ao chão na frente do corpo. <br>2. Mantenha o core contraído. <br>3. Eleve a barra lateralmente até a altura dos ombros. <br>4. Desça com controle.", animation: "side-raise-bar", target: "Deltoides Laterais" },
       { name: "Prancha com Barra", duration: 45, instructions: "1. Apoie as mãos na barra colocada no chão. <br>2. Estique as pernas e forme uma linha reta do calcanhar à cabeça. <br>3. Contraia o abdômen e os glúteos. <br>4. Mantenha por 30-45 segundos respirando.", animation: "plank-bar", target: "Core e Estabilizadores" }
+    ]
+  },
+
+  "Escultura de Braços & Bíceps": {
+    type: "pilates",
+    equipment: "Barre",
+    sets: 3,
+    reps: 15,
+    exercises: [
+      { name: "Rosca Bíceps com Barra", duration: 35, instructions: "1. Fique de pé pisando nas alças elásticas com ambos os pés. <br>2. Segure a barra com as palmas voltadas para cima na largura dos ombros. <br>3. Flexione os cotovelos trazendo a barra em direção aos ombros, tensionando os elásticos. <br>4. Desça de forma controlada.", animation: "bicep-curl-bar", target: "Bíceps e Antebraços" },
+      { name: "Desenvolvimento Militar com Barra", duration: 35, instructions: "1. Com a barra na altura do peito e as palmas voltadas para a frente. <br>2. Empurre a barra para cima até esticar completamente os braços acima da cabeça. <br>3. Retorne devagar até a altura dos ombros sob tensão constante.", animation: "military-press-bar", target: "Ombros e Tríceps" },
+      { name: "Tríceps Overhead com Barra", duration: 40, instructions: "1. Eleve a barra acima da cabeça com as mãos próximas. <br>2. Mantendo os cotovelos apontados para a frente, flexione-os descendo a barra atrás da cabeça. <br>3. Estenda os braços novamente empurrando contra a resistência do elástico.", animation: "tricep-overhead-bar", target: "Tríceps" }
+    ]
+  },
+
+  "Pernas & Glúteos Extremos": {
+    type: "pilates",
+    equipment: "Barre",
+    sets: 4,
+    reps: 12,
+    exercises: [
+      { name: "Agachamento Sumô com Barra", duration: 40, instructions: "1. Afaste bem os pés com as pontas viradas para fora, pisando nos elásticos. <br>2. Descanse a barra de forma segura atrás dos ombros. <br>3. Agache descendo o quadril até a linha dos joelhos. <br>4. Suba apertando os glúteos.", animation: "sumo-squat-bar", target: "Glúteos, Adutores e Quadríceps" },
+      { name: "Elevação de Quadril com Resistência", duration: 40, instructions: "1. Deite-se de costas com os pés nas alças elásticas. <br>2. Posicione a barra sobre a linha do quadril segurando-a com as mãos. <br>3. Eleve o quadril do chão contra a resistência elástica da barra que é empurrada para baixo. <br>4. Segure 1s e desça vértebra por vértebra.", animation: "glute-bridge-bar", target: "Glúteos e Posterior de Coxa" },
+      { name: "Chute Traseiro com Elástico da Barra", duration: 35, instructions: "1. Fique em quatro apoios segurando as duas pontas da barra contra o mat. <br>2. Posicione a alça elástica na sola do pé direito. <br>3. Dê um chute para trás e para cima esticando completamente a perna contra o elástico. <br>4. Alterne após a série.", animation: "donkey-kick-bar", target: "Glúteos e Lombar" }
+    ]
+  },
+
+  "Definição & Cintura Oblíqua": {
+    type: "pilates",
+    equipment: "Barre",
+    sets: 3,
+    reps: 15,
+    exercises: [
+      { name: "Giro de Cintura com Barra", duration: 45, instructions: "1. Fique de pé com os pés sobre as alças elásticas. <br>2. Posicione a barra atrás dos ombros. <br>3. Mantendo os quadris apontados para a frente, gire o tronco lateralmente para a direita e depois para a esquerda. <br>4. Sinta a ativação oblíqua intensa.", animation: "torso-twist-bar", target: "Oblíquos e Core Lateral" },
+      { name: "Flexão Auxiliada com Barra", duration: 40, instructions: "1. Fique na posição de flexão apoiando as duas mãos firmemente na barra no chão. <br>2. Flexione os cotovelos trazendo o peito perto da barra. <br>3. Empurre de volta com força mantendo o core ativado.", animation: "pushup-bar", target: "Peito, Ombros e Core" },
+      { name: "Prancha com Barra", duration: 45, instructions: "1. Apoie as mãos na barra colocada no chão. <br>2. Estique as pernas e forme uma linha reta do calcanhar à cabeça.", animation: "plank-bar", target: "Core" }
+    ]
+  },ha reta do calcanhar à cabeça. <br>3. Contraia o abdômen e os glúteos. <br>4. Mantenha por 30-45 segundos respirando.", animation: "plank-bar", target: "Core e Estabilizadores" }
     ]
   },
 
