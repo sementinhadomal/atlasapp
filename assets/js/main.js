@@ -158,9 +158,7 @@ const workoutData = {
     exercises: [
       { name: "Giro de Cintura com Barra", duration: 45, instructions: "1. Fique de pé com os pés sobre as alças elásticas. <br>2. Posicione a barra atrás dos ombros. <br>3. Mantendo os quadris apontados para a frente, gire o tronco lateralmente para a direita e depois para a esquerda. <br>4. Sinta a ativação oblíqua intensa.", animation: "torso-twist-bar", target: "Oblíquos e Core Lateral" },
       { name: "Flexão Auxiliada com Barra", duration: 40, instructions: "1. Fique na posição de flexão apoiando as duas mãos firmemente na barra no chão. <br>2. Flexione os cotovelos trazendo o peito perto da barra. <br>3. Empurre de volta com força mantendo o core ativado.", animation: "pushup-bar", target: "Peito, Ombros e Core" },
-      { name: "Prancha com Barra", duration: 45, instructions: "1. Apoie as mãos na barra colocada no chão. <br>2. Estique as pernas e forme uma linha reta do calcanhar à cabeça.", animation: "plank-bar", target: "Core" }
-    ]
-  },ha reta do calcanhar à cabeça. <br>3. Contraia o abdômen e os glúteos. <br>4. Mantenha por 30-45 segundos respirando.", animation: "plank-bar", target: "Core e Estabilizadores" }
+      { name: "Prancha com Barra", duration: 45, instructions: "1. Apoie as mãos na barra colocada no chão. <br>2. Estique as pernas e forme uma linha reta do calcanhar à cabeça. <br>3. Contraia o abdômen e os glúteos. <br>4. Mantenha por 30-45 segundos respirando.", animation: "plank-bar", target: "Core" }
     ]
   },
 
