@@ -162,6 +162,30 @@ const workoutData = {
     ]
   },
 
+  "Resistência & Quadril com Barra": {
+    type: "pilates",
+    equipment: "Barre",
+    sets: 3,
+    reps: 12,
+    exercises: [
+      { name: "Passo Lateral com Barra", duration: 40, instructions: "1. Fique de pé com os pés dentro das alças elásticas da barra de Pilates. <br>2. Segure a barra à frente do peito com elásticos tensionados. <br>3. Dê passos laterais largos controlando a tração do elástico que puxa as pernas para dentro.", animation: "lateral-walk-bar", target: "Abdutores de Quadril e Glúteo Médio" },
+      { name: "Afundo Búlgaro com Barra", duration: 35, instructions: "1. Posicione um pé atrás apoiado no elástico da barra, mantendo o outro pé no mat. <br>2. Segure a barra apoiada nos ombros. <br>3. Desça o joelho de trás em direção ao chão e retorne elevando o tronco.", animation: "bulgarian-lunge-bar", target: "Quadríceps, Glúteos e Estabilidade" },
+      { name: "Agachamento Sumô com Barra", duration: 40, instructions: "1. Afaste bem os pés com as pontas viradas para fora, pisando nos elásticos. <br>2. Descanse a barra de forma segura atrás dos ombros. <br>3. Agache descendo o quadril até a linha dos joelhos.", animation: "sumo-squat-bar", target: "Glúteos, Adutores e Quadríceps" }
+    ]
+  },
+
+  "Superiores & Postura com Barra": {
+    type: "pilates",
+    equipment: "Barre",
+    sets: 3,
+    reps: 15,
+    exercises: [
+      { name: "Elevação Frontal com Barra", duration: 30, instructions: "1. Fique de pé com os pés dentro das alças da barra. <br>2. Segure a barra à frente das coxas com pegada pronada (palmas para baixo). <br>3. Eleve a barra mantendo os braços retos até a altura dos ombros contra a resistência elástica. <br>4. Desça devagar.", animation: "front-raise-bar", target: "Deltoides Anteriores e Postura" },
+      { name: "Rosca Inversa com Barra", duration: 35, instructions: "1. Fique de pé pisando nos elásticos da barra. <br>2. Segure a barra com pegada pronada (palmas voltadas para baixo). <br>3. Flexione os cotovelos trazendo a barra em direção ao peito para trabalhar antebraço e bíceps. <br>4. Retorne devagar.", animation: "reverse-curl-bar", target: "Antebraços e Bíceps Braquial" },
+      { name: "Remada Curvada com Barra", duration: 35, instructions: "1. Incline o tronco a 45° mantendo as costas retas. <br>2. Segure a barra com as duas mãos à frente. <br>3. Puxe os cotovelos para trás e para cima.", animation: "row-bar", target: "Costas e Bíceps" }
+    ]
+  },
+
   // ============================
   // PILATES — RING SESSIONS
   // ============================
