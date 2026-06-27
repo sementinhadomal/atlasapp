@@ -182,6 +182,52 @@ const workoutData = {
       { name: "Círculo de Perna", duration: 40, instructions: "1. Deite-se de costas com uma perna esticada no chão. <br>2. Eleve a outra perna em direção ao teto. <br>3. Faça círculos lentos e controlados com a perna elevada. <br>4. Mantenha o quadril completamente fixo no chão.", animation: "leg-circle", target: "Quadril e Estabilidade de Core" },
       { name: "Pont com Enrolamento", duration: 45, instructions: "1. Deite-se de costas com joelhos dobrados. <br>2. Eleve os quadris articulando a coluna vértebra por vértebra. <br>3. No topo, contraia os glúteos. <br>4. Desça enrolando de volta com controle.", animation: "bridge", target: "Coluna, Glúteos e Isquiotibiais" }
     ]
+  },
+
+  "Core Avançado de Pilates": {
+    type: "pilates",
+    equipment: "Mat",
+    sets: 3,
+    reps: 12,
+    exercises: [
+      { name: "O Cem (The Hundred)", duration: 60, instructions: "1. Deite-se de costas e eleve as pernas a 45°. <br>2. Bombeie os braços esticados ao lado do corpo respirando cadenciadamente.", animation: "hundred", target: "Core Resistência" },
+      { name: "O Teaser", duration: 50, instructions: "1. Deite de costas e eleve pernas e braços a 45° simultaneamente. <br>2. Equilibre-se sobre o cóccix formando um V perfeito com o corpo. <br>3. Sustente a posição com o abdômen contraído.", animation: "teaser-pilates", target: "Core Total e Equilíbrio" },
+      { name: "Tesouras no Mat", duration: 40, instructions: "1. Curve a cabeça e ombros para cima. <br>2. Eleve uma perna reta e puxe-a com as mãos enquanto a outra flutua esticada perto do chão. <br>3. Alterne as pernas de forma contínua.", animation: "scissors-pilates", target: "Abdominais Inferiores e Posterior de Coxa" },
+      { name: "Alongamento Duplo de Pernas", duration: 45, instructions: "1. Traga os joelhos ao peito abraçando as canelas. <br>2. Estenda os braços para trás e as pernas para a frente a 45° ao mesmo tempo. <br>3. Retorne em círculo abraçando os joelhos.", animation: "double-leg-stretch", target: "Core Estabilizador" }
+    ]
+  },
+
+  "Flexibilidade Avançada": {
+    type: "yoga",
+    duration: "45 min",
+    exercises: [
+      { name: "Postura da Meia Lua (Ardha Chandrasana)", duration: 45, instructions: "1. Incline o tronco lateralmente apoiando uma mão no chão ou bloco. <br>2. Eleve a outra perna paralela ao chão. <br>3. Estenda o braço oposto em direção ao teto abrindo o quadril e o peito.", animation: "half-moon", target: "Equilíbrio, Pernas e Quadril" },
+      { name: "Postura do Pombo", duration: 50, instructions: "1. Traga o joelho direito para a frente no chão. <br>2. Estique a perna esquerda totalmente para trás. <br>3. Desça o quadril em direção ao mat.", animation: "pigeon", target: "Flexores de Quadril" },
+      { name: "Postura do Camelo (Ustrasana)", duration: 40, instructions: "1. Ajoelhe-se no mat na largura do quadril. <br>2. Incline o tronco para trás levando as mãos até os calcanhares. <br>3. Empurre os quadris para frente e abra bem o peito.", animation: "camel-pose", target: "Extensão de Coluna e Ombros" },
+      { name: "Postura da Cobra (Bhujangasana)", duration: 40, instructions: "1. Deite de bruços no mat. <br>2. Pressione as mãos sob os ombros e eleve o peito do chão. <br>3. Mantenha os cotovelos flexionados e próximos às costelas.", animation: "cobra-pose", target: "Fortalecimento Lombar" }
+    ]
+  },
+
+  "Pilates Escultura Lateral": {
+    type: "pilates",
+    equipment: "Mat",
+    sets: 3,
+    reps: 15,
+    exercises: [
+      { name: "Chute Lateral (Side Kick)", duration: 45, instructions: "1. Deite-se de lado apoiando a cabeça na mão. <br>2. Traga as pernas levemente à frente. <br>3. Eleve a perna de cima à altura do quadril e chute à frente duas vezes e atrás uma vez de forma controlada.", animation: "side-kick-pilates", target: "Glúteo Médio e Estabilidade de Core" },
+      { name: "A Serra (Pilates Saw)", duration: 40, instructions: "1. Sente-se com as pernas abertas além da largura do mat. <br>2. Gire o tronco e alcance o pé oposto com a mão serrando o dedo mindinho do pé. <br>3. Retorne com a coluna reta e alterne os lados.", animation: "saw-pilates", target: "Mobilidade de Coluna e Oblíquos" },
+      { name: "Aperto Lateral com Anel", duration: 35, instructions: "1. Deite-se de lado com o anel entre os tornozelos. <br>2. Eleve ambas as pernas espremendo o anel no topo.", animation: "ring-side-squeeze", target: "Adutores e Lateral do Corpo" }
+    ]
+  },
+
+  "Power Flow Desafio Core": {
+    type: "yoga",
+    duration: "35 min",
+    exercises: [
+      { name: "Postura do Barco (Navasana)", duration: 50, instructions: "1. Sente-se no mat com joelhos dobrados. <br>2. Incline o tronco reto para trás e estique as pernas a 45° formando um V. <br>3. Estenda os braços à frente paralelos ao chão.", animation: "boat-pose", target: "Abdômen e Flexores de Quadril" },
+      { name: "Prancha Tradicional (Phalakasana)", duration: 45, instructions: "1. Apoie as mãos na largura dos ombros com os braços esticados. <br>2. Mantenha o corpo alinhado da cabeça aos pés sem deixar o quadril cair.", animation: "plank-pose", target: "Força Total e Core" },
+      { name: "Cachorro Olhando para Baixo", duration: 30, instructions: "1. Suba os quadris e estique as pernas formando um V invertido. <br>2. Empurre os calcanhares em direção ao chão.", animation: "down-dog", target: "Posterior e Ombros" }
+    ]
   }
 };
 
