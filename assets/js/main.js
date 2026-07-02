@@ -6,13 +6,13 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initMobileMenu();
-  initVideoModal();
-  initFilters();
-  initFAQ();
-  initScrollReveal();
-  initAuth();
-  initProgramProgress();
+  try { initMobileMenu(); } catch (e) { console.error('initMobileMenu error:', e); }
+  try { initVideoModal(); } catch (e) { console.error('initVideoModal error:', e); }
+  try { initFilters(); } catch (e) { console.error('initFilters error:', e); }
+  try { initFAQ(); } catch (e) { console.error('initFAQ error:', e); }
+  try { initScrollReveal(); } catch (e) { console.error('initScrollReveal error:', e); }
+  try { initAuth(); } catch (e) { console.error('initAuth error:', e); }
+  try { initProgramProgress(); } catch (e) { console.error('initProgramProgress error:', e); }
 });
 
 // ==========================================
