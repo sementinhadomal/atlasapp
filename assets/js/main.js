@@ -2947,19 +2947,150 @@ window.generateWorkoutMix = function(programId, programName, day, durationMinute
   };
 };
 
+function unlockAllPageElements() {
+  // Remove all lock overlays
+  document.querySelectorAll('.card__lock, .lock-icon, [data-lock]').forEach(el => el.remove());
+  
+  // Remove any absolute lock containers from cards
+  document.querySelectorAll('div[style*="position:absolute"], div[style*="position: absolute"]').forEach(el => {
+    if (el.innerHTML.includes('<svg') && (el.innerHTML.includes('rect') || el.innerHTML.includes('path'))) {
+      if (!el.textContent.includes('Most Popular') && !el.textContent.includes('Free') && !el.textContent.includes('Novo') && !el.textContent.includes('Elite')) {
+        el.remove();
+      }
+    }
+  });
+
+  // Remove padlock elements from library cards
+  document.querySelectorAll('.exercise-item svg').forEach(svg => {
+    if (svg.innerHTML.includes('rect') && svg.innerHTML.includes('path')) {
+      const parent = svg.parentElement;
+      if (parent && parent.style.position === 'absolute') {
+        parent.remove();
+      }
+    }
+  });
+
+  // Normalize image brightness
+  document.querySelectorAll('img').forEach(img => {
+    if (img.style.filter && img.style.filter.includes('brightness')) {
+      img.style.filter = '';
+    }
+  });
+}
+
+function removeHomeLinkOnDesktop() {
+  // Check if screen is desktop width
+  if (window.innerWidth > 768) {
+    const desktopLinks = document.querySelectorAll('.nav__links li');
+    desktopLinks.forEach(li => {
+      const a = li.querySelector('a');
+      if (a) {
+        const text = a.textContent.trim().toLowerCase();
+        if (text === 'home' || text === 'início' || text === 'inicio') {
+          li.remove();
+        }
+      }
+    });
+  }
+}
+
+/**
+ * Dynamically tracks and renders program progress grids (D1, D2...)
+ * and buttons, saving user state to localStorage.
+ */
+function fixLinksDynamically() {
+  document.querySelectorAll('a').forEach(a => {
+    let href = a.getAttribute('href');
+    if (!href) return;
+    
+    // Replace index.html with programs.html
+    if (href.includes('index.html')) {
+      href = href.replace('index.html', 'programs.html');
+    }
+    
+    // Add cache-busting v=1.1.2 to internal .html links
+    if (href.endsWith('.html') || href.includes('.html?')) {
+      const parts = href.split('?');
+      href = parts[0] + '?v=1.1.2';
+    }
+    
+    a.setAttribute('href', href);
+  });
+}
+
 /**
  * Dynamically tracks and renders program progress grids (D1, D2...)
  * and buttons, saving user state to localStorage.
  */
 function initProgramProgress() {
-  const progressGrids = document.querySelectorAll('.program-progress-grid');
+  // Fix links dynamically
+  try { fixLinksDynamically(); } catch (e) { console.error(e); }
+
+  // First, unlock all elements on the page dynamically
+  try { unlockAllPageElements(); } catch (e) { console.error(e); }
   
-  progressGrids.forEach(grid => {
-    const programId = grid.getAttribute('data-program-id');
-    const totalDays = parseInt(grid.getAttribute('data-total-days')) || 7;
-    const prefix = grid.getAttribute('data-prefix') || 'D';
-    
-    // Check localStorage progress (default to 1 Day instead of hardcoded Day 4/2)
+  // Second, remove Home link on desktop dynamically
+  try { removeHomeLinkOnDesktop(); } catch (e) { console.error(e); }
+
+  const programsGrid = document.getElementById('programsGrid');
+  if (!programsGrid) return;
+
+  const cards = programsGrid.querySelectorAll('.reveal');
+  cards.forEach(card => {
+    const titleEl = card.querySelector('h2');
+    if (!titleEl) return;
+    const title = titleEl.textContent.trim();
+    const programId = getProgramId(title);
+
+    // Extract total days (e.g. 21 Dias, 30 Dias, 7 Dias, 14 Dias)
+    let totalDays = 7;
+    const cardText = card.textContent;
+    const dayMatch = cardText.match(/(\d+)\s*Dias/i);
+    if (dayMatch) {
+      totalDays = parseInt(dayMatch[1]) || 7;
+    }
+
+    const prefix = programId.includes('yoga') ? 'S' : 'D';
+
+    // Inject the progress grid dynamically right before the actions container
+    let grid = card.querySelector('.program-progress-grid');
+    if (!grid) {
+      grid = document.createElement('div');
+      grid.className = 'program-progress-grid';
+      grid.setAttribute('data-program-id', programId);
+      grid.setAttribute('data-total-days', totalDays);
+      grid.setAttribute('data-prefix', prefix);
+      
+      // Styling details matching the dark premium theme
+      grid.style.display = 'grid';
+      grid.style.gridTemplateColumns = 'repeat(7, 1fr)';
+      grid.style.gap = 'var(--space-xs)';
+      grid.style.marginBottom = 'var(--space-xl)';
+      grid.style.marginTop = 'var(--space-md)';
+
+      // Find the actions bar or button in the card
+      const btn = card.querySelector('a[href*="subscription.html"], .btn');
+      if (btn && btn.parentElement) {
+        btn.parentElement.insertBefore(grid, btn);
+      } else {
+        card.appendChild(grid);
+      }
+    }
+
+    // Hijack button to trigger startProgram
+    const btn = card.querySelector('a[href*="subscription.html"], .btn');
+    if (btn) {
+      btn.id = `btn-${programId}`;
+      btn.removeAttribute('href');
+      btn.style.cursor = 'pointer';
+      btn.className = 'btn btn--primary';
+      btn.onclick = (e) => {
+        e.preventDefault();
+        window.startProgram(title, totalDays);
+      };
+    }
+
+    // Check localStorage progress
     let currentProgress = localStorage.getItem(`atlas_program_progress_${programId}`);
     if (currentProgress === null) {
       currentProgress = 1;
@@ -2967,7 +3098,7 @@ function initProgramProgress() {
     } else {
       currentProgress = parseInt(currentProgress) || 1;
     }
-    
+
     renderGrid(grid, programId, totalDays, prefix, currentProgress);
   });
 }
@@ -3462,20 +3593,47 @@ function applyTranslations(lang) {
   const dictionary = translations[lang];
   if (!dictionary) return;
 
-  // Translate Navbar
+  // Translate Navbar based on text content
   const navLinks = document.querySelectorAll('.nav__link');
-  const navKeys = ["Home", "Yoga", "Pilates", "Programs", "Library"];
-  navLinks.forEach((link, idx) => {
-    if (navKeys[idx]) {
-      link.textContent = dictionary[navKeys[idx]];
+  navLinks.forEach(link => {
+    const key = link.getAttribute('data-nav-key') || link.textContent.trim();
+    if (!link.getAttribute('data-nav-key')) {
+      link.setAttribute('data-nav-key', key);
+    }
+    if (dictionary[key]) {
+      link.textContent = dictionary[key];
+    } else if (key.toLowerCase() === 'home' && dictionary['Home']) {
+      link.textContent = dictionary['Home'];
+    } else if (key.toLowerCase() === 'yoga' && dictionary['Yoga']) {
+      link.textContent = dictionary['Yoga'];
+    } else if (key.toLowerCase() === 'pilates' && dictionary['Pilates']) {
+      link.textContent = dictionary['Pilates'];
+    } else if (key.toLowerCase() === 'programs' && dictionary['Programs']) {
+      link.textContent = dictionary['Programs'];
+    } else if (key.toLowerCase() === 'library' && dictionary['Library']) {
+      link.textContent = dictionary['Library'];
     }
   });
 
   // Translate Drawer Links
   const drawerLinks = document.querySelectorAll('.drawer-link');
-  drawerLinks.forEach((link, idx) => {
-    if (navKeys[idx]) {
-      link.textContent = dictionary[navKeys[idx]];
+  drawerLinks.forEach(link => {
+    const key = link.getAttribute('data-nav-key') || link.textContent.trim();
+    if (!link.getAttribute('data-nav-key')) {
+      link.setAttribute('data-nav-key', key);
+    }
+    if (dictionary[key]) {
+      link.textContent = dictionary[key];
+    } else if (key.toLowerCase() === 'home' && dictionary['Home']) {
+      link.textContent = dictionary['Home'];
+    } else if (key.toLowerCase() === 'yoga' && dictionary['Yoga']) {
+      link.textContent = dictionary['Yoga'];
+    } else if (key.toLowerCase() === 'pilates' && dictionary['Pilates']) {
+      link.textContent = dictionary['Pilates'];
+    } else if (key.toLowerCase() === 'programs' && dictionary['Programs']) {
+      link.textContent = dictionary['Programs'];
+    } else if (key.toLowerCase() === 'library' && dictionary['Library']) {
+      link.textContent = dictionary['Library'];
     }
   });
 

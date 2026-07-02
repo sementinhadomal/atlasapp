@@ -14,20 +14,20 @@
   <!-- NAV -->
   <nav class="nav nav--scrolled" id="nav">
     <div class="container nav__inner">
-      <a href="programs.html?v=1.1.1" class="nav__logo">
+      <a href="programs.html?v=1.1.2" class="nav__logo">
         <img src="assets/images/logo-mark.png" alt="Atlas Pilates" class="nav__logo-mark" />
         <span class="nav__logo-text">Atlas Pilates</span>
       </a>
       <ul class="nav__links">
-        
-        <li><a href="yoga.html?v=1.1.1" class="nav__link">Yoga</a></li>
-        <li><a href="pilates.html?v=1.1.1" class="nav__link">Pilates</a></li>
-        <li><a href="programs.html?v=1.1.1" class="nav__link">Programs</a></li>
-        <li><a href="library.html?v=1.1.1" class="nav__link active">Library</a></li>
+        <li><a href="programs.html?v=1.1.2" class="nav__link">Home</a></li>
+        <li><a href="yoga.html?v=1.1.2" class="nav__link">Yoga</a></li>
+        <li><a href="pilates.html?v=1.1.2" class="nav__link">Pilates</a></li>
+        <li><a href="programs.html?v=1.1.2" class="nav__link">Programs</a></li>
+        <li><a href="library.html?v=1.1.2" class="nav__link active">Library</a></li>
       </ul>
       <div class="nav__actions">
-        <a href="profile.html?v=1.1.1" class="btn btn--outline btn--sm">Sign In</a>
-        <a href="subscription.html?v=1.1.1" class="btn btn--primary btn--sm">Start Free</a>
+        <a href="profile.html?v=1.1.2" class="btn btn--outline btn--sm">Sign In</a>
+        <a href="subscription.html?v=1.1.2" class="btn btn--primary btn--sm">Start Free</a>
         <button class="nav__menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
       </div>
     </div>
@@ -39,12 +39,12 @@
     <div class="mobile-drawer__panel">
       <button class="drawer-close" id="drawerClose">✕</button>
       <nav class="drawer-links">
-        <a href="programs.html?v=1.1.1" class="drawer-link">Home</a>
-        <a href="yoga.html?v=1.1.1" class="drawer-link">Yoga</a>
-        <a href="pilates.html?v=1.1.1" class="drawer-link">Pilates</a>
-        <a href="programs.html?v=1.1.1" class="drawer-link">Programs</a>
-        <a href="library.html?v=1.1.1" class="drawer-link">Library</a>
-        <a href="profile.html?v=1.1.1" class="drawer-link">Profile</a>
+        <a href="programs.html?v=1.1.2" class="drawer-link">Home</a>
+        <a href="yoga.html?v=1.1.2" class="drawer-link">Yoga</a>
+        <a href="pilates.html?v=1.1.2" class="drawer-link">Pilates</a>
+        <a href="programs.html?v=1.1.2" class="drawer-link">Programs</a>
+        <a href="library.html?v=1.1.2" class="drawer-link">Library</a>
+        <a href="profile.html?v=1.1.2" class="drawer-link">Profile</a>
       </nav>
     </div>
   </div>
@@ -157,8 +157,10 @@
 
         <div class="exercise-item" data-equipment="none" data-level="intermediate" data-duration="medium" data-name="power vinyasa" onclick="openVideoModal('Power Vinyasa Flow')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Power Vinyasa" style="width:100%;height:100%;object-fit:cover;" /></div>
-            
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Power Vinyasa" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-sage); text-transform:uppercase;">Yoga · Strength</span>
@@ -174,8 +176,10 @@
 
         <div class="exercise-item" data-equipment="elastic" data-level="intermediate" data-duration="short" data-name="romanian deadlift" onclick="openExerciseModal('Pernas & Glúteos Extremos')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Romanian Deadlift" style="width:100%;height:100%;object-fit:cover;object-position: center top;" /></div>
-            
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Romanian Deadlift" style="width:100%;height:100%;object-fit:cover;object-position: center top;filter:brightness(0.8);" /></div>
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Bar + Elastic · Glutes</span>
@@ -207,8 +211,10 @@
 
         <div class="exercise-item" data-equipment="ring" data-level="intermediate" data-duration="short" data-name="chest squeeze" onclick="openExerciseModal('Inner Thigh Squeeze')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Chest Squeeze" style="width:100%;height:100%;object-fit:cover;" /></div>
-            
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Chest Squeeze" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Ring · Arms</span>
@@ -224,8 +230,10 @@
 
         <div class="exercise-item" data-equipment="none" data-level="advanced" data-duration="long" data-name="arm balances" onclick="openVideoModal('Sunrise Morning Flow')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Arm Balances" style="width:100%;height:100%;object-fit:cover;" /></div>
-            
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Arm Balances" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-sage); text-transform:uppercase;">Yoga · Advanced</span>
@@ -242,8 +250,10 @@
         <!-- NEW: Boat Pose -->
         <div class="exercise-item" data-equipment="none" data-level="advanced" data-duration="short" data-name="boat pose navasana" onclick="openVideoModal('Power Flow Desafio Core')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Boat Pose" style="width:100%;height:100%;object-fit:cover;" /></div>
-            
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Boat Pose" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-sage); text-transform:uppercase;">Yoga · Core</span>
@@ -277,8 +287,10 @@
         <!-- NEW: Teaser -->
         <div class="exercise-item" data-equipment="none" data-level="advanced" data-duration="short" data-name="pilates teaser core" onclick="openExerciseModal('Core Avançado de Pilates')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="O Teaser" style="width:100%;height:100%;object-fit:cover;" /></div>
-            
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="O Teaser" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Pilates · Core</span>
@@ -295,8 +307,10 @@
         <!-- NEW: Scissors -->
         <div class="exercise-item" data-equipment="none" data-level="intermediate" data-duration="short" data-name="pilates scissors tesouras" onclick="openExerciseModal('Core Avançado de Pilates')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Scissors" style="width:100%;height:100%;object-fit:cover;" /></div>
-            
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Scissors" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Pilates · Legs</span>
@@ -316,9 +330,11 @@
 
         <div class="exercise-item" data-equipment="bar" data-level="beginner" data-duration="short" data-name="rosca bíceps na barra" onclick="openExerciseModal('Rosca Bíceps na Barra')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre.png" alt="Rosca Bíceps na Barra" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre.png" alt="Rosca Bíceps na Barra" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Bar · Braços</span>
@@ -334,9 +350,11 @@
   
         <div class="exercise-item" data-equipment="bar" data-level="intermediate" data-duration="short" data-name="remada curvada com barra" onclick="openExerciseModal('Remada Curvada com Barra')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre.png" alt="Remada Curvada com Barra" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre.png" alt="Remada Curvada com Barra" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Bar · Costas</span>
@@ -352,9 +370,11 @@
   
         <div class="exercise-item" data-equipment="bar" data-level="intermediate" data-duration="short" data-name="agachamento sumô com barra" onclick="openExerciseModal('Agachamento Sumô com Barra')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre.png" alt="Agachamento Sumô com Barra" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre.png" alt="Agachamento Sumô com Barra" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Bar · Pernas</span>
@@ -370,9 +390,11 @@
   
         <div class="exercise-item" data-equipment="bar" data-level="intermediate" data-duration="short" data-name="elevação de quadril com barra" onclick="openExerciseModal('Elevação de Quadril com Barra')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre.png" alt="Elevação de Quadril com Barra" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre.png" alt="Elevação de Quadril com Barra" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Bar · Glúteos</span>
@@ -388,9 +410,11 @@
   
         <div class="exercise-item" data-equipment="bar" data-level="intermediate" data-duration="short" data-name="desenvolvimento com barra" onclick="openExerciseModal('Desenvolvimento com Barra')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre.png" alt="Desenvolvimento com Barra" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre.png" alt="Desenvolvimento com Barra" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Bar · Ombros</span>
@@ -406,9 +430,11 @@
   
         <div class="exercise-item" data-equipment="bar" data-level="intermediate" data-duration="short" data-name="avanço reverso com barra" onclick="openExerciseModal('Avanço Reverso com Barra')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre.png" alt="Avanço Reverso com Barra" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre.png" alt="Avanço Reverso com Barra" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Bar · Pernas</span>
@@ -424,9 +450,11 @@
   
         <div class="exercise-item" data-equipment="bar" data-level="advanced" data-duration="short" data-name="prancha com apoio na barra" onclick="openExerciseModal('Prancha com Apoio na Barra')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre.png" alt="Prancha com Apoio na Barra" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre.png" alt="Prancha com Apoio na Barra" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Bar · Core</span>
@@ -442,9 +470,11 @@
   
         <div class="exercise-item" data-equipment="bar" data-level="intermediate" data-duration="short" data-name="tríceps testa com barra" onclick="openExerciseModal('Tríceps Testa com Barra')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre.png" alt="Tríceps Testa com Barra" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre.png" alt="Tríceps Testa com Barra" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Bar · Tríceps</span>
@@ -460,9 +490,11 @@
   
         <div class="exercise-item" data-equipment="bar" data-level="intermediate" data-duration="short" data-name="abdominal infra com barra" onclick="openExerciseModal('Abdominal Infra com Barra')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre.png" alt="Abdominal Infra com Barra" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre.png" alt="Abdominal Infra com Barra" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Bar · Core</span>
@@ -478,9 +510,11 @@
   
         <div class="exercise-item" data-equipment="bar" data-level="beginner" data-duration="short" data-name="alongamento com barra" onclick="openExerciseModal('Alongamento com Barra')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre.png" alt="Alongamento com Barra" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre.png" alt="Alongamento com Barra" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Bar · Coluna</span>
@@ -496,9 +530,11 @@
   
         <div class="exercise-item" data-equipment="elastic" data-level="beginner" data-duration="short" data-name="rosca martelo (elástico)" onclick="openExerciseModal('Rosca Martelo (Elástico)')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Rosca Martelo (Elástico)" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Rosca Martelo (Elástico)" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Elastic · Bíceps</span>
@@ -514,9 +550,11 @@
   
         <div class="exercise-item" data-equipment="elastic" data-level="intermediate" data-duration="short" data-name="elevação lateral (elástico)" onclick="openExerciseModal('Elevação Lateral (Elástico)')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Elevação Lateral (Elástico)" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Elevação Lateral (Elástico)" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Elastic · Ombros</span>
@@ -532,9 +570,11 @@
   
         <div class="exercise-item" data-equipment="elastic" data-level="intermediate" data-duration="short" data-name="puxada alta (elástico)" onclick="openExerciseModal('Puxada Alta (Elástico)')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Puxada Alta (Elástico)" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Puxada Alta (Elástico)" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Elastic · Ombros</span>
@@ -550,9 +590,11 @@
   
         <div class="exercise-item" data-equipment="elastic" data-level="advanced" data-duration="short" data-name="agachamento búlgaro (elástico)" onclick="openExerciseModal('Agachamento Búlgaro (Elástico)')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Agachamento Búlgaro (Elástico)" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Agachamento Búlgaro (Elástico)" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Elastic · Pernas</span>
@@ -568,9 +610,11 @@
   
         <div class="exercise-item" data-equipment="elastic" data-level="intermediate" data-duration="short" data-name="extensão de tríceps (elástico)" onclick="openExerciseModal('Extensão de Tríceps (Elástico)')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Extensão de Tríceps (Elástico)" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Extensão de Tríceps (Elástico)" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Elastic · Tríceps</span>
@@ -586,9 +630,11 @@
   
         <div class="exercise-item" data-equipment="elastic" data-level="intermediate" data-duration="short" data-name="passo cruzado (elástico)" onclick="openExerciseModal('Passo Cruzado (Elástico)')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Passo Cruzado (Elástico)" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Passo Cruzado (Elástico)" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Elastic · Quadril</span>
@@ -604,9 +650,11 @@
   
         <div class="exercise-item" data-equipment="elastic" data-level="advanced" data-duration="short" data-name="flexão de braços resistida" onclick="openExerciseModal('Flexão de Braços Resistida')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Flexão de Braços Resistida" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Flexão de Braços Resistida" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Elastic · Peito</span>
@@ -622,9 +670,11 @@
   
         <div class="exercise-item" data-equipment="elastic" data-level="intermediate" data-duration="short" data-name="crucifixo inverso (elástico)" onclick="openExerciseModal('Crucifixo Inverso (Elástico)')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Crucifixo Inverso (Elástico)" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Crucifixo Inverso (Elástico)" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Elastic · Costas</span>
@@ -640,9 +690,11 @@
   
         <div class="exercise-item" data-equipment="elastic" data-level="intermediate" data-duration="short" data-name="chute lateral resistido" onclick="openExerciseModal('Chute Lateral Resistido')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Chute Lateral Resistido" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Chute Lateral Resistido" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Elastic · Glúteos</span>
@@ -658,9 +710,11 @@
   
         <div class="exercise-item" data-equipment="elastic" data-level="advanced" data-duration="short" data-name="prancha oblíqua com giro" onclick="openExerciseModal('Prancha Oblíqua com Giro')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Prancha Oblíqua com Giro" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Prancha Oblíqua com Giro" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Elastic · Core</span>
@@ -676,9 +730,11 @@
   
         <div class="exercise-item" data-equipment="ring" data-level="beginner" data-duration="short" data-name="aperto de tornozelo (ring)" onclick="openExerciseModal('Aperto de Tornozelo (Ring)')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Aperto de Tornozelo (Ring)" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Aperto de Tornozelo (Ring)" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Ring · Pernas</span>
@@ -694,9 +750,11 @@
   
         <div class="exercise-item" data-equipment="ring" data-level="intermediate" data-duration="short" data-name="abdominal com pressão de anel" onclick="openExerciseModal('Abdominal com Pressão de Anel')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Abdominal com Pressão de Anel" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Abdominal com Pressão de Anel" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Ring · Core</span>
@@ -712,9 +770,11 @@
   
         <div class="exercise-item" data-equipment="ring" data-level="beginner" data-duration="short" data-name="agachamento com anel" onclick="openExerciseModal('Agachamento com Anel')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Agachamento com Anel" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Agachamento com Anel" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Ring · Pernas</span>
@@ -730,9 +790,11 @@
   
         <div class="exercise-item" data-equipment="ring" data-level="intermediate" data-duration="short" data-name="ponte de glúteos com anel" onclick="openExerciseModal('Ponte de Glúteos com Anel')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Ponte de Glúteos com Anel" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Ponte de Glúteos com Anel" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Ring · Glúteos</span>
@@ -748,9 +810,11 @@
   
         <div class="exercise-item" data-equipment="ring" data-level="advanced" data-duration="short" data-name="prancha com pressão de anel" onclick="openExerciseModal('Prancha com Pressão de Anel')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Prancha com Pressão de Anel" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Prancha com Pressão de Anel" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Ring · Core</span>
@@ -766,9 +830,11 @@
   
         <div class="exercise-item" data-equipment="ring" data-level="beginner" data-duration="short" data-name="rosca bíceps com anel" onclick="openExerciseModal('Rosca Bíceps com Anel')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Rosca Bíceps com Anel" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Rosca Bíceps com Anel" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Ring · Bíceps</span>
@@ -784,9 +850,11 @@
   
         <div class="exercise-item" data-equipment="ring" data-level="intermediate" data-duration="short" data-name="pressione o anel lateral" onclick="openExerciseModal('Pressione o Anel Lateral')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Pressione o Anel Lateral" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Pressione o Anel Lateral" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Ring · Tríceps</span>
@@ -802,9 +870,11 @@
   
         <div class="exercise-item" data-equipment="ring" data-level="advanced" data-duration="short" data-name="elevação de pernas com anel" onclick="openExerciseModal('Elevação de Pernas com Anel')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Elevação de Pernas com Anel" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Elevação de Pernas com Anel" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Ring · Core</span>
@@ -820,9 +890,11 @@
   
         <div class="exercise-item" data-equipment="ring" data-level="intermediate" data-duration="short" data-name="extensão de tríceps com anel" onclick="openExerciseModal('Extensão de Tríceps com Anel')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Extensão de Tríceps com Anel" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Extensão de Tríceps com Anel" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Ring · Tríceps</span>
@@ -838,9 +910,11 @@
   
         <div class="exercise-item" data-equipment="ring" data-level="beginner" data-duration="short" data-name="pombo com anel de pilates" onclick="openExerciseModal('Pombo com Anel de Pilates')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Pombo com Anel de Pilates" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Pombo com Anel de Pilates" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Ring · Alongamento</span>
@@ -856,9 +930,11 @@
   
         <div class="exercise-item" data-equipment="none" data-level="beginner" data-duration="short" data-name="alongamento de perna única" onclick="openExerciseModal('Alongamento de Perna Única')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Alongamento de Perna Única" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Alongamento de Perna Única" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Mat · Core</span>
@@ -874,9 +950,11 @@
   
         <div class="exercise-item" data-equipment="none" data-level="intermediate" data-duration="short" data-name="alongamento de perna dupla" onclick="openExerciseModal('Alongamento de Perna Dupla')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Alongamento de Perna Dupla" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Alongamento de Perna Dupla" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Mat · Core</span>
@@ -892,9 +970,11 @@
   
         <div class="exercise-item" data-equipment="none" data-level="beginner" data-duration="short" data-name="o macaco (spine stretch)" onclick="openExerciseModal('O Macaco (Spine Stretch)')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="O Macaco (Spine Stretch)" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="O Macaco (Spine Stretch)" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Mat · Coluna</span>
@@ -910,9 +990,11 @@
   
         <div class="exercise-item" data-equipment="none" data-level="advanced" data-duration="short" data-name="círculos no ar (corkscrew)" onclick="openExerciseModal('Círculos no Ar (Corkscrew)')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Círculos no Ar (Corkscrew)" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Círculos no Ar (Corkscrew)" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Mat · Core</span>
@@ -928,9 +1010,11 @@
   
         <div class="exercise-item" data-equipment="none" data-level="intermediate" data-duration="short" data-name="o cisne (swan dive)" onclick="openExerciseModal('O Cisne (Swan Dive)')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="O Cisne (Swan Dive)" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="O Cisne (Swan Dive)" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Mat · Lombar</span>
@@ -946,9 +1030,11 @@
   
         <div class="exercise-item" data-equipment="none" data-level="intermediate" data-duration="short" data-name="chute lateral em quatro apoios" onclick="openExerciseModal('Chute Lateral em Quatro Apoios')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Chute Lateral em Quatro Apoios" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Chute Lateral em Quatro Apoios" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Mat · Glúteos</span>
@@ -964,9 +1050,11 @@
   
         <div class="exercise-item" data-equipment="none" data-level="beginner" data-duration="short" data-name="ponte clássica no mat" onclick="openExerciseModal('Ponte Clássica no Mat')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Ponte Clássica no Mat" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Ponte Clássica no Mat" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Mat · Coluna</span>
@@ -982,9 +1070,11 @@
   
         <div class="exercise-item" data-equipment="none" data-level="advanced" data-duration="short" data-name="canivete (jackknife)" onclick="openExerciseModal('Canivete (Jackknife)')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Canivete (Jackknife)" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Canivete (Jackknife)" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Mat · Avançado</span>
@@ -1000,9 +1090,11 @@
   
         <div class="exercise-item" data-equipment="none" data-level="beginner" data-duration="short" data-name="torção de coluna sentada" onclick="openExerciseModal('Torção de Coluna Sentada')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Torção de Coluna Sentada" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Torção de Coluna Sentada" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Mat · Oblíquos</span>
@@ -1018,9 +1110,11 @@
   
         <div class="exercise-item" data-equipment="none" data-level="intermediate" data-duration="short" data-name="prancha lateral clássica" onclick="openExerciseModal('Prancha Lateral Clássica')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Prancha Lateral Clássica" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Prancha Lateral Clássica" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Mat · Core</span>
@@ -1036,9 +1130,11 @@
   
         <div class="exercise-item" data-equipment="none" data-level="beginner" data-duration="short" data-name="yoga para postura e ombros" onclick="openVideoModal('Yoga para Postura e Ombros')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Yoga para Postura e Ombros" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Yoga para Postura e Ombros" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Yoga · Yoga</span>
@@ -1054,9 +1150,11 @@
   
         <div class="exercise-item" data-equipment="none" data-level="intermediate" data-duration="short" data-name="vinyasa flow energizante" onclick="openVideoModal('Vinyasa Flow Energizante')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Vinyasa Flow Energizante" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Vinyasa Flow Energizante" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Yoga · Yoga</span>
@@ -1072,9 +1170,11 @@
   
         <div class="exercise-item" data-equipment="none" data-level="beginner" data-duration="short" data-name="yoga coxas e quadril" onclick="openVideoModal('Yoga Coxas e Quadril')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Yoga Coxas e Quadril" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Yoga Coxas e Quadril" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Yoga · Yoga</span>
@@ -1090,9 +1190,11 @@
   
         <div class="exercise-item" data-equipment="none" data-level="intermediate" data-duration="short" data-name="hatha yoga clássico" onclick="openVideoModal('Hatha Yoga Clássico')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Hatha Yoga Clássico" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Hatha Yoga Clássico" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Yoga · Yoga</span>
@@ -1108,9 +1210,11 @@
   
         <div class="exercise-item" data-equipment="none" data-level="advanced" data-duration="short" data-name="vinyasa desafio de equilíbrio" onclick="openVideoModal('Vinyasa Desafio de Equilíbrio')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Vinyasa Desafio de Equilíbrio" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Vinyasa Desafio de Equilíbrio" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Yoga · Yoga</span>
@@ -1126,9 +1230,11 @@
   
         <div class="exercise-item" data-equipment="none" data-level="beginner" data-duration="short" data-name="yin yoga restaurativo" onclick="openVideoModal('Yin Yoga Restaurativo')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Yin Yoga Restaurativo" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Yin Yoga Restaurativo" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Yoga · Yoga</span>
@@ -1144,9 +1250,11 @@
   
         <div class="exercise-item" data-equipment="none" data-level="intermediate" data-duration="short" data-name="yoga core estabilidade" onclick="openVideoModal('Yoga Core Estabilidade')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Yoga Core Estabilidade" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Yoga Core Estabilidade" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Yoga · Yoga</span>
@@ -1162,9 +1270,11 @@
   
         <div class="exercise-item" data-equipment="none" data-level="intermediate" data-duration="short" data-name="yoga alongamento profundo" onclick="openVideoModal('Yoga Alongamento Profundo')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Yoga Alongamento Profundo" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Yoga Alongamento Profundo" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Yoga · Yoga</span>
@@ -1180,9 +1290,11 @@
   
         <div class="exercise-item" data-equipment="none" data-level="beginner" data-duration="short" data-name="pranayama & meditação" onclick="openVideoModal('Pranayama & Meditação')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Pranayama & Meditação" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Pranayama & Meditação" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Yoga · Yoga</span>
@@ -1198,9 +1310,11 @@
   
         <div class="exercise-item" data-equipment="none" data-level="advanced" data-duration="short" data-name="ashtanga power intro" onclick="openVideoModal('Ashtanga Power Intro')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Ashtanga Power Intro" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Ashtanga Power Intro" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Yoga · Yoga</span>
@@ -1221,9 +1335,11 @@
 
         <div class="exercise-item" data-equipment="elastic" data-level="intermediate" data-duration="short" data-name="rosca martelo inclinada (elástico)" onclick="openExerciseModal('Rosca Martelo Inclinada (Elástico)')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Rosca Martelo Inclinada (Elástico)" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Rosca Martelo Inclinada (Elástico)" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Elastic · Bíceps</span>
@@ -1239,9 +1355,11 @@
   
         <div class="exercise-item" data-equipment="elastic" data-level="beginner" data-duration="short" data-name="elevação frontal unilateral (elástico)" onclick="openExerciseModal('Elevação Frontal Unilateral (Elástico)')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Elevação Frontal Unilateral (Elástico)" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Elevação Frontal Unilateral (Elástico)" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Elastic · Ombros</span>
@@ -1257,9 +1375,11 @@
   
         <div class="exercise-item" data-equipment="elastic" data-level="intermediate" data-duration="short" data-name="agachamento isométrico com bíceps (elástico)" onclick="openExerciseModal('Agachamento Isométrico com Bíceps (Elástico)')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Agachamento Isométrico com Bíceps (Elástico)" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Agachamento Isométrico com Bíceps (Elástico)" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Elastic · Quadríceps</span>
@@ -1275,9 +1395,11 @@
   
         <div class="exercise-item" data-equipment="elastic" data-level="beginner" data-duration="short" data-name="extensão de quadril em pé (elástico)" onclick="openExerciseModal('Extensão de Quadril em Pé (Elástico)')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Extensão de Quadril em Pé (Elástico)" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Extensão de Quadril em Pé (Elástico)" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Elastic · Glúteos</span>
@@ -1293,9 +1415,11 @@
   
         <div class="exercise-item" data-equipment="elastic" data-level="intermediate" data-duration="short" data-name="remada alta com barra e elástico" onclick="openExerciseModal('Remada Alta com Barra e Elástico')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Remada Alta com Barra e Elástico" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Remada Alta com Barra e Elástico" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Elastic · Ombros</span>
@@ -1311,9 +1435,11 @@
   
         <div class="exercise-item" data-equipment="elastic" data-level="advanced" data-duration="short" data-name="prancha alta com toque de ombro (elástico)" onclick="openExerciseModal('Prancha Alta com Toque de Ombro (Elástico)')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Prancha Alta com Toque de Ombro (Elástico)" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Prancha Alta com Toque de Ombro (Elástico)" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Elastic · Core</span>
@@ -1329,9 +1455,11 @@
   
         <div class="exercise-item" data-equipment="elastic" data-level="intermediate" data-duration="short" data-name="avanço lateral com resistência" onclick="openExerciseModal('Avanço Lateral com Resistência')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Avanço Lateral com Resistência" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Avanço Lateral com Resistência" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Elastic · Pernas</span>
@@ -1347,9 +1475,11 @@
   
         <div class="exercise-item" data-equipment="elastic" data-level="advanced" data-duration="short" data-name="abdominal russo com elástico" onclick="openExerciseModal('Abdominal Russo com Elástico')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Abdominal Russo com Elástico" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Abdominal Russo com Elástico" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Elastic · Core</span>
@@ -1365,9 +1495,11 @@
   
         <div class="exercise-item" data-equipment="elastic" data-level="intermediate" data-duration="short" data-name="crucifixo peitoral com barra e elástico" onclick="openExerciseModal('Crucifixo Peitoral com Barra e Elástico')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Crucifixo Peitoral com Barra e Elástico" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Crucifixo Peitoral com Barra e Elástico" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Elastic · Peitoral</span>
@@ -1383,9 +1515,11 @@
   
         <div class="exercise-item" data-equipment="elastic" data-level="beginner" data-duration="short" data-name="alongamento integrado com elástico" onclick="openExerciseModal('Alongamento Integrado com Elástico')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Alongamento Integrado com Elástico" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Alongamento Integrado com Elástico" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Elastic · Alongamento</span>
@@ -1401,9 +1535,11 @@
   
         <div class="exercise-item" data-equipment="ring" data-level="beginner" data-duration="short" data-name="aperto de anel deitada lateral" onclick="openExerciseModal('Aperto de Anel Deitada Lateral')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Aperto de Anel Deitada Lateral" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Aperto de Anel Deitada Lateral" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Ring · Tríceps</span>
@@ -1419,9 +1555,11 @@
   
         <div class="exercise-item" data-equipment="ring" data-level="intermediate" data-duration="short" data-name="flexão de quadril com anel" onclick="openExerciseModal('Flexão de Quadril com Anel')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Flexão de Quadril com Anel" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Flexão de Quadril com Anel" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Ring · Core</span>
@@ -1437,9 +1575,11 @@
   
         <div class="exercise-item" data-equipment="ring" data-level="beginner" data-duration="short" data-name="squeeze de ombro posterior" onclick="openExerciseModal('Squeeze de Ombro Posterior')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Squeeze de Ombro Posterior" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Squeeze de Ombro Posterior" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Ring · Ombros</span>
@@ -1455,9 +1595,11 @@
   
         <div class="exercise-item" data-equipment="ring" data-level="advanced" data-duration="short" data-name="ponte unilateral com anel" onclick="openExerciseModal('Ponte Unilateral com Anel')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Ponte Unilateral com Anel" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Ponte Unilateral com Anel" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Ring · Glúteos</span>
@@ -1473,9 +1615,11 @@
   
         <div class="exercise-item" data-equipment="ring" data-level="intermediate" data-duration="short" data-name="abdominal oblíquo com anel" onclick="openExerciseModal('Abdominal Oblíquo com Anel')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Abdominal Oblíquo com Anel" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Abdominal Oblíquo com Anel" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Ring · Core</span>
@@ -1491,9 +1635,11 @@
   
         <div class="exercise-item" data-equipment="ring" data-level="intermediate" data-duration="short" data-name="isometria de agachamento sumô com anel" onclick="openExerciseModal('Isometria de Agachamento Sumô com Anel')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Isometria de Agachamento Sumô com Anel" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Isometria de Agachamento Sumô com Anel" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Ring · Pernas</span>
@@ -1509,9 +1655,11 @@
   
         <div class="exercise-item" data-equipment="ring" data-level="beginner" data-duration="short" data-name="rosca bíceps isométrica com anel" onclick="openExerciseModal('Rosca Bíceps Isométrica com Anel')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Rosca Bíceps Isométrica com Anel" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Rosca Bíceps Isométrica com Anel" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Ring · Bíceps</span>
@@ -1527,9 +1675,11 @@
   
         <div class="exercise-item" data-equipment="ring" data-level="intermediate" data-duration="short" data-name="pressione o anel acima da cabeça" onclick="openExerciseModal('Pressione o Anel Acima da Cabeça')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Pressione o Anel Acima da Cabeça" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Pressione o Anel Acima da Cabeça" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Ring · Ombros</span>
@@ -1545,9 +1695,11 @@
   
         <div class="exercise-item" data-equipment="ring" data-level="advanced" data-duration="short" data-name="elevação pélvica com isometria no anel" onclick="openExerciseModal('Elevação Pélvica com Isometria no Anel')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Elevação Pélvica com Isometria no Anel" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Elevação Pélvica com Isometria no Anel" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Ring · Glúteos</span>
@@ -1563,9 +1715,11 @@
   
         <div class="exercise-item" data-equipment="ring" data-level="beginner" data-duration="short" data-name="alongamento de posterior com anel" onclick="openExerciseModal('Alongamento de Posterior com Anel')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Alongamento de Posterior com Anel" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Alongamento de Posterior com Anel" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Ring · Alongamento</span>
@@ -1587,9 +1741,11 @@
 
         <div class="exercise-item" data-equipment="none" data-level="beginner" data-duration="short" data-name="deep restore & relax" onclick="openVideoModal('Deep Restore & Relax')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Deep Restore & Relax" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Deep Restore & Relax" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Yoga · Sistema</span>
@@ -1605,9 +1761,11 @@
     
         <div class="exercise-item" data-equipment="none" data-level="beginner" data-duration="short" data-name="equilíbrio e força" onclick="openVideoModal('Equilíbrio e Força')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Equilíbrio e Força" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Equilíbrio e Força" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Yoga · Equilíbrio</span>
@@ -1623,9 +1781,11 @@
     
         <div class="exercise-item" data-equipment="none" data-level="beginner" data-duration="short" data-name="post-workout recovery" onclick="openVideoModal('Post-Workout Recovery')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Post-Workout Recovery" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Post-Workout Recovery" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Yoga · Coluna</span>
@@ -1641,9 +1801,11 @@
     
         <div class="exercise-item" data-equipment="none" data-level="beginner" data-duration="short" data-name="yin yoga noturno" onclick="openVideoModal('Yin Yoga Noturno')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Yin Yoga Noturno" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Yin Yoga Noturno" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Yoga · Sistema</span>
@@ -1659,9 +1821,11 @@
     
         <div class="exercise-item" data-equipment="none" data-level="beginner" data-duration="short" data-name="yoga anti-estresse" onclick="openVideoModal('Yoga Anti-Estresse')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Yoga Anti-Estresse" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Yoga Anti-Estresse" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Yoga · Ansiedade</span>
@@ -1677,9 +1841,11 @@
     
         <div class="exercise-item" data-equipment="none" data-level="beginner" data-duration="short" data-name="força & fluidez yoga" onclick="openVideoModal('Força & Fluidez Yoga')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Força & Fluidez Yoga" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Força & Fluidez Yoga" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Yoga · Core</span>
@@ -1695,9 +1861,11 @@
     
         <div class="exercise-item" data-equipment="none" data-level="beginner" data-duration="short" data-name="yoga detox matinal" onclick="openVideoModal('Yoga Detox Matinal')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Yoga Detox Matinal" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Yoga Detox Matinal" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Yoga · Órgãos</span>
@@ -1713,9 +1881,11 @@
     
         <div class="exercise-item" data-equipment="none" data-level="beginner" data-duration="short" data-name="yoga para iniciantes" onclick="openVideoModal('Yoga para Iniciantes')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Yoga para Iniciantes" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Yoga para Iniciantes" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Yoga · Relaxamento</span>
@@ -1731,9 +1901,11 @@
     
         <div class="exercise-item" data-equipment="none" data-level="beginner" data-duration="short" data-name="yoga força de braços" onclick="openVideoModal('Yoga Força de Braços')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Yoga Força de Braços" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Yoga Força de Braços" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Yoga · Ombros</span>
@@ -1749,9 +1921,11 @@
     
         <div class="exercise-item" data-equipment="none" data-level="intermediate" data-duration="short" data-name="full body em casa" onclick="openExerciseModal('Full Body em Casa')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Full Body em Casa" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Full Body em Casa" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Mat · Quadríceps</span>
@@ -1767,9 +1941,11 @@
     
         <div class="exercise-item" data-equipment="none" data-level="intermediate" data-duration="short" data-name="hiit suave em casa" onclick="openExerciseModal('HIIT Suave em Casa')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="HIIT Suave em Casa" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="HIIT Suave em Casa" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Mat · Pernas,</span>
@@ -1785,9 +1961,11 @@
     
         <div class="exercise-item" data-equipment="elastic" data-level="intermediate" data-duration="short" data-name="pilates bar + flow matinal" onclick="openExerciseModal('Pilates Bar + Flow Matinal')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Pilates Bar + Flow Matinal" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Pilates Bar + Flow Matinal" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Elastic · Core</span>
@@ -1803,9 +1981,11 @@
     
         <div class="exercise-item" data-equipment="elastic" data-level="intermediate" data-duration="short" data-name="yoga + pilates bar fusion" onclick="openExerciseModal('Yoga + Pilates Bar Fusion')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Yoga + Pilates Bar Fusion" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Yoga + Pilates Bar Fusion" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Elastic · Aquecimento</span>
@@ -1821,9 +2001,11 @@
     
         <div class="exercise-item" data-equipment="elastic" data-level="intermediate" data-duration="short" data-name="corpo completo — barra + core" onclick="openExerciseModal('Corpo Completo — Barra + Core')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Corpo Completo — Barra + Core" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Corpo Completo — Barra + Core" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Elastic · Glúteos</span>
@@ -1839,9 +2021,11 @@
     
         <div class="exercise-item" data-equipment="bar" data-level="intermediate" data-duration="short" data-name="overhead lunge" onclick="openExerciseModal('Overhead Lunge')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre.png" alt="Overhead Lunge" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre.png" alt="Overhead Lunge" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Bar · Quadríceps</span>
@@ -1857,9 +2041,11 @@
     
         <div class="exercise-item" data-equipment="bar" data-level="intermediate" data-duration="short" data-name="força total com barra" onclick="openExerciseModal('Força Total com Barra')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre.png" alt="Força Total com Barra" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre.png" alt="Força Total com Barra" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Bar · Isquiotibiais</span>
@@ -1875,9 +2061,11 @@
     
         <div class="exercise-item" data-equipment="elastic" data-level="intermediate" data-duration="short" data-name="escultura de braços & bíceps" onclick="openExerciseModal('Escultura de Braços & Bíceps')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Escultura de Braços & Bíceps" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Escultura de Braços & Bíceps" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Elastic · Bíceps</span>
@@ -1893,9 +2081,11 @@
     
         <div class="exercise-item" data-equipment="elastic" data-level="intermediate" data-duration="short" data-name="definição & cintura oblíqua" onclick="openExerciseModal('Definição & Cintura Oblíqua')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Definição & Cintura Oblíqua" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Definição & Cintura Oblíqua" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Elastic · Oblíquos</span>
@@ -1911,9 +2101,11 @@
     
         <div class="exercise-item" data-equipment="elastic" data-level="intermediate" data-duration="short" data-name="resistência & quadril com barra" onclick="openExerciseModal('Resistência & Quadril com Barra')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Resistência & Quadril com Barra" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Resistência & Quadril com Barra" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Elastic · Abdutores</span>
@@ -1929,9 +2121,11 @@
     
         <div class="exercise-item" data-equipment="elastic" data-level="intermediate" data-duration="short" data-name="superiores & postura com barra" onclick="openExerciseModal('Superiores & Postura com Barra')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Superiores & Postura com Barra" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/barre-hero.jpg" alt="Superiores & Postura com Barra" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Elastic · Deltoides</span>
@@ -1947,9 +2141,11 @@
     
         <div class="exercise-item" data-equipment="ring" data-level="advanced" data-duration="short" data-name="bridge & ring squeeze" onclick="openExerciseModal('Bridge & Ring Squeeze')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Bridge & Ring Squeeze" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Bridge & Ring Squeeze" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Ring · Glúteos</span>
@@ -1965,9 +2161,11 @@
     
         <div class="exercise-item" data-equipment="ring" data-level="intermediate" data-duration="short" data-name="ring power — full body" onclick="openExerciseModal('Ring Power — Full Body')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Ring Power — Full Body" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/ring.png" alt="Ring Power — Full Body" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Ring · Peitoral</span>
@@ -1983,9 +2181,11 @@
     
         <div class="exercise-item" data-equipment="none" data-level="intermediate" data-duration="short" data-name="pilates clássico no mat" onclick="openExerciseModal('Pilates Clássico no Mat')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Pilates Clássico no Mat" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Pilates Clássico no Mat" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Mat · Core</span>
@@ -2001,9 +2201,11 @@
     
         <div class="exercise-item" data-equipment="none" data-level="intermediate" data-duration="short" data-name="pilates escultura lateral" onclick="openExerciseModal('Pilates Escultura Lateral')">
           <div style="border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow:hidden; background: var(--bg-card); transition: all 0.3s; cursor:pointer; position:relative;" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
-            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Pilates Escultura Lateral" style="width:100%;height:100%;object-fit:cover;" /></div>
+            <div style="aspect-ratio:1; overflow:hidden;"><img src="assets/images/yoga.png" alt="Pilates Escultura Lateral" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);" /></div>
             
-            
+            <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(26,23,20,0.7);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
             <div style="padding: var(--space-md);">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <span style="font-size:0.625rem; letter-spacing:0.08em; color:var(--color-accent-gold); text-transform:uppercase;">Mat · Glúteo</span>
@@ -2053,8 +2255,8 @@
     <div class="container">
       <div class="footer__grid">
         <div><div class="footer__logo">Atlas Pilates</div><div class="footer__tagline">Strength. Balance. Control.</div><p class="footer__desc">Premium Yoga & Pilates programs for the modern woman.</p></div>
-        <div><div class="footer__heading">Explore</div><a href="yoga.html?v=1.1.1" class="footer__link">Yoga</a><a href="pilates.html?v=1.1.1" class="footer__link">Pilates</a><a href="programs.html?v=1.1.1" class="footer__link">Programs</a><a href="library.html?v=1.1.1" class="footer__link">Library</a></div>
-        <div><div class="footer__heading">Account</div><a href="profile.html?v=1.1.1" class="footer__link">My Profile</a><a href="subscription.html?v=1.1.1" class="footer__link">Subscription</a></div>
+        <div><div class="footer__heading">Explore</div><a href="yoga.html?v=1.1.2" class="footer__link">Yoga</a><a href="pilates.html?v=1.1.2" class="footer__link">Pilates</a><a href="programs.html?v=1.1.2" class="footer__link">Programs</a><a href="library.html?v=1.1.2" class="footer__link">Library</a></div>
+        <div><div class="footer__heading">Account</div><a href="profile.html?v=1.1.2" class="footer__link">My Profile</a><a href="subscription.html?v=1.1.2" class="footer__link">Subscription</a></div>
         <div><div class="footer__heading">Company</div><a href="#" class="footer__link">About Us</a><a href="#" class="footer__link">Contact</a></div>
       </div>
       <div class="footer__bottom"><div>© 2026 Atlas Pilates. All rights reserved.</div></div>
@@ -2064,18 +2266,18 @@
   <!-- BOTTOM NAV -->
   <nav class="bottom-nav">
     <div class="bottom-nav__inner">
-      <a href="programs.html?v=1.1.1" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span class="bottom-nav__label">Home</span></a>
-      <a href="yoga.html?v=1.1.1" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/></svg><span class="bottom-nav__label">Yoga</span></a>
-      <a href="pilates.html?v=1.1.1" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg><span class="bottom-nav__label">Pilates</span></a>
-      <a href="library.html?v=1.1.1" class="bottom-nav__item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg><span class="bottom-nav__label">Library</span></a>
-      <a href="profile.html?v=1.1.1" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="bottom-nav__label">Profile</span></a>
+      <a href="programs.html?v=1.1.2" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span class="bottom-nav__label">Home</span></a>
+      <a href="yoga.html?v=1.1.2" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/></svg><span class="bottom-nav__label">Yoga</span></a>
+      <a href="pilates.html?v=1.1.2" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg><span class="bottom-nav__label">Pilates</span></a>
+      <a href="library.html?v=1.1.2" class="bottom-nav__item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg><span class="bottom-nav__label">Library</span></a>
+      <a href="profile.html?v=1.1.2" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="bottom-nav__label">Profile</span></a>
     </div>
   </nav>
 
   <div class="toast-container" id="toastContainer" aria-live="polite"></div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="assets/js/supabase-client.js?v=1.1.1"></script>
-  <script src="assets/js/main.js?v=1.1.1"></script>
+  <script src="assets/js/supabase-client.js?v=1.1.2"></script>
+  <script src="assets/js/main.js?v=1.1.2"></script>
   <script>
     // Library filtering
     const searchInput = document.getElementById('searchInput');
