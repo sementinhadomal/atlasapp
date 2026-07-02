@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFAQ();
   initScrollReveal();
   initAuth();
+  initProgramProgress();
 });
 
 // ==========================================
@@ -2710,6 +2711,99 @@ async function updatePremiumElementsUI() {
 }
 
 /**
+ * Dynamically tracks and renders program progress grids (D1, D2...)
+ * and buttons, saving user state to localStorage.
+ */
+function initProgramProgress() {
+  const progressGrids = document.querySelectorAll('.program-progress-grid');
+  
+  progressGrids.forEach(grid => {
+    const programId = grid.getAttribute('data-program-id');
+    const totalDays = parseInt(grid.getAttribute('data-total-days')) || 7;
+    const prefix = grid.getAttribute('data-prefix') || 'D';
+    
+    // Check localStorage progress (default to 1 Day instead of hardcoded Day 4/2)
+    let currentProgress = localStorage.getItem(`atlas_program_progress_${programId}`);
+    if (currentProgress === null) {
+      currentProgress = 1;
+      localStorage.setItem(`atlas_program_progress_${programId}`, 1);
+    } else {
+      currentProgress = parseInt(currentProgress) || 1;
+    }
+    
+    renderGrid(grid, programId, totalDays, prefix, currentProgress);
+  });
+}
+
+function renderGrid(grid, programId, totalDays, prefix, currentProgress) {
+  grid.innerHTML = '';
+  
+  for (let i = 1; i <= totalDays; i++) {
+    const dayItem = document.createElement('div');
+    dayItem.style.textAlign = 'center';
+    dayItem.style.padding = 'var(--space-sm)';
+    dayItem.style.borderRadius = 'var(--radius-md)';
+    dayItem.style.cursor = 'pointer';
+    dayItem.style.transition = 'all 0.2s';
+    
+    let labelColor = 'rgba(255,255,255,0.5)';
+    let contentHtml = '';
+    
+    if (i < currentProgress) {
+      // Completed day
+      dayItem.style.background = 'var(--color-near-black)';
+      contentHtml = `<div style="font-size:0.625rem; color: ${labelColor}; margin-bottom:2px; pointer-events: none;">${prefix}${i}</div><div style="font-size:0.625rem; color: var(--color-accent-gold); font-weight: bold; pointer-events: none;">✓</div>`;
+    } else if (i === currentProgress) {
+      // Current day
+      dayItem.style.background = 'rgba(201,169,110,0.15)';
+      dayItem.style.border = '1px solid rgba(201,169,110,0.3)';
+      contentHtml = `<div style="font-size:0.625rem; color: var(--color-accent-gold); margin-bottom:2px; pointer-events: none;">${prefix}${i}</div><div style="font-size:0.625rem; color: var(--color-accent-gold); pointer-events: none;">▶</div>`;
+    } else {
+      // Future day
+      dayItem.style.background = 'var(--bg-secondary)';
+      labelColor = 'var(--text-muted)';
+      contentHtml = `<div style="font-size:0.625rem; color: ${labelColor}; margin-bottom:2px; pointer-events: none;">${prefix}${i}</div><div style="font-size:0.625rem; color: var(--text-light); pointer-events: none;">○</div>`;
+    }
+    
+    dayItem.innerHTML = contentHtml;
+    
+    // Add hover effect
+    dayItem.onmouseenter = () => { dayItem.style.transform = 'scale(1.05)'; };
+    dayItem.onmouseleave = () => { dayItem.style.transform = ''; };
+    
+    // Toggle progress when day circle is clicked!
+    dayItem.addEventListener('click', () => {
+      let nextProgress = i;
+      if (i === currentProgress) {
+        nextProgress = i + 1;
+      }
+      localStorage.setItem(`atlas_program_progress_${programId}`, nextProgress);
+      renderGrid(grid, programId, totalDays, prefix, nextProgress);
+    });
+    
+    grid.appendChild(dayItem);
+  }
+  
+  // Set initial button text
+  updateProgramButton(programId, currentProgress, totalDays, prefix);
+}
+
+function updateProgramButton(programId, progress, totalDays, prefix) {
+  const btn = document.getElementById(`btn-${programId}`);
+  if (!btn) return;
+  
+  const unitName = prefix === 'S' ? 'Semana' : 'Dia';
+  
+  if (progress === 1) {
+    btn.innerHTML = 'Iniciar Programa';
+  } else if (progress <= totalDays) {
+    btn.innerHTML = `Continuar — ${unitName} ${progress}`;
+  } else {
+    btn.innerHTML = 'Concluído! Reiniciar';
+  }
+}
+
+/**
  * Starts a workout program by matching its name to a real workout from workoutData
  * and opening the video modal player.
  */
@@ -2751,7 +2845,21 @@ window.startProgram = function(programName, totalDays) {
 
   const finalWorkout = matchedKey || Object.keys(workoutData)[0];
 
-  window.showToast(`🚀 Iniciando ${programName} — Dia 1`);
+  // Detect program ID to update progress
+  let progId = "";
+  if (nameLower.includes('core reset')) progId = "core-reset";
+  else if (nameLower.includes('iniciante') || nameLower.includes('iniciantes')) progId = "yoga-iniciantes";
+  else if (nameLower.includes('barra express') || nameLower.includes('primeiros passos')) progId = "barra-express";
+
+  let currentProgress = 1;
+  if (progId) {
+    const saved = localStorage.getItem(`atlas_program_progress_${progId}`);
+    currentProgress = saved !== null ? parseInt(saved) || 1 : 1;
+  }
+
+  const prefix = progId === "yoga-iniciantes" ? "Semana" : "Dia";
+  window.showToast(`🚀 Iniciando ${programName} — ${prefix} ${currentProgress}`);
+  
   setTimeout(() => {
     if (window.openVideoModal) {
       window.openVideoModal(finalWorkout);
