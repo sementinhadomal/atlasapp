@@ -68,13 +68,23 @@
   <!-- FILTER SECTION -->
   <section class="section--sm">
     <div class="container">
-      <div class="filters" role="group" aria-label="Filter yoga classes">
-        <button class="filter-pill active" id="filter-all" data-filter="all">All Classes</button>
-        <button class="filter-pill" data-filter="flexibility">Flexibility</button>
-        <button class="filter-pill" data-filter="relaxation">Relaxation</button>
-        <button class="filter-pill" data-filter="strength">Strength</button>
-        <button class="filter-pill" data-filter="morning">Morning Flow</button>
-        <button class="filter-pill" data-filter="recovery">Recovery</button>
+      <!-- Tab buttons (Yoga Categories) -->
+      <div style="display: flex; gap: var(--space-md); margin-bottom: var(--space-2xl); border-bottom: 1px solid var(--border-light); padding-bottom: var(--space-md); flex-wrap: wrap;">
+        <button class="tab-btn active" data-filter="all" id="tabAll" style="font-family: var(--font-heading); font-size: 1.5rem; background: none; cursor: pointer; color: var(--text-primary); padding-bottom: var(--space-md); border-bottom: 2px solid var(--color-near-black); margin-bottom: -1px; transition: all 0.2s;">
+          Todas as Aulas
+        </button>
+        <button class="tab-btn" data-filter="morning" id="tabMorning" style="font-family: var(--font-heading); font-size: 1.5rem; background: none; cursor: pointer; color: var(--text-muted); padding-bottom: var(--space-md); border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all 0.2s;">
+          Morning Flow
+        </button>
+        <button class="tab-btn" data-filter="flexibility" id="tabFlexibility" style="font-family: var(--font-heading); font-size: 1.5rem; background: none; cursor: pointer; color: var(--text-muted); padding-bottom: var(--space-md); border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all 0.2s;">
+          Flexibilidade
+        </button>
+        <button class="tab-btn" data-filter="strength" id="tabStrength" style="font-family: var(--font-heading); font-size: 1.5rem; background: none; cursor: pointer; color: var(--text-muted); padding-bottom: var(--space-md); border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all 0.2s;">
+          Força (Strength)
+        </button>
+        <button class="tab-btn" data-filter="relaxation" id="tabRelaxation" style="font-family: var(--font-heading); font-size: 1.5rem; background: none; cursor: pointer; color: var(--text-muted); padding-bottom: var(--space-md); border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all 0.2s;">
+          Relax & Recovery
+        </button>
       </div>
 
       <!-- Classes Grid -->
@@ -851,7 +861,38 @@
 
   <div class="toast-container" id="toastContainer" aria-live="polite"></div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="assets/js/supabase-client.js?v=1.0.3"></script>
-  <script src="assets/js/main.js?v=1.0.3"></script>
+  <script src="assets/js/supabase-client.js?v=1.0.4"></script>
+  <script src="assets/js/main.js?v=1.0.4"></script>
+  <script>
+    // Tab switching for Yoga categories
+    const allTabs = document.querySelectorAll('.tab-btn');
+    const gridItems = document.querySelectorAll('#yogaGrid article');
+
+    allTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Estilo das abas
+        allTabs.forEach(t => {
+          t.style.color = 'var(--text-muted)';
+          t.style.borderBottomColor = 'transparent';
+          t.classList.remove('active');
+        });
+        tab.style.color = 'var(--text-primary)';
+        tab.style.borderBottomColor = 'var(--color-near-black)';
+        tab.classList.add('active');
+
+        // Filtrar itens
+        const filterVal = tab.getAttribute('data-filter');
+        gridItems.forEach(item => {
+          const itemCategory = item.getAttribute('data-category');
+          if (filterVal === 'all' || itemCategory === filterVal || (filterVal === 'relaxation' && itemCategory === 'recovery')) {
+            item.style.display = '';
+            item.classList.add('visible');
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
