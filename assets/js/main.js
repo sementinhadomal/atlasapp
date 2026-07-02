@@ -18,6 +18,326 @@ document.addEventListener('DOMContentLoaded', () => {
 // WORKOUT DATABASE (Simulated Exercises)
 // ==========================================
 const workoutData = {
+  "Rosca Martelo Inclinada (Elástico)": {
+    "type": "pilates",
+    "equipment": "elastic",
+    "sets": 3,
+    "reps": "12",
+    "exercises": [
+        {
+            "name": "Rosca Martelo Inclinada (Elástico)",
+            "duration": 40,
+            "instructions": "Rosca para bíceps com inclinação do tronco para trás contra a resistência elástica. 1. Posicione os elásticos com segurança. <br>2. Realize a movimentação mantendo estabilidade corporal total. <br>3. Expire durante a contração muscular.",
+            "animation": "overhead-lunge",
+            "target": "Bíceps e Braços"
+        }
+    ]
+},
+
+  "Elevação Frontal Unilateral (Elástico)": {
+    "type": "pilates",
+    "equipment": "elastic",
+    "sets": 3,
+    "reps": "10/lado",
+    "exercises": [
+        {
+            "name": "Elevação Frontal Unilateral (Elástico)",
+            "duration": 40,
+            "instructions": "Elevação alternada de braço para deltoide anterior com foco em equilíbrio muscular. 1. Posicione os elásticos com segurança. <br>2. Realize a movimentação mantendo estabilidade corporal total. <br>3. Expire durante a contração muscular.",
+            "animation": "overhead-lunge",
+            "target": "Ombros e Equilíbrio"
+        }
+    ]
+},
+
+  "Agachamento Isométrico com Bíceps (Elástico)": {
+    "type": "pilates",
+    "equipment": "elastic",
+    "sets": 3,
+    "reps": "45s",
+    "exercises": [
+        {
+            "name": "Agachamento Isométrico com Bíceps (Elástico)",
+            "duration": 45,
+            "instructions": "Segure o agachamento na parede enquanto realiza flexões de bíceps com a barra. 1. Posicione os elásticos com segurança. <br>2. Realize a movimentação mantendo estabilidade corporal total. <br>3. Expire durante a contração muscular.",
+            "animation": "squat-press",
+            "target": "Quadríceps e Bíceps"
+        }
+    ]
+},
+
+  "Extensão de Quadril em Pé (Elástico)": {
+    "type": "pilates",
+    "equipment": "elastic",
+    "sets": 3,
+    "reps": "15/lado",
+    "exercises": [
+        {
+            "name": "Extensão de Quadril em Pé (Elástico)",
+            "duration": 40,
+            "instructions": "Estenda a perna para trás contra a resistência do elástico para focar em glúteos. 1. Posicione os elásticos com segurança. <br>2. Realize a movimentação mantendo estabilidade corporal total. <br>3. Expire durante a contração muscular.",
+            "animation": "overhead-lunge",
+            "target": "Glúteos e Posterior"
+        }
+    ]
+},
+
+  "Remada Alta com Barra e Elástico": {
+    "type": "pilates",
+    "equipment": "elastic",
+    "sets": 3,
+    "reps": "12",
+    "exercises": [
+        {
+            "name": "Remada Alta com Barra e Elástico",
+            "duration": 40,
+            "instructions": "Puxe a barra até a altura do peito, mantendo os cotovelos elevados sob tração. 1. Posicione os elásticos com segurança. <br>2. Realize a movimentação mantendo estabilidade corporal total. <br>3. Expire durante a contração muscular.",
+            "animation": "overhead-lunge",
+            "target": "Ombros e Costas"
+        }
+    ]
+},
+
+  "Prancha Alta com Toque de Ombro (Elástico)": {
+    "type": "pilates",
+    "equipment": "elastic",
+    "sets": 3,
+    "reps": "12/lado",
+    "exercises": [
+        {
+            "name": "Prancha Alta com Toque de Ombro (Elástico)",
+            "duration": 40,
+            "instructions": "Prancha alta tocando os ombros alternadamente com elásticos gerando instabilidade. 1. Posicione os elásticos com segurança. <br>2. Realize a movimentação mantendo estabilidade corporal total. <br>3. Expire durante a contração muscular.",
+            "animation": "overhead-lunge",
+            "target": "Core e Estabilidade"
+        }
+    ]
+},
+
+  "Avanço Lateral com Resistência": {
+    "type": "pilates",
+    "equipment": "elastic",
+    "sets": 3,
+    "reps": "12/lado",
+    "exercises": [
+        {
+            "name": "Avanço Lateral com Resistência",
+            "duration": 40,
+            "instructions": "Dê um passo lateral mantendo a barra tracionada para focar nos glúteos e adutores. 1. Posicione os elásticos com segurança. <br>2. Realize a movimentação mantendo estabilidade corporal total. <br>3. Expire durante a contração muscular.",
+            "animation": "overhead-lunge",
+            "target": "Pernas e Glúteos"
+        }
+    ]
+},
+
+  "Abdominal Russo com Elástico": {
+    "type": "pilates",
+    "equipment": "elastic",
+    "sets": 3,
+    "reps": "15/lado",
+    "exercises": [
+        {
+            "name": "Abdominal Russo com Elástico",
+            "duration": 40,
+            "instructions": "Rotação de tronco com as pernas suspensas e barra sob resistência dos elásticos. 1. Posicione os elásticos com segurança. <br>2. Realize a movimentação mantendo estabilidade corporal total. <br>3. Expire durante a contração muscular.",
+            "animation": "overhead-lunge",
+            "target": "Core e Oblíquos"
+        }
+    ]
+},
+
+  "Crucifixo Peitoral com Barra e Elástico": {
+    "type": "pilates",
+    "equipment": "elastic",
+    "sets": 3,
+    "reps": "15",
+    "exercises": [
+        {
+            "name": "Crucifixo Peitoral com Barra e Elástico",
+            "duration": 40,
+            "instructions": "Deitada de costas, empurre a barra à frente vencendo a força das faixas elásticas. 1. Posicione os elásticos com segurança. <br>2. Realize a movimentação mantendo estabilidade corporal total. <br>3. Expire durante a contração muscular.",
+            "animation": "overhead-lunge",
+            "target": "Peitoral e Tríceps"
+        }
+    ]
+},
+
+  "Alongamento Integrado com Elástico": {
+    "type": "pilates",
+    "equipment": "elastic",
+    "sets": 3,
+    "reps": "40s",
+    "exercises": [
+        {
+            "name": "Alongamento Integrado com Elástico",
+            "duration": 40,
+            "instructions": "Flexão de quadril à frente aproveitando a tração suave dos elásticos para relaxar a coluna. 1. Posicione os elásticos com segurança. <br>2. Realize a movimentação mantendo estabilidade corporal total. <br>3. Expire durante a contração muscular.",
+            "animation": "overhead-lunge",
+            "target": "Alongamento e Coluna"
+        }
+    ]
+},
+
+  "Aperto de Anel Deitada Lateral": {
+    "type": "pilates",
+    "equipment": "Ring",
+    "sets": 3,
+    "reps": "15",
+    "exercises": [
+        {
+            "name": "Aperto de Anel Deitada Lateral",
+            "duration": 35,
+            "instructions": "Deitada de lado, esprema o anel com a mão superior apoiada na parte de cima para tríceps. 1. Posicione o anel na região de ativação. <br>2. Faça compressões mantendo controle absoluto. <br>3. Mantenha os ombros relaxados e respiração fluida.",
+            "animation": "thigh-squeeze",
+            "target": "Tríceps e Peitoral"
+        }
+    ]
+},
+
+  "Flexão de Quadril com Anel": {
+    "type": "pilates",
+    "equipment": "Ring",
+    "sets": 3,
+    "reps": "12/lado",
+    "exercises": [
+        {
+            "name": "Flexão de Quadril com Anel",
+            "duration": 35,
+            "instructions": "Deitada de costas, empurre o anel contra a coxa enquanto eleva o joelho ao peito. 1. Posicione o anel na região de ativação. <br>2. Faça compressões mantendo controle absoluto. <br>3. Mantenha os ombros relaxados e respiração fluida.",
+            "animation": "thigh-squeeze",
+            "target": "Core e Flexores"
+        }
+    ]
+},
+
+  "Squeeze de Ombro Posterior": {
+    "type": "pilates",
+    "equipment": "Ring",
+    "sets": 3,
+    "reps": "12",
+    "exercises": [
+        {
+            "name": "Squeeze de Ombro Posterior",
+            "duration": 35,
+            "instructions": "Segure o anel nas costas com ambas as mãos e faça compressões para alinhar a cintura escapular. 1. Posicione o anel na região de ativação. <br>2. Faça compressões mantendo controle absoluto. <br>3. Mantenha os ombros relaxados e respiração fluida.",
+            "animation": "thigh-squeeze",
+            "target": "Ombros e Postura"
+        }
+    ]
+},
+
+  "Ponte Unilateral com Anel": {
+    "type": "pilates",
+    "equipment": "Ring",
+    "sets": 3,
+    "reps": "10/lado",
+    "exercises": [
+        {
+            "name": "Ponte Unilateral com Anel",
+            "duration": 35,
+            "instructions": "Elevação pélvica de uma perna só mantendo o anel pressionado entre as coxas. 1. Posicione o anel na região de ativação. <br>2. Faça compressões mantendo controle absoluto. <br>3. Mantenha os ombros relaxados e respiração fluida.",
+            "animation": "bridge-squeeze",
+            "target": "Glúteos e Adutores"
+        }
+    ]
+},
+
+  "Abdominal Oblíquo com Anel": {
+    "type": "pilates",
+    "equipment": "Ring",
+    "sets": 3,
+    "reps": "15/lado",
+    "exercises": [
+        {
+            "name": "Abdominal Oblíquo com Anel",
+            "duration": 35,
+            "instructions": "Crunch com rotação lateral do tronco levando o anel em direção à parte externa dos joelhos. 1. Posicione o anel na região de ativação. <br>2. Faça compressões mantendo controle absoluto. <br>3. Mantenha os ombros relaxados e respiração fluida.",
+            "animation": "thigh-squeeze",
+            "target": "Core e Oblíquos"
+        }
+    ]
+},
+
+  "Isometria de Agachamento Sumô com Anel": {
+    "type": "pilates",
+    "equipment": "Ring",
+    "sets": 3,
+    "reps": "45s",
+    "exercises": [
+        {
+            "name": "Isometria de Agachamento Sumô com Anel",
+            "duration": 45,
+            "instructions": "Agachamento sumô sustentado espremendo o anel à frente do peito continuamente. 1. Posicione o anel na região de ativação. <br>2. Faça compressões mantendo controle absoluto. <br>3. Mantenha os ombros relaxados e respiração fluida.",
+            "animation": "thigh-squeeze",
+            "target": "Pernas e Peitoral"
+        }
+    ]
+},
+
+  "Rosca Bíceps Isométrica com Anel": {
+    "type": "pilates",
+    "equipment": "Ring",
+    "sets": 3,
+    "reps": "15/lado",
+    "exercises": [
+        {
+            "name": "Rosca Bíceps Isométrica com Anel",
+            "duration": 35,
+            "instructions": "Esprema o anel entre o antebraço e a articulação do cotovelo para isolar o bíceps. 1. Posicione o anel na região de ativação. <br>2. Faça compressões mantendo controle absoluto. <br>3. Mantenha os ombros relaxados e respiração fluida.",
+            "animation": "thigh-squeeze",
+            "target": "Bíceps e Isometria"
+        }
+    ]
+},
+
+  "Pressione o Anel Acima da Cabeça": {
+    "type": "pilates",
+    "equipment": "Ring",
+    "sets": 3,
+    "reps": "12",
+    "exercises": [
+        {
+            "name": "Pressione o Anel Acima da Cabeça",
+            "duration": 35,
+            "instructions": "Pressione o anel acima da cabeça com os braços esticados para deltoides e costas superiores. 1. Posicione o anel na região de ativação. <br>2. Faça compressões mantendo controle absoluto. <br>3. Mantenha os ombros relaxados e respiração fluida.",
+            "animation": "thigh-squeeze",
+            "target": "Ombros e Costas"
+        }
+    ]
+},
+
+  "Elevação Pélvica com Isometria no Anel": {
+    "type": "pilates",
+    "equipment": "Ring",
+    "sets": 4,
+    "reps": "10",
+    "exercises": [
+        {
+            "name": "Elevação Pélvica com Isometria no Anel",
+            "duration": 35,
+            "instructions": "Mantenha o quadril elevado enquanto realiza pulsos rápidos de compressão no anel. 1. Posicione o anel na região de ativação. <br>2. Faça compressões mantendo controle absoluto. <br>3. Mantenha os ombros relaxados e respiração fluida.",
+            "animation": "thigh-squeeze",
+            "target": "Glúteos e Core"
+        }
+    ]
+},
+
+  "Alongamento de Posterior com Anel": {
+    "type": "pilates",
+    "equipment": "Ring",
+    "sets": 3,
+    "reps": "30s",
+    "exercises": [
+        {
+            "name": "Alongamento de Posterior com Anel",
+            "duration": 30,
+            "instructions": "Deitada, coloque o pé dentro da alça do anel e puxe a perna reta para alongar posterior. 1. Posicione o anel na região de ativação. <br>2. Faça compressões mantendo controle absoluto. <br>3. Mantenha os ombros relaxados e respiração fluida.",
+            "animation": "thigh-squeeze",
+            "target": "Alongamento e Pernas"
+        }
+    ]
+},
+
   "Rosca Bíceps na Barra": {
     "type": "pilates",
     "equipment": "bar",
