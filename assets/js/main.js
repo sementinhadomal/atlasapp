@@ -2646,6 +2646,13 @@ async function initAuth() {
   // 3. Apply UI
   _applyAuthUI(user);
   _applyProfileView(user);
+
+  // 4. Check if password recovery redirect hash is present in URL
+  if (window.location.hash && (window.location.hash.includes('type=recovery') || window.location.hash.includes('access_token='))) {
+    if (typeof window.switchAuthStep === 'function') {
+      window.switchAuthStep(4);
+    }
+  }
 }
 
 // ==========================================
@@ -2703,6 +2710,19 @@ window.handleAuthLoginSubmit = async function() {
 };
 
 // ==========================================
+// ALTERNAR ENTRE TELAS DE AUTENTICAÇÃO
+// ==========================================
+window.switchAuthStep = function(stepNum) {
+  const steps = ['authStep1', 'authStep2', 'authStep3', 'authStep4'];
+  steps.forEach((stepId, idx) => {
+    const el = document.getElementById(stepId);
+    if (el) {
+      el.style.display = (idx + 1 === stepNum) ? 'block' : 'none';
+    }
+  });
+};
+
+// ==========================================
 // REGISTRO — chamado pelo botão do profile.html
 // ==========================================
 window.handleAuthRegisterSubmit = async function() {
@@ -2710,8 +2730,8 @@ window.handleAuthRegisterSubmit = async function() {
   const ageInput   = document.getElementById('authAge');
   const goalSelect = document.getElementById('authGoal');
   const levelSelect= document.getElementById('authLevel');
-  const emailInput = document.getElementById('authRegEmail') || document.getElementById('authEmail');
-  const passInput  = document.getElementById('authRegPassword') || document.getElementById('authPassword');
+  const emailInput = document.getElementById('regEmail') || document.getElementById('authEmail');
+  const passInput  = document.getElementById('regPassword') || document.getElementById('authPassword');
   const btn        = document.getElementById('authBtn2');
 
   if (!emailInput || !passInput) { window.showToast('Preencha todos os campos.'); return; }
@@ -2784,6 +2804,31 @@ window.handleRecoverySubmit = async function() {
     window.showToast('📧 Link de redefinição enviado para seu e-mail!');
   } else {
     window.showToast('Recuperação indisponível no modo offline.');
+  }
+};
+
+// ==========================================
+// REDEFINIÇÃO DE SENHA
+// ==========================================
+window.handleUpdatePasswordSubmit = async function() {
+  const passInput = document.getElementById('newPassword');
+  if (!passInput) return;
+  const password = passInput.value;
+  if (!password || password.length < 6) {
+    window.showToast('A senha precisa ter pelo menos 6 caracteres.');
+    return;
+  }
+
+  if (window.atlasSupabase && typeof window.atlasSupabase.updatePassword === 'function') {
+    const { success, error } = await window.atlasSupabase.updatePassword(password);
+    if (error) {
+      window.showToast('❌ ' + error);
+      return;
+    }
+    window.showToast('✅ Senha redefinida com sucesso! Faça login.');
+    window.switchAuthStep(1);
+  } else {
+    window.showToast('Redefinição indisponível no modo offline.');
   }
 };
 
