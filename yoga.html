@@ -14,20 +14,20 @@
   <!-- NAV -->
   <nav class="nav nav--scrolled" id="nav">
     <div class="container nav__inner">
-      <a href="index.html" class="nav__logo">
+      <a href="index.html?v=1.0.4" class="nav__logo">
         <img src="assets/images/logo-mark.png" alt="Atlas Pilates" class="nav__logo-mark" />
         <span class="nav__logo-text">Atlas Pilates</span>
       </a>
       <ul class="nav__links">
-        <li><a href="index.html" class="nav__link">Home</a></li>
-        <li><a href="yoga.html" class="nav__link active">Yoga</a></li>
-        <li><a href="pilates.html" class="nav__link">Pilates</a></li>
-        <li><a href="programs.html" class="nav__link">Programs</a></li>
-        <li><a href="library.html" class="nav__link">Library</a></li>
+        <li><a href="index.html?v=1.0.4" class="nav__link">Home</a></li>
+        <li><a href="yoga.html?v=1.0.4" class="nav__link active">Yoga</a></li>
+        <li><a href="pilates.html?v=1.0.4" class="nav__link">Pilates</a></li>
+        <li><a href="programs.html?v=1.0.4" class="nav__link">Programs</a></li>
+        <li><a href="library.html?v=1.0.4" class="nav__link">Library</a></li>
       </ul>
       <div class="nav__actions">
-        <a href="profile.html" class="btn btn--outline btn--sm">Sign In</a>
-        <a href="subscription.html" class="btn btn--primary btn--sm">Start Free</a>
+        <a href="profile.html?v=1.0.4" class="btn btn--outline btn--sm">Sign In</a>
+        <a href="subscription.html?v=1.0.4" class="btn btn--primary btn--sm">Start Free</a>
         <button class="nav__menu-btn" id="menuBtn" aria-label="Open menu">
           <span></span><span></span><span></span>
         </button>
@@ -41,12 +41,12 @@
     <div class="mobile-drawer__panel">
       <button class="drawer-close" id="drawerClose">✕</button>
       <nav class="drawer-links">
-        <a href="index.html" class="drawer-link">Home</a>
-        <a href="yoga.html" class="drawer-link">Yoga</a>
-        <a href="pilates.html" class="drawer-link">Pilates</a>
-        <a href="programs.html" class="drawer-link">Programs</a>
-        <a href="library.html" class="drawer-link">Library</a>
-        <a href="profile.html" class="drawer-link">Profile</a>
+        <a href="index.html?v=1.0.4" class="drawer-link">Home</a>
+        <a href="yoga.html?v=1.0.4" class="drawer-link">Yoga</a>
+        <a href="pilates.html?v=1.0.4" class="drawer-link">Pilates</a>
+        <a href="programs.html?v=1.0.4" class="drawer-link">Programs</a>
+        <a href="library.html?v=1.0.4" class="drawer-link">Library</a>
+        <a href="profile.html?v=1.0.4" class="drawer-link">Profile</a>
       </nav>
     </div>
   </div>
@@ -95,8 +95,8 @@
           <div class="card__media">
             <img src="assets/images/yoga.png" alt="Sunrise Morning Flow" loading="lazy" />
             
-            <button class="card__play-overlay" onclick="openVideoModal('Sunrise Morning Flow', '30 min')" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:transparent; cursor:pointer;">
-              <div style="width:52px; height:52px; border-radius:50%; background:rgba(250,248,244,0.9); display:flex; align-items:center; justify-content:center; opacity:0; transition: opacity 0.3s;" class="play-icon">
+            <button class="card__play-overlay" onclick="openVideoModal('Sunrise Morning Flow', '30 min')" style="position:absolute;inset:0;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+              <div class="play-icon" style="width:52px;height:52px;border-radius:50%;background:rgba(250,248,244,0.9);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;box-shadow:var(--shadow-md);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-near-black)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
               </div>
             </button>
@@ -131,8 +131,8 @@
           <div class="card__media">
             <img src="assets/images/yoga.png" alt="Deep Restore & Relax" loading="lazy" />
             
-            <button class="card__play-overlay" onclick="openVideoModal('Deep Restore & Relax', '45 min')" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:transparent; cursor:pointer;">
-              <div style="width:52px; height:52px; border-radius:50%; background:rgba(250,248,244,0.9); display:flex; align-items:center; justify-content:center; opacity:0; transition: opacity 0.3s;" class="play-icon">
+            <button class="card__play-overlay" onclick="openVideoModal('Deep Restore & Relax', '45 min')" style="position:absolute;inset:0;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+              <div class="play-icon" style="width:52px;height:52px;border-radius:50%;background:rgba(250,248,244,0.9);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;box-shadow:var(--shadow-md);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-near-black)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
               </div>
             </button>
@@ -160,11 +160,11 @@
         <article class="card reveal" data-category="strength" style="animation-delay:0.2s;" aria-label="Power Vinyasa class - Premium">
           <img src="assets/images/yoga.png" alt="Power Vinyasa Flow" loading="lazy" style="filter: brightness(0.7);" />
             
-            <div class="card__lock">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            </div>
-            <button class="card__play-overlay" onclick="openVideoModal('Power Vinyasa Flow', '55 min')" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:transparent; cursor:pointer;">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:#fff; drop-shadow: 0 4px 12px rgba(0,0,0,0.5);"><circle cx="12" cy="12" r="10" fill="rgba(0,0,0,0.2)"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
+            
+            <button class="card__play-overlay" onclick="openVideoModal('Power Vinyasa Flow', '55 min')" style="position:absolute;inset:0;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+              <div class="play-icon" style="width:52px;height:52px;border-radius:50%;background:rgba(250,248,244,0.9);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;box-shadow:var(--shadow-md);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-near-black)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
             </button>
           </div>
           <div class="card__body">
@@ -190,11 +190,11 @@
         <article class="card reveal" data-category="flexibility" style="animation-delay:0.1s;" aria-label="Full Body Flexibility class - Premium">
           <img src="assets/images/yoga.png" alt="Full Body Flexibility" loading="lazy" style="filter: brightness(0.7);" />
             
-            <div class="card__lock">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            </div>
-            <button class="card__play-overlay" onclick="openVideoModal('Full Body Flexibility', '40 min')" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:transparent; cursor:pointer;">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:#fff; drop-shadow: 0 4px 12px rgba(0,0,0,0.5);"><circle cx="12" cy="12" r="10" fill="rgba(0,0,0,0.2)"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
+            
+            <button class="card__play-overlay" onclick="openVideoModal('Full Body Flexibility', '40 min')" style="position:absolute;inset:0;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+              <div class="play-icon" style="width:52px;height:52px;border-radius:50%;background:rgba(250,248,244,0.9);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;box-shadow:var(--shadow-md);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-near-black)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
             </button>
           </div>
           <div class="card__body">
@@ -250,11 +250,11 @@
         <article class="card reveal" data-category="strength" style="animation-delay:0.3s;" aria-label="Advanced Arm Balances class - Premium">
           <img src="assets/images/yoga.png" alt="Advanced Arm Balances" loading="lazy" style="filter: brightness(0.7);" />
             
-            <div class="card__lock">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            </div>
-            <button class="card__play-overlay" onclick="openVideoModal('Advanced Arm Balances', '60 min')" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:transparent; cursor:pointer;">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:#fff; drop-shadow: 0 4px 12px rgba(0,0,0,0.5);"><circle cx="12" cy="12" r="10" fill="rgba(0,0,0,0.2)"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
+            
+            <button class="card__play-overlay" onclick="openVideoModal('Advanced Arm Balances', '60 min')" style="position:absolute;inset:0;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+              <div class="play-icon" style="width:52px;height:52px;border-radius:50%;background:rgba(250,248,244,0.9);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;box-shadow:var(--shadow-md);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-near-black)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
             </button>
           </div>
           <div class="card__body">
@@ -280,11 +280,11 @@
         <article class="card reveal" data-category="strength morning" style="animation-delay:0.1s;" aria-label="Power Vinyasa Flow - Premium">
           <img src="assets/images/yoga.png" alt="Power Vinyasa Flow" loading="lazy" style="filter: brightness(0.7);" />
             
-            <div class="card__lock">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            </div>
-            <button class="card__play-overlay" onclick="openVideoModal('Power Vinyasa Flow', '55 min')" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:transparent; cursor:pointer;">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:#fff; drop-shadow: 0 4px 12px rgba(0,0,0,0.5);"><circle cx="12" cy="12" r="10" fill="rgba(0,0,0,0.2)"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
+            
+            <button class="card__play-overlay" onclick="openVideoModal('Power Vinyasa Flow', '55 min')" style="position:absolute;inset:0;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+              <div class="play-icon" style="width:52px;height:52px;border-radius:50%;background:rgba(250,248,244,0.9);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;box-shadow:var(--shadow-md);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-near-black)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
             </button>
           </div>
           <div class="card__body">
@@ -310,11 +310,11 @@
         <article class="card reveal" data-category="strength flexibility" style="animation-delay:0.2s;" aria-label="Equilíbrio e Força - Premium">
           <img src="assets/images/yoga.png" alt="Equilíbrio e Força" loading="lazy" style="filter: brightness(0.7);" />
             
-            <div class="card__lock">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            </div>
-            <button class="card__play-overlay" onclick="openVideoModal('Equilíbrio e Força', '40 min')" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:transparent; cursor:pointer;">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:#fff; drop-shadow: 0 4px 12px rgba(0,0,0,0.5);"><circle cx="12" cy="12" r="10" fill="rgba(0,0,0,0.2)"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
+            
+            <button class="card__play-overlay" onclick="openVideoModal('Equilíbrio e Força', '40 min')" style="position:absolute;inset:0;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+              <div class="play-icon" style="width:52px;height:52px;border-radius:50%;background:rgba(250,248,244,0.9);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;box-shadow:var(--shadow-md);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-near-black)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
             </button>
           </div>
           <div class="card__body">
@@ -341,8 +341,8 @@
           <div class="card__media">
             <img src="assets/images/yoga.png" alt="Yin Yoga Noturno" loading="lazy" />
             
-            <button class="card__play-overlay" onclick="openVideoModal('Yin Yoga Noturno', '50 min')" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:transparent; cursor:pointer;">
-              <div style="width:52px; height:52px; border-radius:50%; background:rgba(250,248,244,0.9); display:flex; align-items:center; justify-content:center; opacity:0; transition: opacity 0.3s;" class="play-icon">
+            <button class="card__play-overlay" onclick="openVideoModal('Yin Yoga Noturno', '50 min')" style="position:absolute;inset:0;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+              <div class="play-icon" style="width:52px;height:52px;border-radius:50%;background:rgba(250,248,244,0.9);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;box-shadow:var(--shadow-md);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-near-black)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
               </div>
             </button>
@@ -370,11 +370,11 @@
         <article class="card reveal" data-category="flexibility strength" style="animation-delay:0.1s;" aria-label="Flexibilidade Avançada - Premium">
           <img src="assets/images/yoga.png" alt="Flexibilidade Avançada" loading="lazy" style="filter: brightness(0.7);" />
             
-            <div class="card__lock">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            </div>
-            <button class="card__play-overlay" onclick="openVideoModal('Flexibilidade Avançada', '45 min')" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:transparent; cursor:pointer;">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:#fff; drop-shadow: 0 4px 12px rgba(0,0,0,0.5);"><circle cx="12" cy="12" r="10" fill="rgba(0,0,0,0.2)"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
+            
+            <button class="card__play-overlay" onclick="openVideoModal('Flexibilidade Avançada', '45 min')" style="position:absolute;inset:0;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+              <div class="play-icon" style="width:52px;height:52px;border-radius:50%;background:rgba(250,248,244,0.9);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;box-shadow:var(--shadow-md);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-near-black)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
             </button>
           </div>
           <div class="card__body">
@@ -400,11 +400,11 @@
         <article class="card reveal" data-category="strength morning" style="animation-delay:0.2s;" aria-label="Power Flow Desafio Core - Premium">
           <img src="assets/images/yoga.png" alt="Power Flow Desafio Core" loading="lazy" style="filter: brightness(0.7);" />
             
-            <div class="card__lock">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            </div>
-            <button class="card__play-overlay" onclick="openVideoModal('Power Flow Desafio Core', '35 min')" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:transparent; cursor:pointer;">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:#fff; drop-shadow: 0 4px 12px rgba(0,0,0,0.5);"><circle cx="12" cy="12" r="10" fill="rgba(0,0,0,0.2)"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
+            
+            <button class="card__play-overlay" onclick="openVideoModal('Power Flow Desafio Core', '35 min')" style="position:absolute;inset:0;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+              <div class="play-icon" style="width:52px;height:52px;border-radius:50%;background:rgba(250,248,244,0.9);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;box-shadow:var(--shadow-md);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-near-black)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
             </button>
           </div>
           <div class="card__body">
@@ -430,11 +430,11 @@
         <article class="card reveal" data-category="recovery" style="animation-delay:0.1s;" aria-label="Yoga para Postura e Ombros - Premium">
           <img src="assets/images/yoga.png" alt="Yoga para Postura e Ombros" loading="lazy" style="filter: brightness(0.7);" />
             
-            <div class="card__lock">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            </div>
-            <button class="card__play-overlay" onclick="openVideoModal('Yoga para Postura e Ombros', '20 min')" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:transparent; cursor:pointer;">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:#fff; drop-shadow: 0 4px 12px rgba(0,0,0,0.5);"><circle cx="12" cy="12" r="10" fill="rgba(0,0,0,0.2)"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
+            
+            <button class="card__play-overlay" onclick="openVideoModal('Yoga para Postura e Ombros', '20 min')" style="position:absolute;inset:0;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+              <div class="play-icon" style="width:52px;height:52px;border-radius:50%;background:rgba(250,248,244,0.9);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;box-shadow:var(--shadow-md);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-near-black)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
             </button>
           </div>
           <div class="card__body">
@@ -459,11 +459,11 @@
         <article class="card reveal" data-category="strength morning" style="animation-delay:0.1s;" aria-label="Vinyasa Flow Energizante - Premium">
           <img src="assets/images/yoga.png" alt="Vinyasa Flow Energizante" loading="lazy" style="filter: brightness(0.7);" />
             
-            <div class="card__lock">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            </div>
-            <button class="card__play-overlay" onclick="openVideoModal('Vinyasa Flow Energizante', '35 min')" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:transparent; cursor:pointer;">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:#fff; drop-shadow: 0 4px 12px rgba(0,0,0,0.5);"><circle cx="12" cy="12" r="10" fill="rgba(0,0,0,0.2)"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
+            
+            <button class="card__play-overlay" onclick="openVideoModal('Vinyasa Flow Energizante', '35 min')" style="position:absolute;inset:0;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+              <div class="play-icon" style="width:52px;height:52px;border-radius:50%;background:rgba(250,248,244,0.9);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;box-shadow:var(--shadow-md);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-near-black)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
             </button>
           </div>
           <div class="card__body">
@@ -488,11 +488,11 @@
         <article class="card reveal" data-category="flexibility" style="animation-delay:0.1s;" aria-label="Yoga Coxas e Quadril - Premium">
           <img src="assets/images/yoga.png" alt="Yoga Coxas e Quadril" loading="lazy" style="filter: brightness(0.7);" />
             
-            <div class="card__lock">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            </div>
-            <button class="card__play-overlay" onclick="openVideoModal('Yoga Coxas e Quadril', '30 min')" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:transparent; cursor:pointer;">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:#fff; drop-shadow: 0 4px 12px rgba(0,0,0,0.5);"><circle cx="12" cy="12" r="10" fill="rgba(0,0,0,0.2)"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
+            
+            <button class="card__play-overlay" onclick="openVideoModal('Yoga Coxas e Quadril', '30 min')" style="position:absolute;inset:0;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+              <div class="play-icon" style="width:52px;height:52px;border-radius:50%;background:rgba(250,248,244,0.9);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;box-shadow:var(--shadow-md);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-near-black)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
             </button>
           </div>
           <div class="card__body">
@@ -517,11 +517,11 @@
         <article class="card reveal" data-category="flexibility relaxation" style="animation-delay:0.1s;" aria-label="Hatha Yoga Clássico - Premium">
           <img src="assets/images/yoga.png" alt="Hatha Yoga Clássico" loading="lazy" style="filter: brightness(0.7);" />
             
-            <div class="card__lock">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            </div>
-            <button class="card__play-overlay" onclick="openVideoModal('Hatha Yoga Clássico', '45 min')" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:transparent; cursor:pointer;">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:#fff; drop-shadow: 0 4px 12px rgba(0,0,0,0.5);"><circle cx="12" cy="12" r="10" fill="rgba(0,0,0,0.2)"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
+            
+            <button class="card__play-overlay" onclick="openVideoModal('Hatha Yoga Clássico', '45 min')" style="position:absolute;inset:0;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+              <div class="play-icon" style="width:52px;height:52px;border-radius:50%;background:rgba(250,248,244,0.9);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;box-shadow:var(--shadow-md);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-near-black)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
             </button>
           </div>
           <div class="card__body">
@@ -546,11 +546,11 @@
         <article class="card reveal" data-category="strength flexibility" style="animation-delay:0.1s;" aria-label="Vinyasa Desafio de Equilíbrio - Premium">
           <img src="assets/images/yoga.png" alt="Vinyasa Desafio de Equilíbrio" loading="lazy" style="filter: brightness(0.7);" />
             
-            <div class="card__lock">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            </div>
-            <button class="card__play-overlay" onclick="openVideoModal('Vinyasa Desafio de Equilíbrio', '50 min')" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:transparent; cursor:pointer;">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:#fff; drop-shadow: 0 4px 12px rgba(0,0,0,0.5);"><circle cx="12" cy="12" r="10" fill="rgba(0,0,0,0.2)"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
+            
+            <button class="card__play-overlay" onclick="openVideoModal('Vinyasa Desafio de Equilíbrio', '50 min')" style="position:absolute;inset:0;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+              <div class="play-icon" style="width:52px;height:52px;border-radius:50%;background:rgba(250,248,244,0.9);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;box-shadow:var(--shadow-md);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-near-black)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
             </button>
           </div>
           <div class="card__body">
@@ -575,11 +575,11 @@
         <article class="card reveal" data-category="relaxation recovery" style="animation-delay:0.1s;" aria-label="Yin Yoga Restaurativo - Premium">
           <img src="assets/images/yoga.png" alt="Yin Yoga Restaurativo" loading="lazy" style="filter: brightness(0.7);" />
             
-            <div class="card__lock">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            </div>
-            <button class="card__play-overlay" onclick="openVideoModal('Yin Yoga Restaurativo', '40 min')" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:transparent; cursor:pointer;">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:#fff; drop-shadow: 0 4px 12px rgba(0,0,0,0.5);"><circle cx="12" cy="12" r="10" fill="rgba(0,0,0,0.2)"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
+            
+            <button class="card__play-overlay" onclick="openVideoModal('Yin Yoga Restaurativo', '40 min')" style="position:absolute;inset:0;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+              <div class="play-icon" style="width:52px;height:52px;border-radius:50%;background:rgba(250,248,244,0.9);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;box-shadow:var(--shadow-md);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-near-black)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
             </button>
           </div>
           <div class="card__body">
@@ -604,11 +604,11 @@
         <article class="card reveal" data-category="strength morning" style="animation-delay:0.1s;" aria-label="Yoga Core Estabilidade - Premium">
           <img src="assets/images/yoga.png" alt="Yoga Core Estabilidade" loading="lazy" style="filter: brightness(0.7);" />
             
-            <div class="card__lock">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            </div>
-            <button class="card__play-overlay" onclick="openVideoModal('Yoga Core Estabilidade', '30 min')" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:transparent; cursor:pointer;">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:#fff; drop-shadow: 0 4px 12px rgba(0,0,0,0.5);"><circle cx="12" cy="12" r="10" fill="rgba(0,0,0,0.2)"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
+            
+            <button class="card__play-overlay" onclick="openVideoModal('Yoga Core Estabilidade', '30 min')" style="position:absolute;inset:0;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+              <div class="play-icon" style="width:52px;height:52px;border-radius:50%;background:rgba(250,248,244,0.9);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;box-shadow:var(--shadow-md);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-near-black)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
             </button>
           </div>
           <div class="card__body">
@@ -633,11 +633,11 @@
         <article class="card reveal" data-category="flexibility recovery" style="animation-delay:0.1s;" aria-label="Yoga Alongamento Profundo - Premium">
           <img src="assets/images/yoga.png" alt="Yoga Alongamento Profundo" loading="lazy" style="filter: brightness(0.7);" />
             
-            <div class="card__lock">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            </div>
-            <button class="card__play-overlay" onclick="openVideoModal('Yoga Alongamento Profundo', '40 min')" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:transparent; cursor:pointer;">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:#fff; drop-shadow: 0 4px 12px rgba(0,0,0,0.5);"><circle cx="12" cy="12" r="10" fill="rgba(0,0,0,0.2)"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
+            
+            <button class="card__play-overlay" onclick="openVideoModal('Yoga Alongamento Profundo', '40 min')" style="position:absolute;inset:0;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+              <div class="play-icon" style="width:52px;height:52px;border-radius:50%;background:rgba(250,248,244,0.9);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;box-shadow:var(--shadow-md);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-near-black)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
             </button>
           </div>
           <div class="card__body">
@@ -662,11 +662,11 @@
         <article class="card reveal" data-category="relaxation morning" style="animation-delay:0.1s;" aria-label="Pranayama & Meditação - Premium">
           <img src="assets/images/yoga.png" alt="Pranayama & Meditação" loading="lazy" style="filter: brightness(0.7);" />
             
-            <div class="card__lock">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            </div>
-            <button class="card__play-overlay" onclick="openVideoModal('Pranayama & Meditação', '15 min')" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:transparent; cursor:pointer;">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:#fff; drop-shadow: 0 4px 12px rgba(0,0,0,0.5);"><circle cx="12" cy="12" r="10" fill="rgba(0,0,0,0.2)"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
+            
+            <button class="card__play-overlay" onclick="openVideoModal('Pranayama & Meditação', '15 min')" style="position:absolute;inset:0;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+              <div class="play-icon" style="width:52px;height:52px;border-radius:50%;background:rgba(250,248,244,0.9);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;box-shadow:var(--shadow-md);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-near-black)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
             </button>
           </div>
           <div class="card__body">
@@ -691,11 +691,11 @@
         <article class="card reveal" data-category="strength flexibility" style="animation-delay:0.1s;" aria-label="Ashtanga Power Intro - Premium">
           <img src="assets/images/yoga.png" alt="Ashtanga Power Intro" loading="lazy" style="filter: brightness(0.7);" />
             
-            <div class="card__lock">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            </div>
-            <button class="card__play-overlay" onclick="openVideoModal('Ashtanga Power Intro', '50 min')" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:transparent; cursor:pointer;">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:#fff; drop-shadow: 0 4px 12px rgba(0,0,0,0.5);"><circle cx="12" cy="12" r="10" fill="rgba(0,0,0,0.2)"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
+            
+            <button class="card__play-overlay" onclick="openVideoModal('Ashtanga Power Intro', '50 min')" style="position:absolute;inset:0;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+              <div class="play-icon" style="width:52px;height:52px;border-radius:50%;background:rgba(250,248,244,0.9);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;box-shadow:var(--shadow-md);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-near-black)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
             </button>
           </div>
           <div class="card__body">
@@ -719,7 +719,7 @@
       </div>
 
       <div class="text-center" style="margin-top: var(--space-3xl);">
-        <a href="subscription.html" class="btn btn--gold">Unlock All Classes — Go Premium</a>
+        <a href="subscription.html?v=1.0.4" class="btn btn--gold">Unlock All Classes — Go Premium</a>
       </div>
     </div>
   </section>
@@ -756,15 +756,15 @@
         </div>
         <div>
           <div class="footer__heading">Explore</div>
-          <a href="yoga.html" class="footer__link">Yoga Classes</a>
-          <a href="pilates.html" class="footer__link">Pilates</a>
-          <a href="programs.html" class="footer__link">Programs</a>
-          <a href="library.html" class="footer__link">Exercise Library</a>
+          <a href="yoga.html?v=1.0.4" class="footer__link">Yoga Classes</a>
+          <a href="pilates.html?v=1.0.4" class="footer__link">Pilates</a>
+          <a href="programs.html?v=1.0.4" class="footer__link">Programs</a>
+          <a href="library.html?v=1.0.4" class="footer__link">Exercise Library</a>
         </div>
         <div>
           <div class="footer__heading">Account</div>
-          <a href="profile.html" class="footer__link">My Profile</a>
-          <a href="subscription.html" class="footer__link">Subscription</a>
+          <a href="profile.html?v=1.0.4" class="footer__link">My Profile</a>
+          <a href="subscription.html?v=1.0.4" class="footer__link">Subscription</a>
         </div>
         <div>
           <div class="footer__heading">Company</div>
@@ -781,15 +781,15 @@
   <!-- BOTTOM NAV -->
   <nav class="bottom-nav">
     <div class="bottom-nav__inner">
-      <a href="index.html" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span class="bottom-nav__label">Home</span></a>
-      <a href="yoga.html" class="bottom-nav__item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg><span class="bottom-nav__label">Yoga</span></a>
-      <a href="pilates.html" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg><span class="bottom-nav__label">Pilates</span></a>
+      <a href="index.html?v=1.0.4" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span class="bottom-nav__label">Home</span></a>
+      <a href="yoga.html?v=1.0.4" class="bottom-nav__item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg><span class="bottom-nav__label">Yoga</span></a>
+      <a href="pilates.html?v=1.0.4" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg><span class="bottom-nav__label">Pilates</span></a>
   
 
       </div>
 
       <div class="text-center" style="margin-top: var(--space-3xl);">
-        <a href="subscription.html" class="btn btn--gold">Unlock All Classes — Go Premium</a>
+        <a href="subscription.html?v=1.0.4" class="btn btn--gold">Unlock All Classes — Go Premium</a>
       </div>
     </div>
   </section>
@@ -826,15 +826,15 @@
         </div>
         <div>
           <div class="footer__heading">Explore</div>
-          <a href="yoga.html" class="footer__link">Yoga Classes</a>
-          <a href="pilates.html" class="footer__link">Pilates</a>
-          <a href="programs.html" class="footer__link">Programs</a>
-          <a href="library.html" class="footer__link">Exercise Library</a>
+          <a href="yoga.html?v=1.0.4" class="footer__link">Yoga Classes</a>
+          <a href="pilates.html?v=1.0.4" class="footer__link">Pilates</a>
+          <a href="programs.html?v=1.0.4" class="footer__link">Programs</a>
+          <a href="library.html?v=1.0.4" class="footer__link">Exercise Library</a>
         </div>
         <div>
           <div class="footer__heading">Account</div>
-          <a href="profile.html" class="footer__link">My Profile</a>
-          <a href="subscription.html" class="footer__link">Subscription</a>
+          <a href="profile.html?v=1.0.4" class="footer__link">My Profile</a>
+          <a href="subscription.html?v=1.0.4" class="footer__link">Subscription</a>
         </div>
         <div>
           <div class="footer__heading">Company</div>
@@ -851,11 +851,11 @@
   <!-- BOTTOM NAV -->
   <nav class="bottom-nav">
     <div class="bottom-nav__inner">
-      <a href="index.html" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span class="bottom-nav__label">Home</span></a>
-      <a href="yoga.html" class="bottom-nav__item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg><span class="bottom-nav__label">Yoga</span></a>
-      <a href="pilates.html" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg><span class="bottom-nav__label">Pilates</span></a>
-      <a href="library.html" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg><span class="bottom-nav__label">Library</span></a>
-      <a href="profile.html" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="bottom-nav__label">Profile</span></a>
+      <a href="index.html?v=1.0.4" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span class="bottom-nav__label">Home</span></a>
+      <a href="yoga.html?v=1.0.4" class="bottom-nav__item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg><span class="bottom-nav__label">Yoga</span></a>
+      <a href="pilates.html?v=1.0.4" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg><span class="bottom-nav__label">Pilates</span></a>
+      <a href="library.html?v=1.0.4" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg><span class="bottom-nav__label">Library</span></a>
+      <a href="profile.html?v=1.0.4" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="bottom-nav__label">Profile</span></a>
     </div>
   </nav>
 
