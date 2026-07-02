@@ -181,18 +181,13 @@ const workoutData = {
       { name: "Agachamento com Salto Suave", duration: 30, instructions: "1. Agache até os joelhos formarem 90°. <br>2. Suba com impulso elevando levemente os calcanhares. <br>3. Aterrisse suavemente dobrando os joelhos. <br>4. Repita no ritmo.", animation: "squat-press", target: "Pernas, Glúteos e Cardio" },
       { name: "Mountain Climbers", duration: 35, instructions: "1. Em prancha alta com braços esticados. <br>2. Traga o joelho direito em direção ao peito e retorne. <br>3. Alterne as pernas em ritmo constante. <br>4. Mantenha os quadris nivelados.", animation: "plank-bar", target: "Core e Cardio" },
       { name: "Toque no Ombro em Prancha", duration: 40, instructions: "1. Em prancha alta. <br>2. Levante a mão direita e toque o ombro esquerdo. <br>3. Troque os lados. <br>4. Mantenha o quadril estável sem girar.", animation: "plank-bar", target: "Core Anti-Rotação e Braços" },
-      { name: "Ponte com Um Pé", duration: 40, instructions: "1. Deite-se com joelhos dobrados. <br>2. Estique a perna direita para cima. <br>3. Eleve o quadril usando apenas a perna esquerda como suporte. <br>4. Desça devagar e alterne.", animation: "glute-bridge-bar", target: "Glúteos e Isquiotibiais Unilateral" },
       { name: "Hollow Body Hold", duration: 45, instructions: "1. Deite-se de costas com braços acima da cabeça. <br>2. Eleve levemente braços e pernas do chão. <br>3. Pressione a lombar contra o chão. <br>4. Mantenha a posição contraindo o abdômen.", animation: "hundred", target: "Core Profundo e Resistência" }
     ]
   },
 
-  // ============================
-  // PROGRAMAS MISTOS — BARRA + YOGA + MAT
-  // ============================
-
   "Pilates Bar + Flow Matinal": {
     type: "pilates",
-    equipment: "Barre",
+    equipment: "elastic",
     sets: 3,
     reps: 12,
     exercises: [
@@ -206,7 +201,7 @@ const workoutData = {
 
   "Yoga + Pilates Bar Fusion": {
     type: "pilates",
-    equipment: "Barre",
+    equipment: "elastic",
     sets: 3,
     reps: 12,
     exercises: [
@@ -220,7 +215,7 @@ const workoutData = {
 
   "Corpo Completo — Barra + Core": {
     type: "pilates",
-    equipment: "Barre",
+    equipment: "elastic",
     sets: 3,
     reps: 12,
     exercises: [
@@ -236,17 +231,17 @@ const workoutData = {
 
   "Squat & Press": {
     type: "pilates",
-    equipment: "Barre",
+    equipment: "bar",
     sets: 3,
     reps: 15,
     exercises: [
-      { name: "Agachamento com Desenvolvimento", duration: 35, instructions: "1. Fique de pé sobre os elásticos da barra de Pilates. <br>2. Posicione a barra na altura dos ombros. <br>3. Agache flexionando os joelhos e jogando o quadril para trás. <br>4. Fique de pé e empurre a barra acima da cabeça.", animation: "squat-press", target: "Glúteos e Ombros" }
+      { name: "Agachamento com Desenvolvimento", duration: 35, instructions: "1. Fique de pé segurando a barra de Pilates na altura dos ombros. <br>2. Agache flexionando os joelhos e jogando o quadril para trás. <br>3. Fique de pé e empurre a barra acima da cabeça.", animation: "squat-press", target: "Glúteos e Ombros" }
     ]
   },
 
   "Overhead Lunge": {
     type: "pilates",
-    equipment: "Barre",
+    equipment: "bar",
     sets: 3,
     reps: 10,
     exercises: [
@@ -256,7 +251,7 @@ const workoutData = {
 
   "Força Total com Barra": {
     type: "pilates",
-    equipment: "Barre",
+    equipment: "bar",
     sets: 3,
     reps: 12,
     exercises: [
@@ -269,7 +264,7 @@ const workoutData = {
 
   "Escultura de Braços & Bíceps": {
     type: "pilates",
-    equipment: "Barre",
+    equipment: "elastic",
     sets: 3,
     reps: 15,
     exercises: [
@@ -281,7 +276,7 @@ const workoutData = {
 
   "Pernas & Glúteos Extremos": {
     type: "pilates",
-    equipment: "Barre",
+    equipment: "elastic",
     sets: 4,
     reps: 12,
     exercises: [
@@ -293,11 +288,11 @@ const workoutData = {
 
   "Definição & Cintura Oblíqua": {
     type: "pilates",
-    equipment: "Barre",
+    equipment: "elastic",
     sets: 3,
     reps: 15,
     exercises: [
-      { name: "Giro de Cintura com Barra", duration: 45, instructions: "1. Fique de pé com os pés sobre as alças elásticas. <br>2. Posicione a barra atrás dos ombros. <br>3. Mantendo os quadris apontados para a frente, gire o tronco lateralmente para a direita e depois para a esquerda. <br>4. Sinta a ativação oblíqua intensa.", animation: "torso-twist-bar", target: "Oblíquos e Core Lateral" },
+      { name: "Giro de Cintura com Barra", duration: 45, instructions: "1. Fique de pé with feet on the elastic loops. <br>2. Place the bar behind shoulders. <br>3. Keeping hips forward, twist torso side to side against tension.", animation: "torso-twist-bar", target: "Oblíquos e Core Lateral" },
       { name: "Flexão Auxiliada com Barra", duration: 40, instructions: "1. Fique na posição de flexão apoiando as duas mãos firmemente na barra no chão. <br>2. Flexione os cotovelos trazendo o peito perto da barra. <br>3. Empurre de volta com força mantendo o core ativado.", animation: "pushup-bar", target: "Peito, Ombros e Core" },
       { name: "Prancha com Barra", duration: 45, instructions: "1. Apoie as mãos na barra colocada no chão. <br>2. Estique as pernas e forme uma linha reta do calcanhar à cabeça. <br>3. Contraia o abdômen e os glúteos. <br>4. Mantenha por 30-45 segundos respirando.", animation: "plank-bar", target: "Core" }
     ]
@@ -305,7 +300,7 @@ const workoutData = {
 
   "Resistência & Quadril com Barra": {
     type: "pilates",
-    equipment: "Barre",
+    equipment: "elastic",
     sets: 3,
     reps: 12,
     exercises: [
@@ -317,13 +312,13 @@ const workoutData = {
 
   "Superiores & Postura com Barra": {
     type: "pilates",
-    equipment: "Barre",
+    equipment: "elastic",
     sets: 3,
     reps: 15,
     exercises: [
       { name: "Elevação Frontal com Barra", duration: 30, instructions: "1. Fique de pé com os pés dentro das alças da barra. <br>2. Segure a barra à frente das coxas com pegada pronada (palmas para baixo). <br>3. Eleve a barra mantendo os braços retos até a altura dos ombros contra a resistência elástica. <br>4. Desça devagar.", animation: "front-raise-bar", target: "Deltoides Anteriores e Postura" },
       { name: "Rosca Inversa com Barra", duration: 35, instructions: "1. Fique de pé pisando nos elásticos da barra. <br>2. Segure a barra com pegada pronada (palmas voltadas para baixo). <br>3. Flexione os cotovelos trazendo a barra em direção ao peito para trabalhar antebraço e bíceps. <br>4. Retorne devagar.", animation: "reverse-curl-bar", target: "Antebraços e Bíceps Braquial" },
-      { name: "Remada Curvada com Barra", duration: 35, instructions: "1. Incline o tronco a 45° mantendo as costas retas. <br>2. Segure a barra com as duas mãos à frente. <br>3. Puxe os cotovelos para trás e para cima.", animation: "row-bar", target: "Costas e Bíceps" }
+      { name: "Remada Curvada com Barra", duration: 35, instructions: "1. Incline o tronco a 45° mantendo as costas retas. <br>2. Segure a barra com as duas mãos à frente. <br>3. Puxe os cotovelos para trás e para cima. <br>4. Aperte as escápulas no topo e desça com controle.", animation: "row-bar", target: "Costas e Bíceps" }
     ]
   },
 
