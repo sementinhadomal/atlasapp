@@ -8,11 +8,11 @@ htmlFiles.forEach(fileName => {
   if (fs.existsSync(filePath)) {
     let content = fs.readFileSync(filePath, 'utf8');
 
-    // Substitui assets/js/main.js e assets/js/supabase-client.js por versões com v=1.0.6
-    content = content.replace(/assets\/js\/main\.js(\?v=[a-zA-Z0-9.]+)?/g, 'assets/js/main.js?v=1.0.6');
-    content = content.replace(/assets\/js\/supabase-client\.js(\?v=[a-zA-Z0-9.]+)?/g, 'assets/js/supabase-client.js?v=1.0.6');
+    // Substitui assets/js/main.js e assets/js/supabase-client.js por versões com v=1.0.7
+    content = content.replace(/assets\/js\/main\.js(\?v=[a-zA-Z0-9.]+)?/g, 'assets/js/main.js?v=1.0.7');
+    content = content.replace(/assets\/js\/supabase-client\.js(\?v=[a-zA-Z0-9.]+)?/g, 'assets/js/supabase-client.js?v=1.0.7');
 
     fs.writeFileSync(filePath, content, 'utf8');
-    console.log(`Cache-busting v1.0.6 aplicado em ${fileName}`);
+    console.log(`Cache-busting v1.0.7 aplicado em ${fileName}`);
   }
 });
