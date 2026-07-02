@@ -1834,7 +1834,7 @@ async function canPlayContent(triggerElement) {
   */
 }
 
-window.openVideoModal = async function(title, duration, triggerEl) {
+window.openVideoModal = async function(title, duration, triggerEl, customWorkoutData) {
   // triggerEl may be passed via onclick="openVideoModal(t, d, this)"
   // or we try to infer it from the event target
   const trigger = triggerEl || (window._lastClickTarget) || null;
@@ -1842,11 +1842,11 @@ window.openVideoModal = async function(title, duration, triggerEl) {
   const allowed = await canPlayContent(trigger);
   if (!allowed) {
     window.showToast('🔒 Conteúdo Premium — adquira o Atlas Pilates Bar para desbloquear.');
-    setTimeout(() => { window.location.href = 'subscription.html'; }, 1200);
+    setTimeout(() => { window.location.href = 'subscription.html?v=1.1.0'; }, 1200);
     return;
   }
 
-  launchWorkoutPlayer(title);
+  launchWorkoutPlayer(title, customWorkoutData);
 };
 
 window.openExerciseModal = async function(name, type, triggerEl) {
@@ -1867,12 +1867,12 @@ document.addEventListener('click', function(e) {
   window._lastClickTarget = e.target;
 }, true);
 
-function launchWorkoutPlayer(name) {
+function launchWorkoutPlayer(name, customWorkoutData) {
   const modal = document.getElementById('videoModal');
   if (!modal) return;
 
   currentWorkoutName = name;
-  currentWorkoutData = workoutData[name];
+  currentWorkoutData = customWorkoutData || workoutData[name];
 
   if (!currentWorkoutData) {
     currentWorkoutData = {
@@ -2747,6 +2747,10 @@ function getProgramId(title) {
  * Dynamically maps a program and day index to a real workout from workoutData.
  * Respects modality and filters matches accordingly.
  */
+/**
+ * Dynamically maps a program and day index to a real workout from workoutData.
+ * Respects modality and filters matches accordingly.
+ */
 window.getWorkoutForProgramDay = function(programId, day) {
   if (!window.workoutsByCategory) {
     window.workoutsByCategory = {
@@ -2832,6 +2836,118 @@ window.getWorkoutForProgramDay = function(programId, day) {
 };
 
 /**
+ * Dynamically creates a unique repeatable mix of exercises for any day and program.
+ * Respects modality and equipment rules.
+ */
+window.generateWorkoutMix = function(programId, programName, day, durationMinutes) {
+  // 1. Compile all exercises in workoutData
+  if (!window._masterExercisePool) {
+    window._masterExercisePool = [];
+    for (let key in workoutData) {
+      const w = workoutData[key];
+      if (w && Array.isArray(w.exercises)) {
+        w.exercises.forEach(ex => {
+          window._masterExercisePool.push({
+            name: ex.name,
+            instructions: ex.instructions,
+            animation: ex.animation,
+            target: ex.target,
+            type: w.type || 'pilates',
+            equipment: w.equipment || 'none'
+          });
+        });
+      }
+    }
+  }
+
+  const p = programId.toLowerCase();
+  let pool = [];
+
+  // 2. Filter exercises by program modality
+  if (p.includes('yoga') || p.includes('flexibilidade')) {
+    pool = window._masterExercisePool.filter(e => e.type === 'yoga');
+  } else if (p.includes('pilates-classico')) {
+    pool = window._masterExercisePool.filter(e => e.type === 'pilates' && e.equipment === 'none');
+  } else if (p.includes('barra-express')) {
+    pool = window._masterExercisePool.filter(e => e.equipment === 'bar' || e.name.toLowerCase().includes('barra'));
+  } else if (p.includes('desafio-anel')) {
+    pool = window._masterExercisePool.filter(e => e.equipment === 'ring' || e.name.toLowerCase().includes('anel'));
+  } else if (p.includes('barra-elastico') || p.includes('barra-e-elastico') || p.includes('desafio-21-dias-barra-elastico')) {
+    pool = window._masterExercisePool.filter(e => e.equipment === 'bar' || e.equipment === 'elastic');
+  } else if (p.includes('body-sculptor')) {
+    pool = window._masterExercisePool.filter(e => e.equipment === 'ring' || e.equipment === 'bar');
+  } else if (p.includes('pernas-gluteos') || p.includes('pernas')) {
+    pool = window._masterExercisePool.filter(e => {
+      const n = e.name.toLowerCase();
+      const t = e.target.toLowerCase();
+      return n.includes('agachamento') || n.includes('glúteo') || n.includes('perna') || n.includes('ponte') || n.includes('avanço') || t.includes('glúteo') || t.includes('quadril') || t.includes('coxa');
+    });
+  } else if (p.includes('upper-body') || p.includes('upper')) {
+    pool = window._masterExercisePool.filter(e => {
+      const n = e.name.toLowerCase();
+      const t = e.target.toLowerCase();
+      return n.includes('rosca') || n.includes('bíceps') || n.includes('tríceps') || n.includes('ombro') || n.includes('braço') || n.includes('remada') || t.includes('bíceps') || t.includes('tríceps') || t.includes('ombro') || t.includes('braço');
+    });
+  } else if (p.includes('core-avancado')) {
+    pool = window._masterExercisePool.filter(e => {
+      const n = e.name.toLowerCase();
+      return n.includes('core') || n.includes('abdominal') || n.includes('prancha');
+    });
+  } else if (p.includes('core-reset')) {
+    pool = window._masterExercisePool.filter(e => e.type === 'yoga' || e.type === 'pilates');
+  }
+
+  // Fallback to all exercises if subset is empty
+  if (pool.length === 0) {
+    pool = window._masterExercisePool;
+  }
+
+  // 3. Determine exercise count based on daily duration
+  let numExercises = 4;
+  if (durationMinutes <= 15) numExercises = 3;
+  else if (durationMinutes <= 25) numExercises = 4;
+  else if (durationMinutes <= 35) numExercises = 5;
+  else numExercises = 6;
+
+  // 4. Seeded repeatable selector
+  const seed = day + programId.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  const mix = [];
+  const poolSize = pool.length;
+
+  for (let i = 0; i < numExercises; i++) {
+    const idx = (seed + i * 17) % poolSize;
+    const candidate = pool[idx];
+    if (!mix.some(m => m.name === candidate.name)) {
+      mix.push(candidate);
+    } else {
+      let found = false;
+      for (let offset = 1; offset < poolSize; offset++) {
+        const nextCand = pool[(idx + offset) % poolSize];
+        if (!mix.some(m => m.name === nextCand.name)) {
+          mix.push(nextCand);
+          found = true;
+          break;
+        }
+      }
+      if (!found) {
+        mix.push(candidate);
+      }
+    }
+  }
+
+  return {
+    type: pool[0]?.type || 'pilates',
+    exercises: mix.map(ex => ({
+      name: ex.name,
+      duration: 40, // 40 seconds preview duration
+      instructions: ex.instructions,
+      animation: ex.animation,
+      target: ex.target
+    }))
+  };
+};
+
+/**
  * Dynamically tracks and renders program progress grids (D1, D2...)
  * and buttons, saving user state to localStorage.
  */
@@ -2892,10 +3008,12 @@ function renderGrid(grid, programId, totalDays, prefix, currentProgress) {
     dayItem.onmouseenter = () => { dayItem.style.transform = 'scale(1.05)'; };
     dayItem.onmouseleave = () => { dayItem.style.transform = ''; };
     
-    // Toggle progress when day circle is clicked!
+    // Click on circle opens the player directly for that day!
     dayItem.addEventListener('click', () => {
-      localStorage.setItem(`atlas_program_progress_${programId}`, i);
-      renderGrid(grid, programId, totalDays, prefix, i);
+      const card = grid.closest('.reveal, article, div');
+      const titleEl = card ? card.querySelector('h2') : null;
+      const title = titleEl ? titleEl.textContent.trim() : 'Programa';
+      window.startProgram(title, totalDays, i);
     });
     
     grid.appendChild(dayItem);
@@ -2921,32 +3039,35 @@ function updateProgramButton(programId, progress, totalDays, prefix) {
 }
 
 /**
- * Starts a workout program by matching its name to a real workout from workoutData
- * and opening the video modal player.
+ * Starts a workout program by generating a dynamic exercise mix and launching the player.
  */
-window.startProgram = function(programName, totalDays) {
+window.startProgram = function(programName, totalDays, dayOverride) {
   const progId = getProgramId(programName);
 
   // Define como programa ativo para salvar o progresso ao terminar o treino
   window.activeProgramId = progId;
 
   let currentProgress = 1;
-  const saved = localStorage.getItem(`atlas_program_progress_${progId}`);
-  currentProgress = saved !== null ? parseInt(saved) || 1 : 1;
+  if (dayOverride !== undefined) {
+    currentProgress = dayOverride;
+    localStorage.setItem(`atlas_program_progress_${progId}`, currentProgress);
+  } else {
+    const saved = localStorage.getItem(`atlas_program_progress_${progId}`);
+    currentProgress = saved !== null ? parseInt(saved) || 1 : 1;
+  }
 
   // Se o programa foi concluído, reinicia no dia 1
   if (currentProgress > totalDays) {
     currentProgress = 1;
     localStorage.setItem(`atlas_program_progress_${progId}`, 1);
-    const grid = document.querySelector(`.program-progress-grid[data-program-id="${progId}"]`);
-    if (grid) {
-      const prefix = progId.includes('yoga') ? 'S' : 'D';
-      renderGrid(grid, progId, totalDays, prefix, 1);
-    }
   }
 
-  // Busca treino ideal para este dia do programa
-  const finalWorkout = window.getWorkoutForProgramDay(progId, currentProgress);
+  // Atualiza a grade de progresso na tela
+  const grid = document.querySelector(`.program-progress-grid[data-program-id="${progId}"]`);
+  if (grid) {
+    const prefix = progId.includes('yoga') ? 'S' : 'D';
+    renderGrid(grid, progId, totalDays, prefix, currentProgress);
+  }
 
   // Obtém duração prometida nas estatísticas
   let durationStr = "25 min";
@@ -2967,13 +3088,16 @@ window.startProgram = function(programName, totalDays) {
     }
   }
 
+  const durationMinutes = parseInt(durationStr) || 25;
+  
+  // 1. Gera o Mix Dinâmico de Exercícios para este dia!
+  const workoutMix = window.generateWorkoutMix(progId, programName, currentProgress, durationMinutes);
+
   window.showToast(`🚀 Iniciando ${programName} — Dia ${currentProgress} (${durationStr})`);
   
   setTimeout(() => {
     if (window.openVideoModal) {
-      window.openVideoModal(finalWorkout, durationStr);
-    } else if (window.openExerciseModal) {
-      window.openExerciseModal(finalWorkout, durationStr);
+      window.openVideoModal(programName + " — Dia " + currentProgress, durationStr, null, workoutMix);
     }
   }, 1000);
 };
