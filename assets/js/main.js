@@ -2648,87 +2648,148 @@ async function initAuth() {
   _applyProfileView(user);
 }
 
-window.handleAuthEmailSubmit = function() {
-  const emailInput = document.getElementById('authEmail');
-  if (!emailInput) return;
+// ==========================================
+// LOGIN — chamado pelo botão do profile.html
+// ==========================================
+window.handleAuthLoginSubmit = async function() {
+  const emailInput    = document.getElementById('authEmail');
+  const passwordInput = document.getElementById('authPassword');
+  const btn           = document.getElementById('authBtn1');
 
-  const email = emailInput.value.trim().toLowerCase();
+  if (!emailInput || !passwordInput) return;
+
+  const email    = emailInput.value.trim().toLowerCase();
+  const password = passwordInput.value;
+
   if (!email || !email.includes('@')) {
-    window.showToast("Por favor, insira um e-mail válido.");
+    window.showToast('Por favor, insira um e-mail válido.');
+    return;
+  }
+  if (!password || password.length < 6) {
+    window.showToast('A senha precisa ter pelo menos 6 caracteres.');
     return;
   }
 
-  const registered = JSON.parse(localStorage.getItem('atlas_registered_users') || '[]');
-  const existingUser = registered.find(u => u.email === email);
+  if (btn) { btn.textContent = 'Entrando...'; btn.disabled = true; }
 
-  if (existingUser) {
-    // Directly log in existing user (Passwordless)
-    localStorage.setItem('atlas_user', JSON.stringify(existingUser));
-    window.showToast(`Bem-vindo(a) de volta, ${existingUser.name}!`);
-    initAuth();
-  } else {
-    // Show step 2 for onboarding new user
-    document.getElementById('authStep1').style.display = 'none';
-    document.getElementById('authStep2').style.display = 'block';
-    
-    // Add subtitle notice
-    const subtitle = document.getElementById('authSubtitle');
-    if (subtitle) {
-      subtitle.innerHTML = `E-mail verificado para o produto! <br>Por favor, complete as informações para personalizar seus treinos.`;
+  // Tenta login via Supabase
+  if (window.atlasSupabase && typeof window.atlasSupabase.signIn === 'function') {
+    const { data, error } = await window.atlasSupabase.signIn(email, password);
+    if (btn) { btn.textContent = 'Entrar'; btn.disabled = false; }
+
+    if (error) {
+      window.showToast('❌ ' + (error === 'Invalid login credentials'
+        ? 'E-mail ou senha incorretos.'
+        : error));
+      return;
     }
-    window.showToast("E-mail verificado! Complete seus dados de perfil.");
+
+    window.showToast('✅ Bem-vindo(a) de volta!');
+    localStorage.setItem('atlas_premium_status', 'active');
+    setTimeout(() => initAuth(), 500);
+  } else {
+    // Fallback offline: localStorage
+    if (btn) { btn.textContent = 'Entrar'; btn.disabled = false; }
+    const registered = JSON.parse(localStorage.getItem('atlas_registered_users') || '[]');
+    const found = registered.find(u => u.email === email);
+    if (found) {
+      localStorage.setItem('atlas_user', JSON.stringify(found));
+      window.showToast('Bem-vindo(a) de volta, ' + found.name + '!');
+      initAuth();
+    } else {
+      window.showToast('Conta não encontrada. Crie uma conta primeiro.');
+    }
   }
 };
 
-window.handleAuthRegisterSubmit = function() {
-  const nameInput = document.getElementById('authName');
-  const ageInput = document.getElementById('authAge');
+// ==========================================
+// REGISTRO — chamado pelo botão do profile.html
+// ==========================================
+window.handleAuthRegisterSubmit = async function() {
+  const nameInput  = document.getElementById('authName');
+  const ageInput   = document.getElementById('authAge');
   const goalSelect = document.getElementById('authGoal');
-  const levelSelect = document.getElementById('authLevel');
-  const emailInput = document.getElementById('authEmail');
+  const levelSelect= document.getElementById('authLevel');
+  const emailInput = document.getElementById('authRegEmail') || document.getElementById('authEmail');
+  const passInput  = document.getElementById('authRegPassword') || document.getElementById('authPassword');
+  const btn        = document.getElementById('authBtn2');
 
-  if (!nameInput || !ageInput || !emailInput) return;
+  if (!emailInput || !passInput) { window.showToast('Preencha todos os campos.'); return; }
 
-  const name = nameInput.value.trim();
-  const age = ageInput.value.trim();
-  const goal = goalSelect.value;
-  const level = levelSelect.value;
-  const email = emailInput.value.trim().toLowerCase();
+  const email    = emailInput.value.trim().toLowerCase();
+  const password = passInput.value;
+  const name     = nameInput  ? nameInput.value.trim()  : '';
+  const age      = ageInput   ? ageInput.value.trim()   : '';
+  const goal     = goalSelect ? goalSelect.value         : 'Pilates';
+  const level    = levelSelect? levelSelect.value        : 'Iniciante';
 
-  if (!name || !age) {
-    window.showToast("Por favor, preencha todos os campos.");
-    return;
+  if (!email || !email.includes('@')) { window.showToast('E-mail inválido.'); return; }
+  if (!password || password.length < 6) { window.showToast('Senha mínima de 6 caracteres.'); return; }
+
+  if (btn) { btn.textContent = 'Criando conta...'; btn.disabled = true; }
+
+  if (window.atlasSupabase && typeof window.atlasSupabase.signUp === 'function') {
+    const { data, error } = await window.atlasSupabase.signUp(email, password, name, age, goal, level);
+    if (btn) { btn.textContent = 'Criar Conta'; btn.disabled = false; }
+
+    if (error) {
+      window.showToast('❌ ' + error);
+      return;
+    }
+
+    window.showToast('🎉 Conta criada! Verifique seu e-mail para confirmar.');
+    // Se confirmação automática ativa, já faz login
+    if (data?.session) {
+      localStorage.setItem('atlas_premium_status', 'active');
+      setTimeout(() => initAuth(), 500);
+    }
+  } else {
+    // Fallback offline
+    if (btn) { btn.textContent = 'Criar Conta'; btn.disabled = false; }
+    const newUser = { email, name, age, goal, level };
+    const registered = JSON.parse(localStorage.getItem('atlas_registered_users') || '[]');
+    registered.push(newUser);
+    localStorage.setItem('atlas_registered_users', JSON.stringify(registered));
+    localStorage.setItem('atlas_user', JSON.stringify(newUser));
+    window.showToast('Conta criada com sucesso!');
+    initAuth();
   }
-
-  const newUser = {
-    email,
-    name,
-    age,
-    goal,
-    level
-  };
-
-  // Add to registered list
-  const registered = JSON.parse(localStorage.getItem('atlas_registered_users') || '[]');
-  registered.push(newUser);
-  localStorage.setItem('atlas_registered_users', JSON.stringify(registered));
-
-  // Log in
-  localStorage.setItem('atlas_user', JSON.stringify(newUser));
-  window.showToast("Registro concluído com sucesso!");
-  
-  // Clear register form
-  nameInput.value = '';
-  ageInput.value = '';
-  
-  initAuth();
 };
 
-window.handleLogout = function() {
+// ==========================================
+// LOGOUT
+// ==========================================
+window.handleLogout = async function() {
+  if (window.atlasSupabase && typeof window.atlasSupabase.signOut === 'function') {
+    await window.atlasSupabase.signOut();
+  }
   localStorage.removeItem('atlas_user');
-  window.showToast("Você saiu da sua conta.");
-  initAuth();
+  localStorage.removeItem('atlas_premium_status');
+  window.showToast('Você saiu da sua conta.');
+  setTimeout(() => initAuth(), 300);
 };
+
+// ==========================================
+// RECUPERAÇÃO DE SENHA
+// ==========================================
+window.handleRecoverySubmit = async function() {
+  const emailInput = document.getElementById('recoveryEmail') || document.getElementById('authEmail');
+  if (!emailInput) return;
+  const email = emailInput.value.trim().toLowerCase();
+  if (!email) { window.showToast('Informe seu e-mail.'); return; }
+
+  if (window.atlasSupabase && typeof window.atlasSupabase.resetPassword === 'function') {
+    const { error } = await window.atlasSupabase.resetPassword(email);
+    if (error) { window.showToast('❌ ' + error); return; }
+    window.showToast('📧 Link de redefinição enviado para seu e-mail!');
+  } else {
+    window.showToast('Recuperação indisponível no modo offline.');
+  }
+};
+
+// Alias antigo para compatibilidade
+window.handleAuthEmailSubmit = window.handleAuthLoginSubmit;
+
 
 // ==========================================
 // OFFLINE TRANSLATION SYSTEM (FILE:/// SUPPORT)
