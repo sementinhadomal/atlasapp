@@ -1814,10 +1814,11 @@ function isContentPremium(triggerElement) {
  * Falls back to free access when Supabase is unavailable (offline / file://).
  */
 async function canPlayContent(triggerElement) {
-  // If content is not premium, anyone can play it
-  if (!isContentPremium(triggerElement)) return true;
+  // MODO TESTE/DESENVOLVIMENTO: Tudo 100% liberado para teste livre
+  return true;
 
-  // Try Supabase first
+  /* -- Gating real que volta após a homologação --
+  if (!isContentPremium(triggerElement)) return true;
   if (window.atlasSupabase && typeof window.atlasSupabase.checkPremiumAccess === 'function') {
     try {
       const hasPremium = await window.atlasSupabase.checkPremiumAccess();
@@ -1826,12 +1827,10 @@ async function canPlayContent(triggerElement) {
       console.warn('[Atlas] Supabase check failed, falling back:', err);
     }
   }
-
-  // Fallback: check localStorage flag (set by supabase-client on successful auth)
   const cached = localStorage.getItem('atlas_premium_status');
   if (cached === 'active' || cached === 'trial') return true;
-
   return false;
+  */
 }
 
 window.openVideoModal = async function(title, duration, triggerEl) {
