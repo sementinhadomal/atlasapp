@@ -5,7 +5,7 @@
  * and high-end interactive training indicators. Instructions in Portuguese.
  */
 
-document.addEventListener('DOMContentLoaded', () => {
+function initializeApp() {
   try { initMobileMenu(); } catch (e) { console.error('initMobileMenu error:', e); }
   try { initVideoModal(); } catch (e) { console.error('initVideoModal error:', e); }
   try { initFilters(); } catch (e) { console.error('initFilters error:', e); }
@@ -13,7 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
   try { initScrollReveal(); } catch (e) { console.error('initScrollReveal error:', e); }
   try { initAuth(); } catch (e) { console.error('initAuth error:', e); }
   try { initProgramProgress(); } catch (e) { console.error('initProgramProgress error:', e); }
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeApp);
+} else {
+  initializeApp();
+}
 
 // ==========================================
 // WORKOUT DATABASE (Simulated Exercises)
@@ -3466,9 +3472,11 @@ const translations = {
   }
 };
 
-document.addEventListener('DOMContentLoaded', () => {
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initLanguageSwitcher);
+} else {
   initLanguageSwitcher();
-});
+}
 
 function initLanguageSwitcher() {
   const style = document.createElement('style');
