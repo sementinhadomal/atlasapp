@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Atlas Pilates — Premium guided Yoga & Pilates programs. Strength. Balance. Control. Transform your body and mind with expert-led workouts." />
+  <meta property="og:title" content="Atlas Pilates — Strength. Balance. Control." />
+  <meta property="og:description" content="Premium guided Yoga & Pilates programs for the modern woman." />
+  <meta property="og:type" content="website" />
+  <title>Atlas Pilates — Strength. Balance. Control.</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Atlas Pilates Home">
+        <img src="assets/images/logo-mark.png" alt="Atlas Pilates logo" class="nav__logo-mark" />
+        <span class="nav__logo-text">Atlas Pilates</span>
+      </a>
+
+      <ul class="nav__links" role="list">
+        <li><a href="index.html" class="nav__link active">Home</a></li>
+        <li><a href="yoga.html" class="nav__link">Yoga</a></li>
+        <li><a href="pilates.html" class="nav__link">Pilates</a></li>
+        <li><a href="programs.html" class="nav__link">Programs</a></li>
+        <li><a href="library.html" class="nav__link">Library</a></li>
+      </ul>
+
+      <div class="nav__actions">
+        <a href="profile.html" class="btn btn--outline btn--sm">Sign In</a>
+        <a href="subscription.html" class="btn btn--primary btn--sm">Start Free</a>
+        <button class="nav__menu-btn" id="menuBtn" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===================== MOBILE DRAWER ===================== -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer__backdrop" id="drawerBackdrop"></div>
+    <div class="mobile-drawer__panel">
+      <button class="drawer-close" id="drawerClose" aria-label="Close menu">✕</button>
+      <nav class="drawer-links">
+        <a href="index.html" class="drawer-link">Home</a>
+        <a href="yoga.html" class="drawer-link">Yoga</a>
+        <a href="pilates.html" class="drawer-link">Pilates</a>
+        <a href="programs.html" class="drawer-link">Programs</a>
+        <a href="library.html" class="drawer-link">Library</a>
+        <a href="profile.html" class="drawer-link">Profile</a>
+        <a href="subscription.html" class="drawer-link" style="color: var(--color-accent-gold);">Go Premium</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="hero" aria-label="Hero section">
+    <div class="hero__bg">
+      <img src="assets/images/hero.png" alt="Pilates studio" loading="eager" />
+    </div>
+    <div class="hero__overlay"></div>
+
+    <div class="container">
+      <div class="hero__content">
+        <div class="hero__eyebrow animate-fade-up">
+          <span class="hero__eyebrow-line"></span>
+          <span class="label-md text-muted">Premium Fitness</span>
+        </div>
+
+        <h1 class="display-xl hero__title animate-fade-up animate-delay-1">
+          Move with <em>purpose.</em><br>Live with balance.
+        </h1>
+
+        <p class="hero__tagline animate-fade-up animate-delay-2">
+          Expert-guided Yoga & Pilates programs designed for every body.
+          Build strength, find flexibility, and transform your practice
+          from wherever you are.
+        </p>
+
+        <div class="hero__actions animate-fade-up animate-delay-3">
+          <a href="subscription.html" class="btn btn--primary btn--lg" id="heroStartBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            Start Free Today
+          </a>
+          <a href="programs.html" class="btn btn--outline btn--lg">Explore Programs</a>
+        </div>
+
+        <div class="hero__stats animate-fade-up animate-delay-4">
+          <div>
+            <div class="hero__stat-number">200+</div>
+            <div class="hero__stat-label">Guided Classes</div>
+          </div>
+          <div>
+            <div class="hero__stat-number">12k+</div>
+            <div class="hero__stat-label">Active Members</div>
+          </div>
+          <div>
+            <div class="hero__stat-number">98%</div>
+            <div class="hero__stat-label">Satisfaction Rate</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FEATURE STRIP ===================== -->
+  <section class="section--sm" style="background: var(--color-near-black);" aria-label="Key features">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: repeat(4,1fr); gap: var(--space-2xl);">
+        <div class="flex gap-md" style="align-items: center;">
+          <div style="font-size: 1.5rem;">🧘</div>
+          <div>
+            <div class="label-sm" style="color: var(--color-accent-gold); margin-bottom: 4px;">Expert Instructors</div>
+            <div style="font-size: 0.8125rem; color: rgba(255,255,255,0.55);">World-class certified teachers</div>
+          </div>
+        </div>
+        <div class="flex gap-md" style="align-items: center;">
+          <div style="font-size: 1.5rem;">📱</div>
+          <div>
+            <div class="label-sm" style="color: var(--color-accent-gold); margin-bottom: 4px;">Mobile & Web</div>
+            <div style="font-size: 0.8125rem; color: rgba(255,255,255,0.55);">Train anywhere, anytime</div>
+          </div>
+        </div>
+        <div class="flex gap-md" style="align-items: center;">
+          <div style="font-size: 1.5rem;">🎯</div>
+          <div>
+            <div class="label-sm" style="color: var(--color-accent-gold); margin-bottom: 4px;">Structured Programs</div>
+            <div style="font-size: 0.8125rem; color: rgba(255,255,255,0.55);">7, 14 & 30-day journeys</div>
+          </div>
+        </div>
+        <div class="flex gap-md" style="align-items: center;">
+          <div style="font-size: 1.5rem;">⚡</div>
+          <div>
+            <div class="label-sm" style="color: var(--color-accent-gold); margin-bottom: 4px;">Real Results</div>
+            <div style="font-size: 0.8125rem; color: rgba(255,255,255,0.55);">Visible change in 30 days</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== YOGA SECTION ===================== -->
+  <section class="section" id="yoga-preview" aria-label="Yoga classes preview">
+    <div class="container">
+      <div class="grid-2" style="gap: var(--space-4xl); align-items: center;">
+        <div class="reveal">
+          <div class="section-eyebrow">
+            <div class="section-eyebrow-line"></div>
+            <span class="label-md text-muted">Yoga Collection</span>
+          </div>
+          <h2 class="heading-xl section-title">Find your flow.<br>Deepen your practice.</h2>
+          <p class="section-desc body-md" style="margin-bottom: var(--space-xl);">
+            From gentle morning stretches to dynamic power flows — our yoga library spans every style and level. Each class is guided by world-class instructors with real-time cues, breathing prompts, and pose adjustments.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: var(--space-md); margin-bottom: var(--space-2xl);">
+            <div class="flex gap-md" style="align-items: flex-start;">
+              <div style="width: 24px; height: 24px; border-radius: 50%; background: rgba(201,169,110,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+                <span style="color: var(--color-accent-gold); font-size: 0.75rem;">✓</span>
+              </div>
+              <div>
+                <div style="font-weight: 400; font-size: 0.9375rem; margin-bottom: 2px;">5 Categories</div>
+                <div class="body-sm text-muted">Flexibility · Relaxation · Strength · Morning Flow · Recovery</div>
+              </div>
+            </div>
+            <div class="flex gap-md" style="align-items: flex-start;">
+              <div style="width: 24px; height: 24px; border-radius: 50%; background: rgba(201,169,110,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+                <span style="color: var(--color-accent-gold); font-size: 0.75rem;">✓</span>
+              </div>
+              <div>
+                <div style="font-weight: 400; font-size: 0.9375rem; margin-bottom: 2px;">Voice-guided + Timer</div>
+                <div class="body-sm text-muted">Real-time instructions and pose countdowns</div>
+              </div>
+            </div>
+            <div class="flex gap-md" style="align-items: flex-start;">
+              <div style="width: 24px; height: 24px; border-radius: 50%; background: rgba(201,169,110,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+                <span style="color: var(--color-accent-gold); font-size: 0.75rem;">✓</span>
+              </div>
+              <div>
+                <div style="font-weight: 400; font-size: 0.9375rem; margin-bottom: 2px;">All Levels Welcome</div>
+                <div class="body-sm text-muted">From absolute beginner to advanced practitioner</div>
+              </div>
+            </div>
+          </div>
+
+          <a href="yoga.html" class="btn btn--primary">Explore Yoga Classes</a>
+        </div>
+
+        <div class="reveal-scale" style="position: relative;">
+          <div style="border-radius: var(--radius-2xl); overflow: hidden; aspect-ratio: 4/5; box-shadow: var(--shadow-xl);">
+            <img src="assets/images/yoga.png" alt="Yoga class" style="width: 100%; height: 100%; object-fit: cover;" />
+          </div>
+          <!-- Floating class card -->
+          <div class="card" style="position: absolute; bottom: -20px; left: -20px; padding: var(--space-md) var(--space-lg); width: 200px; border-radius: var(--radius-lg); animation: float 4s ease-in-out infinite;">
+            <div class="label-sm text-muted" style="margin-bottom: 6px;">Now Playing</div>
+            <div style="font-family: var(--font-heading); font-size: 1rem; margin-bottom: 4px;">Morning Flow</div>
+            <div class="progress-bar" style="margin-bottom: 6px;"><div class="progress-bar__fill" style="width: 65%;"></div></div>
+            <div class="flex-between">
+              <span class="body-sm text-muted">32 min</span>
+              <span class="streak-badge"><span class="streak-icon">🔥</span>12 day streak</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PILATES SECTION ===================== -->
+  <section class="section" style="background: var(--bg-secondary);" id="pilates-preview" aria-label="Pilates section">
+    <div class="container">
+      <div class="grid-2" style="gap: var(--space-4xl); align-items: center;">
+        <!-- Images -->
+        <div class="reveal-scale" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md);">
+          <div style="border-radius: var(--radius-xl); overflow: hidden; aspect-ratio: 3/4; box-shadow: var(--shadow-lg);">
+            <img src="assets/images/ring.png" alt="Pilates ring exercise" style="width:100%; height:100%; object-fit:cover;" />
+          </div>
+          <div style="border-radius: var(--radius-xl); overflow: hidden; aspect-ratio: 3/4; box-shadow: var(--shadow-lg); margin-top: 40px;">
+            <img src="assets/images/barre.png" alt="Pilates barre exercise" style="width:100%; height:100%; object-fit:cover;" />
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="reveal">
+          <div class="section-eyebrow">
+            <div class="section-eyebrow-line"></div>
+            <span class="label-md text-muted">Equipment Pilates</span>
+          </div>
+          <h2 class="heading-xl section-title">Sculpt. Strengthen.<br>Transform.</h2>
+          <p class="section-desc body-md" style="margin-bottom: var(--space-xl);">
+            Master two of the most effective Pilates tools — the <strong>Pilates Bar</strong> and the <strong>Fusion Ring</strong>. Our step-by-step video workouts target your core, glutes, posture, and legs with precision and elegance.
+          </p>
+
+          <!-- Equipment cards -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin-bottom: var(--space-2xl);">
+            <div style="padding: var(--space-lg); border: 1px solid var(--border-light); border-radius: var(--radius-lg); background: var(--bg-card);">
+              <div style="font-size: 1.75rem; margin-bottom: var(--space-sm);">🏋️‍♀️</div>
+              <div style="font-family: var(--font-heading); font-size: 1.125rem; margin-bottom: 6px;">Pilates Bar</div>
+              <div class="body-sm text-muted">Full-body resistance training with targeted muscle activation</div>
+            </div>
+            <div style="padding: var(--space-lg); border: 1px solid var(--border-light); border-radius: var(--radius-lg); background: var(--bg-card);">
+              <div style="font-size: 1.75rem; margin-bottom: var(--space-sm);">⭕</div>
+              <div style="font-family: var(--font-heading); font-size: 1.125rem; margin-bottom: 6px;">Fusion Ring</div>
+              <div class="body-sm text-muted">Toning inner thighs, arms and core with gentle resistance</div>
+            </div>
+          </div>
+
+          <a href="pilates.html" class="btn btn--primary">Explore Pilates</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROGRAMS SECTION ===================== -->
+  <section class="section" id="featured-programs" aria-label="Featured programs">
+    <div class="container">
+      <div class="section-header section-header--center reveal">
+        <div class="section-eyebrow section-eyebrow--center">
+          <div class="section-eyebrow-line"></div>
+          <span class="label-md text-muted">Structured Programs</span>
+          <div class="section-eyebrow-line"></div>
+        </div>
+        <h2 class="heading-xl section-title">Your transformation journey</h2>
+        <p class="section-desc">Curated programs designed around specific goals. Each day builds on the last for lasting, measurable results.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg);">
+        <!-- Program 1 -->
+        <a href="programs.html" class="program-card reveal" style="animation-delay: 0.1s;" aria-label="7-Day Core Reset program">
+          <div class="program-card__bg">
+            <img src="assets/images/yoga.png" alt="Core Reset program" />
+          </div>
+          <div class="program-card__overlay"></div>
+          <div class="program-card__content">
+            <span class="program-card__tag">Free • 7 Days</span>
+            <div class="program-card__title">Core Reset</div>
+            <div class="program-card__meta">
+              <div class="program-card__meta-item">🕐 20–30 min/day</div>
+              <div class="program-card__meta-item">⭐ Beginner</div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Program 2 -->
+        <a href="programs.html" class="program-card reveal" style="animation-delay: 0.2s; margin-top: -20px;" aria-label="14-Day Body Sculptor program">
+          <div class="program-card__bg">
+            <img src="assets/images/ring.png" alt="Body Sculptor program" />
+          </div>
+          <div class="program-card__overlay"></div>
+          <div class="program-card__content">
+            <span class="program-card__tag">Premium • 14 Days</span>
+            <div class="program-card__title">Body Sculptor</div>
+            <div class="program-card__meta">
+              <div class="program-card__meta-item">🕐 30–45 min/day</div>
+              <div class="program-card__meta-item">⭐⭐ Intermediate</div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Program 3 -->
+        <a href="programs.html" class="program-card reveal" style="animation-delay: 0.3s;" aria-label="30-Day Total Transformation program">
+          <div class="program-card__bg">
+            <img src="assets/images/barre.png" alt="Total Transformation program" />
+          </div>
+          <div class="program-card__overlay"></div>
+          <div class="program-card__content">
+            <span class="program-card__tag">Premium • 30 Days</span>
+            <div class="program-card__title">Total Transformation</div>
+            <div class="program-card__meta">
+              <div class="program-card__meta-item">🕐 45–60 min/day</div>
+              <div class="program-card__meta-item">⭐⭐⭐ Advanced</div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="text-center" style="margin-top: var(--space-2xl);">
+        <a href="programs.html" class="btn btn--outline">View All Programs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TESTIMONIALS ===================== -->
+  <section class="section" style="background: var(--bg-secondary);" aria-label="Customer testimonials">
+    <div class="container">
+      <div class="section-header section-header--center reveal">
+        <div class="section-eyebrow section-eyebrow--center">
+          <div class="section-eyebrow-line"></div>
+          <span class="label-md text-muted">Community Love</span>
+          <div class="section-eyebrow-line"></div>
+        </div>
+        <h2 class="heading-xl section-title">What our members say</h2>
+      </div>
+
+      <div class="grid-3">
+        <div class="testimonial reveal">
+          <div class="testimonial__stars">★★★★★</div>
+          <p class="testimonial__quote">"Atlas Pilates completely changed how I feel in my body. After just 2 weeks with the Pilates Ring program, I can see real definition in my arms and core."</p>
+          <div class="testimonial__author">
+            <div style="width:40px; height:40px; border-radius:50%; background: var(--color-sand); display:flex; align-items:center; justify-content:center; font-size:1.25rem;">👩</div>
+            <div>
+              <div style="font-weight: 400; font-size: 0.9375rem;">Sarah M.</div>
+              <div class="body-sm text-muted">Member since Jan 2026</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial reveal" style="animation-delay: 0.15s;">
+          <div class="testimonial__stars">★★★★★</div>
+          <p class="testimonial__quote">"The morning yoga flows are absolutely incredible. The instructor's voice is so calming and the timer keeps me on track without stress. This is my daily ritual now."</p>
+          <div class="testimonial__author">
+            <div style="width:40px; height:40px; border-radius:50%; background: var(--color-sand); display:flex; align-items:center; justify-content:center; font-size:1.25rem;">👩‍🦰</div>
+            <div>
+              <div style="font-weight: 400; font-size: 0.9375rem;">Emma R.</div>
+              <div class="body-sm text-muted">Member since Oct 2025</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial reveal" style="animation-delay: 0.3s;">
+          <div class="testimonial__stars">★★★★★</div>
+          <p class="testimonial__quote">"I completed the 30-Day Total Transformation and the results were beyond what I imagined. My posture improved dramatically and I feel lighter and stronger."</p>
+          <div class="testimonial__author">
+            <div style="width:40px; height:40px; border-radius:50%; background: var(--color-sand); display:flex; align-items:center; justify-content:center; font-size:1.25rem;">👩‍🦳</div>
+            <div>
+              <div style="font-weight: 400; font-size: 0.9375rem;">Claire D.</div>
+              <div class="body-sm text-muted">Member since Mar 2025</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SUBSCRIPTION CTA ===================== -->
+  <section class="section" aria-label="Call to action">
+    <div class="container">
+      <div style="background: var(--color-near-black); border-radius: var(--radius-2xl); padding: var(--space-4xl); text-align: center; position: relative; overflow: hidden;">
+        <!-- Decorative rings -->
+        <div style="position: absolute; top: -60px; right: -60px; width: 300px; height: 300px; border-radius: 50%; border: 1px solid rgba(201,169,110,0.1);"></div>
+        <div style="position: absolute; top: -30px; right: -30px; width: 200px; height: 200px; border-radius: 50%; border: 1px solid rgba(201,169,110,0.15);"></div>
+        <div style="position: absolute; bottom: -80px; left: -80px; width: 400px; height: 400px; border-radius: 50%; border: 1px solid rgba(201,169,110,0.07);"></div>
+
+        <div style="position: relative; z-index: 1;">
+          <div class="label-md reveal" style="color: var(--color-accent-gold); margin-bottom: var(--space-lg);">Start Your Journey Today</div>
+          <h2 class="display-lg reveal" style="color: #fff; margin-bottom: var(--space-xl); max-width: 600px; margin-left: auto; margin-right: auto;">
+            Your strongest self is waiting.
+          </h2>
+          <p class="reveal" style="color: rgba(255,255,255,0.6); max-width: 480px; margin: 0 auto var(--space-2xl); line-height: 1.7;">
+            Join thousands of women who have transformed their bodies and minds with Atlas Pilates. First 7 days are completely free.
+          </p>
+          <div class="flex-center gap-md reveal" style="flex-wrap: wrap;">
+            <a href="subscription.html" class="btn btn--gold btn--lg">Get Started Free</a>
+            <a href="programs.html" class="btn btn--ghost btn--lg">View All Programs</a>
+          </div>
+          <div class="reveal" style="margin-top: var(--space-xl); font-size: 0.75rem; color: rgba(255,255,255,0.35);">
+            No credit card required · Cancel anytime
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__logo">Atlas Pilates</div>
+          <div class="footer__tagline">Strength. Balance. Control.</div>
+          <p class="footer__desc">Premium Yoga & Pilates programs for the modern woman. Transform your body and mind with expert-led workouts from anywhere in the world.</p>
+        </div>
+        <div>
+          <div class="footer__heading">Explore</div>
+          <a href="yoga.html" class="footer__link">Yoga Classes</a>
+          <a href="pilates.html" class="footer__link">Pilates</a>
+          <a href="programs.html" class="footer__link">Programs</a>
+          <a href="library.html" class="footer__link">Exercise Library</a>
+        </div>
+        <div>
+          <div class="footer__heading">Account</div>
+          <a href="profile.html" class="footer__link">My Profile</a>
+          <a href="subscription.html" class="footer__link">Subscription</a>
+          <a href="profile.html#achievements" class="footer__link">Achievements</a>
+          <a href="profile.html#saved" class="footer__link">Saved Workouts</a>
+        </div>
+        <div>
+          <div class="footer__heading">Company</div>
+          <a href="#" class="footer__link">About Us</a>
+          <a href="#" class="footer__link">Instructors</a>
+          <a href="#" class="footer__link">Blog</a>
+          <a href="#" class="footer__link">Contact</a>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div>© 2026 Atlas Pilates. All rights reserved.</div>
+        <div style="display: flex; gap: var(--space-xl);">
+          <a href="#" style="color: rgba(255,255,255,0.35); font-size: 0.75rem; transition: color 0.2s;">Privacy Policy</a>
+          <a href="#" style="color: rgba(255,255,255,0.35); font-size: 0.75rem; transition: color 0.2s;">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================== BOTTOM NAV (Mobile) ===================== -->
+  <nav class="bottom-nav" aria-label="Mobile navigation">
+    <div class="bottom-nav__inner">
+      <a href="index.html" class="bottom-nav__item active" aria-label="Home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span class="bottom-nav__label">Home</span>
+      </a>
+      <a href="yoga.html" class="bottom-nav__item" aria-label="Yoga">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        <span class="bottom-nav__label">Yoga</span>
+      </a>
+      <a href="pilates.html" class="bottom-nav__item" aria-label="Pilates">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+        <span class="bottom-nav__label">Pilates</span>
+      </a>
+      <a href="library.html" class="bottom-nav__item" aria-label="Library">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+        <span class="bottom-nav__label">Library</span>
+      </a>
+      <a href="profile.html" class="bottom-nav__item" aria-label="Profile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span class="bottom-nav__label">Profile</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ===================== TOAST ===================== -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- ===================== JS ===================== -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase-client.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

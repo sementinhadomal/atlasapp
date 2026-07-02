@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Atlas Pilates Profile — Track your progress, achievements, and saved workouts." />
+  <title>My Profile — Atlas Pilates</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <style>
+    /* Profile-specific premium styles */
+    .profile-header {
+      padding-top: calc(var(--nav-height) + var(--space-3xl));
+      padding-bottom: var(--space-3xl);
+      background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+      border-bottom: 1px solid var(--border-light);
+      position: relative;
+      overflow: hidden;
+    }
+    .profile-header::before {
+      content: '';
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,169,110,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .avatar-ring {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .avatar-ring svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+    .avatar-ring .ring-track {
+      fill: none;
+      stroke: var(--border-light);
+      stroke-width: 3;
+    }
+    .avatar-ring .ring-progress {
+      fill: none;
+      stroke: var(--color-accent-gold);
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-dasharray: 314;
+      stroke-dashoffset: 135;
+      animation: ringFill 1.5s ease-out forwards;
+    }
+    @keyframes ringFill {
+      from { stroke-dashoffset: 314; }
+      to { stroke-dashoffset: 135; }
+    }
+    .avatar-inner {
+      position: absolute;
+      inset: 6px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-sand), var(--color-taupe));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 14px;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: var(--space-lg) var(--space-md);
+      background: var(--bg-card);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-light);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .stat-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+    .stat-card__value {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      line-height: 1;
+      color: var(--color-near-black);
+      margin-bottom: 6px;
+    }
+    .stat-card__label {
+      font-size: 0.6875rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .profile-section {
+      padding: var(--space-xl);
+      background: var(--bg-card);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-light);
+    }
+    .profile-section__title {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 400;
+      margin-bottom: var(--space-lg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .profile-section__link {
+      font-size: 0.75rem;
+      color: var(--color-accent-gold);
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .profile-section__link:hover { opacity: 0.7; }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+    }
+    .cal-header {
+      text-align: center;
+      font-size: 0.5625rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      padding-bottom: var(--space-xs);
+    }
+    .cal-day {
+      aspect-ratio: 1;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6875rem;
+      color: var(--text-muted);
+      background: var(--bg-secondary);
+      transition: transform 0.15s;
+      cursor: default;
+    }
+    .cal-day--done {
+      background: var(--color-near-black);
+      color: var(--color-accent-gold);
+      font-weight: 500;
+    }
+    .cal-day--today {
+      background: rgba(201,169,110,0.15);
+      border: 2px solid var(--color-accent-gold);
+      color: var(--color-accent-gold);
+      font-weight: 600;
+    }
+    .cal-day--empty {
+      background: transparent;
+    }
+
+    .history-item {
+      display: flex;
+      gap: var(--space-md);
+      align-items: center;
+      padding: var(--space-md);
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .history-item:hover {
+      transform: translateX(4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .equip-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: var(--space-md);
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      transition: transform 0.15s;
+      cursor: default;
+    }
+    .equip-badge:hover { transform: scale(1.05); }
+    .equip-badge__icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+
+    .goal-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      padding: var(--space-md) 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .goal-item:last-child { border-bottom: none; }
+    .goal-check {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.75rem;
+    }
+    .goal-check--done {
+      background: var(--color-near-black);
+      color: var(--color-accent-gold);
+    }
+    .goal-check--pending {
+      background: var(--bg-secondary);
+      border: 2px solid var(--border-medium);
+    }
+    .goal-check--progress {
+      background: rgba(201,169,110,0.15);
+      border: 2px solid var(--color-accent-gold);
+      color: var(--color-accent-gold);
+    }
+
+    .quote-card {
+      padding: var(--space-2xl);
+      background: linear-gradient(135deg, var(--color-near-black) 0%, #2c2622 100%);
+      border-radius: var(--radius-xl);
+      color: #fff;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .quote-card::before {
+      content: '"';
+      position: absolute;
+      top: -20px;
+      left: 20px;
+      font-size: 8rem;
+      font-family: var(--font-heading);
+      color: rgba(201,169,110,0.08);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .level-bar {
+      height: 8px;
+      background: var(--bg-secondary);
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+    }
+    .level-bar__fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--color-accent-gold), #e6c97a);
+      border-radius: 999px;
+      transition: width 1.2s ease-out;
+    }
+
+    @media (max-width: 768px) {
+      .profile-grid { grid-template-columns: 1fr !important; }
+      .stats-grid-5 { grid-template-columns: repeat(2, 1fr) !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav nav--scrolled" id="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="assets/images/logo-mark.png" alt="Atlas Pilates" class="nav__logo-mark" />
+        <span class="nav__logo-text">Atlas Pilates</span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html" class="nav__link">Home</a></li>
+        <li><a href="yoga.html" class="nav__link">Yoga</a></li>
+        <li><a href="pilates.html" class="nav__link">Pilates</a></li>
+        <li><a href="programs.html" class="nav__link">Programs</a></li>
+        <li><a href="library.html" class="nav__link">Library</a></li>
+      </ul>
+      <div class="nav__actions">
+        <a href="subscription.html" class="btn btn--gold btn--sm">Go Premium</a>
+        <button class="nav__menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE DRAWER -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer__backdrop" id="drawerBackdrop"></div>
+    <div class="mobile-drawer__panel">
+      <button class="drawer-close" id="drawerClose">✕</button>
+      <nav class="drawer-links">
+        <a href="index.html" class="drawer-link">Home</a>
+        <a href="yoga.html" class="drawer-link">Yoga</a>
+        <a href="pilates.html" class="drawer-link">Pilates</a>
+        <a href="programs.html" class="drawer-link">Programs</a>
+        <a href="library.html" class="drawer-link">Library</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- AUTHENTICATION VIEW (SUPABASE INTEGRATION) -->
+  <div id="authView" class="container animate-fade-up" style="padding-top: calc(var(--nav-height) + var(--space-4xl)); padding-bottom: var(--space-4xl); display: none;">
+    <div style="max-width: 480px; margin: 0 auto; background: var(--bg-card); padding: var(--space-3xl); border-radius: var(--radius-2xl); border: 1px solid var(--border-light); box-shadow: var(--shadow-xl); text-align: center;">
+      <div style="margin-bottom: var(--space-xl); display: flex; justify-content: center;">
+        <img src="assets/images/logo-mark.png" alt="Atlas Pilates" style="width: 140px; height: auto;" />
+      </div>
+      <h2 style="font-family: var(--font-heading); font-size: 1.75rem; font-weight: 400; margin-bottom: var(--space-sm); color: var(--color-near-black);">Portal Atlas Pilates</h2>
+      <p style="color: var(--text-muted); font-size: 0.875rem; line-height: 1.6; margin-bottom: var(--space-2xl);" id="authSubtitle">
+        Acesse sua conta para gerenciar seu perfil e treinos.
+      </p>
+
+      <!-- Step 1: Login -->
+      <div id="authStep1" style="display: block;">
+        <div style="display: flex; flex-direction: column; gap: var(--space-md); text-align: left; margin-bottom: var(--space-xl);">
+          <div>
+            <label for="authEmail" class="label-sm" style="display: block; margin-bottom: var(--space-xs); color: var(--text-secondary);">Seu E-mail</label>
+            <input type="email" id="authEmail" placeholder="exemplo@email.com" style="width: 100%; padding: 0.875rem 1.25rem; border: 1px solid var(--border-medium); border-radius: var(--radius-pill); background: var(--bg-primary); color: var(--text-primary); font-size: 0.875rem; outline: none; transition: border-color 0.2s;" />
+          </div>
+          <div>
+            <label for="authPassword" class="label-sm" style="display: block; margin-bottom: var(--space-xs); color: var(--text-secondary);">Sua Senha</label>
+            <input type="password" id="authPassword" placeholder="Sua senha secreta" style="width: 100%; padding: 0.875rem 1.25rem; border: 1px solid var(--border-medium); border-radius: var(--radius-pill); background: var(--bg-primary); color: var(--text-primary); font-size: 0.875rem; outline: none;" />
+          </div>
+        </div>
+        <button id="authBtn1" onclick="handleAuthLoginSubmit()" class="btn btn--gold" style="width: 100%; justify-content: center; margin-bottom: var(--space-md);">Entrar</button>
+        <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted);">
+          <a href="javascript:void(0)" onclick="switchAuthStep(2)" style="color: var(--color-accent-gold);">Criar Conta</a>
+          <a href="javascript:void(0)" onclick="switchAuthStep(3)" style="color: var(--text-muted);">Esqueceu a senha?</a>
+        </div>
+      </div>
+
+      <!-- Step 2: Cadastro / Registro -->
+      <div id="authStep2" style="display: none;">
+        <div style="display: flex; flex-direction: column; gap: var(--space-md); text-align: left; margin-bottom: var(--space-xl);">
+          <div>
+            <label for="regEmail" class="label-sm" style="display: block; margin-bottom: var(--space-xs); color: var(--text-secondary);">E-mail</label>
+            <input type="email" id="regEmail" placeholder="exemplo@email.com" style="width: 100%; padding: 0.875rem 1.25rem; border: 1px solid var(--border-medium); border-radius: var(--radius-pill); background: var(--bg-primary); color: var(--text-primary); font-size: 0.875rem; outline: none;" />
+          </div>
+          <div>
+            <label for="regPassword" class="label-sm" style="display: block; margin-bottom: var(--space-xs); color: var(--text-secondary);">Senha</label>
+            <input type="password" id="regPassword" placeholder="Mínimo 6 caracteres" style="width: 100%; padding: 0.875rem 1.25rem; border: 1px solid var(--border-medium); border-radius: var(--radius-pill); background: var(--bg-primary); color: var(--text-primary); font-size: 0.875rem; outline: none;" />
+          </div>
+          <div>
+            <label for="authName" class="label-sm" style="display: block; margin-bottom: var(--space-xs); color: var(--text-secondary);">Nome Completo</label>
+            <input type="text" id="authName" placeholder="Como quer ser chamado(a)?" style="width: 100%; padding: 0.875rem 1.25rem; border: 1px solid var(--border-medium); border-radius: var(--radius-pill); background: var(--bg-primary); color: var(--text-primary); font-size: 0.875rem; outline: none;" />
+          </div>
+          <div>
+            <label for="authAge" class="label-sm" style="display: block; margin-bottom: var(--space-xs); color: var(--text-secondary);">Idade</label>
+            <input type="number" id="authAge" placeholder="Sua idade" style="width: 100%; padding: 0.875rem 1.25rem; border: 1px solid var(--border-medium); border-radius: var(--radius-pill); background: var(--bg-primary); color: var(--text-primary); font-size: 0.875rem; outline: none;" />
+          </div>
+          <div>
+            <label for="authGoal" class="label-sm" style="display: block; margin-bottom: var(--space-xs); color: var(--text-secondary);">Foco de Treino</label>
+            <select id="authGoal" style="width: 100%; padding: 0.875rem 1.25rem; border: 1px solid var(--border-medium); border-radius: var(--radius-pill); background: var(--bg-primary); color: var(--text-primary); font-size: 0.875rem; outline: none;">
+              <option value="Pilates e Flexibilidade">Pilates e Flexibilidade</option>
+              <option value="Força e Tonificação">Força e Tonificação</option>
+              <option value="Yoga e Relaxamento">Yoga e Relaxamento</option>
+              <option value="Recuperação Corporal">Recuperação Corporal</option>
+            </select>
+          </div>
+          <div>
+            <label for="authLevel" class="label-sm" style="display: block; margin-bottom: var(--space-xs); color: var(--text-secondary);">Nível de Experiência</label>
+            <select id="authLevel" style="width: 100%; padding: 0.875rem 1.25rem; border: 1px solid var(--border-medium); border-radius: var(--radius-pill); background: var(--bg-primary); color: var(--text-primary); font-size: 0.875rem; outline: none;">
+              <option value="Iniciante">Iniciante</option>
+              <option value="Intermediário">Intermediário</option>
+              <option value="Avançado">Avançado</option>
+            </select>
+          </div>
+        </div>
+        <button id="authBtn2" onclick="handleAuthRegisterSubmit()" class="btn btn--primary" style="width: 100%; justify-content: center; margin-bottom: var(--space-md);">Começar Treinos</button>
+        <div style="font-size: 0.75rem; text-align: center;">
+          <a href="javascript:void(0)" onclick="switchAuthStep(1)" style="color: var(--color-accent-gold);">Já tem uma conta? Entrar</a>
+        </div>
+      </div>
+
+      <!-- Step 3: Recuperação de Senha -->
+      <div id="authStep3" style="display: none;">
+        <div style="display: flex; flex-direction: column; gap: var(--space-md); text-align: left; margin-bottom: var(--space-xl);">
+          <div>
+            <label for="recoveryEmail" class="label-sm" style="display: block; margin-bottom: var(--space-xs); color: var(--text-secondary);">Seu E-mail</label>
+            <input type="email" id="recoveryEmail" placeholder="exemplo@email.com" style="width: 100%; padding: 0.875rem 1.25rem; border: 1px solid var(--border-medium); border-radius: var(--radius-pill); background: var(--bg-primary); color: var(--text-primary); font-size: 0.875rem; outline: none;" />
+          </div>
+        </div>
+        <button onclick="handleRecoverySubmit()" class="btn btn--gold" style="width: 100%; justify-content: center; margin-bottom: var(--space-md);">Enviar E-mail de Recuperação</button>
+        <div style="font-size: 0.75rem; text-align: center;">
+          <a href="javascript:void(0)" onclick="switchAuthStep(1)" style="color: var(--text-muted);">Voltar para o Login</a>
+        </div>
+      </div>
+
+      <!-- Step 4: Redefinir Nova Senha -->
+      <div id="authStep4" style="display: none;">
+        <div style="display: flex; flex-direction: column; gap: var(--space-md); text-align: left; margin-bottom: var(--space-xl);">
+          <div>
+            <label for="newPassword" class="label-sm" style="display: block; margin-bottom: var(--space-xs); color: var(--text-secondary);">Nova Senha</label>
+            <input type="password" id="newPassword" placeholder="Mínimo 6 caracteres" style="width: 100%; padding: 0.875rem 1.25rem; border: 1px solid var(--border-medium); border-radius: var(--radius-pill); background: var(--bg-primary); color: var(--text-primary); font-size: 0.875rem; outline: none;" />
+          </div>
+        </div>
+        <button onclick="handleUpdatePasswordSubmit()" class="btn btn--gold" style="width: 100%; justify-content: center; margin-bottom: var(--space-md);">Atualizar Senha</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PROFILE VIEW CONTAINER -->
+  <div id="profileView" style="display: none;">
+
+    <!-- PROFILE HEADER -->
+    <div class="profile-header">
+      <div class="container">
+        <div style="display: flex; gap: var(--space-2xl); align-items: center; flex-wrap: wrap;">
+
+          <!-- Avatar with animated ring -->
+          <div class="avatar-ring">
+            <svg viewBox="0 0 110 110">
+              <circle class="ring-track" cx="55" cy="55" r="50" />
+              <circle class="ring-progress" cx="55" cy="55" r="50" />
+            </svg>
+            <div class="avatar-inner">
+              <img src="assets/images/logo-mark.png" alt="Profile Logo" style="width: 100%; height: 100%; object-fit: contain;" />
+            </div>
+          </div>
+
+          <!-- User info -->
+          <div style="flex: 1;">
+            <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-xs); flex-wrap: wrap;">
+              <h1 id="profileName" style="font-family: var(--font-heading); font-size: 1.75rem; font-weight: 400; margin: 0;">Sarah Mitchell</h1>
+              <div id="profilePlanBadge" style="padding: 3px 10px; background: rgba(201,169,110,0.15); border: 1px solid rgba(201,169,110,0.3); border-radius: 999px; font-size: 0.625rem; letter-spacing: 0.1em; color: var(--color-accent-gold); text-transform: uppercase;">Membro Compra</div>
+            </div>
+            <div id="profileGoal" class="label-md text-muted" style="margin-bottom: var(--space-md);">Foco: Pilates e Flexibilidade</div>
+
+            <!-- Level / XP Bar -->
+            <div style="display: flex; align-items: center; gap: var(--space-md); max-width: 360px;">
+              <div style="flex: 1;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                  <span style="font-size: 0.6875rem; font-weight: 500; color: var(--color-accent-gold);">Nível 5 — Guerreira</span>
+                  <span style="font-size: 0.6875rem; color: var(--text-muted);">2.840 / 4.000 XP</span>
+                </div>
+                <div class="level-bar">
+                  <div class="level-bar__fill" style="width: 71%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div style="flex-shrink: 0; display: flex; gap: var(--space-sm);">
+            <button onclick="document.getElementById('settingsModal').style.display='flex'" class="btn btn--outline" style="border-color: rgba(0,0,0,0.15); color: var(--color-near-black); padding: 0.5rem 0.75rem;" title="Configurações">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+            </button>
+            <button onclick="handleLogout()" class="btn btn--outline" style="border-color: rgba(0,0,0,0.15); color: var(--color-near-black);">Sair</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATS ROW -->
+    <section style="padding: var(--space-xl) 0; margin-top: calc(var(--space-xl) * -1); position: relative; z-index: 2;">
+      <div class="container">
+        <div class="stats-grid-5" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-md);">
+          <div class="stat-card">
+            <div class="stat-card__value">12</div>
+            <div class="stat-card__label">Dias Seguidos 🔥</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__value">28</div>
+            <div class="stat-card__label">Treinos Feitos</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__value">14h</div>
+            <div class="stat-card__label">Tempo Total</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__value">4.2k</div>
+            <div class="stat-card__label">Calorias</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__value" id="profileAge">18 anos</div>
+            <div class="stat-card__label">Idade Cadastrada</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROFILE CONTENT -->
+    <section class="section--sm" style="padding-top: 0;">
+      <div class="container">
+        <div class="profile-grid" style="display: grid; grid-template-columns: 5fr 3fr; gap: var(--space-2xl); align-items: start;">
+
+          <!-- LEFT COLUMN -->
+          <div style="display: flex; flex-direction: column; gap: var(--space-xl);">
+
+            <!-- Active Program -->
+            <div class="profile-section">
+              <div class="profile-section__title">
+                <span>Seu Programa Ativo</span>
+                <a href="programs.html" class="profile-section__link">Ver Todos →</a>
+              </div>
+
+              <div style="display: flex; gap: var(--space-lg); align-items: center;">
+                <div style="width: 72px; height: 72px; border-radius: var(--radius-lg); overflow: hidden; flex-shrink: 0;">
+                  <img src="assets/images/yoga.png" alt="Core Reset" style="width:100%; height:100%; object-fit:cover;" />
+                </div>
+                <div style="flex: 1;">
+                  <div class="label-sm text-muted" style="margin-bottom: 4px;">Programa de 7 Dias · Grátis</div>
+                  <div style="font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: var(--space-sm);">Core Reset</div>
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                    <span style="font-size: 0.75rem; color: var(--text-muted);">Dia 4 de 7</span>
+                    <span style="font-size: 0.75rem; color: var(--color-accent-gold);">57% completo</span>
+                  </div>
+                  <div class="progress-bar"><div class="progress-bar__fill" style="width: 57%;"></div></div>
+                </div>
+                <a href="programs.html" class="btn btn--primary btn--sm">Continuar</a>
+              </div>
+            </div>
+
+            <!-- Monthly Calendar Tracker -->
+            <div class="profile-section">
+              <div class="profile-section__title">
+                <span>Julho 2026</span>
+                <span style="font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-body);">12 treinos este mês</span>
+              </div>
+
+              <div class="calendar-grid">
+                <div class="cal-header">Seg</div>
+                <div class="cal-header">Ter</div>
+                <div class="cal-header">Qua</div>
+                <div class="cal-header">Qui</div>
+                <div class="cal-header">Sex</div>
+                <div class="cal-header">Sáb</div>
+                <div class="cal-header">Dom</div>
+
+                <div class="cal-day cal-day--empty"></div>
+                <div class="cal-day cal-day--empty"></div>
+                <div class="cal-day cal-day--done">1</div>
+                <div class="cal-day cal-day--today">2</div>
+                <div class="cal-day">3</div>
+                <div class="cal-day">4</div>
+                <div class="cal-day">5</div>
+
+                <div class="cal-day">6</div>
+                <div class="cal-day">7</div>
+                <div class="cal-day">8</div>
+                <div class="cal-day">9</div>
+                <div class="cal-day">10</div>
+                <div class="cal-day">11</div>
+                <div class="cal-day">12</div>
+
+                <div class="cal-day">13</div>
+                <div class="cal-day">14</div>
+                <div class="cal-day">15</div>
+                <div class="cal-day">16</div>
+                <div class="cal-day">17</div>
+                <div class="cal-day">18</div>
+                <div class="cal-day">19</div>
+
+                <div class="cal-day">20</div>
+                <div class="cal-day">21</div>
+                <div class="cal-day">22</div>
+                <div class="cal-day">23</div>
+                <div class="cal-day">24</div>
+                <div class="cal-day">25</div>
+                <div class="cal-day">26</div>
+
+                <div class="cal-day">27</div>
+                <div class="cal-day">28</div>
+                <div class="cal-day">29</div>
+                <div class="cal-day">30</div>
+                <div class="cal-day">31</div>
+                <div class="cal-day cal-day--empty"></div>
+                <div class="cal-day cal-day--empty"></div>
+              </div>
+            </div>
+
+            <!-- Weekly Progress -->
+            <div class="profile-section">
+              <div class="profile-section__title"><span>Progresso Semanal</span></div>
+
+              <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: var(--space-sm); margin-bottom: var(--space-xl);">
+                <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-xs);">
+                  <div style="width:40px;height:40px;border-radius:50%;background:var(--color-near-black);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-gold)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+                  <span style="font-size:0.625rem;color:var(--text-muted);">Seg</span>
+                </div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-xs);">
+                  <div style="width:40px;height:40px;border-radius:50%;background:var(--color-near-black);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-gold)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+                  <span style="font-size:0.625rem;color:var(--text-muted);">Ter</span>
+                </div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-xs);">
+                  <div style="width:40px;height:40px;border-radius:50%;background:var(--color-near-black);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-gold)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+                  <span style="font-size:0.625rem;color:var(--text-muted);">Qua</span>
+                </div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-xs);">
+                  <div style="width:40px;height:40px;border-radius:50%;background:rgba(201,169,110,0.15);border:2px solid var(--color-accent-gold);display:flex;align-items:center;justify-content:center;"><span style="font-size:0.75rem;color:var(--color-accent-gold);">▶</span></div>
+                  <span style="font-size:0.625rem;color:var(--color-accent-gold);font-weight:500;">Qui</span>
+                </div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-xs);">
+                  <div style="width:40px;height:40px;border-radius:50%;background:var(--bg-secondary);border:1px solid var(--border-light);"></div>
+                  <span style="font-size:0.625rem;color:var(--text-light);">Sex</span>
+                </div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-xs);">
+                  <div style="width:40px;height:40px;border-radius:50%;background:var(--bg-secondary);border:1px solid var(--border-light);"></div>
+                  <span style="font-size:0.625rem;color:var(--text-light);">Sáb</span>
+                </div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-xs);">
+                  <div style="width:40px;height:40px;border-radius:50%;background:var(--bg-secondary);border:1px solid var(--border-light);"></div>
+                  <span style="font-size:0.625rem;color:var(--text-light);">Dom</span>
+                </div>
+              </div>
+
+              <!-- Stats mini -->
+              <div style="display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-md);">
+                <div style="text-align:center; padding: var(--space-md); background: var(--bg-secondary); border-radius: var(--radius-lg);">
+                  <div style="font-family:var(--font-heading); font-size:1.5rem; color:var(--color-near-black);">3</div>
+                  <div class="label-sm text-muted">Sessões</div>
+                </div>
+                <div style="text-align:center; padding: var(--space-md); background: var(--bg-secondary); border-radius: var(--radius-lg);">
+                  <div style="font-family:var(--font-heading); font-size:1.5rem; color:var(--color-near-black);">1h 45m</div>
+                  <div class="label-sm text-muted">Tempo</div>
+                </div>
+                <div style="text-align:center; padding: var(--space-md); background: var(--bg-secondary); border-radius: var(--radius-lg);">
+                  <div style="font-family:var(--font-heading); font-size:1.5rem; color:var(--color-near-black);">620</div>
+                  <div class="label-sm text-muted">Kcal</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Workout History -->
+            <div class="profile-section">
+              <div class="profile-section__title">
+                <span>Histórico Recente</span>
+                <span class="profile-section__link" style="cursor:pointer;">Ver Tudo →</span>
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: var(--space-sm);">
+                <div class="history-item">
+                  <div style="width:48px;height:48px;border-radius:var(--radius-md);overflow:hidden;flex-shrink:0;"><img src="assets/images/yoga.png" alt="" style="width:100%;height:100%;object-fit:cover;" /></div>
+                  <div style="flex:1;">
+                    <div style="font-weight:400;margin-bottom:2px;font-size:0.9375rem;">Core Reset — Dia 3</div>
+                    <div class="body-sm text-muted">Pilates Clássico · 25 min</div>
+                  </div>
+                  <div style="text-align:right;">
+                    <div style="font-size:0.75rem;color:var(--color-accent-gold);font-weight:500;">Completo ✓</div>
+                    <div style="font-size:0.6875rem;color:var(--text-light);">Hoje, 08:30</div>
+                  </div>
+                </div>
+                <div class="history-item">
+                  <div style="width:48px;height:48px;border-radius:var(--radius-md);overflow:hidden;flex-shrink:0;"><img src="assets/images/barre.png" alt="" style="width:100%;height:100%;object-fit:cover;" /></div>
+                  <div style="flex:1;">
+                    <div style="font-weight:400;margin-bottom:2px;font-size:0.9375rem;">Agachamento & Press — Barra</div>
+                    <div class="body-sm text-muted">Barra + Elásticos · 30 min</div>
+                  </div>
+                  <div style="text-align:right;">
+                    <div style="font-size:0.75rem;color:var(--color-accent-gold);font-weight:500;">Completo ✓</div>
+                    <div style="font-size:0.6875rem;color:var(--text-light);">Ontem, 19:15</div>
+                  </div>
+                </div>
+                <div class="history-item">
+                  <div style="width:48px;height:48px;border-radius:var(--radius-md);overflow:hidden;flex-shrink:0;"><img src="assets/images/ring.png" alt="" style="width:100%;height:100%;object-fit:cover;" /></div>
+                  <div style="flex:1;">
+                    <div style="font-weight:400;margin-bottom:2px;font-size:0.9375rem;">Inner Thigh Squeeze — Ring</div>
+                    <div class="body-sm text-muted">Fusion Ring · 20 min</div>
+                  </div>
+                  <div style="text-align:right;">
+                    <div style="font-size:0.75rem;color:var(--color-accent-gold);font-weight:500;">Completo ✓</div>
+                    <div style="font-size:0.6875rem;color:var(--text-light);">01 Jul, 07:00</div>
+                  </div>
+                </div>
+                <div class="history-item">
+                  <div style="width:48px;height:48px;border-radius:var(--radius-md);overflow:hidden;flex-shrink:0;"><img src="assets/images/yoga.png" alt="" style="width:100%;height:100%;object-fit:cover;" /></div>
+                  <div style="flex:1;">
+                    <div style="font-weight:400;margin-bottom:2px;font-size:0.9375rem;">Sunrise Morning Flow</div>
+                    <div class="body-sm text-muted">Yoga Vinyasa · 35 min</div>
+                  </div>
+                  <div style="text-align:right;">
+                    <div style="font-size:0.75rem;color:var(--color-accent-gold);font-weight:500;">Completo ✓</div>
+                    <div style="font-size:0.6875rem;color:var(--text-light);">30 Jun, 06:45</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Saved Workouts -->
+            <div id="saved" class="profile-section">
+              <div class="profile-section__title">
+                <span>Exercícios Salvos</span>
+                <a href="library.html" class="profile-section__link">Explorar Biblioteca →</a>
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: var(--space-md);">
+                <div style="display:flex; gap:var(--space-md); align-items:center; padding: var(--space-md); background:var(--bg-secondary); border-radius:var(--radius-lg);">
+                  <div style="width:52px;height:52px;border-radius:var(--radius-md);overflow:hidden;flex-shrink:0;"><img src="assets/images/yoga.png" alt="" style="width:100%;height:100%;object-fit:cover;" /></div>
+                  <div style="flex:1;"><div style="font-weight:400;margin-bottom:3px;">Sunrise Morning Flow</div><div class="body-sm text-muted">Yoga · 30 min · Iniciante</div></div>
+                  <button onclick="openVideoModal('Sunrise Morning Flow')" class="btn btn--outline btn--sm">Jogar</button>
+                </div>
+                <div style="display:flex; gap:var(--space-md); align-items:center; padding: var(--space-md); background:var(--bg-secondary); border-radius:var(--radius-lg);">
+                  <div style="width:52px;height:52px;border-radius:var(--radius-md);overflow:hidden;flex-shrink:0;"><img src="assets/images/ring.png" alt="" style="width:100%;height:100%;object-fit:cover;" /></div>
+                  <div style="flex:1;"><div style="font-weight:400;margin-bottom:3px;">Inner Thigh Squeeze</div><div class="body-sm text-muted">Ring · 10 min · Iniciante</div></div>
+                  <button onclick="openExerciseModal('Inner Thigh Squeeze')" class="btn btn--outline btn--sm">Jogar</button>
+                </div>
+                <div style="display:flex; gap:var(--space-md); align-items:center; padding: var(--space-md); background:var(--bg-secondary); border-radius:var(--radius-lg);">
+                  <div style="width:52px;height:52px;border-radius:var(--radius-md);overflow:hidden;flex-shrink:0;"><img src="assets/images/barre.png" alt="" style="width:100%;height:100%;object-fit:cover;" /></div>
+                  <div style="flex:1;"><div style="font-weight:400;margin-bottom:3px;">Agachamento Isométrico</div><div class="body-sm text-muted">Pilates Bar · 15 min · Iniciante</div></div>
+                  <button onclick="openExerciseModal('Agachamento Isométrico')" class="btn btn--outline btn--sm">Jogar</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN -->
+          <div style="display: flex; flex-direction: column; gap: var(--space-xl);">
+
+            <!-- Subscription details (Supabase + Shopify) -->
+            <div class="profile-section" id="profileSubscriptionCard">
+              <div class="profile-section__title">
+                <span>Minha Assinatura</span>
+                <span id="subStatusBadge" style="padding: 2px 8px; border-radius: 99px; font-size: 0.625rem; font-weight: 600; text-transform: uppercase; background: var(--bg-secondary); color: var(--text-muted);">Inativa</span>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: var(--space-md); font-size: 0.875rem; color: var(--text-secondary);">
+                <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-light); padding-bottom: 6px;">
+                  <span class="text-muted">E-mail:</span>
+                  <span id="subEmail" style="font-weight: 500;">-</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-light); padding-bottom: 6px;" id="subTrialDaysRow">
+                  <span class="text-muted">Dias de Trial Restantes:</span>
+                  <span id="subTrialDays" style="font-weight: 500;">-</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-light); padding-bottom: 6px;" id="subNextBillingRow">
+                  <span class="text-muted">Próxima Cobrança:</span>
+                  <span id="subNextBilling" style="font-weight: 500;">-</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-light); padding-bottom: 6px;" id="subRenewalRow">
+                  <span class="text-muted">Data de Renovação:</span>
+                  <span id="subRenewal" style="font-weight: 500;">-</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-light); padding-bottom: 6px; display: none;" id="subExpirationRow">
+                  <span class="text-muted">Data de Expiração:</span>
+                  <span id="subExpiration" style="font-weight: 500;">-</span>
+                </div>
+                <a href="https://atlaspilates.myshopify.com/tools/recurring/portal" target="_blank" id="manageSubscriptionBtn" class="btn btn--outline" style="width: 100%; justify-content: center; margin-top: var(--space-sm);">Manage Membership</a>
+              </div>
+            </div>
+
+            <!-- Today's Recommendation -->
+            <div style="padding: var(--space-xl); background: var(--color-near-black); border-radius: var(--radius-xl); color: #fff;">
+              <div class="label-sm" style="color: var(--color-accent-gold); margin-bottom: var(--space-sm);">Recomendação de Hoje</div>
+              <div style="font-family: var(--font-heading); font-size: 1.375rem; margin-bottom: var(--space-sm);">Core Reset</div>
+              <div style="font-size: 0.8125rem; color: rgba(255,255,255,0.6); margin-bottom: var(--space-lg);">Dia 4: Ativação Profunda · 25 min</div>
+              <div style="border-radius: var(--radius-lg); overflow: hidden; margin-bottom: var(--space-lg); aspect-ratio: 16/9;">
+                <img src="assets/images/yoga.png" alt="Today's workout" style="width:100%;height:100%;object-fit:cover;opacity:0.7;" />
+              </div>
+              <button onclick="openVideoModal('Sunrise Morning Flow')" class="btn btn--gold" style="width:100%;">Iniciar Treino de Hoje</button>
+            </div>
+
+            <!-- Personal Goals -->
+            <div class="profile-section">
+              <div class="profile-section__title"><span>Minhas Metas</span></div>
+              <div>
+                <div class="goal-item">
+                  <div class="goal-check goal-check--done">✓</div>
+                  <div style="flex:1;">
+                    <div style="font-size:0.875rem;font-weight:400;">Completar 7 dias seguidos</div>
+                    <div style="font-size:0.6875rem;color:var(--text-muted);">Concluído em 28 Jun</div>
+                  </div>
+                </div>
+                <div class="goal-item">
+                  <div class="goal-check goal-check--done">✓</div>
+                  <div style="flex:1;">
+                    <div style="font-size:0.875rem;font-weight:400;">Treinar com Barra + Elásticos</div>
+                    <div style="font-size:0.6875rem;color:var(--text-muted);">Concluído em 30 Jun</div>
+                  </div>
+                </div>
+                <div class="goal-item">
+                  <div class="goal-check goal-check--progress">▶</div>
+                  <div style="flex:1;">
+                    <div style="font-size:0.875rem;font-weight:400;">Completar programa Core Reset</div>
+                    <div style="font-size:0.6875rem;color:var(--color-accent-gold);">57% — Dia 4 de 7</div>
+                  </div>
+                </div>
+                <div class="goal-item">
+                  <div class="goal-check goal-check--pending"></div>
+                  <div style="flex:1;">
+                    <div style="font-size:0.875rem;font-weight:400;">30 treinos no total</div>
+                    <div style="font-size:0.6875rem;color:var(--text-muted);">28 / 30 treinos</div>
+                  </div>
+                </div>
+                <div class="goal-item">
+                  <div class="goal-check goal-check--pending"></div>
+                  <div style="flex:1;">
+                    <div style="font-size:0.875rem;font-weight:400;">Experimentar Fusion Ring</div>
+                    <div style="font-size:0.6875rem;color:var(--text-muted);">Pendente</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Equipment Used -->
+            <div class="profile-section">
+              <div class="profile-section__title"><span>Equipamentos</span></div>
+              <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-sm);">
+                <div class="equip-badge">
+                  <div class="equip-badge__icon" style="background: rgba(201,169,110,0.15);">🏋️</div>
+                  <div style="font-size:0.75rem;font-weight:500;">Pilates Bar</div>
+                  <div style="font-size:0.625rem;color:var(--text-muted);">12 treinos</div>
+                </div>
+                <div class="equip-badge">
+                  <div class="equip-badge__icon" style="background: rgba(143,168,150,0.15);">🎯</div>
+                  <div style="font-size:0.75rem;font-weight:500;">Barra + Elástico</div>
+                  <div style="font-size:0.625rem;color:var(--text-muted);">8 treinos</div>
+                </div>
+                <div class="equip-badge">
+                  <div class="equip-badge__icon" style="background: rgba(201,169,110,0.15);">⭕</div>
+                  <div style="font-size:0.75rem;font-weight:500;">Fusion Ring</div>
+                  <div style="font-size:0.625rem;color:var(--text-muted);">5 treinos</div>
+                </div>
+                <div class="equip-badge">
+                  <div class="equip-badge__icon" style="background: rgba(143,168,150,0.15);">🧘</div>
+                  <div style="font-size:0.75rem;font-weight:500;">Mat / Sem Equip.</div>
+                  <div style="font-size:0.625rem;color:var(--text-muted);">3 treinos</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Achievements -->
+            <div id="achievements" class="profile-section">
+              <div class="profile-section__title"><span>Conquistas</span></div>
+              <div style="display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-md);">
+                <div class="achievement-badge">
+                  <div class="achievement-icon">🔥</div>
+                  <div style="font-size:0.6875rem; font-weight:500; text-align:center; line-height:1.3;">7 Dias Seguidos</div>
+                </div>
+                <div class="achievement-badge">
+                  <div class="achievement-icon">🌅</div>
+                  <div style="font-size:0.6875rem; font-weight:500; text-align:center; line-height:1.3;">Madrugador</div>
+                </div>
+                <div class="achievement-badge">
+                  <div class="achievement-icon">💪</div>
+                  <div style="font-size:0.6875rem; font-weight:500; text-align:center; line-height:1.3;">Primeiro Pilates</div>
+                </div>
+                <div class="achievement-badge">
+                  <div class="achievement-icon">🏋️</div>
+                  <div style="font-size:0.6875rem; font-weight:500; text-align:center; line-height:1.3;">Mestre da Barra</div>
+                </div>
+                <div class="achievement-badge">
+                  <div class="achievement-icon">⭐</div>
+                  <div style="font-size:0.6875rem; font-weight:500; text-align:center; line-height:1.3;">Nível 5</div>
+                </div>
+                <div class="achievement-badge" style="opacity:0.35;">
+                  <div class="achievement-icon">🏆</div>
+                  <div style="font-size:0.6875rem; font-weight:500; text-align:center; line-height:1.3;">30 Dias</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Motivational Quote -->
+            <div class="quote-card">
+              <div style="font-family: var(--font-heading); font-size: 1.125rem; line-height: 1.6; margin-bottom: var(--space-md); position: relative; z-index: 1;">
+                A mudança acontece através do movimento e o movimento cura.
+              </div>
+              <div style="font-size: 0.6875rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent-gold);">— Joseph Pilates</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- SETTINGS MODAL -->
+  <div id="settingsModal" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px); align-items:center; justify-content:center;" onclick="if(event.target===this)this.style.display='none'">
+    <div style="background:var(--bg-card); border-radius:var(--radius-2xl); padding:var(--space-2xl); max-width:440px; width:90%; max-height:80vh; overflow-y:auto; box-shadow:var(--shadow-xl); position:relative;">
+      <button onclick="document.getElementById('settingsModal').style.display='none'" style="position:absolute;top:var(--space-md);right:var(--space-md);background:none;border:none;font-size:1.25rem;cursor:pointer;color:var(--text-muted);">✕</button>
+      <h2 style="font-family:var(--font-heading);font-size:1.5rem;margin-bottom:var(--space-xl);">Configurações</h2>
+
+      <div style="display:flex;flex-direction:column;gap:var(--space-lg);">
+        <div>
+          <label class="label-sm" style="display:block;margin-bottom:var(--space-xs);color:var(--text-secondary);">Nome</label>
+          <input type="text" value="caique" style="width:100%;padding:0.75rem 1rem;border:1px solid var(--border-medium);border-radius:var(--radius-pill);background:var(--bg-primary);color:var(--text-primary);font-size:0.875rem;outline:none;" />
+        </div>
+        <div>
+          <label class="label-sm" style="display:block;margin-bottom:var(--space-xs);color:var(--text-secondary);">E-mail</label>
+          <input type="email" value="caique@email.com" style="width:100%;padding:0.75rem 1rem;border:1px solid var(--border-medium);border-radius:var(--radius-pill);background:var(--bg-primary);color:var(--text-primary);font-size:0.875rem;outline:none;" />
+        </div>
+        <div>
+          <label class="label-sm" style="display:block;margin-bottom:var(--space-xs);color:var(--text-secondary);">Foco de Treino</label>
+          <select style="width:100%;padding:0.75rem 1rem;border:1px solid var(--border-medium);border-radius:var(--radius-pill);background:var(--bg-primary);color:var(--text-primary);font-size:0.875rem;outline:none;">
+            <option selected>Força e Tonificação</option>
+            <option>Pilates e Flexibilidade</option>
+            <option>Yoga e Relaxamento</option>
+            <option>Recuperação Corporal</option>
+          </select>
+        </div>
+        <div>
+          <label class="label-sm" style="display:block;margin-bottom:var(--space-xs);color:var(--text-secondary);">Lembretes de Treino</label>
+          <div style="display:flex;gap:var(--space-sm);align-items:center;">
+            <div style="width:44px;height:24px;background:var(--color-accent-gold);border-radius:999px;position:relative;cursor:pointer;">
+              <div style="width:20px;height:20px;background:#fff;border-radius:50%;position:absolute;top:2px;right:2px;box-shadow:var(--shadow-sm);"></div>
+            </div>
+            <span style="font-size:0.8125rem;color:var(--text-muted);">Ativado — 07:00 diariamente</span>
+          </div>
+        </div>
+        <button class="btn btn--primary" style="width:100%;justify-content:center;margin-top:var(--space-md);">Salvar Alterações</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div><div class="footer__logo">Atlas Pilates</div><div class="footer__tagline">Strength. Balance. Control.</div><p class="footer__desc">Premium Yoga & Pilates programs for the modern woman.</p></div>
+        <div><div class="footer__heading">Explore</div><a href="yoga.html" class="footer__link">Yoga</a><a href="pilates.html" class="footer__link">Pilates</a><a href="programs.html" class="footer__link">Programs</a><a href="library.html" class="footer__link">Library</a></div>
+        <div><div class="footer__heading">Account</div><a href="profile.html" class="footer__link">My Profile</a><a href="subscription.html" class="footer__link">Subscription</a></div>
+        <div><div class="footer__heading">Company</div><a href="#" class="footer__link">About Us</a><a href="#" class="footer__link">Contact</a></div>
+      </div>
+      <div class="footer__bottom"><div>© 2026 Atlas Pilates. All rights reserved.</div></div>
+    </div>
+  </footer>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
+    <div class="bottom-nav__inner">
+      <a href="index.html" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span class="bottom-nav__label">Home</span></a>
+      <a href="yoga.html" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/></svg><span class="bottom-nav__label">Yoga</span></a>
+      <a href="pilates.html" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg><span class="bottom-nav__label">Pilates</span></a>
+      <a href="library.html" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg><span class="bottom-nav__label">Library</span></a>
+      <a href="profile.html" class="bottom-nav__item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="bottom-nav__label">Profile</span></a>
+    </div>
+  </nav>
+
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase-client.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Atlas Pilates Premium — Desbloqueie todas as aulas de yoga e pilates, programas estruturados e conteúdo exclusivo." />
+  <title>Seja Premium — Atlas Pilates</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <style>
+    .pricing-card { position: relative; }
+    .pricing-toggle {
+      display: inline-flex;
+      background: var(--bg-secondary);
+      border-radius: var(--radius-pill);
+      padding: 4px;
+      border: 1px solid var(--border-light);
+      margin-bottom: var(--space-2xl);
+    }
+    .pricing-toggle__btn {
+      padding: 0.625rem 1.5rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.8125rem;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      background: none;
+      color: var(--text-muted);
+      transition: all 0.3s;
+      font-family: var(--font-heading);
+    }
+    .pricing-toggle__btn.active {
+      background: var(--color-near-black);
+      color: #fff;
+      box-shadow: var(--shadow-md);
+    }
+    .trust-logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: var(--space-sm) var(--space-md);
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .social-proof {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      padding: var(--space-lg);
+      background: var(--bg-card);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-light);
+    }
+    .testimonial-card {
+      padding: var(--space-xl);
+      background: var(--bg-card);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-light);
+      transition: transform 0.2s;
+    }
+    .testimonial-card:hover { transform: translateY(-2px); }
+    .guarantee-box {
+      padding: var(--space-2xl);
+      background: linear-gradient(135deg, rgba(143,168,150,0.08), rgba(201,169,110,0.08));
+      border: 1px solid rgba(201,169,110,0.2);
+      border-radius: var(--radius-2xl);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav nav--scrolled" id="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="assets/images/logo-mark.png" alt="Atlas Pilates" class="nav__logo-mark" />
+        <span class="nav__logo-text">Atlas Pilates</span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html" class="nav__link">Home</a></li>
+        <li><a href="yoga.html" class="nav__link">Yoga</a></li>
+        <li><a href="pilates.html" class="nav__link">Pilates</a></li>
+        <li><a href="programs.html" class="nav__link">Programs</a></li>
+        <li><a href="library.html" class="nav__link">Library</a></li>
+      </ul>
+      <div class="nav__actions">
+        <a href="profile.html" class="btn btn--outline btn--sm">Entrar</a>
+        <button class="nav__menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE DRAWER -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer__backdrop" id="drawerBackdrop"></div>
+    <div class="mobile-drawer__panel">
+      <button class="drawer-close" id="drawerClose">✕</button>
+      <nav class="drawer-links">
+        <a href="index.html" class="drawer-link">Home</a>
+        <a href="yoga.html" class="drawer-link">Yoga</a>
+        <a href="pilates.html" class="drawer-link">Pilates</a>
+        <a href="programs.html" class="drawer-link">Programs</a>
+        <a href="library.html" class="drawer-link">Library</a>
+        <a href="profile.html" class="drawer-link">Profile</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- BLOCKED / UPGRADE VIEW -->
+  <div style="padding-top: calc(var(--nav-height) + var(--space-4xl)); padding-bottom: var(--space-4xl); background: var(--color-near-black); text-align: center; position: relative; overflow: hidden; min-height: 80vh; display: flex; align-items: center; justify-content: center;">
+    <div style="position:absolute; top:-100px; left:50%; transform:translateX(-50%); width:600px; height:600px; border-radius:50%; border:1px solid rgba(201,169,110,0.08);"></div>
+    <div style="position:absolute; top:-60px; left:50%; transform:translateX(-50%); width:400px; height:400px; border-radius:50%; border:1px solid rgba(201,169,110,0.12);"></div>
+
+    <div class="container" style="position:relative; z-index:1; max-width: 600px; margin: 0 auto; padding: var(--space-xl);">
+      <div style="font-size: 3.5rem; margin-bottom: var(--space-xl); animation: pulse 2s infinite;">🔐</div>
+      <h1 class="display-md" style="color: #fff; margin-bottom: var(--space-xl); font-family: var(--font-heading);">
+        Unlock <em style="color: var(--color-accent-gold);">Atlas Pilates Premium</em>
+      </h1>
+      <p style="color: rgba(255,255,255,0.7); line-height: 1.8; font-size: 1.125rem; margin-bottom: var(--space-2xl);">
+        To unlock Atlas Pilates Premium, purchase the Atlas Pilates Bar through our official store. Your purchase includes 30 days of free access. After that, your membership continues for only $20/month, and you can cancel anytime.
+      </p>
+
+      <div style="display: flex; flex-direction: column; gap: var(--space-md); align-items: center;">
+        <a href="https://atlaspilates.myshopify.com" class="btn btn--gold btn--lg" style="padding: 1rem 2.5rem; font-size: 1rem; border-radius: 99px; font-weight: 500; min-width: 260px; justify-content: center; box-shadow: 0 4px 20px rgba(201,169,110,0.3);">
+          Buy Atlas Pilates Bar
+        </a>
+        <a href="profile.html" style="color: rgba(255,255,255,0.4); font-size: 0.875rem; text-decoration: none; margin-top: var(--space-md); transition: color 0.3s;" onmouseover="this.style.color='rgba(255,255,255,0.8)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">
+          Already have an account? Sign In
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div><div class="footer__logo">Atlas Pilates</div><div class="footer__tagline">Strength. Balance. Control.</div><p class="footer__desc">Premium Yoga & Pilates programs for the modern woman.</p></div>
+        <div><div class="footer__heading">Explore</div><a href="yoga.html" class="footer__link">Yoga</a><a href="pilates.html" class="footer__link">Pilates</a><a href="programs.html" class="footer__link">Programs</a><a href="library.html" class="footer__link">Library</a></div>
+        <div><div class="footer__heading">Account</div><a href="profile.html" class="footer__link">My Profile</a><a href="subscription.html" class="footer__link">Subscription</a></div>
+        <div><div class="footer__heading">Company</div><a href="#" class="footer__link">About Us</a><a href="#" class="footer__link">Contact</a></div>
+      </div>
+      <div class="footer__bottom"><div>© 2026 Atlas Pilates. All rights reserved.</div></div>
+    </div>
+  </footer>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
+    <div class="bottom-nav__inner">
+      <a href="index.html" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span class="bottom-nav__label">Home</span></a>
+      <a href="yoga.html" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/></svg><span class="bottom-nav__label">Yoga</span></a>
+      <a href="pilates.html" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg><span class="bottom-nav__label">Pilates</span></a>
+      <a href="library.html" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg><span class="bottom-nav__label">Library</span></a>
+      <a href="profile.html" class="bottom-nav__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="bottom-nav__label">Profile</span></a>
+    </div>
+  </nav>
+
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase-client.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
