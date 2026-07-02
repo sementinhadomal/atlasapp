@@ -1931,6 +1931,28 @@ function finishWorkout() {
   if (!inner) return;
 
   playPremiumChime('complete');
+
+  // Salva progresso do programa ativo se houver
+  if (window.activeProgramId) {
+    const progId = window.activeProgramId;
+    let curr = localStorage.getItem(`atlas_program_progress_${progId}`);
+    curr = curr === null ? 1 : parseInt(curr) || 1;
+    
+    // Avança progresso para o próximo dia
+    const next = curr + 1;
+    localStorage.setItem(`atlas_program_progress_${progId}`, next);
+    
+    // Se estivermos na página de programas, re-renderiza o progresso na tela
+    const grid = document.querySelector(`.program-progress-grid[data-program-id="${progId}"]`);
+    if (grid) {
+      const totalDays = parseInt(grid.getAttribute('data-total-days')) || 7;
+      const prefix = grid.getAttribute('data-prefix') || 'D';
+      renderGrid(grid, progId, totalDays, prefix, next);
+    }
+    
+    // Limpa a referência do programa ativo
+    window.activeProgramId = null;
+  }
   
   inner.innerHTML = `
     <button class="video-modal__close" onclick="closeWorkoutPlayer()">✕</button>
@@ -2711,6 +2733,105 @@ async function updatePremiumElementsUI() {
 }
 
 /**
+ * Helper to slugify program titles in JavaScript, matching the node rebuilder.
+ */
+function getProgramId(title) {
+  return title.toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // remove accents
+    .replace(/[^a-z0-9]/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
+/**
+ * Dynamically maps a program and day index to a real workout from workoutData.
+ * Respects modality and filters matches accordingly.
+ */
+window.getWorkoutForProgramDay = function(programId, day) {
+  if (!window.workoutsByCategory) {
+    window.workoutsByCategory = {
+      yoga: [],
+      pilates: [],
+      bar: [],
+      elastic: [],
+      ring: [],
+      fusion: [],
+      general: []
+    };
+    for (let key in workoutData) {
+      const item = workoutData[key];
+      const type = (item.type || '').toLowerCase();
+      const equip = (item.equipment || '').toLowerCase();
+      const keyLower = key.toLowerCase();
+      
+      if (type === 'yoga') {
+        window.workoutsByCategory.yoga.push(key);
+      } else if (type === 'pilates' && equip === 'none') {
+        window.workoutsByCategory.pilates.push(key);
+      } else if (equip === 'bar' || keyLower.includes('barra')) {
+        window.workoutsByCategory.bar.push(key);
+      } else if (equip === 'ring' || keyLower.includes('anel') || keyLower.includes('ring')) {
+        window.workoutsByCategory.ring.push(key);
+      } else if (equip === 'elastic' || keyLower.includes('elástico')) {
+        window.workoutsByCategory.elastic.push(key);
+      } else if (type === 'fusion' || keyLower.includes('fusion') || keyLower.includes('flow') || keyLower.includes('+')) {
+        window.workoutsByCategory.fusion.push(key);
+      } else {
+        window.workoutsByCategory.general.push(key);
+      }
+    }
+  }
+
+  let pool = [];
+  const p = programId.toLowerCase();
+  
+  if (p.includes('core-reset')) {
+    pool = [...window.workoutsByCategory.yoga, ...window.workoutsByCategory.pilates];
+  } else if (p.includes('body-sculptor')) {
+    pool = [...window.workoutsByCategory.ring, ...window.workoutsByCategory.bar];
+  } else if (p.includes('pilates-classico')) {
+    pool = window.workoutsByCategory.pilates;
+  } else if (p.includes('yoga-iniciantes')) {
+    pool = window.workoutsByCategory.yoga;
+  } else if (p.includes('forca-com-equipamentos') || p.includes('forca-equipamentos')) {
+    pool = [...window.workoutsByCategory.bar, ...window.workoutsByCategory.ring, ...window.workoutsByCategory.elastic];
+  } else if (p.includes('core-avancado')) {
+    pool = Object.keys(workoutData).filter(k => k.toLowerCase().includes('core') || k.toLowerCase().includes('abdominal') || k.toLowerCase().includes('prancha'));
+  } else if (p.includes('flexibilidade')) {
+    pool = Object.keys(workoutData).filter(k => k.toLowerCase().includes('alongamento') || k.toLowerCase().includes('flexibilidade') || k.toLowerCase().includes('restore') || k.toLowerCase().includes('yin'));
+  } else if (p.includes('barra-elastico') || p.includes('barra-e-elastico') || p.includes('desafio-21-dias-barra-elastico')) {
+    pool = [...window.workoutsByCategory.bar, ...window.workoutsByCategory.elastic];
+  } else if (p.includes('fusion-yoga')) {
+    pool = [...window.workoutsByCategory.fusion, ...window.workoutsByCategory.yoga, ...window.workoutsByCategory.bar];
+  } else if (p.includes('desafio-anel')) {
+    pool = window.workoutsByCategory.ring;
+  } else if (p.includes('pernas-gluteos') || p.includes('pernas')) {
+    pool = Object.keys(workoutData).filter(k => {
+      const kl = k.toLowerCase();
+      return kl.includes('agachamento') || kl.includes('glúteo') || kl.includes('quadril') || kl.includes('perna') || kl.includes('ponte') || kl.includes('pélvica') || kl.includes('avanço');
+    });
+  } else if (p.includes('upper-body') || p.includes('upper')) {
+    pool = Object.keys(workoutData).filter(k => {
+      const kl = k.toLowerCase();
+      return kl.includes('rosca') || kl.includes('bíceps') || kl.includes('tríceps') || kl.includes('ombro') || kl.includes('peitoral') || kl.includes('braço') || kl.includes('remada') || kl.includes('desenvolvimento') || kl.includes('triceps') || kl.includes('biceps');
+    });
+  } else if (p.includes('hiit')) {
+    pool = Object.keys(workoutData).filter(k => k.toLowerCase().includes('hiit') || k.toLowerCase().includes('prancha') || k.toLowerCase().includes('suave'));
+  } else if (p.includes('barra-express')) {
+    pool = window.workoutsByCategory.bar;
+  } else if (p.includes('dual-equipment') || p.includes('full-body-fusion')) {
+    pool = [...window.workoutsByCategory.bar, ...window.workoutsByCategory.ring, ...window.workoutsByCategory.fusion];
+  }
+
+  if (pool.length === 0) {
+    pool = Object.keys(workoutData);
+  }
+
+  const index = (day - 1) % pool.length;
+  return pool[index];
+};
+
+/**
  * Dynamically tracks and renders program progress grids (D1, D2...)
  * and buttons, saving user state to localStorage.
  */
@@ -2773,18 +2894,14 @@ function renderGrid(grid, programId, totalDays, prefix, currentProgress) {
     
     // Toggle progress when day circle is clicked!
     dayItem.addEventListener('click', () => {
-      let nextProgress = i;
-      if (i === currentProgress) {
-        nextProgress = i + 1;
-      }
-      localStorage.setItem(`atlas_program_progress_${programId}`, nextProgress);
-      renderGrid(grid, programId, totalDays, prefix, nextProgress);
+      localStorage.setItem(`atlas_program_progress_${programId}`, i);
+      renderGrid(grid, programId, totalDays, prefix, i);
     });
     
     grid.appendChild(dayItem);
   }
   
-  // Set initial button text
+  // Set button text according to active day
   updateProgramButton(programId, currentProgress, totalDays, prefix);
 }
 
@@ -2808,63 +2925,55 @@ function updateProgramButton(programId, progress, totalDays, prefix) {
  * and opening the video modal player.
  */
 window.startProgram = function(programName, totalDays) {
-  let workoutToPlay = "Alongamento com Barra";
-  const nameLower = programName.toLowerCase();
-  
-  if (nameLower.includes('core reset')) {
-    workoutToPlay = "Alongamento Integrado com Elástico";
-  } else if (nameLower.includes('sculptor') || nameLower.includes('escultura') || nameLower.includes('body')) {
-    workoutToPlay = "Escultura de Braços & Bíceps";
-  } else if (nameLower.includes('transformation') || nameLower.includes('transformação')) {
-    workoutToPlay = "Força Total com Barra";
-  } else if (nameLower.includes('clássico') || nameLower.includes('classico')) {
-    workoutToPlay = "Pilates Clássico no Mat";
-  } else if (nameLower.includes('iniciante') || nameLower.includes('iniciantes')) {
-    workoutToPlay = "Deep Restore & Relax";
-  } else if (nameLower.includes('equipamentos') || nameLower.includes('barra')) {
-    workoutToPlay = "Agachamento Sumô com Barra";
-  } else if (nameLower.includes('flexibilidade')) {
-    workoutToPlay = "Alongamento de Posterior com Anel";
-  }
+  const progId = getProgramId(programName);
 
-  // Find partial matches inside workoutData (ignoring accents/case)
-  let matchedKey = "";
-  const searchName = workoutToPlay.toLowerCase()
-    .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // remove accents
-    .replace(/[^a-z0-9]/g, '');
-  
-  for (let key in workoutData) {
-    const keyClean = key.toLowerCase()
-      .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-      .replace(/[^a-z0-9]/g, '');
-    if (keyClean.includes(searchName) || searchName.includes(keyClean)) {
-      matchedKey = key;
-      break;
+  // Define como programa ativo para salvar o progresso ao terminar o treino
+  window.activeProgramId = progId;
+
+  let currentProgress = 1;
+  const saved = localStorage.getItem(`atlas_program_progress_${progId}`);
+  currentProgress = saved !== null ? parseInt(saved) || 1 : 1;
+
+  // Se o programa foi concluído, reinicia no dia 1
+  if (currentProgress > totalDays) {
+    currentProgress = 1;
+    localStorage.setItem(`atlas_program_progress_${progId}`, 1);
+    const grid = document.querySelector(`.program-progress-grid[data-program-id="${progId}"]`);
+    if (grid) {
+      const prefix = progId.includes('yoga') ? 'S' : 'D';
+      renderGrid(grid, progId, totalDays, prefix, 1);
     }
   }
 
-  const finalWorkout = matchedKey || Object.keys(workoutData)[0];
+  // Busca treino ideal para este dia do programa
+  const finalWorkout = window.getWorkoutForProgramDay(progId, currentProgress);
 
-  // Detect program ID to update progress
-  let progId = "";
-  if (nameLower.includes('core reset')) progId = "core-reset";
-  else if (nameLower.includes('iniciante') || nameLower.includes('iniciantes')) progId = "yoga-iniciantes";
-  else if (nameLower.includes('barra express') || nameLower.includes('primeiros passos')) progId = "barra-express";
-
-  let currentProgress = 1;
-  if (progId) {
-    const saved = localStorage.getItem(`atlas_program_progress_${progId}`);
-    currentProgress = saved !== null ? parseInt(saved) || 1 : 1;
+  // Obtém duração prometida nas estatísticas
+  let durationStr = "25 min";
+  const btn = document.getElementById(`btn-${progId}`);
+  if (btn) {
+    const parentContainer = btn.parentElement;
+    if (parentContainer) {
+      const statsElements = Array.from(parentContainer.querySelectorAll('div > div'));
+      statsElements.forEach(el => {
+        const text = el.textContent.trim().toLowerCase();
+        if (text.includes('min') || text.includes('dias') || text.includes('diário')) {
+          const valEl = el.nextElementSibling || el.parentElement.querySelector('div:last-child');
+          if (valEl && valEl.textContent.includes('min')) {
+            durationStr = valEl.textContent.trim();
+          }
+        }
+      });
+    }
   }
 
-  const prefix = progId === "yoga-iniciantes" ? "Semana" : "Dia";
-  window.showToast(`🚀 Iniciando ${programName} — ${prefix} ${currentProgress}`);
+  window.showToast(`🚀 Iniciando ${programName} — Dia ${currentProgress} (${durationStr})`);
   
   setTimeout(() => {
     if (window.openVideoModal) {
-      window.openVideoModal(finalWorkout);
+      window.openVideoModal(finalWorkout, durationStr);
     } else if (window.openExerciseModal) {
-      window.openExerciseModal(finalWorkout);
+      window.openExerciseModal(finalWorkout, durationStr);
     }
   }, 1000);
 };
