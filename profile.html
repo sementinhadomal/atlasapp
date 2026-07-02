@@ -335,52 +335,8 @@
           </div>
         </div>
         <button id="authBtn1" onclick="handleAuthLoginSubmit()" class="btn btn--gold" style="width: 100%; justify-content: center; margin-bottom: var(--space-md);">Entrar</button>
-        <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted);">
-          <a href="javascript:void(0)" onclick="switchAuthStep(2)" style="color: var(--color-accent-gold);">Criar Conta</a>
-          <a href="javascript:void(0)" onclick="switchAuthStep(3)" style="color: var(--text-muted);">Esqueceu a senha?</a>
-        </div>
-      </div>
-
-      <!-- Step 2: Cadastro / Registro -->
-      <div id="authStep2" style="display: none;">
-        <div style="display: flex; flex-direction: column; gap: var(--space-md); text-align: left; margin-bottom: var(--space-xl);">
-          <div>
-            <label for="regEmail" class="label-sm" style="display: block; margin-bottom: var(--space-xs); color: var(--text-secondary);">E-mail</label>
-            <input type="email" id="regEmail" placeholder="exemplo@email.com" style="width: 100%; padding: 0.875rem 1.25rem; border: 1px solid var(--border-medium); border-radius: var(--radius-pill); background: var(--bg-primary); color: var(--text-primary); font-size: 0.875rem; outline: none;" />
-          </div>
-          <div>
-            <label for="regPassword" class="label-sm" style="display: block; margin-bottom: var(--space-xs); color: var(--text-secondary);">Senha</label>
-            <input type="password" id="regPassword" placeholder="Mínimo 6 caracteres" style="width: 100%; padding: 0.875rem 1.25rem; border: 1px solid var(--border-medium); border-radius: var(--radius-pill); background: var(--bg-primary); color: var(--text-primary); font-size: 0.875rem; outline: none;" />
-          </div>
-          <div>
-            <label for="authName" class="label-sm" style="display: block; margin-bottom: var(--space-xs); color: var(--text-secondary);">Nome Completo</label>
-            <input type="text" id="authName" placeholder="Como quer ser chamado(a)?" style="width: 100%; padding: 0.875rem 1.25rem; border: 1px solid var(--border-medium); border-radius: var(--radius-pill); background: var(--bg-primary); color: var(--text-primary); font-size: 0.875rem; outline: none;" />
-          </div>
-          <div>
-            <label for="authAge" class="label-sm" style="display: block; margin-bottom: var(--space-xs); color: var(--text-secondary);">Idade</label>
-            <input type="number" id="authAge" placeholder="Sua idade" style="width: 100%; padding: 0.875rem 1.25rem; border: 1px solid var(--border-medium); border-radius: var(--radius-pill); background: var(--bg-primary); color: var(--text-primary); font-size: 0.875rem; outline: none;" />
-          </div>
-          <div>
-            <label for="authGoal" class="label-sm" style="display: block; margin-bottom: var(--space-xs); color: var(--text-secondary);">Foco de Treino</label>
-            <select id="authGoal" style="width: 100%; padding: 0.875rem 1.25rem; border: 1px solid var(--border-medium); border-radius: var(--radius-pill); background: var(--bg-primary); color: var(--text-primary); font-size: 0.875rem; outline: none;">
-              <option value="Pilates e Flexibilidade">Pilates e Flexibilidade</option>
-              <option value="Força e Tonificação">Força e Tonificação</option>
-              <option value="Yoga e Relaxamento">Yoga e Relaxamento</option>
-              <option value="Recuperação Corporal">Recuperação Corporal</option>
-            </select>
-          </div>
-          <div>
-            <label for="authLevel" class="label-sm" style="display: block; margin-bottom: var(--space-xs); color: var(--text-secondary);">Nível de Experiência</label>
-            <select id="authLevel" style="width: 100%; padding: 0.875rem 1.25rem; border: 1px solid var(--border-medium); border-radius: var(--radius-pill); background: var(--bg-primary); color: var(--text-primary); font-size: 0.875rem; outline: none;">
-              <option value="Iniciante">Iniciante</option>
-              <option value="Intermediário">Intermediário</option>
-              <option value="Avançado">Avançado</option>
-            </select>
-          </div>
-        </div>
-        <button id="authBtn2" onclick="handleAuthRegisterSubmit()" class="btn btn--primary" style="width: 100%; justify-content: center; margin-bottom: var(--space-md);">Começar Treinos</button>
-        <div style="font-size: 0.75rem; text-align: center;">
-          <a href="javascript:void(0)" onclick="switchAuthStep(1)" style="color: var(--color-accent-gold);">Já tem uma conta? Entrar</a>
+        <div style="display: flex; justify-content: center; font-size: 0.75rem; color: var(--text-muted);">
+          <a href="javascript:void(0)" onclick="switchAuthStep(3)" style="color: var(--color-accent-gold);">Esqueceu a senha? / Trocar Senha</a>
         </div>
       </div>
 
