@@ -2694,12 +2694,64 @@ async function updatePremiumElementsUI() {
         btn.className = 'btn btn--primary';
         btn.onclick = (e) => {
           e.preventDefault();
-          window.showToast(`🎉 Iniciando o programa: ${title}!`);
+          window.startProgram(title, 14);
         };
       }
     });
   }
 }
+
+/**
+ * Starts a workout program by matching its name to a real workout from workoutData
+ * and opening the video modal player.
+ */
+window.startProgram = function(programName, totalDays) {
+  let workoutToPlay = "Alongamento com Barra";
+  const nameLower = programName.toLowerCase();
+  
+  if (nameLower.includes('core reset')) {
+    workoutToPlay = "Alongamento Integrado com Elástico";
+  } else if (nameLower.includes('sculptor') || nameLower.includes('escultura') || nameLower.includes('body')) {
+    workoutToPlay = "Escultura de Braços & Bíceps";
+  } else if (nameLower.includes('transformation') || nameLower.includes('transformação')) {
+    workoutToPlay = "Força Total com Barra";
+  } else if (nameLower.includes('clássico') || nameLower.includes('classico')) {
+    workoutToPlay = "Pilates Clássico no Mat";
+  } else if (nameLower.includes('iniciante') || nameLower.includes('iniciantes')) {
+    workoutToPlay = "Deep Restore & Relax";
+  } else if (nameLower.includes('equipamentos') || nameLower.includes('barra')) {
+    workoutToPlay = "Agachamento Sumô com Barra";
+  } else if (nameLower.includes('flexibilidade')) {
+    workoutToPlay = "Alongamento de Posterior com Anel";
+  }
+
+  // Find partial matches inside workoutData (ignoring accents/case)
+  let matchedKey = "";
+  const searchName = workoutToPlay.toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // remove accents
+    .replace(/[^a-z0-9]/g, '');
+  
+  for (let key in workoutData) {
+    const keyClean = key.toLowerCase()
+      .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z0-9]/g, '');
+    if (keyClean.includes(searchName) || searchName.includes(keyClean)) {
+      matchedKey = key;
+      break;
+    }
+  }
+
+  const finalWorkout = matchedKey || Object.keys(workoutData)[0];
+
+  window.showToast(`🚀 Iniciando ${programName} — Dia 1`);
+  setTimeout(() => {
+    if (window.openVideoModal) {
+      window.openVideoModal(finalWorkout);
+    } else if (window.openExerciseModal) {
+      window.openExerciseModal(finalWorkout);
+    }
+  }, 1000);
+};
 
 // ==========================================
 // LOGIN — chamado pelo botão do profile.html
