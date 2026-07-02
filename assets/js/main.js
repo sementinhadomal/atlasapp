@@ -2653,6 +2653,59 @@ async function initAuth() {
       window.switchAuthStep(4);
     }
   }
+
+  // 5. Update UI elements if user is Premium
+  updatePremiumElementsUI();
+}
+
+/**
+ * Dynamically unlocks and updates UI elements on the page if the user is verified premium.
+ */
+async function updatePremiumElementsUI() {
+  const allowed = await canPlayContent(null);
+  if (allowed) {
+    // 1. Remove all lock indicators
+    document.querySelectorAll('.card__lock, .lock-icon, [data-lock]').forEach(el => {
+      el.remove();
+    });
+
+    // 2. Reset dark/dimmed images to full brightness
+    document.querySelectorAll('.card__media img, img').forEach(img => {
+      if (img.style.filter && img.style.filter.includes('brightness')) {
+        img.style.filter = '';
+      }
+      // Also fallback general styles
+      if (img.style.filter === 'none' || img.style.filter === '') {
+        img.style.filter = 'brightness(1)';
+      }
+    });
+
+    // 3. Change "Unlock with Premium" buttons in programs.html to active triggers
+    document.querySelectorAll('a[href="subscription.html"]').forEach(btn => {
+      const card = btn.closest('.reveal, article, div');
+      const text = btn.textContent || '';
+      if (card && (text.includes('Unlock') || text.includes('Premium') || text.includes('Start'))) {
+        const titleEl = card.querySelector('h2');
+        const title = titleEl ? titleEl.textContent.trim() : 'Programa';
+        
+        btn.innerHTML = 'Iniciar Programa';
+        btn.removeAttribute('href');
+        btn.style.cursor = 'pointer';
+        btn.className = 'btn btn--primary';
+        btn.onclick = (e) => {
+          e.preventDefault();
+          window.showToast(`🎉 Iniciando o programa: ${title}!`);
+        };
+      }
+    });
+
+    // 4. Update the premium label badges
+    document.querySelectorAll('.card__badge--premium').forEach(badge => {
+      badge.textContent = 'Unlocked';
+      badge.style.background = 'var(--color-accent-sage)';
+      badge.style.color = '#fff';
+    });
+  }
 }
 
 // ==========================================
@@ -2685,9 +2738,13 @@ window.handleAuthLoginSubmit = async function() {
     if (btn) { btn.textContent = 'Entrar'; btn.disabled = false; }
 
     if (error) {
-      window.showToast('❌ ' + (error === 'Invalid login credentials'
-        ? 'E-mail ou senha incorretos.'
-        : error));
+      let friendlyError = error;
+      if (error.includes('Email not confirmed') || error.includes('confirm')) {
+        friendlyError = 'Por favor, confirme seu cadastro no e-mail antes de fazer login!';
+      } else if (error.includes('Invalid login credentials') || error.includes('invalid_grant')) {
+        friendlyError = 'E-mail ou senha incorretos.';
+      }
+      window.showToast('❌ ' + friendlyError);
       return;
     }
 
