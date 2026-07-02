@@ -2663,9 +2663,18 @@ async function initAuth() {
 async function updatePremiumElementsUI() {
   const allowed = await canPlayContent(null);
   if (allowed) {
-    // 1. Remove all lock indicators
+    // 1. Remove all lock indicators (including the inline SVG overlays from old templates)
     document.querySelectorAll('.card__lock, .lock-icon, [data-lock]').forEach(el => {
       el.remove();
+    });
+
+    // Remove inline SVG locks from programs.html if cached
+    document.querySelectorAll('.reveal div[style*="position:absolute"], .reveal div[style*="position: absolute"]').forEach(el => {
+      if (el.innerHTML.includes('<svg') && (el.innerHTML.includes('rect') || el.innerHTML.includes('path'))) {
+        if (!el.textContent.includes('Most Popular') && !el.textContent.includes('Free')) {
+          el.remove();
+        }
+      }
     });
 
     // 2. Reset dark/dimmed images to full brightness
@@ -2680,7 +2689,7 @@ async function updatePremiumElementsUI() {
     });
 
     // 3. Change "Unlock with Premium" buttons in programs.html to active triggers
-    document.querySelectorAll('a[href="subscription.html"]').forEach(btn => {
+    document.querySelectorAll('a[href*="subscription.html"]').forEach(btn => {
       const card = btn.closest('.reveal, article, div');
       const text = btn.textContent || '';
       if (card && (text.includes('Unlock') || text.includes('Premium') || text.includes('Start'))) {

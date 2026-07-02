@@ -428,6 +428,13 @@ ul, ol { list-style: none; }
   box-shadow: var(--shadow-xl);
 }
 
+.card:hover .play-icon,
+.card__media button:hover .play-icon,
+.card__media:hover .play-icon,
+.card__play-overlay:hover .play-icon {
+  opacity: 1 !important;
+}
+
 .card__media {
   position: relative;
   overflow: hidden;
