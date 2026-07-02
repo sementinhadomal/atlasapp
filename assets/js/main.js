@@ -18,6 +18,926 @@ document.addEventListener('DOMContentLoaded', () => {
 // WORKOUT DATABASE (Simulated Exercises)
 // ==========================================
 const workoutData = {
+  "Rosca Bíceps na Barra": {
+    "type": "pilates",
+    "equipment": "bar",
+    "sets": 3,
+    "reps": "15",
+    "exercises": [
+        {
+            "name": "Rosca Bíceps na Barra",
+            "duration": 40,
+            "instructions": "Rosca de bíceps com a barra para fortalecimento e tonificação dos braços. 1. Segure a barra firmemente. <br>2. Execute o movimento de forma controlada mantendo o alinhamento. <br>3. Inspire na descida, expire no esforço máximo.",
+            "animation": "thigh-squeeze",
+            "target": "Braços e Bíceps"
+        }
+    ]
+},
+
+  "Remada Curvada com Barra": {
+    "type": "pilates",
+    "equipment": "bar",
+    "sets": 3,
+    "reps": "12",
+    "exercises": [
+        {
+            "name": "Remada Curvada com Barra",
+            "duration": 40,
+            "instructions": "Remada curvada para fortalecimento das costas e alinhamento dos ombros. 1. Segure a barra firmemente. <br>2. Execute o movimento de forma controlada mantendo o alinhamento. <br>3. Inspire na descida, expire no esforço máximo.",
+            "animation": "thigh-squeeze",
+            "target": "Costas e Ombros"
+        }
+    ]
+},
+
+  "Agachamento Sumô com Barra": {
+    "type": "pilates",
+    "equipment": "bar",
+    "sets": 3,
+    "reps": "15",
+    "exercises": [
+        {
+            "name": "Agachamento Sumô com Barra",
+            "duration": 40,
+            "instructions": "Agachamento com postura ampla para focar na parte interna das coxas e glúteos. 1. Segure a barra firmemente. <br>2. Execute o movimento de forma controlada mantendo o alinhamento. <br>3. Inspire na descida, expire no esforço máximo.",
+            "animation": "squat-press",
+            "target": "Pernas e Glúteos"
+        }
+    ]
+},
+
+  "Elevação de Quadril com Barra": {
+    "type": "pilates",
+    "equipment": "bar",
+    "sets": 4,
+    "reps": "12",
+    "exercises": [
+        {
+            "name": "Elevação de Quadril com Barra",
+            "duration": 40,
+            "instructions": "Elevação pélvica com barra para ativação intensa de glúteos e posterior de coxa. 1. Segure a barra firmemente. <br>2. Execute o movimento de forma controlada mantendo o alinhamento. <br>3. Inspire na descida, expire no esforço máximo.",
+            "animation": "thigh-squeeze",
+            "target": "Glúteos e Posterior"
+        }
+    ]
+},
+
+  "Desenvolvimento com Barra": {
+    "type": "pilates",
+    "equipment": "bar",
+    "sets": 3,
+    "reps": "12",
+    "exercises": [
+        {
+            "name": "Desenvolvimento com Barra",
+            "duration": 40,
+            "instructions": "Desenvolvimento de ombros acima da cabeça para fortalecer os deltoides. 1. Segure a barra firmemente. <br>2. Execute o movimento de forma controlada mantendo o alinhamento. <br>3. Inspire na descida, expire no esforço máximo.",
+            "animation": "thigh-squeeze",
+            "target": "Ombros e Tríceps"
+        }
+    ]
+},
+
+  "Avanço Reverso com Barra": {
+    "type": "pilates",
+    "equipment": "bar",
+    "sets": 3,
+    "reps": "10/lado",
+    "exercises": [
+        {
+            "name": "Avanço Reverso com Barra",
+            "duration": 40,
+            "instructions": "Passo atrás alternado segurando a barra para melhorar força e estabilidade. 1. Segure a barra firmemente. <br>2. Execute o movimento de forma controlada mantendo o alinhamento. <br>3. Inspire na descida, expire no esforço máximo.",
+            "animation": "thigh-squeeze",
+            "target": "Pernas e Equilíbrio"
+        }
+    ]
+},
+
+  "Prancha com Apoio na Barra": {
+    "type": "pilates",
+    "equipment": "bar",
+    "sets": 3,
+    "reps": "45s",
+    "exercises": [
+        {
+            "name": "Prancha com Apoio na Barra",
+            "duration": 45,
+            "instructions": "Estabilização de core apoiando as mãos na barra no chão para maior dificuldade. 1. Segure a barra firmemente. <br>2. Execute o movimento de forma controlada mantendo o alinhamento. <br>3. Inspire na descida, expire no esforço máximo.",
+            "animation": "overhead-lunge",
+            "target": "Core e Estabilidade"
+        }
+    ]
+},
+
+  "Tríceps Testa com Barra": {
+    "type": "pilates",
+    "equipment": "bar",
+    "sets": 3,
+    "reps": "12",
+    "exercises": [
+        {
+            "name": "Tríceps Testa com Barra",
+            "duration": 40,
+            "instructions": "Extensão de cotovelos deitada com barra para esculpir a parte de trás dos braços. 1. Segure a barra firmemente. <br>2. Execute o movimento de forma controlada mantendo o alinhamento. <br>3. Inspire na descida, expire no esforço máximo.",
+            "animation": "thigh-squeeze",
+            "target": "Tríceps e Braços"
+        }
+    ]
+},
+
+  "Abdominal Infra com Barra": {
+    "type": "pilates",
+    "equipment": "bar",
+    "sets": 3,
+    "reps": "15",
+    "exercises": [
+        {
+            "name": "Abdominal Infra com Barra",
+            "duration": 40,
+            "instructions": "Elevação de pernas segurando a barra acima do peito para focar na região infra-abdominal. 1. Segure a barra firmemente. <br>2. Execute o movimento de forma controlada mantendo o alinhamento. <br>3. Inspire na descida, expire no esforço máximo.",
+            "animation": "thigh-squeeze",
+            "target": "Core e Abdominais"
+        }
+    ]
+},
+
+  "Alongamento com Barra": {
+    "type": "pilates",
+    "equipment": "bar",
+    "sets": 3,
+    "reps": "30s",
+    "exercises": [
+        {
+            "name": "Alongamento com Barra",
+            "duration": 30,
+            "instructions": "Alongamento relaxante da cadeia posterior utilizando a barra para apoiar as mãos. 1. Segure a barra firmemente. <br>2. Execute o movimento de forma controlada mantendo o alinhamento. <br>3. Inspire na descida, expire no esforço máximo.",
+            "animation": "thigh-squeeze",
+            "target": "Coluna e Alongamento"
+        }
+    ]
+},
+
+  "Rosca Martelo (Elástico)": {
+    "type": "pilates",
+    "equipment": "elastic",
+    "sets": 3,
+    "reps": "15",
+    "exercises": [
+        {
+            "name": "Rosca Martelo (Elástico)",
+            "duration": 40,
+            "instructions": "Rosca para bíceps e antebraços usando a resistência dos elásticos acoplados à barra. 1. Utilize a resistência dos elásticos para aumentar a intensidade. <br>2. Mantenha os cotovelos alinhados e execute com controle. <br>3. Controle a descida resistindo à tração.",
+            "animation": "overhead-lunge",
+            "target": "Bíceps e Braços"
+        }
+    ]
+},
+
+  "Elevação Lateral (Elástico)": {
+    "type": "pilates",
+    "equipment": "elastic",
+    "sets": 3,
+    "reps": "12",
+    "exercises": [
+        {
+            "name": "Elevação Lateral (Elástico)",
+            "duration": 40,
+            "instructions": "Elevação lateral de braços sob tensão constante para fortalecer os ombros. 1. Utilize a resistência dos elásticos para aumentar a intensidade. <br>2. Mantenha os cotovelos alinhados e execute com controle. <br>3. Controle a descida resistindo à tração.",
+            "animation": "overhead-lunge",
+            "target": "Ombros e Postura"
+        }
+    ]
+},
+
+  "Puxada Alta (Elástico)": {
+    "type": "pilates",
+    "equipment": "elastic",
+    "sets": 3,
+    "reps": "12",
+    "exercises": [
+        {
+            "name": "Puxada Alta (Elástico)",
+            "duration": 40,
+            "instructions": "Remada alta puxando a barra em direção ao queixo para trabalhar trapézio e ombros. 1. Utilize a resistência dos elásticos para aumentar a intensidade. <br>2. Mantenha os cotovelos alinhados e execute com controle. <br>3. Controle a descida resistindo à tração.",
+            "animation": "overhead-lunge",
+            "target": "Ombros e Costas"
+        }
+    ]
+},
+
+  "Agachamento Búlgaro (Elástico)": {
+    "type": "pilates",
+    "equipment": "elastic",
+    "sets": 3,
+    "reps": "10/lado",
+    "exercises": [
+        {
+            "name": "Agachamento Búlgaro (Elástico)",
+            "duration": 40,
+            "instructions": "Agachamento unilateral com pé traseiro suspenso na alça elástica para estabilidade. 1. Utilize a resistência dos elásticos para aumentar a intensidade. <br>2. Mantenha os cotovelos alinhados e execute com controle. <br>3. Controle a descida resistindo à tração.",
+            "animation": "squat-press",
+            "target": "Pernas e Glúteos"
+        }
+    ]
+},
+
+  "Extensão de Tríceps (Elástico)": {
+    "type": "pilates",
+    "equipment": "elastic",
+    "sets": 3,
+    "reps": "12",
+    "exercises": [
+        {
+            "name": "Extensão de Tríceps (Elástico)",
+            "duration": 40,
+            "instructions": "Extensão de tríceps acima da cabeça contra a força de tração do elástico. 1. Utilize a resistência dos elásticos para aumentar a intensidade. <br>2. Mantenha os cotovelos alinhados e execute com controle. <br>3. Controle a descida resistindo à tração.",
+            "animation": "overhead-lunge",
+            "target": "Tríceps e Braços"
+        }
+    ]
+},
+
+  "Passo Cruzado (Elástico)": {
+    "type": "pilates",
+    "equipment": "elastic",
+    "sets": 3,
+    "reps": "12/lado",
+    "exercises": [
+        {
+            "name": "Passo Cruzado (Elástico)",
+            "duration": 40,
+            "instructions": "Passo lateral cruzado com elástico nos pés para tonificação lateral dos quadris. 1. Utilize a resistência dos elásticos para aumentar a intensidade. <br>2. Mantenha os cotovelos alinhados e execute com controle. <br>3. Controle a descida resistindo à tração.",
+            "animation": "overhead-lunge",
+            "target": "Quadril e Glúteos"
+        }
+    ]
+},
+
+  "Flexão de Braços Resistida": {
+    "type": "pilates",
+    "equipment": "elastic",
+    "sets": 3,
+    "reps": "10",
+    "exercises": [
+        {
+            "name": "Flexão de Braços Resistida",
+            "duration": 40,
+            "instructions": "Flexão de braço tradicional com o elástico passando pelas costas gerando sobrecarga. 1. Utilize a resistência dos elásticos para aumentar a intensidade. <br>2. Mantenha os cotovelos alinhados e execute com controle. <br>3. Controle a descida resistindo à tração.",
+            "animation": "overhead-lunge",
+            "target": "Peito e Tríceps"
+        }
+    ]
+},
+
+  "Crucifixo Inverso (Elástico)": {
+    "type": "pilates",
+    "equipment": "elastic",
+    "sets": 3,
+    "reps": "15",
+    "exercises": [
+        {
+            "name": "Crucifixo Inverso (Elástico)",
+            "duration": 40,
+            "instructions": "Abertura de braços em postura curvada para focar na parte posterior dos ombros. 1. Utilize a resistência dos elásticos para aumentar a intensidade. <br>2. Mantenha os cotovelos alinhados e execute com controle. <br>3. Controle a descida resistindo à tração.",
+            "animation": "overhead-lunge",
+            "target": "Costas e Ombros"
+        }
+    ]
+},
+
+  "Chute Lateral Resistido": {
+    "type": "pilates",
+    "equipment": "elastic",
+    "sets": 3,
+    "reps": "12/lado",
+    "exercises": [
+        {
+            "name": "Chute Lateral Resistido",
+            "duration": 40,
+            "instructions": "Abdução de quadril em quatro apoios utilizando a alça elástica na sola do pé. 1. Utilize a resistência dos elásticos para aumentar a intensidade. <br>2. Mantenha os cotovelos alinhados e execute com controle. <br>3. Controle a descida resistindo à tração.",
+            "animation": "overhead-lunge",
+            "target": "Glúteos e Quadril"
+        }
+    ]
+},
+
+  "Prancha Oblíqua com Giro": {
+    "type": "pilates",
+    "equipment": "elastic",
+    "sets": 3,
+    "reps": "15/lado",
+    "exercises": [
+        {
+            "name": "Prancha Oblíqua com Giro",
+            "duration": 40,
+            "instructions": "Giro lateral de quadril em posição de prancha contra a tração dos elásticos. 1. Utilize a resistência dos elásticos para aumentar a intensidade. <br>2. Mantenha os cotovelos alinhados e execute com controle. <br>3. Controle a descida resistindo à tração.",
+            "animation": "overhead-lunge",
+            "target": "Core e Oblíquos"
+        }
+    ]
+},
+
+  "Aperto de Tornozelo (Ring)": {
+    "type": "pilates",
+    "equipment": "Ring",
+    "sets": 3,
+    "reps": "15",
+    "exercises": [
+        {
+            "name": "Aperto de Tornozelo (Ring)",
+            "duration": 35,
+            "instructions": "Deitada de costas, aperte o anel posicionado entre os tornozelos para focar no core e adutores. 1. Posicione o anel na região indicada. <br>2. Faça compressões ritmadas e controladas de 1-2 segundos. <br>3. Sinta a ativação profunda isométrica e respire cadenciadamente.",
+            "animation": "thigh-squeeze",
+            "target": "Pernas e Core"
+        }
+    ]
+},
+
+  "Abdominal com Pressão de Anel": {
+    "type": "pilates",
+    "equipment": "Ring",
+    "sets": 3,
+    "reps": "12",
+    "exercises": [
+        {
+            "name": "Abdominal com Pressão de Anel",
+            "duration": 35,
+            "instructions": "Crunch abdominal mantendo o anel pressionado entre as mãos para maior ativação de peitorais e core. 1. Posicione o anel na região indicada. <br>2. Faça compressões ritmadas e controladas de 1-2 segundos. <br>3. Sinta a ativação profunda isométrica e respire cadenciadamente.",
+            "animation": "thigh-squeeze",
+            "target": "Core e Abdômen"
+        }
+    ]
+},
+
+  "Agachamento com Anel": {
+    "type": "pilates",
+    "equipment": "Ring",
+    "sets": 3,
+    "reps": "15",
+    "exercises": [
+        {
+            "name": "Agachamento com Anel",
+            "duration": 35,
+            "instructions": "Agachamento clássico mantendo o anel pressionado na altura do peito durante o movimento. 1. Posicione o anel na região indicada. <br>2. Faça compressões ritmadas e controladas de 1-2 segundos. <br>3. Sinta a ativação profunda isométrica e respire cadenciadamente.",
+            "animation": "thigh-squeeze",
+            "target": "Pernas e Peitoral"
+        }
+    ]
+},
+
+  "Ponte de Glúteos com Anel": {
+    "type": "pilates",
+    "equipment": "Ring",
+    "sets": 4,
+    "reps": "12",
+    "exercises": [
+        {
+            "name": "Ponte de Glúteos com Anel",
+            "duration": 35,
+            "instructions": "Elevação pélvica clássica com o anel pressionado ativamente entre os joelhos. 1. Posicione o anel na região indicada. <br>2. Faça compressões ritmadas e controladas de 1-2 segundos. <br>3. Sinta a ativação profunda isométrica e respire cadenciadamente.",
+            "animation": "bridge-squeeze",
+            "target": "Glúteos e Adutores"
+        }
+    ]
+},
+
+  "Prancha com Pressão de Anel": {
+    "type": "pilates",
+    "equipment": "Ring",
+    "sets": 3,
+    "reps": "30s",
+    "exercises": [
+        {
+            "name": "Prancha com Pressão de Anel",
+            "duration": 30,
+            "instructions": "Sustentação em prancha alta apoiando uma das mãos sobre o anel, desafiando a estabilidade de ombro. 1. Posicione o anel na região indicada. <br>2. Faça compressões ritmadas e controladas de 1-2 segundos. <br>3. Sinta a ativação profunda isométrica e respire cadenciadamente.",
+            "animation": "thigh-squeeze",
+            "target": "Core e Estabilidade"
+        }
+    ]
+},
+
+  "Rosca Bíceps com Anel": {
+    "type": "pilates",
+    "equipment": "Ring",
+    "sets": 3,
+    "reps": "12/lado",
+    "exercises": [
+        {
+            "name": "Rosca Bíceps com Anel",
+            "duration": 35,
+            "instructions": "Flexão de cotovelo espremendo o anel contra o ombro para ativação isométrica do bíceps. 1. Posicione o anel na região indicada. <br>2. Faça compressões ritmadas e controladas de 1-2 segundos. <br>3. Sinta a ativação profunda isométrica e respire cadenciadamente.",
+            "animation": "thigh-squeeze",
+            "target": "Bíceps e Braços"
+        }
+    ]
+},
+
+  "Pressione o Anel Lateral": {
+    "type": "pilates",
+    "equipment": "Ring",
+    "sets": 3,
+    "reps": "15/lado",
+    "exercises": [
+        {
+            "name": "Pressione o Anel Lateral",
+            "duration": 35,
+            "instructions": "Esprema o anel contra a parte externa da coxa usando a palma da mão para isolar tríceps e peitorais. 1. Posicione o anel na região indicada. <br>2. Faça compressões ritmadas e controladas de 1-2 segundos. <br>3. Sinta a ativação profunda isométrica e respire cadenciadamente.",
+            "animation": "thigh-squeeze",
+            "target": "Tríceps e Lateral"
+        }
+    ]
+},
+
+  "Elevação de Pernas com Anel": {
+    "type": "pilates",
+    "equipment": "Ring",
+    "sets": 3,
+    "reps": "10",
+    "exercises": [
+        {
+            "name": "Elevação de Pernas com Anel",
+            "duration": 35,
+            "instructions": "Elevação de pernas unidas segurando o anel entre os tornozelos para focar nos abdominais inferiores. 1. Posicione o anel na região indicada. <br>2. Faça compressões ritmadas e controladas de 1-2 segundos. <br>3. Sinta a ativação profunda isométrica e respire cadenciadamente.",
+            "animation": "thigh-squeeze",
+            "target": "Core e Pernas"
+        }
+    ]
+},
+
+  "Extensão de Tríceps com Anel": {
+    "type": "pilates",
+    "equipment": "Ring",
+    "sets": 3,
+    "reps": "12",
+    "exercises": [
+        {
+            "name": "Extensão de Tríceps com Anel",
+            "duration": 35,
+            "instructions": "Segure o anel acima da cabeça e esprema-o para ativar tríceps e ombros posteriores. 1. Posicione o anel na região indicada. <br>2. Faça compressões ritmadas e controladas de 1-2 segundos. <br>3. Sinta a ativação profunda isométrica e respire cadenciadamente.",
+            "animation": "thigh-squeeze",
+            "target": "Tríceps e Costas"
+        }
+    ]
+},
+
+  "Pombo com Anel de Pilates": {
+    "type": "pilates",
+    "equipment": "Ring",
+    "sets": 3,
+    "reps": "30s",
+    "exercises": [
+        {
+            "name": "Pombo com Anel de Pilates",
+            "duration": 30,
+            "instructions": "Postura de alongamento de glúteos e flexores utilizando o anel para apoio das mãos e mobilidade. 1. Posicione o anel na região indicada. <br>2. Faça compressões ritmadas e controladas de 1-2 segundos. <br>3. Sinta a ativação profunda isométrica e respire cadenciadamente.",
+            "animation": "thigh-squeeze",
+            "target": "Alongamento e Quadril"
+        }
+    ]
+},
+
+  "Alongamento de Perna Única": {
+    "type": "pilates",
+    "equipment": "Mat",
+    "sets": 3,
+    "reps": "12",
+    "exercises": [
+        {
+            "name": "Alongamento de Perna Única",
+            "duration": 45,
+            "instructions": "Abraço alternado de joelhos no peito mantendo a outra perna flutuando esticada a 45 graus. 1. Deite no mat mantendo a lombar apoiada ou coluna neutra. <br>2. Ative o core profundamente para cada repetição. <br>3. Respire pelo nariz e expire pela boca de forma fluida.",
+            "animation": "breath",
+            "target": "Core e Pernas"
+        }
+    ]
+},
+
+  "Alongamento de Perna Dupla": {
+    "type": "pilates",
+    "equipment": "Mat",
+    "sets": 3,
+    "reps": "12",
+    "exercises": [
+        {
+            "name": "Alongamento de Perna Dupla",
+            "duration": 45,
+            "instructions": "Eleve pernas e braços a 45 graus e retorne abraçando os joelhos para fortalecimento abdominal. 1. Deite no mat mantendo a lombar apoiada ou coluna neutra. <br>2. Ative o core profundamente para cada repetição. <br>3. Respire pelo nariz e expire pela boca de forma fluida.",
+            "animation": "breath",
+            "target": "Core e Abdômen"
+        }
+    ]
+},
+
+  "O Macaco (Spine Stretch)": {
+    "type": "pilates",
+    "equipment": "Mat",
+    "sets": 3,
+    "reps": "10",
+    "exercises": [
+        {
+            "name": "O Macaco (Spine Stretch)",
+            "duration": 45,
+            "instructions": "Sentada com pernas afastadas, role a coluna para a frente mantendo os braços paralelos ao mat. 1. Deite no mat mantendo a lombar apoiada ou coluna neutra. <br>2. Ative o core profundamente para cada repetição. <br>3. Respire pelo nariz e expire pela boca de forma fluida.",
+            "animation": "breath",
+            "target": "Coluna e Alongamento"
+        }
+    ]
+},
+
+  "Círculos no Ar (Corkscrew)": {
+    "type": "pilates",
+    "equipment": "Mat",
+    "sets": 3,
+    "reps": "8",
+    "exercises": [
+        {
+            "name": "Círculos no Ar (Corkscrew)",
+            "duration": 45,
+            "instructions": "Com pernas unidas elevadas ao teto, faça círculos lentos estabilizando completamente o quadril. 1. Deite no mat mantendo a lombar apoiada ou coluna neutra. <br>2. Ative o core profundamente para cada repetição. <br>3. Respire pelo nariz e expire pela boca de forma fluida.",
+            "animation": "breath",
+            "target": "Core e Quadril"
+        }
+    ]
+},
+
+  "O Cisne (Swan Dive)": {
+    "type": "pilates",
+    "equipment": "Mat",
+    "sets": 3,
+    "reps": "10",
+    "exercises": [
+        {
+            "name": "O Cisne (Swan Dive)",
+            "duration": 45,
+            "instructions": "Deitada de bruços, eleve o peito do chão ativando toda a musculatura extensora da coluna. 1. Deite no mat mantendo a lombar apoiada ou coluna neutra. <br>2. Ative o core profundamente para cada repetição. <br>3. Respire pelo nariz e expire pela boca de forma fluida.",
+            "animation": "breath",
+            "target": "Lombar e Costas"
+        }
+    ]
+},
+
+  "Chute Lateral em Quatro Apoios": {
+    "type": "pilates",
+    "equipment": "Mat",
+    "sets": 3,
+    "reps": "12/lado",
+    "exercises": [
+        {
+            "name": "Chute Lateral em Quatro Apoios",
+            "duration": 45,
+            "instructions": "Elevação lateral de perna flexionada na posição de quatro apoios para fortalecimento do glúteo médio. 1. Deite no mat mantendo a lombar apoiada ou coluna neutra. <br>2. Ative o core profundamente para cada repetição. <br>3. Respire pelo nariz e expire pela boca de forma fluida.",
+            "animation": "breath",
+            "target": "Glúteos e Core"
+        }
+    ]
+},
+
+  "Ponte Clássica no Mat": {
+    "type": "pilates",
+    "equipment": "Mat",
+    "sets": 4,
+    "reps": "12",
+    "exercises": [
+        {
+            "name": "Ponte Clássica no Mat",
+            "duration": 45,
+            "instructions": "Elevação pélvica articulando a coluna vértebra por vértebra para mobilidade e posterior de coxa. 1. Deite no mat mantendo a lombar apoiada ou coluna neutra. <br>2. Ative o core profundamente para cada repetição. <br>3. Respire pelo nariz e expire pela boca de forma fluida.",
+            "animation": "breath",
+            "target": "Coluna e Glúteos"
+        }
+    ]
+},
+
+  "Canivete (Jackknife)": {
+    "type": "pilates",
+    "equipment": "Mat",
+    "sets": 3,
+    "reps": "8",
+    "exercises": [
+        {
+            "name": "Canivete (Jackknife)",
+            "duration": 45,
+            "instructions": "Eleve as pernas e o quadril do mat direcionando os pés em direção ao teto com máximo controle abdominal. 1. Deite no mat mantendo a lombar apoiada ou coluna neutra. <br>2. Ative o core profundamente para cada repetição. <br>3. Respire pelo nariz e expire pela boca de forma fluida.",
+            "animation": "breath",
+            "target": "Avançado e Core"
+        }
+    ]
+},
+
+  "Torção de Coluna Sentada": {
+    "type": "pilates",
+    "equipment": "Mat",
+    "sets": 3,
+    "reps": "12",
+    "exercises": [
+        {
+            "name": "Torção de Coluna Sentada",
+            "duration": 45,
+            "instructions": "Sentada com braços abertos, gire o tronco para as laterais ativando os oblíquos e a mobilidade torácica. 1. Deite no mat mantendo a lombar apoiada ou coluna neutra. <br>2. Ative o core profundamente para cada repetição. <br>3. Respire pelo nariz e expire pela boca de forma fluida.",
+            "animation": "breath",
+            "target": "Oblíquos e Coluna"
+        }
+    ]
+},
+
+  "Prancha Lateral Clássica": {
+    "type": "pilates",
+    "equipment": "Mat",
+    "sets": 3,
+    "reps": "30s",
+    "exercises": [
+        {
+            "name": "Prancha Lateral Clássica",
+            "duration": 30,
+            "instructions": "Prancha apoiada sobre um antebraço e laterais dos pés para fortalecimento de cintura e quadril. 1. Deite no mat mantendo a lombar apoiada ou coluna neutra. <br>2. Ative o core profundamente para cada repetição. <br>3. Respire pelo nariz e expire pela boca de forma fluida.",
+            "animation": "breath",
+            "target": "Core e Estabilidade"
+        }
+    ]
+},
+
+  "Yoga para Postura e Ombros": {
+    "type": "yoga",
+    "duration": "20 min",
+    "exercises": [
+        {
+            "name": "Yoga para Postura e Ombros - Abertura",
+            "duration": 40,
+            "instructions": "1. Respire fundo e comece a fluir pela postura. <br>2. Alongue os braços e mantenha a estabilidade corporal.",
+            "animation": "breath",
+            "target": "Corpo Inteiro"
+        },
+        {
+            "name": "Yoga para Postura e Ombros - Postura Principal",
+            "duration": 60,
+            "instructions": "1. Permaneça na postura ativando o equilíbrio. <br>2. Mantenha os quadris alinhados e os ombros relaxados.",
+            "animation": "warrior-1",
+            "target": "Força e Equilíbrio"
+        },
+        {
+            "name": "Yoga para Postura e Ombros - Savasana Final",
+            "duration": 60,
+            "instructions": "1. Deite-se de costas no tapete. <br>2. Relaxe todos os músculos e respire de forma natural.",
+            "animation": "savasana",
+            "target": "Restauração Total"
+        }
+    ]
+},
+
+  "Vinyasa Flow Energizante": {
+    "type": "yoga",
+    "duration": "35 min",
+    "exercises": [
+        {
+            "name": "Vinyasa Flow Energizante - Abertura",
+            "duration": 40,
+            "instructions": "1. Respire fundo e comece a fluir pela postura. <br>2. Alongue os braços e mantenha a estabilidade corporal.",
+            "animation": "breath",
+            "target": "Corpo Inteiro"
+        },
+        {
+            "name": "Vinyasa Flow Energizante - Postura Principal",
+            "duration": 60,
+            "instructions": "1. Permaneça na postura ativando o equilíbrio. <br>2. Mantenha os quadris alinhados e os ombros relaxados.",
+            "animation": "warrior-1",
+            "target": "Força e Equilíbrio"
+        },
+        {
+            "name": "Vinyasa Flow Energizante - Savasana Final",
+            "duration": 60,
+            "instructions": "1. Deite-se de costas no tapete. <br>2. Relaxe todos os músculos e respire de forma natural.",
+            "animation": "savasana",
+            "target": "Restauração Total"
+        }
+    ]
+},
+
+  "Yoga Coxas e Quadril": {
+    "type": "yoga",
+    "duration": "30 min",
+    "exercises": [
+        {
+            "name": "Yoga Coxas e Quadril - Abertura",
+            "duration": 40,
+            "instructions": "1. Respire fundo e comece a fluir pela postura. <br>2. Alongue os braços e mantenha a estabilidade corporal.",
+            "animation": "breath",
+            "target": "Corpo Inteiro"
+        },
+        {
+            "name": "Yoga Coxas e Quadril - Postura Principal",
+            "duration": 60,
+            "instructions": "1. Permaneça na postura ativando o equilíbrio. <br>2. Mantenha os quadris alinhados e os ombros relaxados.",
+            "animation": "warrior-1",
+            "target": "Força e Equilíbrio"
+        },
+        {
+            "name": "Yoga Coxas e Quadril - Savasana Final",
+            "duration": 60,
+            "instructions": "1. Deite-se de costas no tapete. <br>2. Relaxe todos os músculos e respire de forma natural.",
+            "animation": "savasana",
+            "target": "Restauração Total"
+        }
+    ]
+},
+
+  "Hatha Yoga Clássico": {
+    "type": "yoga",
+    "duration": "45 min",
+    "exercises": [
+        {
+            "name": "Hatha Yoga Clássico - Abertura",
+            "duration": 40,
+            "instructions": "1. Respire fundo e comece a fluir pela postura. <br>2. Alongue os braços e mantenha a estabilidade corporal.",
+            "animation": "breath",
+            "target": "Corpo Inteiro"
+        },
+        {
+            "name": "Hatha Yoga Clássico - Postura Principal",
+            "duration": 60,
+            "instructions": "1. Permaneça na postura ativando o equilíbrio. <br>2. Mantenha os quadris alinhados e os ombros relaxados.",
+            "animation": "warrior-1",
+            "target": "Força e Equilíbrio"
+        },
+        {
+            "name": "Hatha Yoga Clássico - Savasana Final",
+            "duration": 60,
+            "instructions": "1. Deite-se de costas no tapete. <br>2. Relaxe todos os músculos e respire de forma natural.",
+            "animation": "savasana",
+            "target": "Restauração Total"
+        }
+    ]
+},
+
+  "Vinyasa Desafio de Equilíbrio": {
+    "type": "yoga",
+    "duration": "50 min",
+    "exercises": [
+        {
+            "name": "Vinyasa Desafio de Equilíbrio - Abertura",
+            "duration": 40,
+            "instructions": "1. Respire fundo e comece a fluir pela postura. <br>2. Alongue os braços e mantenha a estabilidade corporal.",
+            "animation": "breath",
+            "target": "Corpo Inteiro"
+        },
+        {
+            "name": "Vinyasa Desafio de Equilíbrio - Postura Principal",
+            "duration": 60,
+            "instructions": "1. Permaneça na postura ativando o equilíbrio. <br>2. Mantenha os quadris alinhados e os ombros relaxados.",
+            "animation": "warrior-1",
+            "target": "Força e Equilíbrio"
+        },
+        {
+            "name": "Vinyasa Desafio de Equilíbrio - Savasana Final",
+            "duration": 60,
+            "instructions": "1. Deite-se de costas no tapete. <br>2. Relaxe todos os músculos e respire de forma natural.",
+            "animation": "savasana",
+            "target": "Restauração Total"
+        }
+    ]
+},
+
+  "Yin Yoga Restaurativo": {
+    "type": "yoga",
+    "duration": "40 min",
+    "exercises": [
+        {
+            "name": "Yin Yoga Restaurativo - Abertura",
+            "duration": 40,
+            "instructions": "1. Respire fundo e comece a fluir pela postura. <br>2. Alongue os braços e mantenha a estabilidade corporal.",
+            "animation": "breath",
+            "target": "Corpo Inteiro"
+        },
+        {
+            "name": "Yin Yoga Restaurativo - Postura Principal",
+            "duration": 60,
+            "instructions": "1. Permaneça na postura ativando o equilíbrio. <br>2. Mantenha os quadris alinhados e os ombros relaxados.",
+            "animation": "warrior-1",
+            "target": "Força e Equilíbrio"
+        },
+        {
+            "name": "Yin Yoga Restaurativo - Savasana Final",
+            "duration": 60,
+            "instructions": "1. Deite-se de costas no tapete. <br>2. Relaxe todos os músculos e respire de forma natural.",
+            "animation": "savasana",
+            "target": "Restauração Total"
+        }
+    ]
+},
+
+  "Yoga Core Estabilidade": {
+    "type": "yoga",
+    "duration": "30 min",
+    "exercises": [
+        {
+            "name": "Yoga Core Estabilidade - Abertura",
+            "duration": 40,
+            "instructions": "1. Respire fundo e comece a fluir pela postura. <br>2. Alongue os braços e mantenha a estabilidade corporal.",
+            "animation": "breath",
+            "target": "Corpo Inteiro"
+        },
+        {
+            "name": "Yoga Core Estabilidade - Postura Principal",
+            "duration": 60,
+            "instructions": "1. Permaneça na postura ativando o equilíbrio. <br>2. Mantenha os quadris alinhados e os ombros relaxados.",
+            "animation": "warrior-1",
+            "target": "Força e Equilíbrio"
+        },
+        {
+            "name": "Yoga Core Estabilidade - Savasana Final",
+            "duration": 60,
+            "instructions": "1. Deite-se de costas no tapete. <br>2. Relaxe todos os músculos e respire de forma natural.",
+            "animation": "savasana",
+            "target": "Restauração Total"
+        }
+    ]
+},
+
+  "Yoga Alongamento Profundo": {
+    "type": "yoga",
+    "duration": "40 min",
+    "exercises": [
+        {
+            "name": "Yoga Alongamento Profundo - Abertura",
+            "duration": 40,
+            "instructions": "1. Respire fundo e comece a fluir pela postura. <br>2. Alongue os braços e mantenha a estabilidade corporal.",
+            "animation": "breath",
+            "target": "Corpo Inteiro"
+        },
+        {
+            "name": "Yoga Alongamento Profundo - Postura Principal",
+            "duration": 60,
+            "instructions": "1. Permaneça na postura ativando o equilíbrio. <br>2. Mantenha os quadris alinhados e os ombros relaxados.",
+            "animation": "warrior-1",
+            "target": "Força e Equilíbrio"
+        },
+        {
+            "name": "Yoga Alongamento Profundo - Savasana Final",
+            "duration": 60,
+            "instructions": "1. Deite-se de costas no tapete. <br>2. Relaxe todos os músculos e respire de forma natural.",
+            "animation": "savasana",
+            "target": "Restauração Total"
+        }
+    ]
+},
+
+  "Pranayama & Meditação": {
+    "type": "yoga",
+    "duration": "15 min",
+    "exercises": [
+        {
+            "name": "Pranayama & Meditação - Abertura",
+            "duration": 40,
+            "instructions": "1. Respire fundo e comece a fluir pela postura. <br>2. Alongue os braços e mantenha a estabilidade corporal.",
+            "animation": "breath",
+            "target": "Corpo Inteiro"
+        },
+        {
+            "name": "Pranayama & Meditação - Postura Principal",
+            "duration": 60,
+            "instructions": "1. Permaneça na postura ativando o equilíbrio. <br>2. Mantenha os quadris alinhados e os ombros relaxados.",
+            "animation": "warrior-1",
+            "target": "Força e Equilíbrio"
+        },
+        {
+            "name": "Pranayama & Meditação - Savasana Final",
+            "duration": 60,
+            "instructions": "1. Deite-se de costas no tapete. <br>2. Relaxe todos os músculos e respire de forma natural.",
+            "animation": "savasana",
+            "target": "Restauração Total"
+        }
+    ]
+},
+
+  "Ashtanga Power Intro": {
+    "type": "yoga",
+    "duration": "50 min",
+    "exercises": [
+        {
+            "name": "Ashtanga Power Intro - Abertura",
+            "duration": 40,
+            "instructions": "1. Respire fundo e comece a fluir pela postura. <br>2. Alongue os braços e mantenha a estabilidade corporal.",
+            "animation": "breath",
+            "target": "Corpo Inteiro"
+        },
+        {
+            "name": "Ashtanga Power Intro - Postura Principal",
+            "duration": 60,
+            "instructions": "1. Permaneça na postura ativando o equilíbrio. <br>2. Mantenha os quadris alinhados e os ombros relaxados.",
+            "animation": "warrior-1",
+            "target": "Força e Equilíbrio"
+        },
+        {
+            "name": "Ashtanga Power Intro - Savasana Final",
+            "duration": 60,
+            "instructions": "1. Deite-se de costas no tapete. <br>2. Relaxe todos os músculos e respire de forma natural.",
+            "animation": "savasana",
+            "target": "Restauração Total"
+        }
+    ]
+},
+
 
   // ============================
   // YOGA SESSIONS
