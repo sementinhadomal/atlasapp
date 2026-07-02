@@ -2698,13 +2698,6 @@ async function updatePremiumElementsUI() {
         };
       }
     });
-
-    // 4. Update the premium label badges
-    document.querySelectorAll('.card__badge--premium').forEach(badge => {
-      badge.textContent = 'Unlocked';
-      badge.style.background = 'var(--color-accent-sage)';
-      badge.style.color = '#fff';
-    });
   }
 }
 
