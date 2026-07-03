@@ -3048,10 +3048,10 @@ function initProgramProgress() {
     const title = titleEl.textContent.trim();
     const programId = getProgramId(title);
 
-    // Extract total days (e.g. 21 Dias, 30 Dias, 7 Dias, 14 Dias)
+    // Extract total days (e.g. 21 Dias, 30 Days, 7 Dias, 14 Days)
     let totalDays = 7;
     const cardText = card.textContent;
-    const dayMatch = cardText.match(/(\d+)\s*Dias/i);
+    const dayMatch = cardText.match(/(\d+)\s*(?:Dias|Days)/i);
     if (dayMatch) {
       totalDays = parseInt(dayMatch[1]) || 7;
     }
@@ -3076,8 +3076,9 @@ function initProgramProgress() {
 
       // Find the actions bar or button in the card
       const btn = card.querySelector('a[href*="subscription.html"], .btn');
-      if (btn && btn.parentElement) {
-        btn.parentElement.insertBefore(grid, btn);
+      if (btn && btn.parentElement && btn.parentElement.parentElement) {
+        // Inserts the grid before the actions container, making it a full-width block sibling
+        btn.parentElement.parentElement.insertBefore(grid, btn.parentElement);
       } else {
         card.appendChild(grid);
       }
