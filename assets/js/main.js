@@ -2053,6 +2053,32 @@ function updateTimerDisplay() {
   }
 }
 
+function getExerciseImage(ex) {
+  const name = (ex.name || '').toLowerCase();
+  const equip = (ex.equipment || '').toLowerCase();
+  const type = (ex.type || '').toLowerCase();
+  
+  if (type === 'yoga') return 'assets/images/yoga.png';
+  if (equip === 'ring') return 'assets/images/ring.png';
+  if (equip === 'elastic') return 'assets/images/barre-hero.jpg';
+  if (equip === 'bar') return 'assets/images/barre.png';
+  
+  if (name.includes('ring') || name.includes('anel')) return 'assets/images/ring.png';
+  if (name.includes('elastic') || name.includes('elást') || name.includes('elast')) return 'assets/images/barre-hero.jpg';
+  if (name.includes('bar') || name.includes('barre') || name.includes('barra')) return 'assets/images/barre.png';
+  if (name.includes('yoga') || name.includes('along') || name.includes('respir')) return 'assets/images/yoga.png';
+  
+  if (type === 'pilates') return 'assets/images/barre.png';
+  return 'assets/images/yoga.png';
+}
+
+window.selectWorkoutExercise = function(idx) {
+  if (idx >= 0 && idx < currentWorkoutData.exercises.length) {
+    currentExerciseIndex = idx;
+    loadExercise(currentExerciseIndex);
+  }
+};
+
 function renderPlayerUI(exercise) {
   const inner = document.querySelector('.video-modal__inner');
   if (!inner) return;
@@ -2072,13 +2098,21 @@ function renderPlayerUI(exercise) {
           
           <div style="display: flex; flex-direction: column; gap: 0.75rem;">
             ${currentWorkoutData.exercises.map((ex, idx) => `
-              <div style="display: flex; align-items: center; gap: 10px; padding: 0.625rem; border-radius: var(--radius-md); background: ${idx === currentExerciseIndex ? 'rgba(201,169,110,0.1)' : 'transparent'}; border: 1px solid ${idx === currentExerciseIndex ? 'rgba(201,169,110,0.2)' : 'transparent'};">
-                <span style="width: 20px; height: 20px; border-radius: 50%; border: 1px solid ${idx <= currentExerciseIndex ? 'var(--color-accent-gold)' : 'rgba(255,255,255,0.2)'}; display: flex; align-items: center; justify-content: center; font-size: 0.6875rem; color: ${idx <= currentExerciseIndex ? 'var(--color-accent-gold)' : 'rgba(255,255,255,0.4)'}; background: ${idx < currentExerciseIndex ? 'var(--color-accent-gold)' : 'transparent'}">
-                  ${idx < currentExerciseIndex ? '✓' : idx + 1}
-                </span>
-                <span style="font-size: 0.8125rem; color: ${idx === currentExerciseIndex ? '#fff' : 'rgba(255,255,255,0.5)'}; font-weight: ${idx === currentExerciseIndex ? '500' : '400'}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 170px;">
-                  ${ex.name}
-                </span>
+              <div onclick="window.selectWorkoutExercise(${idx})" style="display: flex; align-items: center; gap: 12px; padding: 0.625rem; border-radius: var(--radius-md); background: ${idx === currentExerciseIndex ? 'rgba(201,169,110,0.1)' : 'transparent'}; border: 1px solid ${idx === currentExerciseIndex ? 'rgba(201,169,110,0.2)' : 'transparent'}; cursor: pointer; transition: all 0.2s;">
+                <div style="width: 44px; height: 44px; border-radius: var(--radius-md); overflow: hidden; background: #0b0a09; flex-shrink: 0; border: 1px solid ${idx === currentExerciseIndex ? 'var(--color-accent-gold)' : 'rgba(255,255,255,0.06)'}; position: relative;">
+                  <img src="${getExerciseImage(ex)}" style="width: 100%; height: 100%; object-fit: cover;" />
+                  <div style="position: absolute; bottom: 2px; right: 2px; width: 14px; height: 14px; border-radius: 50%; background: ${idx < currentExerciseIndex ? '#10b981' : (idx === currentExerciseIndex ? 'var(--color-accent-gold)' : 'rgba(0,0,0,0.6)')}; display: flex; align-items: center; justify-content: center; font-size: 0.5625rem; font-weight: bold; color: ${idx === currentExerciseIndex ? '#000' : '#fff'}; border: 1px solid rgba(255,255,255,0.15);">
+                    ${idx < currentExerciseIndex ? '✓' : idx + 1}
+                  </div>
+                </div>
+                <div style="flex: 1; min-width: 0;">
+                  <div style="font-size: 0.8125rem; color: ${idx === currentExerciseIndex ? '#fff' : 'rgba(255,255,255,0.6)'}; font-weight: ${idx === currentExerciseIndex ? '500' : '400'}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                    ${ex.name}
+                  </div>
+                  <div style="font-size: 0.6875rem; color: rgba(255,255,255,0.4); margin-top: 2px;">
+                    ${Math.round(ex.duration / 60)} min
+                  </div>
+                </div>
               </div>
             `).join('')}
           </div>
@@ -3007,7 +3041,9 @@ window.generateWorkoutMix = function(programId, programName, day, durationMinute
       duration: durations[idx], // Duração pseudo-aleatória limpa e distribuída
       instructions: ex.instructions,
       animation: ex.animation,
-      target: ex.target
+      target: ex.target,
+      type: ex.type,
+      equipment: ex.equipment
     }))
   };
 };
