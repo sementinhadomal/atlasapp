@@ -5,7 +5,7 @@
  * and high-end interactive training indicators. Instructions in Portuguese.
  */
 
-document.addEventListener('DOMContentLoaded', () => {
+function initializeApp() {
   try { initMobileMenu(); } catch (e) { console.error('initMobileMenu error:', e); }
   try { initVideoModal(); } catch (e) { console.error('initVideoModal error:', e); }
   try { initFilters(); } catch (e) { console.error('initFilters error:', e); }
@@ -13,7 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
   try { initScrollReveal(); } catch (e) { console.error('initScrollReveal error:', e); }
   try { initAuth(); } catch (e) { console.error('initAuth error:', e); }
   try { initProgramProgress(); } catch (e) { console.error('initProgramProgress error:', e); }
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeApp);
+} else {
+  initializeApp();
+}
 
 // ==========================================
 // WORKOUT DATABASE (Simulated Exercises)
@@ -1834,7 +1840,7 @@ async function canPlayContent(triggerElement) {
   */
 }
 
-window.openVideoModal = async function(title, duration, triggerEl) {
+window.openVideoModal = async function(title, duration, triggerEl, customWorkoutData) {
   // triggerEl may be passed via onclick="openVideoModal(t, d, this)"
   // or we try to infer it from the event target
   const trigger = triggerEl || (window._lastClickTarget) || null;
@@ -1842,14 +1848,14 @@ window.openVideoModal = async function(title, duration, triggerEl) {
   const allowed = await canPlayContent(trigger);
   if (!allowed) {
     window.showToast('🔒 Conteúdo Premium — adquira o Atlas Pilates Bar para desbloquear.');
-    setTimeout(() => { window.location.href = 'subscription.html'; }, 1200);
+    setTimeout(() => { window.location.href = 'subscription.html?v=1.1.0'; }, 1200);
     return;
   }
 
-  launchWorkoutPlayer(title);
+  launchWorkoutPlayer(title, customWorkoutData);
 };
 
-window.openExerciseModal = async function(name, type, triggerEl) {
+window.openExerciseModal = async function(name, type, triggerEl, customWorkoutData) {
   const trigger = triggerEl || (window._lastClickTarget) || null;
 
   const allowed = await canPlayContent(trigger);
@@ -1859,7 +1865,7 @@ window.openExerciseModal = async function(name, type, triggerEl) {
     return;
   }
 
-  launchWorkoutPlayer(name);
+  launchWorkoutPlayer(name, customWorkoutData);
 };
 
 // Track last clicked element so modal openers called without `this` still work
@@ -1867,12 +1873,12 @@ document.addEventListener('click', function(e) {
   window._lastClickTarget = e.target;
 }, true);
 
-function launchWorkoutPlayer(name) {
+function launchWorkoutPlayer(name, customWorkoutData) {
   const modal = document.getElementById('videoModal');
   if (!modal) return;
 
   currentWorkoutName = name;
-  currentWorkoutData = workoutData[name];
+  currentWorkoutData = customWorkoutData || workoutData[name];
 
   if (!currentWorkoutData) {
     currentWorkoutData = {
@@ -2744,11 +2750,14 @@ function getProgramId(title) {
 }
 
 /**
- * Dynamically builds a custom workout routine (a mix of 3 to 6 exercises)
- * based on the program modality and promised daily duration,
- * ensuring each day has a different, unique mix.
+ * Dynamically maps a program and day index to a real workout from workoutData.
+ * Respects modality and filters matches accordingly.
  */
-window.getWorkoutRoutineForProgramDay = function(programId, day) {
+/**
+ * Dynamically maps a program and day index to a real workout from workoutData.
+ * Respects modality and filters matches accordingly.
+ */
+window.getWorkoutForProgramDay = function(programId, day) {
   if (!window.workoutsByCategory) {
     window.workoutsByCategory = {
       yoga: [],
@@ -2785,142 +2794,309 @@ window.getWorkoutRoutineForProgramDay = function(programId, day) {
 
   let pool = [];
   const p = programId.toLowerCase();
-  let durationMinutes = 25; // default
-  let programType = 'pilates';
-
+  
   if (p.includes('core-reset')) {
     pool = [...window.workoutsByCategory.yoga, ...window.workoutsByCategory.pilates];
-    durationMinutes = 25;
-    programType = 'fusion';
   } else if (p.includes('body-sculptor')) {
     pool = [...window.workoutsByCategory.ring, ...window.workoutsByCategory.bar];
-    durationMinutes = 35;
-    programType = 'fusion';
-  } else if (p.includes('total-transformation')) {
-    pool = Object.keys(workoutData);
-    durationMinutes = 45;
-    programType = 'fusion';
   } else if (p.includes('pilates-classico')) {
     pool = window.workoutsByCategory.pilates;
-    durationMinutes = 25;
-    programType = 'pilates';
   } else if (p.includes('yoga-iniciantes')) {
     pool = window.workoutsByCategory.yoga;
-    durationMinutes = 25;
-    programType = 'yoga';
   } else if (p.includes('forca-com-equipamentos') || p.includes('forca-equipamentos')) {
     pool = [...window.workoutsByCategory.bar, ...window.workoutsByCategory.ring, ...window.workoutsByCategory.elastic];
-    durationMinutes = 35;
-    programType = 'pilates';
   } else if (p.includes('core-avancado')) {
     pool = Object.keys(workoutData).filter(k => k.toLowerCase().includes('core') || k.toLowerCase().includes('abdominal') || k.toLowerCase().includes('prancha'));
-    durationMinutes = 25;
-    programType = 'pilates';
   } else if (p.includes('flexibilidade')) {
     pool = Object.keys(workoutData).filter(k => k.toLowerCase().includes('alongamento') || k.toLowerCase().includes('flexibilidade') || k.toLowerCase().includes('restore') || k.toLowerCase().includes('yin'));
-    durationMinutes = 25;
-    programType = 'yoga';
   } else if (p.includes('barra-elastico') || p.includes('barra-e-elastico') || p.includes('desafio-21-dias-barra-elastico')) {
     pool = [...window.workoutsByCategory.bar, ...window.workoutsByCategory.elastic];
-    durationMinutes = 35;
-    programType = 'pilates';
   } else if (p.includes('fusion-yoga')) {
     pool = [...window.workoutsByCategory.fusion, ...window.workoutsByCategory.yoga, ...window.workoutsByCategory.bar];
-    durationMinutes = 35;
-    programType = 'fusion';
-  } else if (p.includes('desafio-30-dias-escultura') || p.includes('desafio-30-escultura')) {
-    pool = Object.keys(workoutData);
-    durationMinutes = 35;
-    programType = 'fusion';
   } else if (p.includes('desafio-anel')) {
     pool = window.workoutsByCategory.ring;
-    durationMinutes = 18;
-    programType = 'pilates';
   } else if (p.includes('pernas-gluteos') || p.includes('pernas')) {
     pool = Object.keys(workoutData).filter(k => {
       const kl = k.toLowerCase();
       return kl.includes('agachamento') || kl.includes('glúteo') || kl.includes('quadril') || kl.includes('perna') || kl.includes('ponte') || kl.includes('pélvica') || kl.includes('avanço');
     });
-    durationMinutes = 25;
-    programType = 'pilates';
   } else if (p.includes('upper-body') || p.includes('upper')) {
     pool = Object.keys(workoutData).filter(k => {
       const kl = k.toLowerCase();
       return kl.includes('rosca') || kl.includes('bíceps') || kl.includes('tríceps') || kl.includes('ombro') || kl.includes('peitoral') || kl.includes('braço') || kl.includes('remada') || kl.includes('desenvolvimento') || kl.includes('triceps') || kl.includes('biceps');
     });
-    durationMinutes = 25;
-    programType = 'pilates';
   } else if (p.includes('hiit')) {
     pool = Object.keys(workoutData).filter(k => k.toLowerCase().includes('hiit') || k.toLowerCase().includes('prancha') || k.toLowerCase().includes('suave'));
-    durationMinutes = 28;
-    programType = 'pilates';
   } else if (p.includes('barra-express')) {
     pool = window.workoutsByCategory.bar;
-    durationMinutes = 18;
-    programType = 'pilates';
   } else if (p.includes('dual-equipment') || p.includes('full-body-fusion')) {
     pool = [...window.workoutsByCategory.bar, ...window.workoutsByCategory.ring, ...window.workoutsByCategory.fusion];
-    durationMinutes = 35;
-    programType = 'fusion';
   }
 
   if (pool.length === 0) {
     pool = Object.keys(workoutData);
   }
 
-  // Determine number of exercises based on duration
+  const index = (day - 1) % pool.length;
+  return pool[index];
+};
+
+/**
+ * Dynamically creates a unique repeatable mix of exercises for any day and program.
+ * Respects modality and equipment rules.
+ */
+window.generateWorkoutMix = function(programId, programName, day, durationMinutes) {
+  // 1. Compile all exercises in workoutData
+  if (!window._masterExercisePool) {
+    window._masterExercisePool = [];
+    for (let key in workoutData) {
+      const w = workoutData[key];
+      if (w && Array.isArray(w.exercises)) {
+        w.exercises.forEach(ex => {
+          window._masterExercisePool.push({
+            name: ex.name,
+            instructions: ex.instructions,
+            animation: ex.animation,
+            target: ex.target,
+            type: w.type || 'pilates',
+            equipment: w.equipment || 'none'
+          });
+        });
+      }
+    }
+  }
+
+  const p = programId.toLowerCase();
+  let pool = [];
+
+  // 2. Filter exercises by program modality
+  if (p.includes('yoga') || p.includes('flexibilidade')) {
+    pool = window._masterExercisePool.filter(e => e.type === 'yoga');
+  } else if (p.includes('pilates-classico')) {
+    pool = window._masterExercisePool.filter(e => e.type === 'pilates' && e.equipment === 'none');
+  } else if (p.includes('barra-express')) {
+    pool = window._masterExercisePool.filter(e => e.equipment === 'bar' || e.name.toLowerCase().includes('barra'));
+  } else if (p.includes('desafio-anel')) {
+    pool = window._masterExercisePool.filter(e => e.equipment === 'ring' || e.name.toLowerCase().includes('anel'));
+  } else if (p.includes('barra-elastico') || p.includes('barra-e-elastico') || p.includes('desafio-21-dias-barra-elastico')) {
+    pool = window._masterExercisePool.filter(e => e.equipment === 'bar' || e.equipment === 'elastic');
+  } else if (p.includes('body-sculptor')) {
+    pool = window._masterExercisePool.filter(e => e.equipment === 'ring' || e.equipment === 'bar');
+  } else if (p.includes('pernas-gluteos') || p.includes('pernas')) {
+    pool = window._masterExercisePool.filter(e => {
+      const n = e.name.toLowerCase();
+      const t = e.target.toLowerCase();
+      return n.includes('agachamento') || n.includes('glúteo') || n.includes('perna') || n.includes('ponte') || n.includes('avanço') || t.includes('glúteo') || t.includes('quadril') || t.includes('coxa');
+    });
+  } else if (p.includes('upper-body') || p.includes('upper')) {
+    pool = window._masterExercisePool.filter(e => {
+      const n = e.name.toLowerCase();
+      const t = e.target.toLowerCase();
+      return n.includes('rosca') || n.includes('bíceps') || n.includes('tríceps') || n.includes('ombro') || n.includes('braço') || n.includes('remada') || t.includes('bíceps') || t.includes('tríceps') || t.includes('ombro') || t.includes('braço');
+    });
+  } else if (p.includes('core-avancado')) {
+    pool = window._masterExercisePool.filter(e => {
+      const n = e.name.toLowerCase();
+      return n.includes('core') || n.includes('abdominal') || n.includes('prancha');
+    });
+  } else if (p.includes('core-reset')) {
+    pool = window._masterExercisePool.filter(e => e.type === 'yoga' || e.type === 'pilates');
+  }
+
+  // Fallback to all exercises if subset is empty
+  if (pool.length === 0) {
+    pool = window._masterExercisePool;
+  }
+
+  // 3. Determine exercise count based on daily duration
   let numExercises = 4;
-  if (durationMinutes <= 20) numExercises = 3;
-  else if (durationMinutes <= 30) numExercises = 4;
-  else if (durationMinutes <= 45) numExercises = 5;
+  if (durationMinutes <= 15) numExercises = 3;
+  else if (durationMinutes <= 25) numExercises = 4;
+  else if (durationMinutes <= 35) numExercises = 5;
   else numExercises = 6;
 
-  // Build the list of exercises using pseudo-random selection seeded by the day
-  const exercises = [];
-  for (let j = 0; j < numExercises; j++) {
-    const itemIndex = (day * 3 + j * 7) % pool.length;
-    const parentKey = pool[itemIndex];
-    const parentData = workoutData[parentKey];
-    
-    if (parentData && parentData.exercises && parentData.exercises.length > 0) {
-      const originalEx = parentData.exercises[0];
-      exercises.push({
-        name: originalEx.name,
-        duration: 40, // 40 seconds per exercise for testing/demo
-        instructions: originalEx.instructions,
-        animation: originalEx.animation || 'breath',
-        target: originalEx.target || 'Corpo Inteiro'
-      });
+  // 4. Seeded repeatable selector
+  const seed = day + programId.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  const mix = [];
+  const poolSize = pool.length;
+
+  for (let i = 0; i < numExercises; i++) {
+    const idx = (seed + i * 17) % poolSize;
+    const candidate = pool[idx];
+    if (!mix.some(m => m.name === candidate.name)) {
+      mix.push(candidate);
     } else {
-      exercises.push({
-        name: parentKey,
-        duration: 40,
-        instructions: "Mantenha o foco, a postura alinhada e respire ritmadamente durante o movimento.",
-        animation: "breath",
-        target: "Corpo Inteiro"
-      });
+      let found = false;
+      for (let offset = 1; offset < poolSize; offset++) {
+        const nextCand = pool[(idx + offset) % poolSize];
+        if (!mix.some(m => m.name === nextCand.name)) {
+          mix.push(nextCand);
+          found = true;
+          break;
+        }
+      }
+      if (!found) {
+        mix.push(candidate);
+      }
     }
   }
 
   return {
-    type: programType,
-    exercises: exercises
+    type: pool[0]?.type || 'pilates',
+    exercises: mix.map(ex => ({
+      name: ex.name,
+      duration: Math.round((durationMinutes * 60) / numExercises), // Divide o tempo diário prometido igualmente entre os exercícios
+      instructions: ex.instructions,
+      animation: ex.animation,
+      target: ex.target
+    }))
   };
 };
+
+function unlockAllPageElements() {
+  // Remove all lock overlays
+  document.querySelectorAll('.card__lock, .lock-icon, [data-lock]').forEach(el => el.remove());
+  
+  // Remove any absolute lock containers from cards
+  document.querySelectorAll('div[style*="position:absolute"], div[style*="position: absolute"]').forEach(el => {
+    if (el.innerHTML.includes('<svg') && (el.innerHTML.includes('rect') || el.innerHTML.includes('path'))) {
+      if (!el.textContent.includes('Most Popular') && !el.textContent.includes('Free') && !el.textContent.includes('Novo') && !el.textContent.includes('Elite')) {
+        el.remove();
+      }
+    }
+  });
+
+  // Remove padlock elements from library cards
+  document.querySelectorAll('.exercise-item svg').forEach(svg => {
+    if (svg.innerHTML.includes('rect') && svg.innerHTML.includes('path')) {
+      const parent = svg.parentElement;
+      if (parent && parent.style.position === 'absolute') {
+        parent.remove();
+      }
+    }
+  });
+
+  // Normalize image brightness
+  document.querySelectorAll('img').forEach(img => {
+    if (img.style.filter && img.style.filter.includes('brightness')) {
+      img.style.filter = '';
+    }
+  });
+}
+
+function removeHomeLinkOnDesktop() {
+  // Check if screen is desktop width
+  if (window.innerWidth > 768) {
+    const desktopLinks = document.querySelectorAll('.nav__links li');
+    desktopLinks.forEach(li => {
+      const a = li.querySelector('a');
+      if (a) {
+        const text = a.textContent.trim().toLowerCase();
+        if (text === 'home' || text === 'início' || text === 'inicio') {
+          li.remove();
+        }
+      }
+    });
+  }
+}
+
+/**
+ * Dynamically tracks and renders program progress grids (D1, D2...)
+ * and buttons, saving user state to localStorage.
+ */
+function fixLinksDynamically() {
+  document.querySelectorAll('a').forEach(a => {
+    let href = a.getAttribute('href');
+    if (!href) return;
+    
+    // Replace index.html with programs.html
+    if (href.includes('index.html')) {
+      href = href.replace('index.html', 'programs.html');
+    }
+    
+    // Add cache-busting v=1.1.2 to internal .html links
+    if (href.endsWith('.html') || href.includes('.html?')) {
+      const parts = href.split('?');
+      href = parts[0] + '?v=1.1.2';
+    }
+    
+    a.setAttribute('href', href);
+  });
+}
 
 /**
  * Dynamically tracks and renders program progress grids (D1, D2...)
  * and buttons, saving user state to localStorage.
  */
 function initProgramProgress() {
-  const progressGrids = document.querySelectorAll('.program-progress-grid');
+  // Fix links dynamically
+  try { fixLinksDynamically(); } catch (e) { console.error(e); }
+
+  // First, unlock all elements on the page dynamically
+  try { unlockAllPageElements(); } catch (e) { console.error(e); }
   
-  progressGrids.forEach(grid => {
-    const programId = grid.getAttribute('data-program-id');
-    const totalDays = parseInt(grid.getAttribute('data-total-days')) || 7;
-    const prefix = grid.getAttribute('data-prefix') || 'D';
-    
-    // Check localStorage progress (default to 1 Day instead of hardcoded Day 4/2)
+  // Second, remove Home link on desktop dynamically
+  try { removeHomeLinkOnDesktop(); } catch (e) { console.error(e); }
+
+  const programsGrid = document.getElementById('programsGrid');
+  if (!programsGrid) return;
+
+  const cards = programsGrid.querySelectorAll('.reveal');
+  cards.forEach(card => {
+    const titleEl = card.querySelector('h2');
+    if (!titleEl) return;
+    const title = titleEl.textContent.trim();
+    const programId = getProgramId(title);
+
+    // Extract total days (e.g. 21 Dias, 30 Dias, 7 Dias, 14 Dias)
+    let totalDays = 7;
+    const cardText = card.textContent;
+    const dayMatch = cardText.match(/(\d+)\s*Dias/i);
+    if (dayMatch) {
+      totalDays = parseInt(dayMatch[1]) || 7;
+    }
+
+    const prefix = programId.includes('yoga') ? 'S' : 'D';
+
+    // Inject the progress grid dynamically right before the actions container
+    let grid = card.querySelector('.program-progress-grid');
+    if (!grid) {
+      grid = document.createElement('div');
+      grid.className = 'program-progress-grid';
+      grid.setAttribute('data-program-id', programId);
+      grid.setAttribute('data-total-days', totalDays);
+      grid.setAttribute('data-prefix', prefix);
+      
+      // Styling details matching the dark premium theme
+      grid.style.display = 'grid';
+      grid.style.gridTemplateColumns = 'repeat(7, 1fr)';
+      grid.style.gap = 'var(--space-xs)';
+      grid.style.marginBottom = 'var(--space-xl)';
+      grid.style.marginTop = 'var(--space-md)';
+
+      // Find the actions bar or button in the card
+      const btn = card.querySelector('a[href*="subscription.html"], .btn');
+      if (btn && btn.parentElement) {
+        btn.parentElement.insertBefore(grid, btn);
+      } else {
+        card.appendChild(grid);
+      }
+    }
+
+    // Hijack button to trigger startProgram
+    const btn = card.querySelector('a[href*="subscription.html"], .btn');
+    if (btn) {
+      btn.id = `btn-${programId}`;
+      btn.removeAttribute('href');
+      btn.style.cursor = 'pointer';
+      btn.className = 'btn btn--primary';
+      btn.onclick = (e) => {
+        e.preventDefault();
+        window.startProgram(title, totalDays);
+      };
+    }
+
+    // Check localStorage progress
     let currentProgress = localStorage.getItem(`atlas_program_progress_${programId}`);
     if (currentProgress === null) {
       currentProgress = 1;
@@ -2928,7 +3104,7 @@ function initProgramProgress() {
     } else {
       currentProgress = parseInt(currentProgress) || 1;
     }
-    
+
     renderGrid(grid, programId, totalDays, prefix, currentProgress);
   });
 }
@@ -2969,44 +3145,12 @@ function renderGrid(grid, programId, totalDays, prefix, currentProgress) {
     dayItem.onmouseenter = () => { dayItem.style.transform = 'scale(1.05)'; };
     dayItem.onmouseleave = () => { dayItem.style.transform = ''; };
     
-    // Toggle progress and start the day's training immediately when the circle is clicked!
+    // Click on circle opens the player directly for that day!
     dayItem.addEventListener('click', () => {
-      // 1. Salva progresso no localStorage e renderiza a grade
-      localStorage.setItem(`atlas_program_progress_${programId}`, i);
-      renderGrid(grid, programId, totalDays, prefix, i);
-      
-      // 2. Define o programa ativo globalmente
-      window.activeProgramId = programId;
-
-      // 3. Encontra o título e as estatísticas do programa
-      const titleEl = grid.parentElement.querySelector('h2.heading-lg');
+      const card = grid.closest('.reveal, article, div');
+      const titleEl = card ? card.querySelector('h2') : null;
       const title = titleEl ? titleEl.textContent.trim() : 'Programa';
-
-      let durationStr = "25 min";
-      const statsElements = Array.from(grid.parentElement.querySelectorAll('div > div'));
-      statsElements.forEach(el => {
-        const text = el.textContent.trim().toLowerCase();
-        if (text.includes('min') || text.includes('dias') || text.includes('diário') || text.includes('daily')) {
-          const valEl = el.nextElementSibling || el.parentElement.querySelector('div:last-child');
-          if (valEl && valEl.textContent.includes('min')) {
-            durationStr = valEl.textContent.trim();
-          }
-        }
-      });
-
-      // 4. Cria e define o mix de treinos do dia
-      const routine = window.getWorkoutRoutineForProgramDay(programId, i);
-      currentWorkoutData = routine;
-
-      window.showToast(`🚀 Iniciando ${title} — Dia ${i} (${durationStr})`);
-      
-      setTimeout(() => {
-        if (window.openVideoModal) {
-          window.openVideoModal(title, durationStr, null, true);
-        } else if (window.openExerciseModal) {
-          window.openExerciseModal(title, durationStr, null, true);
-        }
-      }, 1000);
+      window.startProgram(title, totalDays, i);
     });
     
     grid.appendChild(dayItem);
@@ -3032,33 +3176,35 @@ function updateProgramButton(programId, progress, totalDays, prefix) {
 }
 
 /**
- * Starts a workout program by matching its name to a real workout from workoutData
- * and opening the video modal player.
+ * Starts a workout program by generating a dynamic exercise mix and launching the player.
  */
-window.startProgram = function(programName, totalDays) {
+window.startProgram = function(programName, totalDays, dayOverride) {
   const progId = getProgramId(programName);
 
   // Define como programa ativo para salvar o progresso ao terminar o treino
   window.activeProgramId = progId;
 
   let currentProgress = 1;
-  const saved = localStorage.getItem(`atlas_program_progress_${progId}`);
-  currentProgress = saved !== null ? parseInt(saved) || 1 : 1;
+  if (dayOverride !== undefined) {
+    currentProgress = dayOverride;
+    localStorage.setItem(`atlas_program_progress_${progId}`, currentProgress);
+  } else {
+    const saved = localStorage.getItem(`atlas_program_progress_${progId}`);
+    currentProgress = saved !== null ? parseInt(saved) || 1 : 1;
+  }
 
   // Se o programa foi concluído, reinicia no dia 1
   if (currentProgress > totalDays) {
     currentProgress = 1;
     localStorage.setItem(`atlas_program_progress_${progId}`, 1);
-    const grid = document.querySelector(`.program-progress-grid[data-program-id="${progId}"]`);
-    if (grid) {
-      const prefix = progId.includes('yoga') ? 'S' : 'D';
-      renderGrid(grid, progId, totalDays, prefix, 1);
-    }
   }
 
-  // Busca treino ideal para este dia do programa (mix de exercícios)
-  const routine = window.getWorkoutRoutineForProgramDay(progId, currentProgress);
-  currentWorkoutData = routine;
+  // Atualiza a grade de progresso na tela
+  const grid = document.querySelector(`.program-progress-grid[data-program-id="${progId}"]`);
+  if (grid) {
+    const prefix = progId.includes('yoga') ? 'S' : 'D';
+    renderGrid(grid, progId, totalDays, prefix, currentProgress);
+  }
 
   // Obtém duração prometida nas estatísticas
   let durationStr = "25 min";
@@ -3079,13 +3225,16 @@ window.startProgram = function(programName, totalDays) {
     }
   }
 
+  const durationMinutes = parseInt(durationStr) || 25;
+  
+  // 1. Gera o Mix Dinâmico de Exercícios para este dia!
+  const workoutMix = window.generateWorkoutMix(progId, programName, currentProgress, durationMinutes);
+
   window.showToast(`🚀 Iniciando ${programName} — Dia ${currentProgress} (${durationStr})`);
   
   setTimeout(() => {
     if (window.openVideoModal) {
-      window.openVideoModal(programName, durationStr, null, true);
-    } else if (window.openExerciseModal) {
-      window.openExerciseModal(programName, durationStr, null, true);
+      window.openVideoModal(programName + " — Dia " + currentProgress, durationStr, null, workoutMix);
     }
   }, 1000);
 };
@@ -3323,9 +3472,11 @@ const translations = {
   }
 };
 
-document.addEventListener('DOMContentLoaded', () => {
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initLanguageSwitcher);
+} else {
   initLanguageSwitcher();
-});
+}
 
 function initLanguageSwitcher() {
   const style = document.createElement('style');
@@ -3450,20 +3601,47 @@ function applyTranslations(lang) {
   const dictionary = translations[lang];
   if (!dictionary) return;
 
-  // Translate Navbar
+  // Translate Navbar based on text content
   const navLinks = document.querySelectorAll('.nav__link');
-  const navKeys = ["Home", "Yoga", "Pilates", "Programs", "Library"];
-  navLinks.forEach((link, idx) => {
-    if (navKeys[idx]) {
-      link.textContent = dictionary[navKeys[idx]];
+  navLinks.forEach(link => {
+    const key = link.getAttribute('data-nav-key') || link.textContent.trim();
+    if (!link.getAttribute('data-nav-key')) {
+      link.setAttribute('data-nav-key', key);
+    }
+    if (dictionary[key]) {
+      link.textContent = dictionary[key];
+    } else if (key.toLowerCase() === 'home' && dictionary['Home']) {
+      link.textContent = dictionary['Home'];
+    } else if (key.toLowerCase() === 'yoga' && dictionary['Yoga']) {
+      link.textContent = dictionary['Yoga'];
+    } else if (key.toLowerCase() === 'pilates' && dictionary['Pilates']) {
+      link.textContent = dictionary['Pilates'];
+    } else if (key.toLowerCase() === 'programs' && dictionary['Programs']) {
+      link.textContent = dictionary['Programs'];
+    } else if (key.toLowerCase() === 'library' && dictionary['Library']) {
+      link.textContent = dictionary['Library'];
     }
   });
 
   // Translate Drawer Links
   const drawerLinks = document.querySelectorAll('.drawer-link');
-  drawerLinks.forEach((link, idx) => {
-    if (navKeys[idx]) {
-      link.textContent = dictionary[navKeys[idx]];
+  drawerLinks.forEach(link => {
+    const key = link.getAttribute('data-nav-key') || link.textContent.trim();
+    if (!link.getAttribute('data-nav-key')) {
+      link.setAttribute('data-nav-key', key);
+    }
+    if (dictionary[key]) {
+      link.textContent = dictionary[key];
+    } else if (key.toLowerCase() === 'home' && dictionary['Home']) {
+      link.textContent = dictionary['Home'];
+    } else if (key.toLowerCase() === 'yoga' && dictionary['Yoga']) {
+      link.textContent = dictionary['Yoga'];
+    } else if (key.toLowerCase() === 'pilates' && dictionary['Pilates']) {
+      link.textContent = dictionary['Pilates'];
+    } else if (key.toLowerCase() === 'programs' && dictionary['Programs']) {
+      link.textContent = dictionary['Programs'];
+    } else if (key.toLowerCase() === 'library' && dictionary['Library']) {
+      link.textContent = dictionary['Library'];
     }
   });
 
