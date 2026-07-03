@@ -1841,10 +1841,12 @@ async function canPlayContent(triggerElement) {
 }
 
 window.openVideoModal = async function(title, duration, triggerEl, customWorkoutData) {
-  // triggerEl may be passed via onclick="openVideoModal(t, d, this)"
-  // or we try to infer it from the event target
-  const trigger = triggerEl || (window._lastClickTarget) || null;
+  if (customWorkoutData) {
+    launchWorkoutPlayer(title, customWorkoutData);
+    return;
+  }
 
+  const trigger = triggerEl || (window._lastClickTarget) || null;
   const allowed = await canPlayContent(trigger);
   if (!allowed) {
     window.showToast('🔒 Conteúdo Premium — adquira o Atlas Pilates Bar para desbloquear.');
@@ -1852,12 +1854,16 @@ window.openVideoModal = async function(title, duration, triggerEl, customWorkout
     return;
   }
 
-  launchWorkoutPlayer(title, customWorkoutData);
+  launchWorkoutPlayer(title);
 };
 
 window.openExerciseModal = async function(name, type, triggerEl, customWorkoutData) {
-  const trigger = triggerEl || (window._lastClickTarget) || null;
+  if (customWorkoutData) {
+    launchWorkoutPlayer(name, customWorkoutData);
+    return;
+  }
 
+  const trigger = triggerEl || (window._lastClickTarget) || null;
   const allowed = await canPlayContent(trigger);
   if (!allowed) {
     window.showToast('🔒 Conteúdo Premium — adquira o Atlas Pilates Bar para desbloquear.');
@@ -1865,7 +1871,7 @@ window.openExerciseModal = async function(name, type, triggerEl, customWorkoutDa
     return;
   }
 
-  launchWorkoutPlayer(name, customWorkoutData);
+  launchWorkoutPlayer(name);
 };
 
 // Track last clicked element so modal openers called without `this` still work
