@@ -2847,9 +2847,31 @@ window.getWorkoutForProgramDay = function(programId, day) {
   return pool[index];
 };
 
+const defaultProgramDurations = {
+  'core-reset': 25,
+  'body-sculptor': 35,
+  'total-transformation': 45,
+  'full-body-fusion-barra-ring-30d': 45,
+  'pilates-classico': 25,
+  'yoga-para-iniciantes': 25,
+  'forca-com-equipamentos': 40,
+  'desafio-core-avancado': 30,
+  'flow-flexibilidade': 20,
+  'bar-sculpt': 35,
+  'stretch-release': 15,
+  'gluteos-firmes': 30,
+  'cardio-pilates': 25,
+  'pilates-gestantes': 20,
+  'postura-alinhada': 15,
+  'core-intenso': 25,
+  'pernas-torneadas': 30,
+  'barre-flow': 35,
+  'alongamento-matinal': 12
+};
+
 /**
  * Dynamically creates a unique repeatable mix of exercises for any day and program.
- * Respects modality and equipment rules.
+ * Respects modality and equipment rules, and distributes duration pseudo-randomly.
  */
 window.generateWorkoutMix = function(programId, programName, day, durationMinutes) {
   // 1. Compile all exercises in workoutData
@@ -2864,8 +2886,8 @@ window.generateWorkoutMix = function(programId, programName, day, durationMinute
             instructions: ex.instructions,
             animation: ex.animation,
             target: ex.target,
-            type: w.type || 'pilates',
-            equipment: w.equipment || 'none'
+            type: (w.type || 'pilates').toLowerCase(),
+            equipment: (w.equipment || 'none').toLowerCase()
           });
         });
       }
@@ -2873,85 +2895,116 @@ window.generateWorkoutMix = function(programId, programName, day, durationMinute
   }
 
   const p = programId.toLowerCase();
-  let pool = [];
+  const name = programName.toLowerCase();
+  
+  let allowedTypes = [];
+  let allowedEquipments = [];
 
-  // 2. Filter exercises by program modality
-  if (p.includes('yoga') || p.includes('flexibilidade')) {
-    pool = window._masterExercisePool.filter(e => e.type === 'yoga');
-  } else if (p.includes('pilates-classico')) {
-    pool = window._masterExercisePool.filter(e => e.type === 'pilates' && e.equipment === 'none');
-  } else if (p.includes('barra-express')) {
-    pool = window._masterExercisePool.filter(e => e.equipment === 'bar' || e.name.toLowerCase().includes('barra'));
-  } else if (p.includes('desafio-anel')) {
-    pool = window._masterExercisePool.filter(e => e.equipment === 'ring' || e.name.toLowerCase().includes('anel'));
-  } else if (p.includes('barra-elastico') || p.includes('barra-e-elastico') || p.includes('desafio-21-dias-barra-elastico')) {
-    pool = window._masterExercisePool.filter(e => e.equipment === 'bar' || e.equipment === 'elastic');
-  } else if (p.includes('body-sculptor')) {
-    pool = window._masterExercisePool.filter(e => e.equipment === 'ring' || e.equipment === 'bar');
-  } else if (p.includes('pernas-gluteos') || p.includes('pernas')) {
-    pool = window._masterExercisePool.filter(e => {
-      const n = e.name.toLowerCase();
-      const t = e.target.toLowerCase();
-      return n.includes('agachamento') || n.includes('glúteo') || n.includes('perna') || n.includes('ponte') || n.includes('avanço') || t.includes('glúteo') || t.includes('quadril') || t.includes('coxa');
-    });
-  } else if (p.includes('upper-body') || p.includes('upper')) {
-    pool = window._masterExercisePool.filter(e => {
-      const n = e.name.toLowerCase();
-      const t = e.target.toLowerCase();
-      return n.includes('rosca') || n.includes('bíceps') || n.includes('tríceps') || n.includes('ombro') || n.includes('braço') || n.includes('remada') || t.includes('bíceps') || t.includes('tríceps') || t.includes('ombro') || t.includes('braço');
-    });
-  } else if (p.includes('core-avancado')) {
-    pool = window._masterExercisePool.filter(e => {
-      const n = e.name.toLowerCase();
-      return n.includes('core') || n.includes('abdominal') || n.includes('prancha');
-    });
-  } else if (p.includes('core-reset')) {
-    pool = window._masterExercisePool.filter(e => e.type === 'yoga' || e.type === 'pilates');
+  // Detect modality
+  if (p.includes('yoga') || name.includes('yoga')) {
+    allowedTypes.push('yoga');
+  }
+  if (p.includes('pilates') || name.includes('pilates')) {
+    allowedTypes.push('pilates');
+  }
+  if (allowedTypes.length === 0) {
+    allowedTypes = ['yoga', 'pilates'];
   }
 
-  // Fallback to all exercises if subset is empty
+  // Detect equipment keywords
+  if (p.includes('bar') || p.includes('barra') || name.includes('bar') || name.includes('barra')) {
+    allowedEquipments.push('bar');
+  }
+  if (p.includes('ring') || p.includes('anel') || name.includes('ring') || name.includes('anel')) {
+    allowedEquipments.push('ring');
+  }
+  if (p.includes('elastic') || p.includes('elastico') || name.includes('elastic') || name.includes('elástico')) {
+    allowedEquipments.push('elastic');
+  }
+  if (p.includes('mat') || name.includes('mat')) {
+    allowedEquipments.push('mat');
+  }
+
+  // Fallback to bodyweight if no specific equipment keywords detected
+  if (allowedEquipments.length === 0) {
+    allowedEquipments = ['none', 'mat'];
+  }
+
+  // Filter pool matching allowed types and equipment (yoga exercises bypass equipment check)
+  let pool = window._masterExercisePool.filter(e => {
+    const isAllowedType = allowedTypes.includes(e.type);
+    if (!isAllowedType) return false;
+    if (e.type === 'yoga') return true;
+    return allowedEquipments.includes(e.equipment);
+  });
+
+  // Fallback if subset is empty
   if (pool.length === 0) {
     pool = window._masterExercisePool;
   }
 
-  // 3. Determine exercise count based on daily duration
+  // Determine number of exercises based on daily duration
   let numExercises = 4;
   if (durationMinutes <= 15) numExercises = 3;
   else if (durationMinutes <= 25) numExercises = 4;
   else if (durationMinutes <= 35) numExercises = 5;
   else numExercises = 6;
 
-  // 4. Seeded repeatable selector
+  // Compile a unique, repeatable selection of exercises seeded by day
   const seed = day + programId.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
   const mix = [];
-  const poolSize = pool.length;
+  const poolCopy = [...pool];
+
+  function seededRandom(index) {
+    const x = Math.sin(seed + index * 9.87) * 10000;
+    return x - Math.floor(x);
+  }
 
   for (let i = 0; i < numExercises; i++) {
-    const idx = (seed + i * 17) % poolSize;
-    const candidate = pool[idx];
-    if (!mix.some(m => m.name === candidate.name)) {
-      mix.push(candidate);
+    let ex;
+    if (poolCopy.length > 0) {
+      const rIdx = Math.floor(seededRandom(i) * poolCopy.length);
+      ex = poolCopy.splice(rIdx, 1)[0];
     } else {
-      let found = false;
-      for (let offset = 1; offset < poolSize; offset++) {
-        const nextCand = pool[(idx + offset) % poolSize];
-        if (!mix.some(m => m.name === nextCand.name)) {
-          mix.push(nextCand);
-          found = true;
-          break;
-        }
-      }
-      if (!found) {
-        mix.push(candidate);
-      }
+      const rIdx = Math.floor(seededRandom(i) * pool.length);
+      ex = pool[rIdx];
     }
+    if (ex) mix.push(ex);
   }
+
+  // Pseudo-randomly distribute total durationMinutes (in seconds) among exercises
+  const totalSeconds = durationMinutes * 60;
+  const durations = [];
+  let remainingSeconds = totalSeconds;
+  
+  const weights = [];
+  let totalWeight = 0;
+  for (let i = 0; i < mix.length; i++) {
+    const w = 0.6 + seededRandom(i * 2) * 0.8; // Weight between 0.6 and 1.4
+    weights.push(w);
+    totalWeight += w;
+  }
+
+  for (let i = 0; i < mix.length - 1; i++) {
+    let share = Math.round((weights[i] / totalWeight) * totalSeconds);
+    const minRequired = 60; // Min 1 min per exercise
+    const maxAllowed = remainingSeconds - (mix.length - 1 - i) * minRequired;
+    share = Math.max(minRequired, Math.min(share, maxAllowed));
+    
+    // Round to nearest 30 seconds
+    share = Math.round(share / 30) * 30;
+    if (share < minRequired) share = minRequired;
+    
+    durations.push(share);
+    remainingSeconds -= share;
+  }
+  durations.push(Math.max(60, remainingSeconds));
 
   return {
     type: pool[0]?.type || 'pilates',
-    exercises: mix.map(ex => ({
+    exercises: mix.map((ex, idx) => ({
       name: ex.name,
-      duration: Math.round((durationMinutes * 60) / numExercises), // Divide o tempo diário prometido igualmente entre os exercícios
+      duration: durations[idx], // Duração pseudo-aleatória limpa e distribuída
       instructions: ex.instructions,
       animation: ex.animation,
       target: ex.target
@@ -3214,25 +3267,29 @@ window.startProgram = function(programName, totalDays, dayOverride) {
   }
 
   // Obtém duração prometida nas estatísticas
-  let durationStr = "25 min";
-  const btn = document.getElementById(`btn-${progId}`);
-  if (btn) {
-    const parentContainer = btn.parentElement;
-    if (parentContainer) {
-      const statsElements = Array.from(parentContainer.querySelectorAll('div > div'));
-      statsElements.forEach(el => {
-        const text = el.textContent.trim().toLowerCase();
-        if (text.includes('min') || text.includes('dias') || text.includes('diário')) {
-          const valEl = el.nextElementSibling || el.parentElement.querySelector('div:last-child');
-          if (valEl && valEl.textContent.includes('min')) {
-            durationStr = valEl.textContent.trim();
+  let durationMinutes = defaultProgramDurations[progId];
+  if (!durationMinutes) {
+    let durationStr = "25 min";
+    const btn = document.getElementById(`btn-${progId}`);
+    if (btn) {
+      const parentContainer = btn.parentElement;
+      if (parentContainer) {
+        const statsElements = Array.from(parentContainer.querySelectorAll('div > div'));
+        statsElements.forEach(el => {
+          const text = el.textContent.trim().toLowerCase();
+          if (text.includes('min') || text.includes('dias') || text.includes('diário')) {
+            const valEl = el.nextElementSibling || el.parentElement.querySelector('div:last-child');
+            if (valEl && valEl.textContent.includes('min')) {
+              durationStr = valEl.textContent.trim();
+            }
           }
-        }
-      });
+        });
+      }
     }
+    durationMinutes = parseInt(durationStr) || 25;
   }
 
-  const durationMinutes = parseInt(durationStr) || 25;
+  const durationStr = `${durationMinutes} min`;
   
   // 1. Gera o Mix Dinâmico de Exercícios para este dia!
   const workoutMix = window.generateWorkoutMix(progId, programName, currentProgress, durationMinutes);
